@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::group(['middleware' => 'auth'], function () {
+
+    /**
+     * ADMIN section
+     */
+    Route::get('/admin', [ AdminPageController::class, 'index']);
+
+});
+
+require __DIR__.'/auth.php';
