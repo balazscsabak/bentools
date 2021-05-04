@@ -1,0 +1,32 @@
+CATEGORY
+    PARENT
+        IF:
+            1: ITS A MAIN CATEGORY
+            INT: ITS CHILD CATEGORY
+
+PRODUCT
+    CATEGORY:
+        CHILD
+        MAIN
+        0: UNCATEGORIZED
+
+    ATTRIBUTUMOK
+        DYNAMIKUS
+            KEY-VALUE PAIR
+
+    NAME
+
+    IMAGES
+        STRING
+
+PAGE SETTINGS
+    CORUSAL SETTINGS
+        3 ITEMS
+            IMAGE
+            TITLE
+            BUTTON WITH LINK
+    
+    NEW PRODUCTS
+        3 SELCTABLE PRODUCT ITEM
+
+NEWS

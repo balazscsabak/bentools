@@ -1,1 +1,35 @@
+.dropdown-menu--profile {
+  right: 0 !important;
+  left: auto !important;
+}
 
+#product-main-image-picker,
+#product-images-picker {
+  padding: 10px;
+  border: 1px solid #4d4d4d;
+}
+
+.product-main-img-selectable,
+.product-images-selectable,
+.slide-img-selectable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.product-main-img-selectable img,
+.product-images-selectable img,
+.slide-img-selectable img {
+  padding: 3px;
+  border: 1px solid #858585;
+  cursor: pointer;
+}
+.product-main-img-selectable img.selected,
+.product-images-selectable img.selected,
+.slide-img-selectable img.selected {
+  border: 3px solid #e05555;
+}
+
+.ck-editor__editable {
+  min-height: 300px;
+}
