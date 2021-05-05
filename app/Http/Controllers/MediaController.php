@@ -35,11 +35,7 @@ class MediaController extends Controller
             $media->path = $path;
             $media->type = 'image';
 
-            
-            dd($media->save());
-
         } catch(Exception $e){
-            dd($e);
             return back()->with('error', 'Hiba történt a feldolgozásban!');
         }
 

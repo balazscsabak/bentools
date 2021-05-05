@@ -3115,6 +3115,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./swiper */ "./resources/js/swiper.js");
 
+__webpack_require__(/*! ./parallax */ "./resources/js/parallax.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -3132,12 +3134,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 
 window.$ = window.jQuery = (jquery__WEBPACK_IMPORTED_MODULE_0___default());
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 var dt = __webpack_require__(/*! datatables.net */ "./node_modules/datatables.net/js/jquery.dataTables.js");
 
 
 
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -3160,6 +3162,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/parallax.js":
+/*!**********************************!*\
+  !*** ./resources/js/parallax.js ***!
+  \**********************************/
+/***/ (() => {
+
+$(function () {});
 
 /***/ }),
 

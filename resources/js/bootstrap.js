@@ -1,12 +1,13 @@
 import $ from 'jquery';
 window.$ = window.jQuery = $;
-window._ = require('lodash');
 
 var dt = require( 'datatables.net' );
 
 import 'jquery-ui/ui/widgets/datepicker';
 
 import 'bootstrap';
+
+window._ = require('lodash');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

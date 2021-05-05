@@ -96,6 +96,17 @@ main {
     color: $color-second-blue;
 }
 
+.hero {
+    margin-bottom: 60px;
+}
+
+.section-news {
+    margin-bottom: 100px;
+}
+.section-related-items {
+    margin-bottom: 100px;
+}
+
 .post {
     height: 100%;
     border-radius: 4px;
@@ -146,18 +157,39 @@ main {
             color: #000;
             text-decoration: none;
 
-            .image {
-                background-position: center center;
-                background-size: cover;
+            .image-wrapper {
+                position: relative;
+
+                .image {
+                    background-position: center center;
+                    background-size: cover;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .blue-bg {
+                    position: absolute;
+                    top: 4px;
+                    left: 4px;
+                    width: 100%;
+                    height: 100%;
+                    background-color: $color-main-blue;
+                }
             }
 
             .name {
-                margin-top: 7px;
+                margin-top: 14px;
 
                 h1 {
                     text-align: left;
-                    font-size: 1rem;
+                    font-size: 1.2rem;
                     font-weight: bold;
+                }
+            }
+
+            .read-more {
+                span {
+                    color: $color-main-blue;
                 }
             }
         }
@@ -177,7 +209,7 @@ main {
         height: 3px;
         display: block;
         z-index: -1;
-        background-color: #1d58a5;
+        background-color: #d9d9d9;
         top: 50%;
         transform: translateY(-50%);
     }
@@ -202,5 +234,92 @@ main {
                 }
             }
         }
+    }
+}
+
+.contact-us {
+    width: 100%;
+
+    background-position: center center;
+    background-size: cover;
+
+    .contact-us-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .content {
+            display: flex;
+            margin: 110px 0;
+            max-width: 700px;
+
+            .left,
+            .right {
+                .text {
+                    h1 {
+                        font-size: 2rem;
+                        color: #fff;
+                        margin-bottom: 2rem;
+                    }
+                    p {
+                        margin-bottom: 2rem;
+                        font-size: 1rem;
+                        color: #fff;
+                    }
+                }
+            }
+            .left {
+                text-align: right;
+            }
+
+            .right {
+            }
+
+            .divider {
+                width: 3px;
+                background-color: $color-main-blue;
+                margin: 0 46px;
+            }
+        }
+    }
+}
+
+.section-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+
+    h1 {
+        font-size: 2.3rem;
+        font-weight: bold;
+
+        // &::after {
+        //     font-family: "Font Awesome 5 Free";
+        //     content: "\f107";
+        //     width: 150%;
+        //     display: block;
+        //     height: 2px;
+        //     margin-top: 12px;
+        //     margin-bottom: 33px;
+        // }
+    }
+    .icon {
+        i {
+            font-size: 2rem;
+            color: #b5b5b5;
+        }
+    }
+}
+
+.shipping {
+    padding: 100px 0;
+    background-color: #fff;
+
+    i {
+        font-size: 1.6rem;
+        margin: 22px 0 20px;
+        color: #b5b5b5;
     }
 }
