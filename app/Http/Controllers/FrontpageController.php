@@ -13,8 +13,8 @@ class FrontpageController extends Controller
     {
         $slideshow = Slideshow::all();
         $latestPosts = Posts::latest()->limit(3)->get();
-        $relatedProducts = Products::latest()->limit(3)->get();
-        
+        $relatedProducts = Products::latest()->limit(4)->get();
+
         return view('index')
                     ->with('slideshow', $slideshow)
                     ->with('relatedProducts', $relatedProducts)

@@ -22,7 +22,16 @@
     </div>
 
     <div class="container">
-        <h1 class="text-center">Hírek</h1>
+        
+        <div class="title-with-bg">
+            <div class="background-white">
+                <div class="background-color">
+                    <div class="title">
+                        <h1>Hírek</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="news row justify-content-md-center gx-2 ">
             @isset($latestPosts)
@@ -36,16 +45,30 @@
     </div>
 
     <div class="container">
-        <h1 class="text-center">Kiemelt Termékek</h1>
 
-        <div class="related-items row justify-content-md-center gx-5">
-            @isset($relatedProducts)
-                @foreach ($relatedProducts as $product)
-
-                    <x-related-item :product="$product"/>
-
-                @endforeach
-            @endisset
+        <div class="title-with-bg">
+            <div class="background-white">
+                <div class="background-color">
+                    <div class="title">
+                        <h1>Kiemelt Termékek</h1>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <div class="d-flex justify-content-center">
+            <div class="col-10">
+                <div class="related-items row justify-content-md-center gx-5">
+                    @isset($relatedProducts)
+                        @foreach ($relatedProducts as $product)
+        
+                            <x-related-item :product="$product"/>
+        
+                        @endforeach
+                    @endisset
+                </div>
+            </div>
+        </div>
+
     </div>
 </x-app-layout>
