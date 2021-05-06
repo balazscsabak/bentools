@@ -1,4 +1,4 @@
-<div class="swiper-slide">
+<div class="swiper-slide hero-slide">
     <div class="bg-blur" style="background-image: linear-gradient(
         rgb(33 29 29 / 41%),
         rgb(11 12 12 / 38%)

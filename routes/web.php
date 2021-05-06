@@ -23,7 +23,7 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', [FrontpageController::class, 'index']);
-
+Route::get('/product/{slug}', [ProductsController::class, 'product'])->name('product');
 
 Route::group(['middleware' => 'auth'], function () {
     

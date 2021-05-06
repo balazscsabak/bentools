@@ -232,4 +232,10 @@ class ProductsController extends Controller
         }
 
     }
+
+    public function product(Request $request, $slug)
+    {
+        $product = Products::where('slug', $slug)->first();
+        return view('products.product')->with('product', $product);
+    }
 }

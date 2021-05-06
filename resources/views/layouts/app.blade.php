@@ -18,7 +18,7 @@
     </head>
     <body class="font-sans antialiased">
         
-        @include('includes.navigation')
+        @include('includes.navigation', ['products' => $products])
         
         <!-- Page Content -->
         <main>

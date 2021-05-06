@@ -9,31 +9,32 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">Kezdőlap</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('messages') }}">Üzenetek</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('media') }}">Média</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories.index') }}">Kategóriák</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.index') }}">Termékek</a>
+                    <a class="nav-link" aria-current="page" href="/">Kezdőlap</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Termékek
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Elérhetőség</a></li>
-                        <li><a class="dropdown-item" href="#">Szállítási információk</a></li>
-                        <li><a class="dropdown-item" href="#">Szolgáltatások</a></li>
-                        <li><a class="dropdown-item" href="#">Kinézet</a></li>
+                        <li><a class="dropdown-item" href="/products">Összes termék</a></li>
+                        @foreach ($products as $product)
+                            <li><a class="dropdown-item" href="{{ route('product', $product->slug) }}">{{ $product->name }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('media') }}">Ajánlatkérés</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('categories.index') }}">Szállítási információk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('products.index') }}">Üzenet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('products.index') }}">Kapcsolat</a>
+                </li>
+                
             </ul>
             
         </div>

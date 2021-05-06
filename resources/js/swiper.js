@@ -3,7 +3,7 @@
 import Swiper from 'swiper/bundle';
 
 $(() => {
-    const swiper = new Swiper('.swiper-container', {
+    const heroSwiper = new Swiper('.hero-swiper', {
         // Optional parameters
         loop: true,
       
@@ -18,11 +18,18 @@ $(() => {
           prevEl: '.swiper-button-prev',
         },
       
+        slideClass: 'hero-slide',
+        
         // And if we need scrollbar
         // scrollbar: {
         //   el: '.swiper-scrollbar',
         // },
       });
 
-
+      const productImageSwiper = new Swiper(".product-image-swiper", {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        loop: true,
+        slideToClickedSlide: true,
+      });
 })

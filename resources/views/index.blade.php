@@ -1,8 +1,7 @@
 <x-app-layout>
-
     <div class="hero">     
         <!-- Slider main container -->
-        <div class="swiper-container">
+        <div class="swiper-container hero-swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -114,7 +113,9 @@
     </div>
 
     <div class="shipping">
+
         <div class="container">
+
             <div class="shipping-wrapper d-flex justify-content-center">
                 <div class="col-8 text-center">
                     <h1>Szállítás</h1>
@@ -122,6 +123,36 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi architecto excepturi, eveniet odio dignissimos placeat cum quae? Voluptas accusamus labore iusto molestias, debitis nihil dolorum, fugiat aliquid sequi inventore facere totam eveniet unde fugit provident. Placeat facilis sed voluptate at in modi perspiciatis dolore, repellendus, maxime magni eos! Optio explicabo sequi illum dignissimos labore voluptatibus consequatur dicta libero, repellendus provident!</p>
                 </div>
             </div>
+
         </div>
+
     </div>
+
+    <div class="contact">
+
+        <div class="container">
+
+            <div class="contact-wrapper d-flex justify-content-center">
+                <div class="col-8 text-center">
+                    <div class="row">
+                        <div class="email col-6">
+                            <div class="icon"><i class="fas fa-at"></i></div>
+                            <h1>
+                                balazs.csabak@gmail.com
+                            </h1>
+                        </div>
+                        <div class="phone col-6">
+                            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                            <h1>
+                                +36 30 947 7500
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </x-app-layout>

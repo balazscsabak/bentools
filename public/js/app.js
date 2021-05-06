@@ -3188,7 +3188,7 @@ __webpack_require__.r(__webpack_exports__);
 // import Swiper from 'swiper';
 
 $(function () {
-  var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__.default('.swiper-container', {
+  var heroSwiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__.default('.hero-swiper', {
     // Optional parameters
     loop: true,
     // If we need pagination
@@ -3199,11 +3199,18 @@ $(function () {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
-    } // And if we need scrollbar
+    },
+    slideClass: 'hero-slide' // And if we need scrollbar
     // scrollbar: {
     //   el: '.swiper-scrollbar',
     // },
 
+  });
+  var productImageSwiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__.default(".product-image-swiper", {
+    slidesPerView: 3,
+    spaceBetween: 10,
+    loop: true,
+    slideToClickedSlide: true
   });
 });
 
