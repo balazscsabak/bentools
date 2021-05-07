@@ -29,7 +29,16 @@ $(() => {
       const productImageSwiper = new Swiper(".product-image-swiper", {
         slidesPerView: 3,
         spaceBetween: 10,
-        loop: true,
-        slideToClickedSlide: true,
+        
+        navigation: {
+          nextEl: '.product-swiper-next',
+          prevEl: '.product-swiper-prev',
+        },
       });
+
+      productImageSwiper.on('slideChangeTransitionEnd', function(e) {
+        let selectedImageSrc = $('.swiper-slide-active').find('img').attr('src');
+
+        $('#product-featured-image').attr("src", selectedImageSrc);
+      })
 })

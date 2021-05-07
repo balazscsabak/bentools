@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,14 +16,44 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased d-flex flex-column h-100">
         
         @include('includes.navigation', ['products' => $products])
         
         <!-- Page Content -->
-        <main>
+        <main class="flex-shrink-0">
             {{ $slot }}
         </main>
         
+        <footer class="footer mt-auto py-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="d-flex justify-content-center">
+                        <div class="mx-3">
+                            ÁSZF
+                        </div>
+                        
+                        <div class="mx-">
+                            Adatvédelmi nyilatkozat
+                        </div>
+
+                        <div class="mx-3">
+                            Cookie Szabályzat
+                        </div>
+                     
+                    </div>
+
+                    <a href="#">
+                        <img class="mx-auto my-2" src="{{ asset('images/KIMATools_RGB.png') }}" alt="">
+                    </a>
+
+                    <div class="text-center">
+                        © 2021 Kimatools – www.kimatools.hu
+                    </div>
+
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

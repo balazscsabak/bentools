@@ -23,16 +23,16 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('media') }}">Ajánlatkérés</a>
+                    <a class="nav-link" href="{{ route('offer') }}">Ajánlatkérés</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories.index') }}">Szállítási információk</a>
+                    <a class="nav-link" href="{{ route('shipping') }}">Szállítási információk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.index') }}">Üzenet</a>
+                    <a class="nav-link" href="{{ route('message.index') }}">Üzenet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.index') }}">Kapcsolat</a>
+                    <a class="nav-link" href="{{ route('contact') }}">Kapcsolat</a>
                 </li>
                 
             </ul>

@@ -41,7 +41,7 @@
                 Üzenet
             </div>
             <div class="col-9">
-                {{ $message->message ?? '' }}
+                {!! nl2br($message->message) ?? '' !!}
             </div>
             
         </div>

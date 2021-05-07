@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Messages;
 use Illuminate\Http\Request;
 use DataTables;
+use Exception;
 use Illuminate\Support\Facades\Redirect;
 
 class MessagesController extends Controller
@@ -82,5 +83,38 @@ class MessagesController extends Controller
         $message->save();
 
         return redirect()->route('messages');
+    }
+
+    public function message()
+    {
+        return view('messages.message');
+    }
+
+    public function store(Request $request)
+    {
+        try {
+
+            $email = $request->input('email');
+            $message = $request->input('message');
+            $firmName = $request->input('firm_name');
+            $fullName = $request->input('full_name');
+            $phoneNumber = $request->input('phone_number');
+            
+            $newMessage = new Messages();
+            
+            $newMessage->email = $email;
+            $newMessage->message = $message;
+            $newMessage->firm_name = $firmName;
+            $newMessage->full_name = $fullName;
+            $newMessage->phone_number = $phoneNumber;
+            
+            $newMessage->save();
+
+            return back()->with('success', 'Az üzenet sikeresen elküldve!');
+            
+        } catch(Exception $e) {
+            return back()->with('error', 'Hiba az üzenet elküldése során!');
+        }
+        
     }
 }

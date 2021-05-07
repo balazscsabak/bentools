@@ -19056,7 +19056,7 @@ html,
 body {
   font-family: "Lato", sans-serif;
   font-family: "Roboto Condensed", sans-serif;
-  background-color: #f1f1f1;
+  background-color: #fbfbfb;
 }
 
 img {
@@ -19074,7 +19074,7 @@ a {
   height: 66px;
 }
 .navbar .navbar-nav .nav-link {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   position: relative;
 }
 .navbar .navbar-brand img {
@@ -19140,10 +19140,9 @@ main {
   border-radius: 4px;
 }
 .post__content {
-  height: 400px;
+  height: 500px;
   background-position: center center;
   background-size: cover;
-  background-blend-mode: saturation;
   display: flex;
   align-items: flex-end;
 }
@@ -19259,30 +19258,239 @@ main {
   color: #b5b5b5;
 }
 
-.shipping {
+.shipping-section {
   padding: 100px 0;
   background-color: #fff;
 }
-.shipping i {
+.shipping-section i {
   font-size: 1.6rem;
   margin: 22px 0 20px;
   color: #b5b5b5;
 }
 
-.contact-wrapper {
+.contact-section {
+  background-color: #f1f1f1;
+}
+.contact-section .contact-wrapper {
   padding: 80px 0;
 }
-.contact-wrapper .email .icon,
-.contact-wrapper .phone .icon {
+.contact-section .contact-wrapper .email .icon,
+.contact-section .contact-wrapper .phone .icon {
   font-size: 2rem;
   margin: 22px 0 20px;
 }
-.contact-wrapper .email h1, .contact-wrapper .email .h1,
-.contact-wrapper .phone h1,
-.contact-wrapper .phone .h1 {
+.contact-section .contact-wrapper .email h1, .contact-section .contact-wrapper .email .h1,
+.contact-section .contact-wrapper .phone h1,
+.contact-section .contact-wrapper .phone .h1 {
   font-size: 1.2rem;
+}
+
+.product-page {
+  padding-top: 50px;
+}
+.product-page .product-images .sub {
+  position: relative;
+  margin-top: 20px;
+}
+.product-page .product-images .sub .product-swiper-prev,
+.product-page .product-images .sub .product-swiper-next {
+  font-size: 1rem;
+  content: "next";
+  font-size: 1.4rem !important;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.product-page .product-images .sub .product-swiper-prev {
+  left: -20px;
+}
+.product-page .product-images .sub .product-swiper-next {
+  right: -20px;
+}
+.product-page .product-images .main .image {
+  position: relative;
+}
+.product-page .product-images .main .image #product-featured-image {
+  position: relative;
+  z-index: 10;
+}
+.product-page .product-images .main .image .blue-bg {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 100%;
+  height: 100%;
+  background-color: #1d58a5;
+}
+.product-page .product-info {
+  padding-left: 20px;
+}
+.product-page .product-info .name h1, .product-page .product-info .name .h1 {
+  text-align: center;
+}
+.product-page .product-info .description p {
+  text-align: center;
+}
+.product-page .product-info .attributes .attribute {
+  display: flex;
+  font-style: italic;
+}
+.product-page .product-info .attributes .attribute .key {
+  width: 100px;
+}
+.product-page .product-info .attributes .attribute .value {
+  font-weight: bold;
 }
 
 .product-image-swiper .swiper-wrapper {
   align-items: center;
+}
+
+.post-page {
+  padding-top: 50px;
+}
+.post-page .post {
+  text-align: center;
+}
+.post-page .post .featured-image {
+  margin: 20px 0;
+}
+
+.message-page {
+  padding-top: 50px;
+}
+.message-page .message h1, .message-page .message .h1,
+.message-page .message p {
+  text-align: center;
+}
+.message-page .message p {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+}
+.message-page .message .icon {
+  text-align: center;
+  font-size: 2rem;
+  color: #d1d1d1;
+  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+}
+.message-page .message label {
+  font-size: 1.1rem;
+}
+.message-page .message textarea {
+  min-height: 250px;
+}
+.message-page .message .submit {
+  text-align: center;
+}
+.message-page .message .submit input {
+  font-size: 1.2rem;
+}
+
+.contact-page {
+  padding-top: 50px;
+  text-align: center;
+}
+.contact-page .contact__h1 {
+  text-align: center;
+}
+.contact-page .contact__p {
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+}
+.contact-page .contact__icon {
+  text-align: center;
+  font-size: 2rem;
+  color: #d1d1d1;
+  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+}
+.contact-page .contact .info .text {
+  font-size: 1.6rem;
+}
+.contact-page .contact .info .icon {
+  font-size: 1.3rem;
+}
+.contact-page .contact .info .value {
+  font-size: 1.2rem;
+}
+.contact-page .contact .info .phone {
+  margin-bottom: 2rem;
+}
+.contact-page .contact .info .email {
+  margin-bottom: 2rem;
+}
+
+.shipping-page {
+  padding-top: 50px;
+}
+.shipping-page .shipping__h1 {
+  text-align: center;
+}
+.shipping-page .shipping__p {
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.shipping-page .shipping__icon {
+  text-align: center;
+  font-size: 2rem;
+  color: #d1d1d1;
+  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+}
+
+.offer-page {
+  padding-top: 50px;
+}
+.offer-page .data label {
+  font-size: 1.1rem;
+}
+.offer-page .offer__h1 {
+  text-align: center;
+}
+.offer-page .offer__p {
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.offer-page .offer__icon {
+  text-align: center;
+  font-size: 2rem;
+  color: #d1d1d1;
+  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+}
+.offer-page #cart .title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.offer-page #cart .items .item {
+  position: relative;
+  font-size: 1.2rem;
+}
+.offer-page #cart .items .item::before {
+  content: "-";
+  position: absolute;
+  left: -4px;
+  top: 1%;
+  font-weight: 900;
+  color: blue;
+}
+.offer-page #cart .items .item .quantity {
+  font-weight: bold;
+  text-align: right;
+}
+.offer-page #cart .items .item .quantity::after {
+  content: " db";
+}
+
+.footer {
+  background-color: #1d58a5 !important;
+  color: white;
+  margin-top: 2rem;
+}
+.footer img {
+  max-width: 200px;
 }

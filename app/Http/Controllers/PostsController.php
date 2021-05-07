@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Posts;
 use Illuminate\Http\Request;
+use Cocur\Slugify\Slugify;
 use DataTables;
 use Exception;
 
@@ -59,11 +60,13 @@ class PostsController extends Controller
         try{
 
             $newPosts = new Posts();
+            $slugify = new Slugify();
             
             $newPosts->title = $request->input('title');
             $newPosts->featured_image = $request->input('featured_image');
             $newPosts->excerpt = $request->input('excerpt');
             $newPosts->content = $request->input('content');
+            $newPosts->slug = $slugify->slugify($request->input('title'));
             
             $newPosts->save();
             
@@ -115,11 +118,13 @@ class PostsController extends Controller
         try{
 
             $editPost = Posts::find($id);
+            $slugify = new Slugify();
             
             $editPost->title = $request->input('title');
             $editPost->featured_image = $request->input('featured_image');
             $editPost->excerpt = $request->input('excerpt');
             $editPost->content = $request->input('content');
+            $editPost->slug = $slugify->slugify($request->input('title'));
             
             $editPost->save();
             
@@ -139,5 +144,12 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function post($slug)
+    {
+        $post = Posts::where('slug', $slug)->first();
+
+        return view('posts.post')->with('post', $post);
     }
 }

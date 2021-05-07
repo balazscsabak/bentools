@@ -20,4 +20,14 @@ class FrontpageController extends Controller
                     ->with('relatedProducts', $relatedProducts)
                     ->with('latestPosts', $latestPosts);
     }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    public function shipping()
+    {
+        return view('shipping');
+    }
 }

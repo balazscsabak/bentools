@@ -1,3 +1,3 @@
 require('./bootstrap');
 require('./swiper');
-require('./parallax');
+require('./cart');

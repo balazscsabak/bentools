@@ -3115,7 +3115,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./swiper */ "./resources/js/swiper.js");
 
-__webpack_require__(/*! ./parallax */ "./resources/js/parallax.js");
+__webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 
 /***/ }),
 
@@ -3165,13 +3165,107 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/parallax.js":
-/*!**********************************!*\
-  !*** ./resources/js/parallax.js ***!
-  \**********************************/
+/***/ "./resources/js/cart.js":
+/*!******************************!*\
+  !*** ./resources/js/cart.js ***!
+  \******************************/
 /***/ (() => {
 
-$(function () {});
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var Cart = function Cart() {
+  var _this = this;
+
+  this.items = [];
+  this.itemsList = [];
+
+  this.addToCart = function (name, quantity) {
+    if (!_this.items.includes(name)) {
+      _this.items.push(name);
+
+      _this.itemsList = [].concat(_toConsumableArray(_this.itemsList), [{
+        name: name,
+        quantity: quantity
+      }]);
+    } else {
+      _this.itemsList = _this.itemsList.map(function (item) {
+        if (item.name === name) {
+          return {
+            name: name,
+            quantity: item.quantity + quantity
+          };
+        } else {
+          return item;
+        }
+      });
+    }
+
+    _this.updateStorageData();
+
+    _this.renderCart();
+  };
+
+  this.addEventListenerss = function () {
+    $(document).on('click', '.add-to-cart-btn', function (e) {
+      var quantity = $(e.target).closest('.cart-action-add').find('input').val();
+      var name = $(e.target).data('name');
+
+      _this.addToCart(name, parseInt(quantity));
+    });
+    $(document).on('updateCart', '.add-to-cart-btn', function (e) {
+      console.log('custom event');
+    });
+  };
+
+  this.updateStorageData = function () {
+    localStorage.setItem('cart', JSON.stringify(_this.itemsList));
+  };
+
+  this.renderCart = function () {
+    console.log(JSON.parse(localStorage.getItem('cart')));
+
+    if ($('#cart').length) {
+      $('#cart .items').empty();
+
+      var _iterator = _createForOfIteratorHelper(_this.itemsList),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var item = _step.value;
+          $('#cart .items').append("\n                    <div class=\"item row\">\n                        <div class=\"col-6 name\">".concat(item.name, "</div>\n                        <div class=\"col-5 quantity\">").concat(item.quantity, "</div>\n                        <div class=\"col-1 remove\"><i class=\"fas fa-times\"></i></div>\n                    </div>\n                "));
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+  };
+};
+
+var updateCartEvent = new CustomEvent("updateCart", {
+  detail: {},
+  bubbles: true,
+  cancelable: true,
+  composed: false
+});
+$(function () {
+  var cart = new Cart();
+  cart.addEventListenerss();
+});
 
 /***/ }),
 
@@ -3209,8 +3303,14 @@ $(function () {
   var productImageSwiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__.default(".product-image-swiper", {
     slidesPerView: 3,
     spaceBetween: 10,
-    loop: true,
-    slideToClickedSlide: true
+    navigation: {
+      nextEl: '.product-swiper-next',
+      prevEl: '.product-swiper-prev'
+    }
+  });
+  productImageSwiper.on('slideChangeTransitionEnd', function (e) {
+    var selectedImageSrc = $('.swiper-slide-active').find('img').attr('src');
+    $('#product-featured-image').attr("src", selectedImageSrc);
   });
 });
 

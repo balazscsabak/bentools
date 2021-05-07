@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\OffersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,12 @@ use App\Http\Controllers\PostsController;
 
 Route::get('/', [FrontpageController::class, 'index']);
 Route::get('/product/{slug}', [ProductsController::class, 'product'])->name('product');
+Route::get('/post/{slug}', [PostsController::class, 'post'])->name('post');
+Route::get('/message', [MessagesController::class, 'message'])->name('message.index');
+Route::post('/message', [MessagesController::class, 'store'])->name('message.store');
+Route::get('/contact', [FrontpageController::class, 'contact'])->name('contact');
+Route::get('/shipping', [FrontpageController::class, 'shipping'])->name('shipping');
+Route::get('/offer', [OffersController::class, 'offer'])->name('offer');
 
 Route::group(['middleware' => 'auth'], function () {
     

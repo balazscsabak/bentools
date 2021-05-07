@@ -112,7 +112,7 @@
     
     </div>
 
-    <div class="shipping">
+    <div class="shipping-section">
 
         <div class="container">
 
@@ -128,7 +128,7 @@
 
     </div>
 
-    <div class="contact">
+    <div class="contact-section">
 
         <div class="container">
 
