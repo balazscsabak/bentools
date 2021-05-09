@@ -3169,7 +3169,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!******************************!*\
   !*** ./resources/js/cart.js ***!
   \******************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -3185,11 +3185,28 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    filter = _require.filter;
+
 var Cart = function Cart() {
   var _this = this;
 
   this.items = [];
   this.itemsList = [];
+
+  this.init = function () {
+    var items = JSON.parse(localStorage.getItem('cart'));
+
+    if (!_.isEmpty(items)) {
+      var initItems = items.map(function (item) {
+        return item.name;
+      });
+      _this.items = initItems;
+      _this.itemsList = items;
+
+      _this.renderCart();
+    }
+  };
 
   this.addToCart = function (name, quantity) {
     if (!_this.items.includes(name)) {
@@ -3217,15 +3234,36 @@ var Cart = function Cart() {
     _this.renderCart();
   };
 
-  this.addEventListenerss = function () {
+  this.removeFromCart = function (name) {
+    var checkIfContains = _.includes(_this.items, name);
+
+    if (checkIfContains) {
+      var newItems = _this.items.filter(function (item) {
+        return item != name;
+      });
+
+      var newItemsList = _this.itemsList.filter(function (item) {
+        return item.name != name;
+      });
+
+      _this.items = newItems;
+      _this.itemsList = newItemsList;
+
+      _this.updateStorageData();
+
+      _this.renderCart();
+    }
+  };
+
+  this.addEventListeners = function () {
     $(document).on('click', '.add-to-cart-btn', function (e) {
       var quantity = $(e.target).closest('.cart-action-add').find('input').val();
       var name = $(e.target).data('name');
 
       _this.addToCart(name, parseInt(quantity));
     });
-    $(document).on('updateCart', '.add-to-cart-btn', function (e) {
-      console.log('custom event');
+    $(document).on('click', '.remove-from-cart-btn', function (e) {
+      _this.removeFromCart($(e.currentTarget).data('prod-name'));
     });
   };
 
@@ -3234,8 +3272,6 @@ var Cart = function Cart() {
   };
 
   this.renderCart = function () {
-    console.log(JSON.parse(localStorage.getItem('cart')));
-
     if ($('#cart').length) {
       $('#cart .items').empty();
 
@@ -3245,7 +3281,7 @@ var Cart = function Cart() {
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var item = _step.value;
-          $('#cart .items').append("\n                    <div class=\"item row\">\n                        <div class=\"col-6 name\">".concat(item.name, "</div>\n                        <div class=\"col-5 quantity\">").concat(item.quantity, "</div>\n                        <div class=\"col-1 remove\"><i class=\"fas fa-times\"></i></div>\n                    </div>\n                "));
+          $('#cart .items').append("\n                    <div class=\"item row\">\n                        <div class=\"col-6 name\">".concat(item.name, "</div>\n                        <div class=\"col-5 quantity\">").concat(item.quantity, "</div>\n                        <div class=\"col-1 remove remove-from-cart-btn\" data-prod-name=\"").concat(item.name, "\"><i class=\"fas fa-times\"></i></div>\n                    </div>\n                "));
         }
       } catch (err) {
         _iterator.e(err);
@@ -3256,15 +3292,10 @@ var Cart = function Cart() {
   };
 };
 
-var updateCartEvent = new CustomEvent("updateCart", {
-  detail: {},
-  bubbles: true,
-  cancelable: true,
-  composed: false
-});
 $(function () {
   var cart = new Cart();
-  cart.addEventListenerss();
+  cart.init();
+  cart.addEventListeners();
 });
 
 /***/ }),

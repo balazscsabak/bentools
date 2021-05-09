@@ -50,6 +50,15 @@
                                         <i class="fas fa-caret-right"></i>
                                     </div>
                                 </div>
+                                <div class="add-to-cart-wrapper">
+                                    <div class="cart-action-add">
+                                        <input type="number" min="1" max="200" value="1" >
+                                        
+                                        <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="{{ $product->name }}">
+                                            Hozzáad
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
