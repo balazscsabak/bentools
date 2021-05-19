@@ -25,18 +25,26 @@ use App\Http\Controllers\OffersController;
 
 Route::get('/', [FrontpageController::class, 'index']);
 Route::get('/product/{slug}', [ProductsController::class, 'product'])->name('product');
+Route::get('/products/all', [ProductsController::class, 'products'])->name('products.all');
 Route::get('/post/{slug}', [PostsController::class, 'post'])->name('post');
 Route::get('/message', [MessagesController::class, 'message'])->name('message.index');
 Route::post('/message', [MessagesController::class, 'store'])->name('message.store');
 Route::get('/contact', [FrontpageController::class, 'contact'])->name('contact');
 Route::get('/shipping', [FrontpageController::class, 'shipping'])->name('shipping');
 Route::get('/offer', [OffersController::class, 'offer'])->name('offer');
+Route::post('/offer', [OffersController::class, 'store'])->name('offer.store');
+Route::get('/filter/products', [ProductsController::class, 'filter']);
 
 Route::group(['middleware' => 'auth'], function () {
     
     Route::prefix('admin')->group(function () {
         
-        Route::get('/', [AdminPageController::class, 'index'])->name('admin');
+        // Route::get('/', [AdminPageController::class, 'index'])->name('admin');
+        Route::get('/contact', [AdminPageController::class, 'contact'])->name('admin.contact');
+        Route::post('/contact', [SettingsController::class, 'updateContact'])->name('admin.contact.update');
+        
+        Route::post('/shipping', [SettingsController::class, 'updateShipping'])->name('admin.shipping.update');
+        Route::get('/shipping', [AdminPageController::class, 'shipping'])->name('admin.shipping');
         
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -62,6 +70,11 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('slideshow', [SettingsController::class, 'settingsSlideshow'])->name('settings.slideshow');
         Route::post('slideshow', [SettingsController::class, 'settingsSaveSlideshow'])->name('settings.slideshow.save');
+        
+        Route::get('offer', [OffersController::class, 'offerContent'])->name('admin.offer.content');
+        Route::post('offer', [OffersController::class, 'updateOfferContent'])->name('admin.offer.update');
+        Route::get('offer/{id}', [OffersController::class, 'show'])->name('admin.offer');
+        Route::get('/', [OffersController::class, 'index'])->name('admin.offers');
     });
     
 

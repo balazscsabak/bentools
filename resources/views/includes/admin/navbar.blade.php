@@ -1,13 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="{{ route('admin.offers') }}">ADMIN</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">Home</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.offers') }}">Ajánlatkérések</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('messages') }}">Üzenetek</a>
@@ -29,17 +32,9 @@
                         Beállitások
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Elérhetőség</a></li>
-                        <li><a class="dropdown-item" href="#">Szállítási információk</a></li>
-                        <li><a class="dropdown-item" href="#">Szolgáltatások</a></li>
-                        <li><a class="dropdown-item" href="#">Kinézet</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Weboldal
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ route('admin.contact') }}">Kapcsolat</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.shipping') }}">Szállítási információk</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.offer.content') }}">Ajánlatkérés</a></li>
                         <li><a class="dropdown-item" href="{{ route('settings.slideshow') }}">Slideshow</a></li>
                     </ul>
                 </li>

@@ -20,10 +20,6 @@ $(() => {
       
         slideClass: 'hero-slide',
         
-        // And if we need scrollbar
-        // scrollbar: {
-        //   el: '.swiper-scrollbar',
-        // },
       });
 
       const productImageSwiper = new Swiper(".product-image-swiper", {

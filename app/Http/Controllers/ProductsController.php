@@ -19,9 +19,9 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Products::all();
-     
+
         return view('admin.products.products')
-                    ->with('products', $products);
+            ->with('products', $products);
     }
 
     /**
@@ -32,9 +32,9 @@ class ProductsController extends Controller
     public function create()
     {
         $categories = Categories::all();
-      
+
         return view('admin.products.create')
-                    ->with('categories', $categories);
+            ->with('categories', $categories);
     }
 
     /**
@@ -51,7 +51,7 @@ class ProductsController extends Controller
             'featured_image' => ['string'],
             'category' => ['integer'],
         ]);
-        
+
         try {
 
             $newProduct = new Products();
@@ -68,7 +68,7 @@ class ProductsController extends Controller
 
             $attributes = $request->input('attr');
 
-            if($attributes){
+            if ($attributes) {
                 foreach ($attributes as $attribute) {
                     $newAttribute = new Attributes();
 
@@ -79,16 +79,13 @@ class ProductsController extends Controller
                     $newAttribute->save();
                 }
             };
-            
-            return redirect()->route('products.index')
-                            ->with('success', 'Termék sikeresen létrehozva!');
 
-
-        } catch(Exception $e){
             return redirect()->route('products.index')
-                            ->with('error', 'Hiba a termék létrehozása során!');
+                ->with('success', 'Termék sikeresen létrehozva!');
+        } catch (Exception $e) {
+            return redirect()->route('products.index')
+                ->with('error', 'Hiba a termék létrehozása során!');
         }
-
     }
 
     /**
@@ -101,11 +98,10 @@ class ProductsController extends Controller
     {
         $product = Products::find($id);
         $categories = Categories::all();
-     
-        return view('admin.products.show')
-                    ->with('product', $product)
-                    ->with('categories', $categories);
 
+        return view('admin.products.show')
+            ->with('product', $product)
+            ->with('categories', $categories);
     }
 
     /**
@@ -133,7 +129,7 @@ class ProductsController extends Controller
             'featured_image' => ['string'],
             'category' => ['integer'],
         ]);
-        
+
         try {
 
             $product = Products::find($id);
@@ -152,28 +148,28 @@ class ProductsController extends Controller
             $attributes = $request->input('attr');
 
             $oldAttributesIds = [];
-            
+
             foreach ($oldAttributes as $oAttr) {
                 $oldAttributesIds[] = $oAttr['id'];
             }
 
-            if($attributes){
+            if ($attributes) {
                 foreach ($oldAttributesIds as $index => $oId) {
                     $contains = false;
-                   
+
                     foreach ($attributes as $attr) {
                         if (isset($attr['id']) && $attr['id'] == $oId) {
                             $contains = true;
-                        } 
+                        }
                     }
 
-                    if(!$contains){
+                    if (!$contains) {
                         Attributes::destroy($oId);
                     }
                 }
                 foreach ($attributes as $attribute) {
 
-                    if(isset($attribute['id'])){
+                    if (isset($attribute['id'])) {
                         $updateAttribute = Attributes::find($attribute['id']);
 
                         $updateAttribute->key = $attribute['key'];
@@ -184,25 +180,21 @@ class ProductsController extends Controller
                     }
 
                     $newAttribute = new Attributes();
-                
+
                     $newAttribute->key = $attribute['key'];
                     $newAttribute->value = $attribute['value'];
                     $newAttribute->product_id = $product->id;
-                
+
                     $newAttribute->save();
                 }
 
-                    return back()->with('success', 'Termék sikeresen módosítva!');
-            
+                return back()->with('success', 'Termék sikeresen módosítva!');
             } else {
 
                 Attributes::destroy($oldAttributesIds);
                 return back()->with('success', 'Termék sikeresen módosítva!');
-
             };
-
-
-        } catch(Exception $e){
+        } catch (Exception $e) {
             return back()->with('error', 'Hiba a termék módosítása során!');
         }
     }
@@ -218,24 +210,73 @@ class ProductsController extends Controller
         try {
 
             $attributes = Attributes::where('product_id', $id)->get();
-    
+
             foreach ($attributes as $attribute) {
                 $attribute->delete();
             }
-    
+
             Products::destroy($id);
 
             return redirect()->route('products.index')->with('success', 'Termék sikeresen törölve!');
-
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return redirect()->route('products.index')->with('error', 'Hiba a termék törlése során!');
         }
-
     }
 
     public function product(Request $request, $slug)
     {
         $product = Products::where('slug', $slug)->first();
         return view('products.product')->with('product', $product);
+    }
+
+    public function products()
+    {
+        $products = Products::all();
+        $categories = Categories::orderBy('name', 'asc')->get();
+        $mainCats = [];
+        $subCats = [];
+        $mainCatsWithChild = [];
+
+        foreach ($categories as $category) {
+            if ($category->parent > 1) {
+                $subCats[] = $category;
+            } else {
+                $mainCats[$category->id] = $category->name;
+            }
+        }
+
+        foreach ($mainCats as $key => $value) {
+            $mainCatsWithChild[$value] = [];
+            $mainCatsWithChild[$value]['id'] = $key;
+        }
+
+        foreach ($subCats as $sc) {
+            $mainCatsWithChild[$mainCats[$sc->parent]]['sub'][] = [
+                'name' => $sc->name,
+                'id' => $sc->id,
+            ];
+        }
+
+        return view('products.products')
+            ->with('mainCatsWithChild', $mainCatsWithChild)
+            ->with('products', $products);
+    }
+
+    public function filter(Request $request)
+    {
+        $filterName = $request->input('filterName');
+        $filterCategory = $request->input('filterCategory');
+        
+        if((int)$filterCategory > 1) {
+            $products = Products::with('featuredImage')->where('name', 'LIKE', '%'.$filterName.'%')
+                ->Where('category_id', $filterCategory)->get();
+        } else {
+            $products = Products::with('featuredImage')->where('name', 'LIKE', '%'.$filterName.'%')->get();
+        }
+
+        return response()->json([
+            'products' => $products,
+            'status' => true,
+        ]);
     }
 }

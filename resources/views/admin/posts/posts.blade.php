@@ -25,7 +25,7 @@
             </div>
         @endif
         
-        <h2 class="mb-4">Üzenetek</h2>
+        <h2 class="mb-4">Posztok</h2>
         <div>
             <a href="{{ route('posts.create') }}" class="btn btn-primary btn-sm">Új poszt</a>
         </div>
@@ -34,7 +34,6 @@
                 <tr class="table-dark">
                     <th>No</th>
                     <th>Cím</th>
-                    <th>Excerpt</th>
                     <th>Létrejött</th>
                     <th>Action</th>
                 </tr>

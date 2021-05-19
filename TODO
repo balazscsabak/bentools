@@ -1,32 +1,20 @@
-CATEGORY
-    PARENT
-        IF:
-            1: ITS A MAIN CATEGORY
-            INT: ITS CHILD CATEGORY
+Kiemelt termekek beallitasa
+    - 4db admin feluleten
 
-PRODUCT
-    CATEGORY:
-        CHILD
-        MAIN
-        0: UNCATEGORIZED
+Kezdo oldal kuldjon uzenetet/ajanlatot  szoveg dynamikusra
 
-    ATTRIBUTUMOK
-        DYNAMIKUS
-            KEY-VALUE PAIR
+Pimary color fixalasa
 
-    NAME
+Menu fixalasa
 
-    IMAGES
-        STRING
+Single post design
+    - kep felnagyitasa clickre
 
-PAGE SETTINGS
-    CORUSAL SETTINGS
-        3 ITEMS
-            IMAGE
-            TITLE
-            BUTTON WITH LINK
-    
-    NEW PRODUCTS
-        3 SELCTABLE PRODUCT ITEM
+Single pdouct design
+    - kepek slider fixalasa
 
-NEWS
+Osszes termekek design
+
+Reszponziv
+
+Admin design

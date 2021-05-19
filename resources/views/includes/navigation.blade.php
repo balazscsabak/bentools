@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="{{ asset('images/KIMATools_RGB.png') }}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,16 +11,27 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/">Kezdőlap</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item dropdown has-megamenu">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         Termékek
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/products">Összes termék</a></li>
-                        @foreach ($products as $product)
-                            <li><a class="dropdown-item" href="{{ route('product', $product->slug) }}">{{ $product->name }}</a></li>
-                        @endforeach
-                    </ul>
+                    <div class="dropdown-menu megamenu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="row">
+                            @foreach ($products as $cat => $product)
+                                <div class="col">
+                                    <p>{{ $cat }}</p>
+
+                                    @foreach ($product as $p)
+                                        <a class="dropdown-item" href="{{ route('product', $p->slug) }}">{{ $p->name }}</a>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                            
+                            <div class="col">
+                                <a href="{{ route('products.all') }}">Összes termék</a>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('offer') }}">Ajánlatkérés</a>

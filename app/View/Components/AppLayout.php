@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\View\Component;
 
@@ -11,7 +12,28 @@ class AppLayout extends Component
 
     public function __construct()
     {
-        $this->products = Products::all();
+        $this->categories = Categories::all()->toArray();
+        $products = Products::all();
+
+        $categories = [];
+        $productsForNav = [];
+
+        foreach ($this->categories as $cat) {
+            
+            $categories[$cat['id']] = $cat['name'];
+        }
+
+        foreach ($products as $product) {
+            $prodId = $product->category_id;
+            
+            if($prodId === 1) {
+                $productsForNav['uncategorized'][] = $product;  
+            } else {
+                $productsForNav[$categories[$product->category_id]][] = $product;
+            }
+        }
+
+        $this->products = $productsForNav;
     }
     /**
      * Get the view / contents that represents the component.
@@ -20,6 +42,6 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.app');
+        return view('layouts.app')->with('test', 'test');
     }
 }

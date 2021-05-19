@@ -120,7 +120,7 @@
                 <div class="col-8 text-center">
                     <h1>Szállítás</h1>
                     <i class="fas fa-dolly"></i>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi architecto excepturi, eveniet odio dignissimos placeat cum quae? Voluptas accusamus labore iusto molestias, debitis nihil dolorum, fugiat aliquid sequi inventore facere totam eveniet unde fugit provident. Placeat facilis sed voluptate at in modi perspiciatis dolore, repellendus, maxime magni eos! Optio explicabo sequi illum dignissimos labore voluptatibus consequatur dicta libero, repellendus provident!</p>
+                    {!!$shipping !!}
                 </div>
             </div>
 
@@ -138,13 +138,13 @@
                         <div class="email col-6">
                             <div class="icon"><i class="fas fa-at"></i></div>
                             <h1>
-                                balazs.csabak@gmail.com
+                                {{ $email }}
                             </h1>
                         </div>
                         <div class="phone col-6">
                             <div class="icon"><i class="fas fa-phone-alt"></i></div>
                             <h1>
-                                +36 30 947 7500
+                                {{ $phone }}
                             </h1>
                         </div>
                     </div>

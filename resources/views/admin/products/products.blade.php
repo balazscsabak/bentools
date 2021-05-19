@@ -1,7 +1,7 @@
 <x-admin-layout>
 
     
-    <div class="container mt-3">
+    <div class="container mt-3 mb-5">
     
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
@@ -15,17 +15,19 @@
             </div>
         @endif
 
+        <h2 class="mb-3">Termékek</h2>
+
         <div class="mb-3">
-            <a href="{{ route('products.create') }}">Új termék</a>
+            <a class="btn-primary btn btn-sm" href="{{ route('products.create') }}">Új termék</a>
         </div>
 
         <table class="table">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Termék neve</th>
                     <th scope="col">Kategória</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +37,7 @@
                     <tr>
                         <th scope="row">{{ $loop->index + 1 }}</th>
                         <td>{{ $product->name }}</td>
-                        <td>{{ $product->category }}</td>
+                        <td>{{ $product->category->name }}</td>
                         <td><a href="{{ route('products.show', $product->id) }}">Szerkesztés</a></td>
                     </tr>
 

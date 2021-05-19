@@ -1,17 +1,21 @@
 <x-admin-layout>
 
-    <div class="container mt-3">
-        <img src="/storage/{{ $image->path }}" alt="{{ $image->name }}">
+    <div class="container mt-3 mb-5">
 
-        <form method="POST" action="{{ route('media.image.delete') }}">
+        <div class="d-flex mb-4">
+            <a class="btn btn-secondary me-3 btn-sm" href="{{ route('media') }}">Vissza</a>
+            <form class="text-right" method="POST" action="{{ route('media.image.delete') }}">
+    
+                @csrf
+    
+                <input type="submit" value="Kép törlése" class="btn btn-danger btn-sm">
+                <input type="hidden" name="id" value="{{ $image->id }}">
+                
+            </form>
+        </div>
 
-            @csrf
+        <img class="border border-secondary border-2 rounded-1" style="margin: auto; max-width: 600px;" src="/storage/{{ $image->path }}" alt="{{ $image->name }}">
 
-            <input type="hidden" name="id" value="{{ $image->id }}">
-            
-            <input type="submit" value="Kép törlése" class="btn btn-danger">
-
-        </form>
     </div>
 
 </x-admin-layout>

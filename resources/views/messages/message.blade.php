@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="message-page mb-4">
+    <div class="message-page pb-5">
         <div class="container">
 
             <div class="d-flex justify-content-md-center">

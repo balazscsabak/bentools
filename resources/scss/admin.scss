@@ -1,6 +1,5 @@
 .dropdown-menu {
-
-    &--profile{
+    &--profile {
         right: 0 !important;
         left: auto !important;
     }
@@ -8,9 +7,20 @@
 
 #product-main-image-picker,
 #product-images-picker {
-    padding:10px;
+    padding: 10px;
     border: 1px solid #4d4d4d;
-
+}
+#product-images-picker {
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    img {
+        border: 1px solid #a7a7a7;
+        border-radius: 2px;
+    }
 }
 
 .product-main-img-selectable,
@@ -21,18 +31,46 @@
     align-items: center;
     margin-bottom: 10px;
 
-    img{
+    img {
         padding: 3px;
         border: 1px solid #858585;
         cursor: pointer;
-        
+        border-radius: 2px;
+
         &.selected {
-            border: 3px solid #e05555;
+            border: 3px solid rgb(34, 65, 241);
         }
     }
 }
 
-
 .ck-editor__editable {
     min-height: 300px;
+}
+
+.admin-categories {
+    a {
+        text-decoration: none;
+    }
+
+    .main {
+        font-size: 1.3rem;
+    }
+
+    .child {
+        font-size: 1.1rem;
+    }
+}
+
+#slideshow-wrapper {
+
+    .slide {
+        padding: 15px;
+
+        .slide-img {
+
+            img {
+                margin-top: 12px;
+            }
+        }
+    }
 }

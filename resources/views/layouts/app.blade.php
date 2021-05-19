@@ -44,7 +44,7 @@
                      
                     </div>
 
-                    <a href="#">
+                    <a href="#" class="my-2">
                         <img class="mx-auto my-2" src="{{ asset('images/KIMATools_RGB.png') }}" alt="">
                     </a>
 

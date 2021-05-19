@@ -20,7 +20,7 @@ $(() => {
                         </div>
                     </div>
                     <div class="col-2">
-                        <button class="product-del-attribute">X</button>
+                        <button class="btn btn-danger btn-sm  product-del-attribute">X</button>
                     </div>
                 </div>
             </div>

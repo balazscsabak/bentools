@@ -13,39 +13,48 @@
             </div>
         @endif
 
+        <h2 class="mb-3">Kategóriák</h2>
+
         <div>
-            <a href="{{ route('categories.create') }}">Új Kategória</a>
+            <a class="btn btn-primary btn-sm mb-3" href="{{ route('categories.create') }}">Új Kategória</a>
         </div>
 
-        <ul>
+        <div class="admin-categories">
+            <div class="row gy-5 gx-5">
 
-            @foreach ($categories as $id => $cat)
-        
-                <li>
-                   
-                    <a href="{{ route('categories.show', $id) }}">{{ $cat['name'] }}</a>
+                @foreach ($categories as $id => $cat)
+            
+                    @if ($id > 1)
 
-                    @isset($cat['sub'])
-
-                        <ul>
-                       
-                            @foreach ($cat['sub'] as $subcat)
-                            
-                                <li>
-                                    <a href="{{ route('categories.show', $subcat['id']) }}">{{ $subcat['name'] }}</a>
-                                </li>
-
-                            @endforeach
+                        <div class="main col-3">
                         
-                        </ul>
+                            <a href="{{ route('categories.show', $id) }}">{{ $cat['name'] }}</a>
 
-                    @endisset
+                            @isset($cat['sub'])
+
+                                <div>
+                            
+                                    @foreach ($cat['sub'] as $subcat)
+                                    
+                                        <div class="child ms-1">
+                                            <a href="{{ route('categories.show', $subcat['id']) }}"><span>-</span> {{ $subcat['name'] }} </a>
+                                        </div>
+
+                                    @endforeach
+                                
+                                </div>
+
+                            @endisset
+                        
+                        </div>
+
+                    @endif
                 
-                </li>
-            
-            @endforeach
-            
-        </ul>
+                @endforeach
+                
+            </div>
+        </div>
+
     </div>
 
 </x-admin-layout>

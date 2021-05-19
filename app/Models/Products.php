@@ -10,6 +10,7 @@ class Products extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    // protected $appends = ['test'];
 
     public function category()
     {

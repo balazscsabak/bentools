@@ -18,17 +18,18 @@ const Cart = function() {
             this.renderCart();
         }
     }
-    this.addToCart = (name, quantity) => {
+    this.addToCart = (name, quantity, id) => {
 
         if(!this.items.includes(name)) {
             this.items.push(name);
-            this.itemsList = [...this.itemsList, { name, quantity }]
+            this.itemsList = [...this.itemsList, { name, quantity, id }]
         } else {
             this.itemsList = this.itemsList.map((item) => {
                 if(item.name === name) {
                     return {
                         name,
-                        quantity: item.quantity + quantity
+                        quantity: item.quantity + quantity,
+                        id
                     }
                 } else {
                     return item;
@@ -65,7 +66,8 @@ const Cart = function() {
         $(document).on('click', '.add-to-cart-btn', (e) => {
             let quantity = $(e.target).closest('.cart-action-add').find('input').val();
             let name = $(e.target).data('name');
-            this.addToCart(name, parseInt(quantity));
+            let id = $(e.target).data('id');
+            this.addToCart(name, parseInt(quantity), id);
         })
 
         $(document).on('click', '.remove-from-cart-btn', (e) => {
@@ -87,7 +89,7 @@ const Cart = function() {
             for (const item of this.itemsList) {
                 $('#cart .items').append(`
                     <div class="item row">
-                        <div class="col-6 name">${item.name}</div>
+                        <div class="col-6 name" data-id="${item.id}">${item.name}</div>
                         <div class="col-5 quantity">${item.quantity}</div>
                         <div class="col-1 remove remove-from-cart-btn" data-prod-name="${item.name}"><i class="fas fa-times"></i></div>
                     </div>

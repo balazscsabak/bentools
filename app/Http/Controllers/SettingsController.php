@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
+use App\Models\Settings;
 use App\Models\Slideshow;
 use Exception;
 use Illuminate\Http\Request;
@@ -47,5 +48,62 @@ class SettingsController extends Controller
     public function getImageUrlById($id)
     {
         return Media::find($id)->path;
+    }
+
+    public function updateContact(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'address' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'email'],
+                'message' => ['required'],
+            ]);
+
+            $contactEmail = Settings::where('key', 'contact_email')->first();
+            $contactPhone = Settings::where('key', 'contact_phone')->first();
+            $contactAddress = Settings::where('key', 'contact_address')->first();
+            $contactMessage = Settings::where('key', 'contact_message')->first();
+
+            $contactEmail->value = $request->input('email');
+            $contactEmail->save();
+
+            $contactPhone->value = $request->input('phone');
+            $contactPhone->save();
+
+            $contactAddress->value = $request->input('address');
+            $contactAddress->save();
+
+            $contactMessage->value = $request->input('message');
+            $contactMessage->save();
+
+            return back()->with('success', 'Sikeres módosítás!');
+
+        } catch(Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function updateShipping(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'content' => ['required'],
+                'short_content' => ['required'],
+            ]);
+            $shippingContent = Settings::where('key', 'shipping_content')->first();
+            $shippingShortContent = Settings::where('key', 'shipping_short_content')->first();
+
+            $shippingContent->value = $request->input('content');
+            $shippingShortContent->value = $request->input('short_content');
+            
+            $shippingContent->save();
+            $shippingShortContent->save();
+
+            return back()->with('success', 'Sikeres módosítás!');
+
+        } catch(Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }

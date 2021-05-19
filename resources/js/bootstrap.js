@@ -1,13 +1,13 @@
-import $ from 'jquery';
+import $ from "jquery";
 window.$ = window.jQuery = $;
 
-var dt = require( 'datatables.net' );
+var dt = require("datatables.net");
 
-import 'jquery-ui/ui/widgets/datepicker';
+import "jquery-ui/ui/widgets/datepicker";
 
-import 'bootstrap';
+import "bootstrap";
 
-window._ = require('lodash');
+window._ = require("lodash");
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

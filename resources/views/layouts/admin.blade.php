@@ -26,9 +26,9 @@
         <div class="container">
     
             <!-- Page Content -->
-            <main>
+            <div class="main">
                 {{ $slot }}
-            </main>
+            </div>
             
         </div>
         

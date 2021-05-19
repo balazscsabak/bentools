@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="container">
+    <div class="container mt-3 mb-5">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
                 {{ $message }}
@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <h1>Slideshow</h1>
+        <h2>Slideshow</h2>
 
         <div class="my-3">
             <button class="btn btn-primary btn-sm" id="add-new-slide">Új elem</button>
@@ -21,11 +21,11 @@
         <form action="{{ route('settings.slideshow.save') }}" method="POST">
             @csrf
 
-            <div id="slideshow-wrapper" class="row">
+            <div id="slideshow-wrapper" class="row gy-3">
 
                 @foreach ($slideshow as $slide)
 
-                    <div class="slide col-6">
+                    <div class="slide col-6 rounded">
                         <div class="mb-3">
                             <label class="form-label">Cím</label>
                             <input type="text" class="form-control" name="slide[{{ $loop->index }}][title]" value="{{ $slide->title }}">
@@ -58,7 +58,7 @@
 
             </div>
             
-            <input type="submit" value="Mentés">
+            <input class="btn btn-primary" type="submit" value="Mentés">
         </form>
     </div>
 

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="product-page">
+    <div class="product-page pb-5">
         <div class="container">
             <div class="d-flex justify-content-center">
                 <div class="col-9">
@@ -50,11 +50,14 @@
                                         <i class="fas fa-caret-right"></i>
                                     </div>
                                 </div>
-                                <div class="add-to-cart-wrapper">
+                                <div class="add-to-cart-wrapper my-3">
+                                    <p>
+                                        Adja hozzá az ajánlatkéréshez!
+                                    </p>
                                     <div class="cart-action-add">
-                                        <input type="number" min="1" max="200" value="1" >
+                                        <input type="number" min="1" max="200" value="1" > db
                                         
-                                        <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="{{ $product->name }}">
+                                        <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="{{ $product->name }}" data-id="{{ $product->id }}">
                                             Hozzáad
                                         </div>
                                     </div>

@@ -38,7 +38,6 @@ $(() => {
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'title', name: 'full_name'},
-            {data: 'excerpt', name: 'email'},
             {data: 'created_at', name: 'created_at'},
             {
                 data: 'action', 

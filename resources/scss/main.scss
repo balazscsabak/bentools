@@ -16,6 +16,7 @@
 
 // custom imports
 @import "./imports/variables";
+@import "./imports/spinner";
 
 html,
 body {
@@ -33,6 +34,9 @@ img {
 a {
     color: $color-main-blue;
 }
+
+.navbar .has-megamenu{position:static!important;}
+.navbar .megamenu{left:0; right:0; width:100%; margin-top:0;  }
 
 .navbar {
     background-color: #fff;
@@ -450,6 +454,7 @@ main {
             }
             .icon {
                 font-size: 1.3rem;
+                color: $color-main-blue;
             }
             .value {
                 font-size: 1.2rem;
@@ -473,10 +478,13 @@ main {
             text-align: center;
         }
 
-        &__p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            text-align: center;
+        &__content {
+
+            p {
+                font-size: 1.3rem;
+                margin-bottom: 3rem;
+                text-align: center;
+            }
         }
 
         &__icon {
@@ -498,6 +506,11 @@ main {
         }
     }
     .offer {
+
+        .products {
+            position: relative;
+        }
+
         &__h1 {
             text-align: center;
         }
@@ -556,4 +569,51 @@ main {
     img {
         max-width: 200px;
     }
+}
+
+.products-page {
+    
+}
+
+.products-filter-wrapper {
+
+
+    .filter {
+        h1 {
+            font-size: 1.2rem;
+        }
+
+        .filter-label {
+            width: 100%;
+
+            .filter-reset {
+                cursor: pointer;
+                float: right;
+                font-size: .8rem;
+                color: rgb(150, 150, 150);
+
+                i {
+                    margin-right: 4px;
+                }
+            }
+        }
+
+        .name {
+
+        }
+
+        .category {
+
+        }
+    }
+}
+
+.products-wrapper {
+    position: relative;
+
+}
+
+.filter-no-content {
+    text-align: center;
+    font-size: 1.3rem;
 }

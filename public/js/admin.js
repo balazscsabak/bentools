@@ -75,9 +75,6 @@ $(function () {
       data: 'title',
       name: 'full_name'
     }, {
-      data: 'excerpt',
-      name: 'email'
-    }, {
       data: 'created_at',
       name: 'created_at'
     }, {
@@ -211,7 +208,7 @@ $(function () {
     e.preventDefault();
     var attributesWrapper = $('#product-attributes-wrapper');
     var attributesCount = attributesWrapper.find('.attribute').length;
-    var attribute = "\n            <div class=\"attribute\">\n                <div class=\"row\">\n                    <div class=\"col-5\">\n                        <div class=\"input-group input-group-sm mb-3 attr-key\">\n                            <input type=\"text\" name=\"attr[".concat(attributesCount, "][key]\" class=\"form-control attr-key\">\n                        </div>\n                    </div>\n                    <div class=\"col-5\">\n                        <div class=\"input-group input-group-sm mb-3 attr-value\">\n                            <input type=\"text\" name=\"attr[").concat(attributesCount, "][value]\" class=\"form-control attr-value\">\n                        </div>\n                    </div>\n                    <div class=\"col-2\">\n                        <button class=\"product-del-attribute\">X</button>\n                    </div>\n                </div>\n            </div>\n        ");
+    var attribute = "\n            <div class=\"attribute\">\n                <div class=\"row\">\n                    <div class=\"col-5\">\n                        <div class=\"input-group input-group-sm mb-3 attr-key\">\n                            <input type=\"text\" name=\"attr[".concat(attributesCount, "][key]\" class=\"form-control attr-key\">\n                        </div>\n                    </div>\n                    <div class=\"col-5\">\n                        <div class=\"input-group input-group-sm mb-3 attr-value\">\n                            <input type=\"text\" name=\"attr[").concat(attributesCount, "][value]\" class=\"form-control attr-value\">\n                        </div>\n                    </div>\n                    <div class=\"col-2\">\n                        <button class=\"btn btn-danger btn-sm  product-del-attribute\">X</button>\n                    </div>\n                </div>\n            </div>\n        ");
     attributesWrapper.append(attribute);
     return false;
   });
@@ -323,19 +320,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
 
 $(function () {
-  _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(document.querySelector('#post-content-editor'), {
+  _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(document.querySelector("#post-content-editor"), {
     // toolbar: [ 'uploadImage'],
     ckfinder: {
       // Upload the images to the server using the CKFinder QuickUpload command.
-      uploadUrl: '/admin/media/upload-editor?_token=' + $("[name='_token']").val(),
-      openerMethod: 'popup',
+      uploadUrl: "/admin/media/upload-editor?_token=" + $("[name='_token']").val(),
+      openerMethod: "popup",
       // Enable the XMLHttpRequest.withCredentials property.
       withCredentials: true,
-      headers: {// 'X-CSRF-TOKEN': "'" +  + "'" 
+      headers: {// 'X-CSRF-TOKEN': "'" +  + "'"
       }
     }
   }).then(function (editor) {//console.log( editor );
   })["catch"](function (error) {
+    console.error(error);
+  });
+  _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(document.querySelector("#shipping-content-editor"), {
+    ckfinder: {
+      uploadUrl: "/admin/media/upload-editor?_token=" + $("[name='_token']").val(),
+      openerMethod: "popup",
+      withCredentials: true
+    }
+  }).then(function (editor) {})["catch"](function (error) {
     console.error(error);
   });
 });
