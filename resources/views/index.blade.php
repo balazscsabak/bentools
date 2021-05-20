@@ -88,7 +88,7 @@
                                 Küldjön üzenetet
                             </h1>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor molestiae impedit et cum nihil labore!
+                                {{ $offerMessage }}
                             </p>
                         </div>
                         <div><a href="#" class="btn btn-primary">Üzenet küldése</a></div>
@@ -97,10 +97,10 @@
                     <div class="right col">
                         <div class="text">
                             <h1>
-                                Kérjen Árajánlatot
+                                Kérjen árajánlatot
                             </h1>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum optio voluptas neque quia. Nesciunt, architecto aliquid!
+                                {{ $offerOffer }}    
                             </p>
                         </div>
                         

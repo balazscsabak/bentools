@@ -6,7 +6,7 @@
         <a href="/admin/messages?filter=read" class="btn btn-warning btn-sm">Olvasott</a>
         <a href="/admin/messages?filter=unread" class="btn btn-warning btn-sm">Olvasatlan</a>
     </div>
-    <div class="container mt-3">
+    <div class="container mt-3 mb-5">
         <h2 class="mb-4">Üzenetek</h2>
         <table class="table table-responsive table-hover yajra-datatable">
             <thead >

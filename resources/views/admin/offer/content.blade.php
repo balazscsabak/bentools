@@ -29,8 +29,22 @@
 
 			<div class="row mb-3">
 				<div class="col-md-12">
-					<label for="content" class="col-12 col-form-label">Megjelenő szöveg</label>
+					<label for="content" class="col-12 col-form-label">Ajánlatkérés: megjelenő szöveg</label>
 					<textarea name="content" class="form-control" >{{ $content }}</textarea>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label class="col-12 col-form-label">Kezdőlap: Kérjen árajánlatot szöveg</label>
+					<textarea name="content_offer" class="form-control" >{{ $offer }}</textarea>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label class="col-12 col-form-label">Kezdőlap: Küldjön üzenetet szöveg</label>
+					<textarea name="content_message" class="form-control" >{{ $contentMessage }}</textarea>
 				</div>
 			</div>
 

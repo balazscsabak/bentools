@@ -113,15 +113,23 @@ class OffersController extends Controller
     public function offerContent()
     {
         $offerContent = Settings::where('key', 'offer_content')->first();
+        $offerMessage = Settings::where('key', 'offer_message')->first();
+        $offerOffer = Settings::where('key', 'offer_offer')->first();
 
         $content = '';
+        $message = '';
+        $offer = '';
 
-        if($offerContent) {
+        if($offerContent && $offerMessage && $offerOffer) {
             $content = $offerContent->value;
+            $message = $offerMessage->value;
+            $offer = $offerOffer->value;
         }
 
         return view('admin.offer.content')
-            ->with('content', $content);
+            ->with('content', $content)
+            ->with('contentMessage', $message)
+            ->with('offer', $offer);
     }
 
     public function updateOfferContent(Request $request)
@@ -129,11 +137,21 @@ class OffersController extends Controller
         try {
             $validatedData = $request->validate([
                 'content' => ['required'],
+                'content_message' => ['required'],
+                'content_offer' => ['required'],
             ]);
             $offerContent = Settings::where('key', 'offer_content')->first();
+            $offerMessage = Settings::where('key', 'offer_message')->first();
+            $offerOffer = Settings::where('key', 'offer_offer')->first();
 
             $offerContent->value = $request->input('content');
             $offerContent->save();
+
+            $offerMessage->value = $request->input('content_message');
+            $offerMessage->save();
+
+            $offerOffer->value = $request->input('content_offer');
+            $offerOffer->save();
 
             return back()->with('success', 'Sikeres módosítás!');
 

@@ -1,3 +1,28 @@
+.dataTables_paginate {
+  display: flex;
+  justify-content: center;
+}
+.dataTables_paginate a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.dataTables_paginate .paginate_button {
+  padding: 0 5px;
+}
+.dataTables_paginate .paginate_button.next {
+  margin: 0 10px;
+}
+.dataTables_paginate .paginate_button.previous {
+  margin: 0 10px;
+}
+.dataTables_paginate .paginate_button.current {
+  font-weight: bold;
+}
+
+.dataTables_length {
+  margin: 18px 0;
+}
+
 .dropdown-menu--profile {
   right: 0 !important;
   left: auto !important;

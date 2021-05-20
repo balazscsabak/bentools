@@ -20,6 +20,8 @@ class FrontpageController extends Controller
         $contactEmail = Settings::where('key', 'contact_email')->first();
         $contactPhone = Settings::where('key', 'contact_phone')->first();
         $shippingContent = Settings::where('key', 'shipping_short_content')->first();
+        $offerMessageContent = Settings::where('key', 'offer_message')->first();
+        $offerOfferContent = Settings::where('key', 'offer_offer')->first();
 
         $email = '';
         $phone = '';
@@ -29,6 +31,8 @@ class FrontpageController extends Controller
             $email = $contactEmail->value;
             $phone = $contactPhone->value;
             $shipping = $shippingContent->value;
+            $offerMessage = $offerMessageContent->value;
+            $offerOffer = $offerOfferContent->value;
         }
 
         return view('index')
@@ -37,6 +41,8 @@ class FrontpageController extends Controller
             ->with('latestPosts', $latestPosts)
             ->with('email', $email)
             ->with('phone', $phone)
+            ->with('offerMessage', $offerMessage)
+            ->with('offerOffer', $offerOffer)
             ->with('shipping', $shipping);
     }
 

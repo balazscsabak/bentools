@@ -24,7 +24,7 @@ class PostsController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = '<a href="/admin/posts/' . $row->id . '" class="edit btn btn-primary">Módosítás</a>';
+                    $btn = '<a href="/admin/posts/' . $row->id . '" class="edit btn-sm btn btn-primary">Módosítás</a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

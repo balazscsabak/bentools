@@ -42,7 +42,7 @@ class MessagesController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = '<a href="/admin/messages/' . $row->id . '" class="edit btn btn-primary">Részletek</a>';
+                    $btn = '<a href="/admin/messages/' . $row->id . '" class="edit btn btn-sm btn-primary">Részletek</a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

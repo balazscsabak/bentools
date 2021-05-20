@@ -19256,6 +19256,9 @@ main {
   margin: 110px 0;
   max-width: 700px;
 }
+.contact-us .contact-us-wrapper .content a {
+  text-transform: uppercase;
+}
 .contact-us .contact-us-wrapper .content .left .text h1, .contact-us .contact-us-wrapper .content .left .text .h1,
 .contact-us .contact-us-wrapper .content .right .text h1,
 .contact-us .contact-us-wrapper .content .right .text .h1 {

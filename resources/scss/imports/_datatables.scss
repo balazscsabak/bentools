@@ -1,0 +1,27 @@
+.dataTables_paginate {
+	display: flex;
+	justify-content: center;
+	a{
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.paginate_button {
+		padding: 0 5px;
+
+		&.next{
+			margin: 0 10px;
+		}
+		&.previous{
+			margin: 0 10px;
+
+		}
+		&.current {
+			font-weight: bold;
+		}
+	}
+}
+
+.dataTables_length {
+	margin: 18px 0;
+}
