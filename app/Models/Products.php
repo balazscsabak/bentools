@@ -25,7 +25,11 @@ class Products extends Model
     public function featuredImage()
     {
         return $this->hasOne(Media::class, 'id', 'featured_image');
+    }
 
+    public function categoryImage()
+    {
+        return $this->hasOne(Media::class, 'id', 'category_image_id');
     }
 
     public function images()

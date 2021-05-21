@@ -1,6 +1,14 @@
 
 @import './imports/datatables';
 
+
+
+.navbar-admin{
+    .navbar-collapse {
+        background-color: #222529;
+    }
+}
+
 .dropdown-menu {
     &--profile {
         right: 0 !important;
@@ -9,11 +17,15 @@
 }
 
 #product-main-image-picker,
+#product-category-image-picker,
 #product-images-picker {
     padding: 10px;
     border: 1px solid #4d4d4d;
 }
+
 #product-images-picker {
+    padding-top: 20px;
+    
     div {
         display: flex;
         justify-content: center;
@@ -28,6 +40,7 @@
 
 .product-main-img-selectable,
 .product-images-selectable,
+.product-category-img-selectable,
 .slide-img-selectable {
     display: flex;
     justify-content: center;

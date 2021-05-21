@@ -48,7 +48,7 @@ class ProductsController extends Controller
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'featured_image' => ['string'],
+            'featured_image' => ['integer'],
             'category' => ['integer'],
         ]);
 
@@ -60,6 +60,7 @@ class ProductsController extends Controller
             $newProduct->name = $request->input('name');
             $newProduct->description = $request->input('description');
             $newProduct->featured_image = $request->input('featured_image');
+            $newProduct->category_image_id = $request->input('category_image');
             $newProduct->images = $request->input('images');
             $newProduct->category_id = $request->input('category');
             $newProduct->slug = $slugify->slugify($request->input('name'));
@@ -126,7 +127,7 @@ class ProductsController extends Controller
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'featured_image' => ['string'],
+            'featured_image' => ['integer'],
             'category' => ['integer'],
         ]);
 
@@ -138,6 +139,7 @@ class ProductsController extends Controller
             $product->name = $request->input('name');
             $product->description = $request->input('description');
             $product->featured_image = $request->input('featured_image');
+            $product->category_image_id = $request->input('category_image');
             $product->images = $request->input('images');
             $product->category_id = $request->input('category');
             $product->slug = $slugify->slugify($request->input('name'));

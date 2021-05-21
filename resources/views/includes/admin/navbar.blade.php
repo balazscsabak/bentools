@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-admin">
     <div class="container">
         <a class="navbar-brand" href="{{ route('admin.offers') }}">ADMIN</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse p-3 p-lg-0 " id="navbarNavDropdown">
             <ul class="navbar-nav me-auto">
                 {{-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">Home</a>

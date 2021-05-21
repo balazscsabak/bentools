@@ -31,7 +31,7 @@
                                                     
                                                     <div class="swiper-slide">
                                                         <div class="slide-content">
-                                                            <img src="/storage/{{ $image->path }}" alt="{{ $image->name }}">
+                                                            <img src="/storage/{{ $image->path }}" alt="{{ $image->name }}" class="product-swiper-image">
                                                         </div>
                                                     </div>
                                                     
@@ -67,11 +67,20 @@
 
                         <div class="col-6">
                             <div class="product-info">
+                                <div class="category-img mb-3">
+                                    
+                                    @isset($product->categoryImage)
+                                        <img src="/storage/{{ $product->categoryImage->path }}" alt="{{ $product->categoryImage->name }}">
+                                    @endisset
+                    
+                                </div>
+
                                 <div class="name">
                                     <h1>
                                         {{ $product->name }}
                                     </h1>
                                 </div>
+
                                 <div class="description">
                                     <p>
                                         {{ $product->description }}

@@ -3497,9 +3497,13 @@ $(function () {
       nextEl: '.product-swiper-next',
       prevEl: '.product-swiper-prev'
     }
-  });
-  productImageSwiper.on('slideChangeTransitionEnd', function (e) {
-    var selectedImageSrc = $('.swiper-slide-active').find('img').attr('src');
+  }); // productImageSwiper.on('slideChangeTransitionEnd', function(e) {
+  //   let selectedImageSrc = $('.swiper-slide-active').find('img').attr('src');
+  //   $('#product-featured-image').attr("src", selectedImageSrc);
+  // })
+
+  $(document).on('click', '.product-swiper-image', function (e) {
+    var selectedImageSrc = $(e.target).attr('src');
     $('#product-featured-image').attr("src", selectedImageSrc);
   });
 });

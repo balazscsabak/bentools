@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top nav-frontend">
     <div class="container">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('images/KIMATools_RGB.png') }}" alt="">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse p-3 p-lg-0" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/">Kezdőlap</a>
@@ -16,9 +16,9 @@
                         Termékek
                     </a>
                     <div class="dropdown-menu megamenu" aria-labelledby="navbarDropdownMenuLink">
-                        <div class="row">
+                        <div class="row sub-menu-wrapper">
                             @foreach ($products as $cat => $product)
-                                <div class="col">
+                                <div class="sub-menu-item col-12 col-lg-3 my-2 my-lg-3">
                                     <p>{{ $cat }}</p>
 
                                     @foreach ($product as $p)
@@ -27,7 +27,7 @@
                                 </div>
                             @endforeach
                             
-                            <div class="col">
+                            <div class="col col-12 col-lg-3 my-2 my-lg-3">
                                 <a href="{{ route('products.all') }}">Összes termék</a>
                             </div>
                         </div>

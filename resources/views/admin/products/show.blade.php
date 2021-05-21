@@ -66,6 +66,7 @@
             <div>
                 <input type="hidden" name="featured_image" id="featured_image" value={{ $product->featured_image }}>
                 <input type="hidden" name="images" id="product_images" value={{ $product->images }}>
+                <input type="hidden" name="category_image" id="category_image" value={{ $product->category_image_id }}>
 
                 <div class="row mb-4">
 
@@ -95,7 +96,33 @@
                         </div>
                     </div>
 
-                    <div class="col-9">    
+                    <div class="col-3">    
+                        <label style="font-size: 1.2rem;">Termék kategória képe</label>
+                        
+                        <div class="border border-secondary border-2 rounded-1" id="product-category-image-picker" data-bs-toggle="modal" data-bs-target="#product-category-img-modal" style="min-height: 50px">
+                            <img src='/storage/{{ isset($product->categoryImage) ? $product->categoryImage->path : "" }} ' alt="{{ isset($product->categoryImage) ? $product->categoryImage->name : ''}}">                   
+                        </div>
+ 
+                        <div class="modal fade" id="product-category-img-modal" tabindex="-1" aria-labelledby="product-category-image-picker" aria-hidden="true">
+                            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Válassz képet</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body row">
+                                        loading ..
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="set-product-main-image">Mentés</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-3">    
                         <label style="font-size: 1.2rem;">További képek</label>
 
                         <div id="product-images-picker" class="row border border-secondary border-2 rounded-1" data-bs-toggle="modal" data-bs-target="#product-images-modal" >

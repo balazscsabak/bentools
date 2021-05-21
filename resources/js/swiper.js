@@ -32,9 +32,14 @@ $(() => {
         },
       });
 
-      productImageSwiper.on('slideChangeTransitionEnd', function(e) {
-        let selectedImageSrc = $('.swiper-slide-active').find('img').attr('src');
+      // productImageSwiper.on('slideChangeTransitionEnd', function(e) {
+      //   let selectedImageSrc = $('.swiper-slide-active').find('img').attr('src');
 
+      //   $('#product-featured-image').attr("src", selectedImageSrc);
+      // })
+
+      $(document).on('click', '.product-swiper-image', function(e) {
+        let selectedImageSrc = $(e.target).attr('src');
         $('#product-featured-image').attr("src", selectedImageSrc);
       })
 })
