@@ -91,7 +91,7 @@
                                 {{ $offerMessage }}
                             </p>
                         </div>
-                        <div><a href="#" class="btn btn-primary d-block d-md-inline-block">Üzenet küldése</a></div>
+                        <div><a href="{{ route('message.index') }}" class="btn btn-primary d-block d-md-inline-block">Üzenet küldése</a></div>
                     </div>
                     <div class="divider"></div>
                     <div class="right col">
@@ -104,7 +104,7 @@
                             </p>
                         </div>
                         
-                        <div><a href="#" class="btn btn-primary d-block d-md-inline-block">ÁRAJÁNLATOT KÉREK</a></div>
+                        <div><a href="{{ route('offer') }}" class="btn btn-primary d-block d-md-inline-block">ÁRAJÁNLATOT KÉREK</a></div>
                     </div>
                 </div>
             </div>

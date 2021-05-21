@@ -1,10 +1,10 @@
 <x-app-layout>
 
-    <div class="post-page">
+    <div class="post-page mb-5">
         <div class="container">
 
             <div class="d-flex justify-content-md-center">
-                <div class="col-7">
+                <div class="col-12 col-md-7">
                     <div class="post">
 
                         <div class="title">
