@@ -73,7 +73,7 @@
                     <div class="col-3">    
                         <label style="font-size: 1.2rem;">Termék képe</label>
                         
-                        <div class="border border-secondary border-2 rounded-1" id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
+                        <div class="border with-shadow" id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
                             <img src='/storage/{{ $product->featuredImage->path }}' alt="{{ $product->featuredImage->name }}">                   
                         </div>
  
@@ -99,7 +99,7 @@
                     <div class="col-3">    
                         <label style="font-size: 1.2rem;">Termék kategória képe</label>
                         
-                        <div class="border border-secondary border-2 rounded-1" id="product-category-image-picker" data-bs-toggle="modal" data-bs-target="#product-category-img-modal" style="min-height: 50px">
+                        <div class="border with-shadow" id="product-category-image-picker" data-bs-toggle="modal" data-bs-target="#product-category-img-modal" style="min-height: 50px">
                             <img src='/storage/{{ isset($product->categoryImage) ? $product->categoryImage->path : "" }} ' alt="{{ isset($product->categoryImage) ? $product->categoryImage->name : ''}}">                   
                         </div>
  
@@ -125,7 +125,7 @@
                     <div class="col-12 mt-3">    
                         <label style="font-size: 1.2rem;">További képek</label>
 
-                        <div id="product-images-picker" class="row border border-secondary border-2 rounded-1" data-bs-toggle="modal" data-bs-target="#product-images-modal" >
+                        <div id="product-images-picker" class="row with-shadow" data-bs-toggle="modal" data-bs-target="#product-images-modal" >
                             @if ($product->images)
                                 @foreach ($product->images_models as $image)
                                     <div class="col-3"><img src="/storage/{{ $image->path }}"></div>

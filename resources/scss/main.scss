@@ -31,6 +31,9 @@ img {
     height: auto;
 }
 
+* {
+    box-sizing: border-box;
+}
 a {
     color: $color-main-blue;
 }

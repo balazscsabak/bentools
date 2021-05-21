@@ -40,12 +40,12 @@
             </div>
             
 
-            <div class="col-3">    
+            <div class="col-3 my-4">    
                 <input type="hidden" name="featured_image" id="featured_image" value={{ $post->featured_image }}>
 
-                <label>Kiemelt kép</label>
+                <label class="mb-2">Kiemelt kép</label>
                 
-                <div id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
+                <div class="with-shadow" id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
                     <img src="/storage/{{ $post->image->path }}">
                 </div>
 
@@ -73,7 +73,9 @@
                 <textarea name="content" class="form-control" id="post-content-editor">{{ $post->content }}</textarea>
             </div>
            
-            <input type="submit" value="Mentés">
+            <div class="my-5">
+                <input class="btn btn-primary" type="submit" value="Mentés">
+            </div>
         </form>
     </div>
 

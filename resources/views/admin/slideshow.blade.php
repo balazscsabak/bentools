@@ -26,31 +26,36 @@
                 @foreach ($slideshow as $slide)
 
                     <div class="slide col-6 rounded">
-                        <div class="mb-3">
-                            <label class="form-label">Cím</label>
-                            <input type="text" class="form-control" name="slide[{{ $loop->index }}][title]" value="{{ $slide->title }}">
-                        </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Szöveg</label>
-                            <input type="text" class="form-control" name="slide[{{ $loop->index }}][content]" value="{{ $slide->content }}">
-                        </div>
+                        <div class="with-shadow p-3">
 
-                        <div class="mb-3">
-                            <label class="form-label">Gomb szöveg</label>
-                            <input type="text" class="form-control" name="slide[{{ $loop->index }}][link_text]" value="{{ $slide->link_text }}">
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label">Cím</label>
+                                <input type="text" class="form-control" name="slide[{{ $loop->index }}][title]" value="{{ $slide->title }}">
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Gomb link</label>
-                            <input type="text" class="form-control" name="slide[{{ $loop->index }}][link_href]" value="{{ $slide->link_href }}">
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label">Szöveg</label>
+                                <input type="text" class="form-control" name="slide[{{ $loop->index }}][content]" value="{{ $slide->content }}">
+                            </div>
 
-                        <div class="mb-3 slide-img">
-                            <label class="form-label">Háttérkép</label>
-                            <button data-img-id={{ $slide->image}} class="btn btn-primary btn-sm open-slide-img-modal-btn" data-bs-toggle="modal" data-bs-target="#slide-image-picker-modal">Új kép</button>
-                            <input class="hidden-img-id" type="hidden" name="slide[{{ $loop->index }}][image]" value={{ $slide->image }}>
-                            <img src="/storage/{{ $slide->imageData->path }}" alt="">
+                            <div class="mb-3">
+                                <label class="form-label">Gomb szöveg</label>
+                                <input type="text" class="form-control" name="slide[{{ $loop->index }}][link_text]" value="{{ $slide->link_text }}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Gomb link</label>
+                                <input type="text" class="form-control" name="slide[{{ $loop->index }}][link_href]" value="{{ $slide->link_href }}">
+                            </div>
+
+                            <div class="mb-3 slide-img">
+                                <label class="form-label">Háttérkép</label>
+                                <button data-img-id={{ $slide->image}} class="btn btn-primary btn-sm open-slide-img-modal-btn" data-bs-toggle="modal" data-bs-target="#slide-image-picker-modal">Új kép</button>
+                                <input class="hidden-img-id" type="hidden" name="slide[{{ $loop->index }}][image]" value={{ $slide->image }}>
+                                <img src="/storage/{{ $slide->imageData->path }}" alt="">
+                            </div>
+
                         </div>
                     </div>
                 

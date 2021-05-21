@@ -14,7 +14,7 @@
             </form>
         </div>
 
-        <img class="border border-secondary border-2 rounded-1" style="margin: auto; max-width: 600px;" src="/storage/{{ $image->path }}" alt="{{ $image->name }}">
+        <img class="with-shadow" style="margin: auto; max-width: 600px; padding:2px;" src="/storage/{{ $image->path }}" alt="{{ $image->name }}">
 
     </div>
 

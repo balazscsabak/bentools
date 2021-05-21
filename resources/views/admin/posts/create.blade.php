@@ -1,6 +1,6 @@
 <x-admin-layout>
     
-    <div class="container mt-3">
+    <div class="container mt-3 mb-5">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
                 {{ $message }}
@@ -44,7 +44,7 @@
 
                 <label>Kiemelt kép</label>
                 
-                <div id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
+                <div class="with-shadow" id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
                     <div class="no-img-selected">
                         Kérlek válassz képet
                     </div>
@@ -69,12 +69,14 @@
                 </div>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12 mt-4">
                 <label for="content" class="form-label">Kontent</label>
                 <textarea name="content" class="form-control" id="post-content-editor"></textarea>
             </div>
            
-            <input type="submit" value="Mentés">
+            <div>
+                <input class="btn btn-primary mt-5 d-inline-block" type="submit" value="Mentés">
+            </div>
         </form>
     </div>
 

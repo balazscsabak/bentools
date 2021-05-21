@@ -25,13 +25,32 @@
 
         <h5>Új termék létrehozása</h5>
 
+        <div class="my-3">
+            <a class="btn btn-secondary btn-sm me-2" href="{{ route('products.index') }}">Vissza</a>
+        </div>
+
         <form action="{{ route('products.store') }}" method="post">
             
             @csrf
 
-            <div class="mb-3">
-                <label style="font-size: 1.2rem;" for="name" class="form-label">Termék neve</label>
-                <input type="text" class="form-control" name="name">
+            <div class="mb-3 row">
+                <div class="col-6">
+                    <label style="font-size: 1.2rem;" for="name" class="form-label">Termék neve</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+
+                <div class="col-6">
+                    <label style="font-size: 1.2rem;" class="form-label">Kategória</label>
+                    <select class="form-select" name="category" aria-label="Default select example">
+        
+                        @foreach ($categories as $category)
+        
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            
+                        @endforeach
+                        
+                    </select>
+                </div>
             </div>
 
             <div class="mb-3">
@@ -39,28 +58,17 @@
                 <textarea type="text" class="form-control" name="description"></textarea>
             </div>
 
-            <label style="font-size: 1.2rem;" class="form-label">Kategória</label>
-            <select class="form-select" name="category" aria-label="Default select example">
-
-                @foreach ($categories as $category)
-
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    
-                @endforeach
-                
-            </select>
-
             <div>
                 <input type="hidden" name="featured_image" id="featured_image">
                 <input type="hidden" name="images" id="product_images">
                 <input type="hidden" name="category_image" id="category_image">
 
-                <div class="row mb-4">
+                <div class="row mb-4 mt-4">
 
                     <div class="col-3">    
                         <label style="font-size: 1.2rem;">Termék képe</label>
                         
-                        <div class="border border-secondary border-2 rounded-1" id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
+                        <div class="border with-shadow" id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
                             <div class="no-image">
                                 Valassz képet!
                             </div>                    
@@ -88,7 +96,7 @@
                     <div class="col-3">    
                         <label style="font-size: 1.2rem;">Termék kategória képe</label>
                         
-                        <div class="border border-secondary border-2 rounded-1" id="product-category-image-picker" data-bs-toggle="modal" data-bs-target="#product-category-img-modal" style="min-height: 50px">
+                        <div class="border with-shadow" id="product-category-image-picker" data-bs-toggle="modal" data-bs-target="#product-category-img-modal" style="min-height: 50px">
                             <div class="no-image">
                                 Valassz képet!
                             </div>      
@@ -116,7 +124,7 @@
                     <div class="col-12 mt-3">    
                         <label style="font-size: 1.2rem;">További képek</label>
 
-                        <div id="product-images-picker" class="row border border-secondary border-2 rounded-1" data-bs-toggle="modal" data-bs-target="#product-images-modal" >
+                        <div id="product-images-picker" class="row with-shadow" data-bs-toggle="modal" data-bs-target="#product-images-modal" >
                             <div class="no-image">
                                 Valassz képet!
                             </div>                    

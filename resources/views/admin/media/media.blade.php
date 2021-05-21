@@ -32,7 +32,7 @@
             @foreach ($images as $image)
                 <div class="col-3 d-flex justify-content-center align-items-center">
                     <a href="{{ route('media.image', $image->id) }}">
-                        <img class="border border-secondary border-2 rounded-1" src="/storage/{{ $image->path }}" alt="/storage/{{ $image->name }}">
+                        <img style="padding:2px; max-height: 185px; max-width:100%; width: auto;" class="with-shadow" src="/storage/{{ $image->path }}" alt="/storage/{{ $image->name }}">
                     </a>
                 </div>
             @endforeach

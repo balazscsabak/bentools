@@ -7,31 +7,33 @@ $(() => {
 
         let content = `
             <div class="slide col-6">
-                <div class="mb-3">
-                    <label class="form-label">Cím</label>
-                    <input type="text" class="form-control" name="slide[${slidesCount}][title]">
-                </div>
+                <div class="with-shadow p-3">
+                    <div class="mb-3">
+                        <label class="form-label">Cím</label>
+                        <input type="text" class="form-control" name="slide[${slidesCount}][title]">
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Szöveg</label>
-                    <input type="text" class="form-control" name="slide[${slidesCount}][content]">
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Szöveg</label>
+                        <input type="text" class="form-control" name="slide[${slidesCount}][content]">
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Gomb szöveg</label>
-                    <input type="text" class="form-control" name="slide[${slidesCount}][link_text]">
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gomb szöveg</label>
+                        <input type="text" class="form-control" name="slide[${slidesCount}][link_text]">
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Gomb link</label>
-                    <input type="text" class="form-control" name="slide[${slidesCount}][link_href]">
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gomb link</label>
+                        <input type="text" class="form-control" name="slide[${slidesCount}][link_href]">
+                    </div>
 
-                <div class="mb-3 slide-img">
-                    <label class="form-label">Háttérkép</label>
-                    <button data-img-id class="btn btn-primary btn-sm open-slide-img-modal-btn" data-bs-toggle="modal" data-bs-target="#slide-image-picker-modal">Új kép</button>
-                    <input class="hidden-img-id" type="hidden" name="slide[${slidesCount}][image]">
-                    <img src="" alt="">
+                    <div class="mb-3 slide-img">
+                        <label class="form-label">Háttérkép</label>
+                        <button data-img-id class="btn btn-primary btn-sm open-slide-img-modal-btn" data-bs-toggle="modal" data-bs-target="#slide-image-picker-modal">Új kép</button>
+                        <input class="hidden-img-id" type="hidden" name="slide[${slidesCount}][image]">
+                        <img src="" alt="">
+                    </div>
                 </div>
             </div>
         `;
