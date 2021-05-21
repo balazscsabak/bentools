@@ -36,7 +36,7 @@ a {
 }
 
 .navbar .has-megamenu{position:static!important;}
-.navbar .megamenu{left:0; right:0; width:100%; margin-top:0;  }
+.navbar .megamenu{left:0; right:0; width:100%; margin-top: -1px; }
 
 .custom-toggler .navbar-toggler-icon {
     background-image: url(
@@ -573,6 +573,9 @@ main {
             position: relative;
         }
 
+        .cart-action-add {
+            display: flex;
+        }
         &__h1 {
             text-align: center;
         }

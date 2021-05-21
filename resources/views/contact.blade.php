@@ -3,7 +3,7 @@
     <div class="contact-page">
         <div class="container">
             <div class="d-flex justify-content-center">
-                <div class="col-9">
+                <div class="col-12 col-md-9">
 
                     <div class="contact">
                         <h1 class="contact__h1">

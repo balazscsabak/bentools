@@ -60,8 +60,8 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <div class="col-9">
-                    <div class="related-items row justify-content-md-center gx-4">
+                <div class="col-12 col-lg-9">
+                    <div class="related-items row justify-content-center gx-4">
                         @isset($relatedProducts)
                             @foreach ($relatedProducts as $product)
             
@@ -81,30 +81,30 @@
 
         <div class="container">
             <div class="contact-us-wrapper">
-                <div class="content">
-                    <div class="left col">
+                <div class="content flex-column flex-md-row">
+                    <div class="left col mb-5 mb-md-0 ">
                         <div class="text">
-                            <h1>
+                            <h1 class="text-center text-md-end">
                                 Küldjön üzenetet
                             </h1>
-                            <p>
+                            <p class="text-center text-md-end">
                                 {{ $offerMessage }}
                             </p>
                         </div>
-                        <div><a href="#" class="btn btn-primary">Üzenet küldése</a></div>
+                        <div><a href="#" class="btn btn-primary d-block d-md-inline-block">Üzenet küldése</a></div>
                     </div>
                     <div class="divider"></div>
                     <div class="right col">
                         <div class="text">
-                            <h1>
+                            <h1 class="text-center text-md-start">
                                 Kérjen árajánlatot
                             </h1>
-                            <p>
+                            <p class="text-center text-md-start">
                                 {{ $offerOffer }}    
                             </p>
                         </div>
                         
-                        <div><a href="#" class="btn btn-primary">ÁRAJÁNLATOT KÉREK</a></div>
+                        <div><a href="#" class="btn btn-primary d-block d-md-inline-block">ÁRAJÁNLATOT KÉREK</a></div>
                     </div>
                 </div>
             </div>
@@ -135,13 +135,13 @@
             <div class="contact-wrapper d-flex justify-content-center">
                 <div class="col-8 text-center">
                     <div class="row">
-                        <div class="email col-6">
+                        <div class="email col-12 col-md-6 mb-4 mb-md-0">
                             <div class="icon"><i class="fas fa-at"></i></div>
                             <h1>
                                 {{ $email }}
                             </h1>
                         </div>
-                        <div class="phone col-6">
+                        <div class="phone col-12 col-md-6">
                             <div class="icon"><i class="fas fa-phone-alt"></i></div>
                             <h1>
                                 {{ $phone }}

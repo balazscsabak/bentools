@@ -3,8 +3,8 @@
     <div class="message-page pb-5">
         <div class="container">
 
-            <div class="d-flex justify-content-md-center">
-                <div class="col-7">
+            <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-7">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success alert-block">
                             {{ $message }}

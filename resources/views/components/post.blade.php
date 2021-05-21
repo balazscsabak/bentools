@@ -1,4 +1,4 @@
-<div class="post-wrapper col-3">
+<div class="post-wrapper col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
     <a class="post" href="{{ route('post', $post->slug) }}">
         <div class="post__content" style="background-image: linear-gradient(#ffffff03, #363636bd), url('/storage/{{ $post->image->path }}')">
             <div class="img-bg" >

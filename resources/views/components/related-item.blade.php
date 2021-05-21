@@ -1,4 +1,4 @@
-<div class="col-3 related-item">
+<div class="col-10 mb-4 mb-md-0 col-md-3 related-item">
     <a href="/product/{{ $product->slug }}">
         <div class="image-wrapper">
             <div class="square image" style="background-image: url('/storage/{{ $product->featuredImage->path }}')"></div>

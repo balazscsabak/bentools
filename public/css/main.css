@@ -19101,7 +19101,7 @@ a {
   left: 0;
   right: 0;
   width: 100%;
-  margin-top: 0;
+  margin-top: -1px;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -19532,6 +19532,9 @@ main {
 }
 .offer-page .offer .products {
   position: relative;
+}
+.offer-page .offer .cart-action-add {
+  display: flex;
 }
 .offer-page .offer__h1 {
   text-align: center;

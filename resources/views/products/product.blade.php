@@ -3,11 +3,11 @@
     <div class="product-page pb-5">
         <div class="container">
             <div class="d-flex justify-content-center">
-                <div class="col-9">
+                <div class="col-11 col-lg-9">
 
                     <div class="row">
                         
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 mb-5 mb-md-0">
                             <div class="product-images">
                                 <div class="main">
                                     <div class="image">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <div class="product-info">
                                 <div class="category-img mb-3">
                                     

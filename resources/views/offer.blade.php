@@ -23,7 +23,7 @@
             @endif
 
             <div class="d-flex justify-content-center">
-                <div class="col-7">
+                <div class="col-12 col-md-7">
 
                     <div class="offer">
                         
@@ -45,7 +45,7 @@
 
             </div>
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6 mb-4 mb-md-4">
                     <div class="data">
                         <form action="{{ route('offer.store') }}" method="post" id="offer-form">
                             @csrf
@@ -81,7 +81,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div id="cart">
                         <div class="title">
                             Termékek
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center my-5">
-                <div class="col-7">
+                <div class="col-12 col-md-7">
 
                     <div class="products-filter-wrapper mb-4">
                         <div class="filter">

@@ -29,16 +29,16 @@
             <div class="container">
                 <div class="row">
                     
-                    <div class="d-flex justify-content-center">
-                        <div class="mx-3">
+                    <div class="d-flex justify-content-center flex-column flex-md-row">
+                        <div class="mx-3 text-center">
                             ÁSZF
                         </div>
                         
-                        <div class="mx-">
+                        <div class="mx-3 text-center">
                             Adatvédelmi nyilatkozat
                         </div>
 
-                        <div class="mx-3">
+                        <div class="mx-3 text-center">
                             Cookie Szabályzat
                         </div>
                      

@@ -1,9 +1,9 @@
 <x-app-layout>
 
-    <div class="products-page pb-5">
+    <div class="products-page mt-3 pb-5">
         <div class="container">
             <div class="d-flex justify-content-center mb-5">
-                <div class="col-7">
+                <div class="col-11 col-md-7">
 
                     <div class="products">
                         <h1>
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="row gy-3 related-items products-wrapper">
+            <div class="row gy-3 related-items products-wrapper justify-content-center">
                 @foreach ($products as $product)
             
                     <x-related-item :product="$product"/>

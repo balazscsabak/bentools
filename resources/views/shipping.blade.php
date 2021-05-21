@@ -3,7 +3,7 @@
     <div class="shipping-page pb-5">
         <div class="container">
             <div class="d-flex justify-content-center">
-                <div class="col-7">
+                <div class="col-12 col-md-7">
 
                     <div class="shipping">
                         
