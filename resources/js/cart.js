@@ -46,7 +46,7 @@ const Cart = function() {
             position: 'top|center',
             margin: 70,
             delay: 0,
-            duration: 200000,
+            duration: 2000,
         });
     };
 
