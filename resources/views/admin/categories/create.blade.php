@@ -12,8 +12,6 @@
             <div class="mb-3">
                 <label class="form-label" for="parent">Ős kategória ("-", ha nincs)</label>
                 <select name='parent' class="form-select" aria-label="Parent Category">
-                    <option value='1' selected>-</option>
-                    
                     @foreach ($mainCategories as $category)
                         <option value='{{ $category->id }}'>{{ $category->name }}</option>
                     @endforeach
