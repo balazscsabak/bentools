@@ -14,6 +14,9 @@
 // import Swiper styles
 @import "swiper/swiper-bundle.css";
 
+// siimple toast
+@import 'siiimple-toast/dist/style.css';
+
 // custom imports
 @import "./imports/variables";
 @import "./imports/spinner";
@@ -684,4 +687,8 @@ main {
 .filter-no-content {
     text-align: center;
     font-size: 1.3rem;
+}
+
+.siiimpleToast[data-state=success] {
+    background-color: #5ba92b;
 }

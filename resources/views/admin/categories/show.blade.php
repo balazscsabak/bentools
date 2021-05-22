@@ -7,12 +7,13 @@
             @csrf
             @method('PUT')
 
-            <div class="mb-3">
-                <label for="parent">Parent Category</label>
+            <h1>
+                Kategória módosítása
+            </h1>
 
+            <div class="mb-3">
+                <label class="form-label" for="parent">Ős kategória ("-", ha nincs)</label>
                 <select name='parent' class="form-select" aria-label="Parent Category">
-                    <option value='1' {{$category->parent === 1 ? 'selected' : ''}}>-</option>
-                    
                     @foreach ($mainCategories as $cat)
                         <option value='{{ $cat->id }}' {{$category->parent === $cat->id ? 'selected' : ''}}>{{ $cat->name }}</option>
                     @endforeach

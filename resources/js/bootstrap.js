@@ -7,6 +7,8 @@ import "jquery-ui/ui/widgets/datepicker";
 
 import "bootstrap";
 
+window.toast = require( 'siiimple-toast');
+
 window._ = require("lodash");
 
 /**

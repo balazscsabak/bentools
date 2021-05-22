@@ -5,9 +5,12 @@
         <form method="POST" action="{{ route('categories.store') }}">
             @csrf
 
-            <div class="mb-3">
-                <label for="parent">Parent Category</label>
+            <h2>
+                Új kategória
+            </h2>
 
+            <div class="mb-3">
+                <label class="form-label" for="parent">Ős kategória ("-", ha nincs)</label>
                 <select name='parent' class="form-select" aria-label="Parent Category">
                     <option value='1' selected>-</option>
                     

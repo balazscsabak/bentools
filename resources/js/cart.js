@@ -1,4 +1,5 @@
 const { filter } = require("lodash");
+import toast from 'siiimple-toast';
 
 const Cart = function() {
     this.items = [];
@@ -39,6 +40,14 @@ const Cart = function() {
 
         this.updateStorageData();
         this.renderCart();
+        toast.success('Termék hozzáadva az ajánlatkéréshez!', {
+            container: 'body',
+            class: 'siiimpleToast',
+            position: 'top|center',
+            margin: 70,
+            delay: 0,
+            duration: 200000,
+        });
     };
 
     this.removeFromCart = (name) => {
