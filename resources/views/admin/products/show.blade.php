@@ -74,7 +74,13 @@
                         <label style="font-size: 1.2rem;">Termék képe</label>
                         
                         <div class="border with-shadow" id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
-                            <img src='/storage/{{ $product->featuredImage->path }}' alt="{{ $product->featuredImage->name }}">                   
+                            @if (isset($product->featuredImage))
+                                <img src='/storage/{{ $product->featuredImage->path }}' alt="{{ $product->featuredImage->name }}">                   
+                            @else
+                                <div class="no-image">
+                                    Valassz képet!
+                                </div>   
+                            @endif
                         </div>
  
                         <div class="modal fade" id="product-main-img-modal" tabindex="-1" aria-labelledby="product-main-image-picker" aria-hidden="true">

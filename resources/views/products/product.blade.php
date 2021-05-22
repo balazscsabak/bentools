@@ -11,8 +11,11 @@
                             <div class="product-images">
                                 <div class="main">
                                     <div class="image">
-                                        <img id="product-featured-image"  src="/storage/{{ $product->featuredImage->path }}">
-                                        <div class="blue-bg"></div>
+                                        @if (isset($product->featuredImage))
+                                            <img id="product-featured-image"  src="/storage/{{ $product->featuredImage->path }}">
+                                        @else
+                                            <img id="product-featured-image">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="sub">
@@ -22,7 +25,11 @@
                                             
                                             <div class="swiper-slide">
                                                 <div class="slide-content">
-                                                    <img src="/storage/{{ $product->featuredImage->path }}" alt="{{ $product->featuredImage->name }}">
+                                                    @if (isset($product->featuredImage))
+                                                        <img src="/storage/{{ $product->featuredImage->path }}" alt="{{ $product->featuredImage->name }}" class="product-swiper-image">
+                                                    @else
+                                                        <img class="product-swiper-image">
+                                                    @endif
                                                 </div>
                                             </div>
 
