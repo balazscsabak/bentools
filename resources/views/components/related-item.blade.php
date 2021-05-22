@@ -1,7 +1,13 @@
 <div class="col-10 mb-4 mb-md-0 col-md-3 related-item">
     <a href="/product/{{ $product->slug }}">
         <div class="image-wrapper">
-            <div class="square image" style="background-image: url('/storage/{{ $product->featuredImage->path }}')"></div>
+            
+            @if (isset($product->featuredImage))
+                <div class="square image" style="background-image: url('/storage/{{ $product->featuredImage->path }}')"></div>
+            @else    
+                <div class="square image"></div>
+            @endif
+
             <div class="blue-bg"></div>
         </div>
 
