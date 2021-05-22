@@ -9,12 +9,16 @@
                 {{ $offer->full_name ?? '' }}
             </div>
 
+            <div class="offer-data-divider w-100"></div>
+
             <div class="col-3">
                 Cégnév
             </div>
             <div class="col-9">
                 {{ $offer->firm_name ?? '' }}
             </div>
+
+            <div class="offer-data-divider w-100"></div>
 
             <div class="col-3">
                 Email
@@ -23,6 +27,8 @@
                 {{ $offer->email ?? '' }}
             </div>
             
+            <div class="offer-data-divider w-100"></div>
+
             <div class="col-3">
                 Telefonszám
             </div>
@@ -30,12 +36,16 @@
                 {{ $offer->phone ?? '' }}
             </div>
 
+            <div class="offer-data-divider w-100"></div>
+
             <div class="col-3">
                 Dátum
             </div>
             <div class="col-9">
                 {{ $offer->created_at ?? '' }}
             </div>
+
+            <div class="offer-data-divider w-100"></div>
 
             <div class="col-3">
                 Üzenet
