@@ -13,8 +13,6 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased d-flex flex-column h-100">
         
@@ -55,5 +53,9 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+
     </body>
 </html>

@@ -35,6 +35,7 @@
                         <li><a class="dropdown-item" href="{{ route('admin.contact') }}">Kapcsolat</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.shipping') }}">Szállítási információk</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.offer.content') }}">Ajánlatkérés</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.aboutus') }}">Rólunk</a></li>
                         <li><a class="dropdown-item" href="{{ route('settings.slideshow') }}">Slideshow</a></li>
                     </ul>
                 </li>

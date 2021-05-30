@@ -117,5 +117,15 @@ $(() => {
 
         }) 
     })
+
+    $(document).on('click', '.del-slideshow-item', function(e) {
+        e.preventDefault();
+
+        let slide = $(e.target).closest('.slide');
+
+        slide.fadeOut(300, ()=>{
+            slide.remove();
+        }) 
+    })
 })
 

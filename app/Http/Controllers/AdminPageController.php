@@ -55,4 +55,17 @@ class AdminPageController extends Controller
             ->with('content', $content)
             ->with('shortContent', $shortContent);
     }
+
+    public function aboutus() 
+    {
+        $content = Settings::where('key', 'aboutus_content')->first();
+
+        $aboutUsContent = '';
+
+        if($content) {
+            $aboutUsContent = $content->value;
+        }
+
+        return view('admin.aboutus')->with('content', $aboutUsContent);
+    }
 }

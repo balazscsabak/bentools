@@ -34,7 +34,7 @@
             </form>
         </div>
         
-        <form action="{{ route('products.update', $product->id) }}" method="post">
+        <form action="{{ route('products.update', $product->id) }}" method="post" id="p-form">
             
             @csrf
             @method('PUT')
@@ -42,7 +42,7 @@
             <div class="mb-3 row">
                 <div class="col-6">
                     <label style="font-size: 1.2rem;" for="name" class="form-label">Termék neve</label>
-                    <input type="text" class="form-control" name="name" value="{{ $product->name }}">
+                    <input type="text" class="form-control validate-not-null" name="name" value="{{ $product->name }}">
                 </div>
                 <div class="col-6">
                     <label style="font-size: 1.2rem;" class="form-label">Kategória</label>
@@ -60,7 +60,7 @@
 
             <div class="mb-3">
                 <label style="font-size: 1.2rem;" for="exampleFormControlInput1" class="form-label">Termék leírása</label>
-                <textarea style="min-height: 100px;" type="text" class="form-control" name="description">{{ $product->description }}</textarea>
+                <textarea style="min-height: 100px;" type="text" class="form-control validate-not-null" name="description">{{ $product->description }}</textarea>
             </div>
 
             <div>
@@ -181,12 +181,12 @@
                             <div class="row">
                                 <div class="col-5">
                                     <div class="input-group input-group-sm mb-3">
-                                        <input type="text" name="attr[{{ $loop->index }}][key]" value="{{ $attribute->key }}" class="form-control attr-key">
+                                        <input type="text" name="attr[{{ $loop->index }}][key]" value="{{ $attribute->key }}" class="form-control attr-key validate-not-null">
                                     </div>
                                 </div>
                                 <div class="col-5">
                                     <div class="input-group input-group-sm mb-3">
-                                        <input type="text" name="attr[{{ $loop->index }}][value]" value="{{ $attribute->value }}" class="form-control attr-value">
+                                        <input type="text" name="attr[{{ $loop->index }}][value]" value="{{ $attribute->value }}" class="form-control attr-value validate-not-null">
                                     </div>
                                 </div>
                                 <div class="col-2">

@@ -86,4 +86,17 @@ class FrontpageController extends Controller
         return view('shipping')
             ->with('content', $content);
     }
+
+    public function aboutus()
+    {
+        $aboutUsContent = Settings::where('key', 'aboutus_content')->first();
+
+        $content = '';
+
+        if($aboutUsContent){
+            $content = $aboutUsContent->value;
+        }
+
+        return view('aboutus')->with('content', $content);
+    }
 }

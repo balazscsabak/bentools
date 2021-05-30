@@ -94,12 +94,17 @@
                                     </p>
                                 </div>
                                 <div class="attributes ps-4">
-                                    @foreach ($product->attributes as $attr)
-                                        <div class="attribute mb-2">
-                                            <span class="key">&#8226; {{ $attr->key }}</span>
-                                            <span class="value">{{ $attr->value }}</span>
-                                        </div>
-                                    @endforeach
+                                    <table class="table table-sm table-borderless">
+                                        <tbody>
+                                            @foreach ($product->attributes as $attr)
+                                                <tr class="attribute mb-2">
+                                                    <td class="key">&#8226; {{ $attr->key }}</td>
+                                                    <td class="value">{{ $attr->value }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+
                                 </div>
                             </div>
                         </div>

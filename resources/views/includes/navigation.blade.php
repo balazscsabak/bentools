@@ -11,6 +11,9 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/">Kezdőlap</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ route('aboutus') }}">Rólunk</a>
+                </li>
                 <li class="nav-item dropdown has-megamenu">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         Termékek

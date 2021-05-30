@@ -34,6 +34,7 @@ Route::get('/shipping', [FrontpageController::class, 'shipping'])->name('shippin
 Route::get('/offer', [OffersController::class, 'offer'])->name('offer');
 Route::post('/offer', [OffersController::class, 'store'])->name('offer.store');
 Route::get('/filter/products', [ProductsController::class, 'filter']);
+Route::get('/about-us', [FrontpageController::class, 'aboutus'])->name('aboutus');
 
 Route::group(['middleware' => 'auth'], function () {
     
@@ -65,6 +66,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('categories', CategoriesController::class);
      
         Route::resource('products', ProductsController::class);
+        Route::get('products/create/variant', [ProductsController::class, 'createVariant'])->name('admin.products.create-variant');
+        Route::post('products/variant', [ProductsController::class, 'storeVariant'])->name('admin.products.store-variant');
+        Route::put('products/variant/{id}', [ProductsController::class, 'updateVariant'])->name('admin.products.update-variant');
+        Route::delete('products/variant/{id}', [ProductsController::class, 'destroyVariant'])->name('admin.products.destroy-variant');
 
         Route::resource('posts', PostsController::class);
 
@@ -75,6 +80,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('offer', [OffersController::class, 'updateOfferContent'])->name('admin.offer.update');
         Route::get('offer/{id}', [OffersController::class, 'show'])->name('admin.offer');
         Route::get('/', [OffersController::class, 'index'])->name('admin.offers');
+
+        Route::get('aboutus', [AdminPageController::class, 'aboutus'])->name('admin.aboutus');
+        Route::put('aboutus', [SettingsController::class, 'updateAboutUsContent'])->name('admin.aboutus.update');
     });
     
 

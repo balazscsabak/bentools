@@ -1,6 +1,7 @@
 <x-admin-layout>
 
-    <div class="container mt-5">
+    <div class="container mt-5 mb-4">
+
         <div class="row">
             <div class="col-3">
                 Név
@@ -57,7 +58,7 @@
         </div>
 
 		<div class="row">
-			<div class="col-12">
+			<div class="col-12 mt-5 mb-3">
 				<h5>Termékek</h5>
 			</div>
 
@@ -74,10 +75,40 @@
 			<tbody>
 				@isset($offer->items)
 					@foreach ($offer->items as $item)
+
 					<tr>
 						<th scope="row">{{ $item->product_id }}</th>
-						<td>{{ $item->name }}</td>
-						<td>{{ $item->quantity }}</td>
+						<td>
+                            <div style="font-size: 1.2rem;">
+                                {{ $item->name }}
+                            </div>
+                    
+                            @if ($item->is_variant)
+                                @php
+                                    $data = json_decode($item->data, true);
+                                @endphp
+
+                                <div class="my-3">
+                                    <table class="table table-borderless table-sm">
+                                        <thead>
+                                            <tr>
+                                                @foreach ($data['keys'] as $key)
+                                                    <th>{{ $key }}</th>
+                                                @endforeach
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                @foreach ($data['values'] as $value)
+                                                    <td>{{ $value }}</td>
+                                                @endforeach
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @endif
+                        </td>
+						<td style="font-size: 1.2rem; font-weight: bold;">{{ $item->quantity }}</td>
 					</tr>	
 					@endforeach
 				@endisset
@@ -85,6 +116,9 @@
 	  
 		</table>
 
+        <div class="my-5">
+            <a href="{{ route('admin.offers') }}" class="btn btn-sm btn-primary">Vissza</a>
+        </div>
 	</div>
 
 </x-admin-layout>

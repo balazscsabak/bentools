@@ -106,4 +106,24 @@ class SettingsController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function updateAboutUsContent(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'content' => ['required'],
+            ]);
+
+            $aboutUsContent = Settings::where('key', 'aboutus_content')->first();
+
+            $aboutUsContent->value = $request->input('content');
+            $aboutUsContent->save();
+
+            return back()->with('success', 'Sikeres módosítás!');
+
+        } catch(Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+    
 }

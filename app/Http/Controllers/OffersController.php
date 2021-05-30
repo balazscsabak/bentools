@@ -6,6 +6,7 @@ use App\Models\Categories;
 use App\Models\OfferItems;
 use App\Models\Offers;
 use App\Models\Products;
+use App\Models\ProductVariants;
 use App\Models\Settings;
 use Exception;
 use Illuminate\Http\Request;
@@ -93,19 +94,49 @@ class OffersController extends Controller
             $items = $request->input('items');
 
             foreach ($items as $item) {
-                $newItem = new OfferItems();
+                if (strpos($item['id'], '[~]') !== false) {
+                    $part = explode("[~]", $item['id']);
+                    $variantId = $part[0];
+                    $variantCode = $part[1];
 
-                $newItem->name = $item['name'];
-                $newItem->quantity = $item['quantity'];
-                $newItem->product_id = $item['id'];
-                $newItem->offer_id = $newOffer->id;
+                    $variant = ProductVariants::find($variantId);
+                    $variantData = json_decode($variant->variants, true);
+                    $index = array_search($variantCode, $variantData['codes']);
 
-                $newItem->save();
+                    $selectedVariantAttributes = $variantData['types'][$index];
+                    $selectedVariantAttrKeys = $variantData['keys'];
+
+                    $newItem = new OfferItems();
+    
+                    $newItem->name = $item['name'];
+                    $newItem->quantity = $item['quantity'];
+                    $newItem->product_id = $variantId;
+                    $newItem->data = json_encode([
+                        'keys' => $selectedVariantAttrKeys,
+                        'values' => $selectedVariantAttributes
+                    ]);
+                    $newItem->is_variant = true;
+                    $newItem->offer_id = $newOffer->id;
+    
+                    $newItem->save();
+
+                } else {
+                    $newItem = new OfferItems();
+    
+                    $newItem->name = $item['name'];
+                    $newItem->quantity = $item['quantity'];
+                    $newItem->product_id = $item['id'];
+                    $newItem->offer_id = $newOffer->id;
+    
+                    $newItem->save();
+                }
+
             }
 
-            return back()->with('success', 'Ajánlatkérés sikeresen elküldte! Nemsokára felvesszük Önnel a kapcsolatot!');
+            return back()->with('success', 'Ajánlatkérés sikeresen elküldve! Nemsokára felvesszük Önnel a kapcsolatot!');
 
         } catch(Exception $e) {
+            dd($e);
             return back()->with('error', 'Hiba történt az ajánlatkérés elküldése során! Kérjük vegye fel velünk a kapcsolatot!');
         }
     }

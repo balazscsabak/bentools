@@ -10,13 +10,13 @@ $(() => {
             <div class="attribute">
                 <div class="row">
                     <div class="col-5">
-                        <div class="input-group input-group-sm mb-3 attr-key">
-                            <input type="text" name="attr[${attributesCount}][key]" class="form-control attr-key">
+                        <div class="input-group input-group-sm mb-3 attr-key ">
+                            <input type="text" name="attr[${attributesCount}][key]" class="validate-not-null form-control attr-key">
                         </div>
                     </div>
                     <div class="col-5">
                         <div class="input-group input-group-sm mb-3 attr-value">
-                            <input type="text" name="attr[${attributesCount}][value]" class="form-control attr-value">
+                            <input type="text" name="attr[${attributesCount}][value]" class="form-control attr-value validate-not-null">
                         </div>
                     </div>
                     <div class="col-2">

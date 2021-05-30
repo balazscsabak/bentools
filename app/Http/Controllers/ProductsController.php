@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attributes;
 use App\Models\Categories;
 use App\Models\Products;
+use App\Models\ProductVariants;
 use Illuminate\Http\Request;
 use Cocur\Slugify\Slugify;
 use Exception;
@@ -100,9 +101,19 @@ class ProductsController extends Controller
         $product = Products::find($id);
         $categories = Categories::all();
 
-        return view('admin.products.show')
-            ->with('product', $product)
-            ->with('categories', $categories);
+        if($product->has_variant) {
+            $variants = ProductVariants::where('product_id', $product->id)->get();
+
+            return view('admin.products.showVariant')
+                ->with('product', $product)
+                ->with('variants', json_decode($variants))
+                ->with('categories', $categories); 
+        } else {
+            return view('admin.products.show')
+                ->with('product', $product)
+                ->with('categories', $categories); 
+        }
+
     }
 
     /**
@@ -228,7 +239,20 @@ class ProductsController extends Controller
     public function product(Request $request, $slug)
     {
         $product = Products::where('slug', $slug)->first();
-        return view('products.product')->with('product', $product);
+
+        if(!$product) {
+            abort(404);
+        } 
+
+        if($product->has_variant) {
+            $variants = ProductVariants::where('product_id', $product->id)->get();
+            
+            return view('products.productVariant')
+                ->with('variants', $variants)    
+                ->with('product', $product);
+        } else {
+            return view('products.product')->with('product', $product);
+        }
     }
 
     public function products()
@@ -280,5 +304,122 @@ class ProductsController extends Controller
             'products' => $products,
             'status' => true,
         ]);
+    }
+
+    public function createVariant()
+    {
+        $categories = Categories::all();
+
+        return view('admin.products.createVariant')
+            ->with('categories', $categories);
+    }
+
+    public function storeVariant(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'featured_image' => ['integer'],
+            'category' => ['integer'],
+        ]);
+
+        try {
+
+            $newProduct = new Products();
+            $slugify = new Slugify();
+
+            $newProduct->name = $request->input('name');
+            $newProduct->featured_image = $request->input('featured_image');
+            $newProduct->category_image_id = $request->input('category_image');
+            $newProduct->description = '';
+            $newProduct->category_id = $request->input('category');
+            $newProduct->slug = $slugify->slugify($request->input('name'));
+            $newProduct->has_variant = true;
+
+            $newProduct->save();
+
+            $variants = json_decode($request->input('variants'));
+
+            foreach ($variants as $variant) {
+                $newVariant = new ProductVariants();
+                
+                $newVariant->product_id = $newProduct->id;
+                $newVariant->variants = json_encode($variant);
+                
+                $newVariant->save();
+            }
+
+            return redirect()->route('products.index')
+                ->with('success', 'Termék sikeresen létrehozva!');
+        } catch (Exception $e) {
+            return redirect()->route('products.index')
+                ->with('error', 'Hiba a termék létrehozása során!');
+        }
+    }
+
+    public function updateVariant(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'featured_image' => ['integer'],
+            'category' => ['integer'],
+        ]);
+
+        try {
+
+            $product = Products::find($id);
+            $variantsIds = ProductVariants::where('product_id', $product->id)->pluck('id')->toArray();
+
+            ProductVariants::destroy($variantsIds);
+            $product->delete(); 
+
+            $newProduct = new Products();
+            $slugify = new Slugify();
+
+            $newProduct->name = $request->input('name');
+            $newProduct->featured_image = $request->input('featured_image');
+            $newProduct->category_image_id = $request->input('category_image');
+            $newProduct->description = '';
+            $newProduct->category_id = $request->input('category');
+            $newProduct->slug = $slugify->slugify($request->input('name'));
+            $newProduct->has_variant = true;
+
+            $newProduct->save();
+
+            $variants = json_decode($request->input('variants'));
+
+            foreach ($variants as $variant) {
+                $newVariant = new ProductVariants();
+                
+                $newVariant->product_id = $newProduct->id;
+                $newVariant->variants = json_encode($variant);
+                
+                $newVariant->save();
+            }
+
+            return redirect()->route('products.index')
+                ->with('success', 'Termék sikeresen létrehozva!');
+        } catch (Exception $e) {
+            return redirect()->route('products.index')
+                ->with('error', 'Hiba a termék létrehozása során!');
+        }
+    }
+
+    public function destroyVariant(Request $request, $id)
+    {
+        try {
+
+            $product = Products::find($id);
+            $variantsIds = ProductVariants::where('product_id', $product->id)->pluck('id')->toArray();
+            
+            ProductVariants::destroy($variantsIds);
+            $product->delete(); 
+
+            return redirect()->route('products.index')
+                ->with('success', 'Termék sikeresen törölve!');
+
+        } catch (Exception $e) {
+            return redirect()->route('products.index')
+                ->with('error', 'Hiba a termék törölése során!');
+        }
     }
 }

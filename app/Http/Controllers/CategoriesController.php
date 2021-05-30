@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Products;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -144,9 +145,22 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $category = Categories::find($id);
+
+        $productsCount = Products::where('category_id', $id)->count();
+
+        if($productsCount > 0) {
+            return back()->with('error', 'A kategóriát nem lehet törölni, mivel tartozik hozzá termék!');
+        } 
+
+        $subCategoriesCount = Categories::where('parent', $id)->count();
         
+        if($subCategoriesCount > 0) {
+            return back()->with('error', 'A kategóriát nem lehet törölni, mivel tartozik hozzá alkategória!');
+        } 
+
         $category->delete();
 
-        return view('categories');
+        return redirect()->route('categories.index')
+                    ->with('success', 'Sikeres törlés!');
     }
 }

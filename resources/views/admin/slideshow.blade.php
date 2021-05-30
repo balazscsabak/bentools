@@ -56,6 +56,9 @@
                                 <img src="/storage/{{ $slide->imageData->path }}" alt="">
                             </div>
 
+                            <div class="d-flex justify-content-end mt-5">
+                                <button class="del-slideshow-item btn btn-danger btn-sm">Törlés</button>
+                            </div>
                         </div>
                     </div>
                 
@@ -63,7 +66,7 @@
 
             </div>
             
-            <input class="btn btn-primary" type="submit" value="Mentés">
+            <input class="btn btn-primary my-5" type="submit" value="Mentés">
         </form>
     </div>
 
