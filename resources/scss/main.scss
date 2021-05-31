@@ -121,7 +121,6 @@ main {
     .bg-blur {
         background-size: cover;
         background-position: center center;
-        filter: blur(3px);
         position: absolute;
         top: 0;
         left: 0;
@@ -691,4 +690,29 @@ main {
 
 .siiimpleToast[data-state=success] {
     background-color: #5ba92b;
+}
+
+.variant {
+    .cont {
+        table {
+            width: 100%;
+
+            tr {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                td {
+                    flex-basis: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    figure {
+                        max-width: 185px;
+                    }
+                }
+            }
+        }
+    }
 }

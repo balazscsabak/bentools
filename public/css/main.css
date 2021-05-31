@@ -19172,7 +19172,6 @@ main {
 .hero-slide .bg-blur {
   background-size: cover;
   background-position: center center;
-  filter: blur(3px);
   position: absolute;
   top: 0;
   left: 0;
@@ -19615,4 +19614,22 @@ main {
 
 .siiimpleToast[data-state=success] {
   background-color: #5ba92b;
+}
+
+.variant .cont table {
+  width: 100%;
+}
+.variant .cont table tr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.variant .cont table tr td {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.variant .cont table tr td figure {
+  max-width: 185px;
 }
