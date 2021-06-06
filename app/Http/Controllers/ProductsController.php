@@ -205,7 +205,8 @@ class ProductsController extends Controller
             } else {
 
                 Attributes::destroy($oldAttributesIds);
-                return back()->with('success', 'Termék sikeresen módosítva!');
+                return redirect()->route('products.index')
+                    ->with('success', 'Termék sikeresen módosítva!');
             };
         } catch (Exception $e) {
             return back()->with('error', 'Hiba a termék módosítása során!');
@@ -294,10 +295,10 @@ class ProductsController extends Controller
         $filterCategory = $request->input('filterCategory');
         
         if((int)$filterCategory > 1) {
-            $products = Products::with('featuredImage')->where('name', 'LIKE', '%'.$filterName.'%')
-                ->Where('category_id', $filterCategory)->get();
+            $products = Products::with('featuredImage')->with('variants')->where('name', 'LIKE', '%'.$filterName.'%')
+                ->where('category_id', $filterCategory)->get();
         } else {
-            $products = Products::with('featuredImage')->where('name', 'LIKE', '%'.$filterName.'%')->get();
+            $products = Products::with('featuredImage')->with('variants')->where('name', 'LIKE', '%'.$filterName.'%')->get();
         }
 
         return response()->json([
@@ -397,10 +398,10 @@ class ProductsController extends Controller
             }
 
             return redirect()->route('products.index')
-                ->with('success', 'Termék sikeresen létrehozva!');
+                ->with('success', 'Termék sikeresen módosítva!');
         } catch (Exception $e) {
             return redirect()->route('products.index')
-                ->with('error', 'Hiba a termék létrehozása során!');
+                ->with('error', 'Hiba a termék módosítása során!');
         }
     }
 

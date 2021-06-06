@@ -448,8 +448,9 @@ $(function () {
     var cellCount = $(e.target).closest('.variant-attributes').find('table thead th').length;
     var tableBody = $(e.target).closest('.variant-attributes').find('table tbody');
     var tr = $('<tr>');
+    tr.append("\n\t\t\t<td>\n\t\t\t\t<div class=\"input-group-sm pv-img-wrapper\">\n\t\t\t\t\t<button class=\"pv-image-modal-btn\" data-bs-toggle=\"modal\" data-bs-target=\"#pv-image-modal\">Vari\xE1ns k\xE9pe</button>\n\t\t\t\t\t<input type=\"hidden\" class=\"form-control validate-not-null validate-for-button\" value=\"\">\n\t\t\t\t</div>\n\t\t\t</td>\n\t\t");
 
-    for (var index = 0; index < cellCount; index++) {
+    for (var index = 0; index < cellCount - 1; index++) {
       tr.append("\n\t\t\t\t<td>\n\t\t\t\t\t<div class=\"input-group-sm\">\n\t\t\t\t\t\t<input type=\"text\" class=\"form-control validate-not-null\" >\n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t");
     }
 
@@ -491,7 +492,7 @@ $(function () {
   $(document).on('click', '.p-add-new-variant', function (e) {
     e.preventDefault();
     var variantsCount = $('.product-variant').length;
-    var variantContent = "\n\t\t\t<div class=\"product-variant col-12 col-lg-8 with-shadow p-4 mb-5\">\n\t\t\t\t<div class=\"p-variant-delete\">\n\t\t\t\t\t<i class=\"fas fa-times\"></i>\n\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t<div class=\"variant-content\">\n\t\t\t\t\t<label class=\"form-label\">Le\xEDr\xE1s</label>\n\t\t\t\t\t<textarea class=\"form-control product-variant-content\"></textarea>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"variant-attributes my-4\">\n\t\t\t\t\t<div class=\"d-flex justify-content-between mb-3\">\n\t\t\t\t\t\t<label class=\"form-label\">Term\xE9k attrib\xFAtumok</label>\n\t\t\t\t\t\t<i class=\"fas fa-plus-circle p-variant-add-col\"></i>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<table class=\"table table-sm table-borderless\">\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\t\t<div class=\"input-group-sm\">\n\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" value=\"K\xF3d\" readonly>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</thead>\n\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t</tbody>\n\t\t\t\t\t</table>\n\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<i class=\"fas fa-plus-circle p-variant-add-row\"></i>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t";
+    var variantContent = "\n\t\t\t<div class=\"product-variant col-12 col-lg-8 with-shadow p-4 mb-5\">\n\t\t\t\t<div class=\"p-variant-delete\">\n\t\t\t\t\t<i class=\"fas fa-times\"></i>\n\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t<div class=\"variant-content\">\n\t\t\t\t\t<label class=\"form-label\">Le\xEDr\xE1s</label>\n\t\t\t\t\t<textarea class=\"form-control product-variant-content\"></textarea>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"variant-attributes my-4\">\n\t\t\t\t\t<div class=\"d-flex justify-content-between mb-3\">\n\t\t\t\t\t\t<label class=\"form-label\">Term\xE9k attrib\xFAtumok</label>\n\t\t\t\t\t\t<i class=\"fas fa-plus-circle p-variant-add-col\"></i>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<table class=\"table table-sm table-borderless\">\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\t\t<div class=\"input-group-sm\">\n\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" value=\"K\xE9p\" readonly>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\t\t<div class=\"input-group-sm\">\n\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" value=\"K\xF3d\" readonly>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</thead>\n\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t</tbody>\n\t\t\t\t\t</table>\n\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<i class=\"fas fa-plus-circle p-variant-add-row\"></i>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t";
     $('#product-variants').append(variantContent);
     var selectedTextarea = $('.product-variant-content').eq(variantsCount);
     _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(selectedTextarea.get(0), {
@@ -553,6 +554,46 @@ $(function () {
     });
     var input = $("<input>").attr("type", "hidden").attr("name", "variants").val(JSON.stringify(variants));
     $('#p-variant-form').append(input);
+  });
+  $(document).on('click', '.pv-image-modal-btn', function (e) {
+    // pv-image-modal
+    e.preventDefault();
+  });
+  $('#pv-image-modal').on('show.bs.modal', function (e) {
+    var eventButton = e.relatedTarget;
+    var selectedImgSrc = $(eventButton).siblings('input').val();
+    console.log(selectedImgSrc);
+    $(e.target).find('#pv-save-image-btn').data('target', eventButton);
+    $.ajax({
+      method: 'GET',
+      url: '/admin/media/images',
+      success: function success(res) {
+        if (res.length > 0) {
+          $('#pv-image-modal .modal-body').empty();
+          res.map(function (img) {
+            var imagesHtml = "\n                            <div class=\"col-3 product-main-img-selectable\">\n                                <img src=\"/storage/".concat(img.path, "\" alt=\"").concat(img.name, "\" data-id=\"").concat(img.id, "\">\n                            </div>\n                        ");
+
+            if (selectedImgSrc == '/storage/' + img.path) {
+              imagesHtml = "\n                                <div class=\"col-3 product-main-img-selectable\">\n                                    <img class=\"selected\" src=\"/storage/".concat(img.path, "\" alt=\"").concat(img.name, "\" data-id=\"").concat(img.id, "\">\n                                </div>\n                            ");
+            }
+
+            $('#pv-image-modal .modal-body').append(imagesHtml);
+          });
+        }
+      },
+      error: function error(err) {
+        console.log(err);
+      }
+    });
+  });
+  $(document).on('click', '#pv-save-image-btn', function (e) {
+    var target = $(e.target).data('target');
+    $('#pv-image-modal .product-main-img-selectable img').each(function (i, el) {
+      if ($(el).hasClass('selected')) {
+        $(target).siblings('input').data('id', $(el).data('id'));
+        $(target).siblings('input').val($(el).attr('src'));
+      }
+    });
   });
 });
 
@@ -650,9 +691,18 @@ var validationNotNull = function validationNotNull(e) {
   $('.validate-not-null').each(function (index, el) {
     if (!$(el).val()) {
       $(el).css('border-color', 'red');
+
+      if ($(el).hasClass('validate-for-button')) {
+        $(el).siblings('button').addClass('validation-error');
+      }
+
       validation = false;
     } else {
       $(el).css('border-color', '#ced4da');
+
+      if ($(el).hasClass('validate-for-button')) {
+        $(el).siblings('button').removeClass('validation-error');
+      }
     }
   });
   return validation;
@@ -715,8 +765,6 @@ $(function () {
 
   $(".product-variant-content").each(function () {
     var id = $(this).attr('id');
-    console.log($(this));
-    console.log(this);
     _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(this, {
       ckfinder: {
         uploadUrl: "/admin/media/upload-editor?_token=" + $("[name='_token']").val(),

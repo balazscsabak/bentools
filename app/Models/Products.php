@@ -41,4 +41,10 @@ class Products extends Model
     {
         return  Media::find(explode('~', $this->images));
     }
+
+    public function variants() 
+    {
+        return $this->hasMany(ProductVariants::class, 'product_id');
+        // return ProductVariants::where('product_id', $this->id)->get();
+    }
 }

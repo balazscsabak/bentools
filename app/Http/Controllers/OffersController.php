@@ -32,7 +32,7 @@ class OffersController extends Controller
     
     public function offer()
     {
-        $products = Products::all();
+        $products = Products::with('variants')->get();
         $offerContent = Settings::where('key', 'offer_content')->first();
         $categories = Categories::orderBy('name', 'asc')->get();
         $mainCats = [];
@@ -100,6 +100,7 @@ class OffersController extends Controller
                     $variantCode = $part[1];
 
                     $variant = ProductVariants::find($variantId);
+                    
                     $variantData = json_decode($variant->variants, true);
                     $index = array_search($variantCode, $variantData['codes']);
 
@@ -130,13 +131,12 @@ class OffersController extends Controller
     
                     $newItem->save();
                 }
-
+                
             }
 
             return back()->with('success', 'Ajánlatkérés sikeresen elküldve! Nemsokára felvesszük Önnel a kapcsolatot!');
 
         } catch(Exception $e) {
-            dd($e);
             return back()->with('error', 'Hiba történt az ajánlatkérés elküldése során! Kérjük vegye fel velünk a kapcsolatot!');
         }
     }

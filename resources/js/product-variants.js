@@ -14,7 +14,16 @@ $(() => {
 
 		let tr = $('<tr>');
 
-		for (let index = 0; index < cellCount; index++) {
+		tr.append(`
+			<td>
+				<div class="input-group-sm pv-img-wrapper">
+					<button class="pv-image-modal-btn" data-bs-toggle="modal" data-bs-target="#pv-image-modal">Variáns képe</button>
+					<input type="hidden" class="form-control validate-not-null validate-for-button" value="">
+				</div>
+			</td>
+		`)
+
+		for (let index = 0; index < cellCount - 1; index++) {
 			tr.append(`
 				<td>
 					<div class="input-group-sm">
@@ -114,6 +123,11 @@ $(() => {
 					<table class="table table-sm table-borderless">
 						<thead>
 							<tr>
+								<th>
+									<div class="input-group-sm">
+										<input type="text" class="form-control" value="Kép" readonly>
+									</div>
+								</th>
 								<th>
 									<div class="input-group-sm">
 										<input type="text" class="form-control" value="Kód" readonly>
@@ -220,5 +234,64 @@ $(() => {
 
 		$('#p-variant-form').append(input);
 		
+	})
+
+	$(document).on('click', '.pv-image-modal-btn', function(e) {
+		// pv-image-modal
+		e.preventDefault();
+	}) 
+
+	$('#pv-image-modal').on('show.bs.modal', function(e){
+
+		let eventButton = e.relatedTarget;
+		let selectedImgSrc = $(eventButton).siblings('input').val();
+console.log(selectedImgSrc);
+		$(e.target).find('#pv-save-image-btn').data('target', eventButton);
+
+		$.ajax({
+            method: 'GET',
+            url: '/admin/media/images',
+            success: (res) => {
+
+                if(res.length > 0) {
+                    $('#pv-image-modal .modal-body').empty();
+
+                    res.map(img => {
+                        let imagesHtml = `
+                            <div class="col-3 product-main-img-selectable">
+                                <img src="/storage/${img.path}" alt="${img.name}" data-id="${img.id}">
+                            </div>
+                        `;
+
+                        if(selectedImgSrc == '/storage/' + img.path) {
+                            imagesHtml = `
+                                <div class="col-3 product-main-img-selectable">
+                                    <img class="selected" src="/storage/${img.path}" alt="${img.name}" data-id="${img.id}">
+                                </div>
+                            `;
+                        }
+
+                        $('#pv-image-modal .modal-body').append(imagesHtml)
+                    })
+                }
+
+            },
+            error: (err) => {
+                console.log(err)
+            }
+        })
+	})
+
+	$(document).on('click', '#pv-save-image-btn', function(e) {
+		let target = $(e.target).data('target');
+
+		$('#pv-image-modal .product-main-img-selectable img').each(function(i, el){
+
+            if($(el).hasClass('selected')){
+				$(target).siblings('input').data('id', $(el).data('id'))
+				$(target).siblings('input').val($(el).attr('src'));
+            }
+
+        }) 
 	})
 })

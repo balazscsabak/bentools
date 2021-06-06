@@ -100,7 +100,13 @@
                                         <tbody>
                                             <tr>
                                                 @foreach ($data['values'] as $value)
-                                                    <td>{{ $value }}</td>
+                                                    @if ($loop->first)
+                                                        <td>
+                                                            <img src="{{ $value }}" alt="" style="max-width:  200px;">    
+                                                        </td>
+                                                    @else
+                                                        <td>{{ $value }}</td>
+                                                    @endif
                                                 @endforeach
                                             </tr>
                                         </tbody>

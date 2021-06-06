@@ -43,6 +43,7 @@ function filterUpdateProductsOffer() {
                             <th scope="col" >Mennyiség</th>
                         </tr>
                     `);
+
                     res.products.forEach((prod) => {
                         let prodHtml = `
                             <tr>
@@ -58,6 +59,97 @@ function filterUpdateProductsOffer() {
                                 </td>
                             </tr>
                         `;
+
+                        if(prod.has_variant) {
+
+                            let variants = prod.variants.map(v => {
+                                let _v = JSON.parse(v.variants);
+                                
+                                let keys = _v.keys.map((key, index) => {
+                                    if(index == 0) {
+                                        return '';
+                                    } else {
+                                        return `
+                                            <th class="p-0">
+                                                ${key}
+                                            </th>
+                                        `
+                                    }
+                                })
+
+                                let types = _v.types.map((type, index) => {
+                                    let returnData = '<tr>';
+
+                                   type.map((t, i) => {
+                                        if(i == 0) {
+                                            return '';
+                                        } else if(i == 1) {
+                                            returnData += `
+                                                <td style="padding: 6px 0 0;">
+                                                    ${t}
+                                                
+                                                    <div class="pv-img-sample-box">
+                                                        <img class="pv-image" src="${ type[0] }" alt="" >
+                                                        <div class="sample-big">
+                                                            <img class="pv-image-big" src="${ type[0] }" alt="" >
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            `;
+                                        } else {
+                                            returnData += `
+                                                <td style="padding: 6px 0;">${t}</td>
+                                            `;
+                                        }
+                                    })
+
+                                    returnData += `
+                                        <td class="text-end">
+                                            <div class="cart-action-add">
+                                                <input type="number" min="1" max="200" value="1" >
+                                            
+                                                <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="${prod.name}-${type[1]}" data-id="${v.id}[~]${_v.codes[index] }">
+                                                    Hozzáad
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    `;
+
+                                    return returnData;
+                                })
+
+                                let returnVariant = `
+                                <table class="table my-4 table-borderless table-for-pv">
+                                    <thead>
+                                        <tr>
+                                            ${keys.join('')}
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${types.join('')}
+                                    </tbody>
+                                </table>
+                                `;
+
+                                return returnVariant;
+                            })
+
+                            prodHtml = `
+                            <tr>
+                                <td colspan="2">
+                                    <div>
+                                        ${prod.name}
+                                        <div class="pv-table-wrapper">
+                                            ${variants.join('')}
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            `;
+                        
+                        }
 
                         wrapper.append(prodHtml);
 

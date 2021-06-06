@@ -64,8 +64,7 @@ $(() => {
 
     $(".product-variant-content").each(function () {
         let id = $(this).attr('id');
-        console.log($(this));
-        console.log(this);
+        
         ClassicEditor.create(this, {
             ckfinder: {
                 uploadUrl:

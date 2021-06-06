@@ -173,12 +173,18 @@
 
 												@foreach ($v['keys'] as $k)
 													@if ($loop->first)
-														<th>
-															<div class="input-group-sm">
-																<input type="text" class="form-control" value="Kód" readonly>
-															</div>
-														</th>
-													@else 
+                                                        <th>
+                                                            <div class="input-group-sm">
+                                                                <input type="text" class="form-control" value="Kép" readonly>
+                                                            </div>
+                                                        </th>
+													@elseif($loop->index == 1)
+                                                        <th>
+                                                            <div class="input-group-sm">
+                                                                <input type="text" class="form-control" value="Kód" readonly>
+                                                            </div>
+                                                        </th>   
+                                                    @else
 														<th>
 															<div class="input-group-sm">
 																<input type="text" class="form-control" value="{{ $k }}">
@@ -198,12 +204,23 @@
 												<tr>
 												
 												@foreach ($type as $val)
-													<td>
-														<div class="input-group-sm">
-															<input type="text" class="form-control" value="{{ $val }}">
-														</div>
-													</td>
-												@endforeach
+                                                    @if ($loop->first)
+                                                        <td>
+                                                            <div class="input-group-sm pv-img-wrapper">
+                                                                <button class="pv-image-modal-btn" data-bs-toggle="modal" data-bs-target="#pv-image-modal">Variáns képe</button>
+                                                                <input type="hidden" class="form-control validate-not-null validate-for-button" value="{{ $val }}">
+                                                            </div>
+                                                        </td>
+                                                    @else
+                                                    
+                                                        <td>
+                                                            <div class="input-group-sm">
+                                                                <input type="text" class="form-control" value="{{ $val }}">
+                                                            </div>
+                                                        </td>
+                                                    @endif
+												
+                                                @endforeach
 												
 													<td>
 														<div class="p-variant-rm-row">
@@ -231,6 +248,24 @@
 
             <input class="btn btn-primary" type="submit" value="Mentés">
         </form>
+
+        <div class="modal fade" id="pv-image-modal" tabindex="-1" aria-labelledby="pv-image-modalr" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Válassz képet</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body row">
+                        loading ..
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="pv-save-image-btn">Mentés</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 

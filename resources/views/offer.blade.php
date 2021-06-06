@@ -130,26 +130,100 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Termék név</th>
-                                        <th scope="col" >Mennyiség</th>
+                                        <th scope="col" class="text-end">Mennyiség</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     @isset($products)
+
                                     @foreach ($products as $product)
                                     <tr>
-                                        <td class="py-2">{{ $product->name }}</td>
-                                        <td class="py-2">
-                                            <div class="cart-action-add">
-                                                <input type="number" min="1" max="200" value="1" >
-                                                
-                                                <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="{{ $product->name }}" data-id="{{ $product->id }}">
-                                                    Hozzáad
+
+                                        @if ($product->has_variant)
+                                            <td colspan="2">
+                                                <div>
+                                                    {{ $product->name }}
+                                                    
+                                                    <div class="pv-table-wrapper">
+                                                        
+                                                        @foreach ($product->variants as $variant)
+                                
+                                                        @php
+                                                            $v = json_decode($variant->variants, true);
+                                                        @endphp
+
+                                                        <table class="table my-4 table-borderless table-for-pv">
+                                                            <thead>
+                                                                <tr>
+                                                                    @foreach ($v['keys'] as $item)
+                                                                        @if ($loop->first)
+                                                                            @continue
+                                                                        @else
+                                                                            <th class="p-0">
+                                                                                {{ $item }}
+                                                                            </th>
+                                                                        @endif
+                                                                    @endforeach
+                                                                    <th></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($v['types'] as $item)
+                                                                    <tr>
+                                                                        @foreach ($item as $i)
+                                                                            @if ($loop->first)
+                                                                                @continue
+                                                                            @endif
+                                                                            @if ($loop->index == 1)
+                                                                                <td style="padding: 6px 0 0;">
+                                                                                    {{ $i }}
+                                                                                
+                                                                                    <div class="pv-img-sample-box">
+                                                                                        <img class="pv-image" src="{{ $item[0] }}" alt="" >
+                                                                                        <div class="sample-big">
+                                                                                            <img class="pv-image-big" src="{{ $item[0] }}" alt="" >
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            @else
+                                                                                <td style="padding: 6px 0;">{{ $i }}</td>
+                                                                            @endif
+                                                                        @endforeach
+                                                                        <td class="text-end">
+                                                                            <div class="cart-action-add">
+                                                                                <input type="number" min="1" max="200" value="1" >
+                                                                            
+                                                                                <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="{{ $product->name . '-' . $item[1] }}" data-id="{{ $variant->id . '[~]' . $v['codes'][$loop->index] }}">
+                                                                                    Hozzáad
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+
+                                                        @endforeach
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
+                                            </td>
+                                        @else
+                                            <td class="py-2">{{ $product->name }}</td>
+                                            <td class="py-2">
+                                                <div class="cart-action-add">
+                                                    <input type="number" min="1" max="200" value="1" >
+                                                    
+                                                    <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="{{ $product->name }}" data-id="{{ $product->id }}">
+                                                        Hozzáad
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        @endif
+                                        
                                     </tr>
                                     @endforeach
+
                                     @endisset
                                 </tbody>
                             </table>

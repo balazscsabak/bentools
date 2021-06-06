@@ -39,9 +39,13 @@
                                             <thead>
                                                 <tr>
                                                     @foreach ($v['keys'] as $item)
-                                                        <th>
-                                                            {{ $item }}
-                                                        </th>
+                                                        @if ($loop->first)
+                                                            @continue
+                                                        @else
+                                                            <th>
+                                                                {{ $item }}
+                                                            </th>
+                                                        @endif
                                                     @endforeach
                                                     <th class="text-end">Mennyiség</th>
                                                 </tr>
@@ -50,13 +54,29 @@
                                                 @foreach ($v['types'] as $item)
                                                     <tr>
                                                         @foreach ($item as $i)
-                                                            <td style="padding: 12px 0;">{{ $i }}</td>
+                                                            @if ($loop->first)
+                                                                @continue
+                                                            @endif
+                                                            @if ($loop->index == 1)
+                                                                <td style="padding: 12px 0;">
+                                                                    {{ $i }}
+                                                                
+                                                                    <div class="pv-img-sample-box">
+                                                                        <img class="pv-image" src="{{ $item[0] }}" alt="" >
+                                                                        <div class="sample-big">
+                                                                            <img class="pv-image-big" src="{{ $item[0] }}" alt="" >
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            @else
+                                                                <td style="padding: 12px 0;">{{ $i }}</td>
+                                                            @endif
                                                         @endforeach
                                                         <td class="text-end">
                                                             <div class="cart-action-add">
                                                                 <input type="number" min="1" max="200" value="1" > db
                                                             
-                                                                <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="{{ $product->name . '-' . $item[0] }}" data-id="{{ $variant->id . '[~]' . $v['codes'][$loop->index] }}">
+                                                                <div class="btn btn-primary btn-sm add-to-cart-btn ms-2" data-name="{{ $product->name . '-' . $item[1] }}" data-id="{{ $variant->id . '[~]' . $v['codes'][$loop->index] }}">
                                                                     Hozzáad
                                                                 </div>
                                                             </div>

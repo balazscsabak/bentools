@@ -5,9 +5,18 @@ const validationNotNull = (e) => {
 
 		if(!$(el).val()) {
 			$(el).css('border-color', 'red');
+
+			if($(el).hasClass('validate-for-button')) {
+				$(el).siblings('button').addClass('validation-error');
+			}
+
 			validation = false;
 		} else {
 			$(el).css('border-color', '#ced4da');
+
+			if($(el).hasClass('validate-for-button')) {
+				$(el).siblings('button').removeClass('validation-error');
+			}
 		}
 
 	})

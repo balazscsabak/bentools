@@ -3370,6 +3370,40 @@ function filterUpdateProductsOffer() {
           headerWrapper.append("\n                        <tr>\n                            <th scope=\"col\">Term\xE9k n\xE9v</th>\n                            <th scope=\"col\" >Mennyis\xE9g</th>\n                        </tr>\n                    ");
           res.products.forEach(function (prod) {
             var prodHtml = "\n                            <tr>\n                                <td class=\"py-2\">".concat(prod.name, "</td>\n                                <td class=\"py-2\">\n                                    <div class=\"cart-action-add\">\n                                        <input type=\"number\" min=\"1\" max=\"200\" value=\"1\" >\n                                        \n                                        <div class=\"btn btn-primary btn-sm add-to-cart-btn ms-2\" data-name=\"").concat(prod.name, "\" data-id=\"").concat(prod.id, "\">\n                                            Hozz\xE1ad\n                                        </div>\n                                    </div>\n                                </td>\n                            </tr>\n                        ");
+
+            if (prod.has_variant) {
+              var variants = prod.variants.map(function (v) {
+                var _v = JSON.parse(v.variants);
+
+                var keys = _v.keys.map(function (key, index) {
+                  if (index == 0) {
+                    return '';
+                  } else {
+                    return "\n                                            <th class=\"p-0\">\n                                                ".concat(key, "\n                                            </th>\n                                        ");
+                  }
+                });
+
+                var types = _v.types.map(function (type, index) {
+                  var returnData = '<tr>';
+                  type.map(function (t, i) {
+                    if (i == 0) {
+                      return '';
+                    } else if (i == 1) {
+                      returnData += "\n                                                <td style=\"padding: 6px 0 0;\">\n                                                    ".concat(t, "\n                                                \n                                                    <div class=\"pv-img-sample-box\">\n                                                        <img class=\"pv-image\" src=\"").concat(type[0], "\" alt=\"\" >\n                                                        <div class=\"sample-big\">\n                                                            <img class=\"pv-image-big\" src=\"").concat(type[0], "\" alt=\"\" >\n                                                        </div>\n                                                    </div>\n                                                </td>\n                                            ");
+                    } else {
+                      returnData += "\n                                                <td style=\"padding: 6px 0;\">".concat(t, "</td>\n                                            ");
+                    }
+                  });
+                  returnData += "\n                                        <td class=\"text-end\">\n                                            <div class=\"cart-action-add\">\n                                                <input type=\"number\" min=\"1\" max=\"200\" value=\"1\" >\n                                            \n                                                <div class=\"btn btn-primary btn-sm add-to-cart-btn ms-2\" data-name=\"".concat(prod.name, "-").concat(type[1], "\" data-id=\"").concat(v.id, "[~]").concat(_v.codes[index], "\">\n                                                    Hozz\xE1ad\n                                                </div>\n                                            </div>\n                                        </td>\n                                    </tr>\n                                    ");
+                  return returnData;
+                });
+
+                var returnVariant = "\n                                <table class=\"table my-4 table-borderless table-for-pv\">\n                                    <thead>\n                                        <tr>\n                                            ".concat(keys.join(''), "\n                                            <th></th>\n                                        </tr>\n                                    </thead>\n                                    <tbody>\n                                        ").concat(types.join(''), "\n                                    </tbody>\n                                </table>\n                                ");
+                return returnVariant;
+              });
+              prodHtml = "\n                            <tr>\n                                <td colspan=\"2\">\n                                    <div>\n                                        ".concat(prod.name, "\n                                        <div class=\"pv-table-wrapper\">\n                                            ").concat(variants.join(''), "\n                                        </div>\n                                    </div>\n                                </td>\n                            </tr>\n                            ");
+            }
+
             wrapper.append(prodHtml);
           });
         } else {
