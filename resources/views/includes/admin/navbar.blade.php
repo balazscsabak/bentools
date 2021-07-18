@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-admin">
     <div class="container">
         <a class="navbar-brand" href="{{ route('admin.offers') }}">ADMIN</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdownAdmin" aria-controls="navbarNavDropdownAdmin" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse p-3 p-lg-0 " id="navbarNavDropdown">
+        <div class="collapse navbar-collapse p-3 p-lg-0 " id="navbarNavDropdownAdmin">
             <ul class="navbar-nav me-auto">
                 {{-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">Home</a>
@@ -36,6 +36,9 @@
                         <li><a class="dropdown-item" href="{{ route('admin.shipping') }}">Szállítási információk</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.offer.content') }}">Ajánlatkérés</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.aboutus') }}">Rólunk</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.cookie') }}">Cookie Szabályzat</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.policy') }}">Adatvédelmi nyilatkozat</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.terms') }}">ÁSZF</a></li>
                         <li><a class="dropdown-item" href="{{ route('settings.slideshow') }}">Slideshow</a></li>
                     </ul>
                 </li>
@@ -55,7 +58,7 @@
                                 <a class="dropdown-item" :href="route('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Kijelentkezés') }}
                                 </a>
                             </form>
                         </li>

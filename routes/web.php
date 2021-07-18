@@ -35,6 +35,9 @@ Route::get('/offer', [OffersController::class, 'offer'])->name('offer');
 Route::post('/offer', [OffersController::class, 'store'])->name('offer.store');
 Route::get('/filter/products', [ProductsController::class, 'filter']);
 Route::get('/about-us', [FrontpageController::class, 'aboutus'])->name('aboutus');
+Route::get('/terms', [FrontpageController::class, 'terms'])->name('terms');
+Route::get('/cookie', [FrontpageController::class, 'cookie'])->name('cookie');
+Route::get('/policy', [FrontpageController::class, 'policy'])->name('policy');
 
 Route::group(['middleware' => 'auth'], function () {
     
@@ -83,6 +86,15 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('aboutus', [AdminPageController::class, 'aboutus'])->name('admin.aboutus');
         Route::put('aboutus', [SettingsController::class, 'updateAboutUsContent'])->name('admin.aboutus.update');
+        
+        Route::get('terms', [AdminPageController::class, 'terms'])->name('admin.terms');
+        Route::put('terms', [SettingsController::class, 'updateTermsContent'])->name('admin.terms.update');
+        
+        Route::get('policy', [AdminPageController::class, 'policy'])->name('admin.policy');
+        Route::put('policy', [SettingsController::class, 'updatePolicyContent'])->name('admin.policy.update');
+        
+        Route::get('cookie', [AdminPageController::class, 'cookie'])->name('admin.cookie');
+        Route::put('cookie', [SettingsController::class, 'updateCookieContent'])->name('admin.cookie.update');
     });
     
 

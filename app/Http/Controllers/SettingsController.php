@@ -125,5 +125,62 @@ class SettingsController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function updateTermsContent(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'content' => ['required'],
+            ]);
+
+            $termsContent = Settings::where('key', 'terms_content')->first();
+
+            $termsContent->value = $request->input('content');
+            $termsContent->save();
+
+            return back()->with('success', 'Sikeres módosítás!');
+
+        } catch(Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function updateCookieContent(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'content' => ['required'],
+            ]);
+
+            $cookieContent = Settings::where('key', 'cookie_content')->first();
+
+            $cookieContent->value = $request->input('content');
+            $cookieContent->save();
+
+            return back()->with('success', 'Sikeres módosítás!');
+
+        } catch(Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function updatePolicyContent(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'content' => ['required'],
+            ]);
+
+            $policyContent = Settings::where('key', 'policy_content')->first();
+
+            $policyContent->value = $request->input('content');
+            $policyContent->save();
+
+            return back()->with('success', 'Sikeres módosítás!');
+
+        } catch(Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
     
 }

@@ -22,9 +22,11 @@
         "@ckeditor/ckeditor5-alignment": "^27.1.0",
         "@ckeditor/ckeditor5-build-classic": "^27.1.0",
         "@fortawesome/fontawesome-free": "^5.15.3",
+        "cookie-consent-js": "^1.4.12",
         "datatables.net": "^1.10.24",
         "jquery": "^3.6.0",
         "jquery-ui": "^1.12.1",
+        "moment": "^2.29.1",
         "siiimple-toast": "^3.1.7",
         "swiper": "^6.5.9"
     }

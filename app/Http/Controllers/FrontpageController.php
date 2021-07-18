@@ -99,4 +99,43 @@ class FrontpageController extends Controller
 
         return view('aboutus')->with('content', $content);
     }
+
+    public function terms()
+    {
+        $termsContent = Settings::where('key', 'terms_content')->first();
+
+        $content = '';
+
+        if($termsContent){
+            $content = $termsContent->value;
+        }
+
+        return view('terms')->with('content', $content);
+    }
+
+    public function cookie()
+    {
+        $cookieContent = Settings::where('key', 'cookie_content')->first();
+
+        $content = '';
+
+        if($cookieContent){
+            $content = $cookieContent->value;
+        }
+
+        return view('cookie')->with('content', $content);
+    }
+
+    public function policy()
+    {
+        $policyContent = Settings::where('key', 'policy_content')->first();
+
+        $content = '';
+
+        if($policyContent){
+            $content = $policyContent->value;
+        }
+
+        return view('policy')->with('content', $content);
+    }
 }

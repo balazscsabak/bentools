@@ -1,6 +1,8 @@
 import $ from "jquery";
 window.$ = window.jQuery = $;
 
+// window.moment = require('moment');
+
 var dt = require("datatables.net");
 
 import "jquery-ui/ui/widgets/datepicker";

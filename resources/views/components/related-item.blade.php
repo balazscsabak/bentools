@@ -3,7 +3,7 @@
         <div class="image-wrapper">
             
             @if (isset($product->featuredImage))
-                <div class="square image" style="background-image: url('/storage/{{ $product->featuredImage->path }}')"></div>
+                <div class="square image lazy" data-bg-multi="url('/storage/{{ $product->featuredImage->path }}')"></div>
             @else    
                 <div class="square image"></div>
             @endif

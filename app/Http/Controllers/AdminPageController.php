@@ -68,4 +68,43 @@ class AdminPageController extends Controller
 
         return view('admin.aboutus')->with('content', $aboutUsContent);
     }
+
+    public function terms()
+    {
+        $content = Settings::where('key', 'terms_content')->first();
+
+        $termsContent = '';
+
+        if($content) {
+            $termsContent = $content->value;
+        }
+
+        return view('admin.terms')->with('content', $termsContent);
+    }
+
+    public function policy()
+    {
+        $content = Settings::where('key', 'policy_content')->first();
+
+        $policyContent = '';
+
+        if($content) {
+            $policyContent = $content->value;
+        }
+
+        return view('admin.policy')->with('content', $policyContent);
+    }
+
+    public function cookie()
+    {
+        $content = Settings::where('key', 'cookie_content')->first();
+
+        $cookieContent = '';
+
+        if($content) {
+            $cookieContent = $content->value;
+        }
+
+        return view('admin.cookie')->with('content', $cookieContent);
+    }
 }

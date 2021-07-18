@@ -29,15 +29,15 @@
                     
                     <div class="d-flex justify-content-center flex-column flex-md-row">
                         <div class="mx-3 text-center">
-                            ÁSZF
+                            <a class="text-white" href="{{ route('terms') }}">ÁSZF</a>
                         </div>
                         
                         <div class="mx-3 text-center">
-                            Adatvédelmi nyilatkozat
+                            <a class="text-white" href="{{ route('policy') }}">Adatvédelmi nyilatkozat</a>
                         </div>
 
                         <div class="mx-3 text-center">
-                            Cookie Szabályzat
+                            <a class="text-white" href="{{ route('cookie') }}">Cookie Szabályzat</a>
                         </div>
                      
                     </div>
@@ -54,8 +54,28 @@
             </div>
         </footer>
 
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.4.0/dist/lazyload.min.js"></script>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
 
+        <script>
+            $(() => {
+                var cookieConsent = new CookieConsent({
+                    privacyPolicyUrl: "/cookie",
+                    position: "right",
+                    lang: "hu",
+                    content: { 
+                        hu: {
+                            title: "Cookie beállítások",
+                            body: "Weboldalunk cookie-kat (sütiket) használ a forgalom mérésére és a felhasználói élmény biztosításához. Az „Elfogadás” gombra kattintva hozzájárul az összes süti használatához. További informació: --privacy-policy--.",
+                            privacyPolicy: "Cookie szabályzat",
+                            buttonAcceptAll: "Összes cookie elfogadása",
+                            buttonAcceptTechnical: "Csak a műszakilag szükséges cookiek elfogadása"
+                        }
+                    }
+                })
+
+            })
+        </script>
     </body>
 </html>

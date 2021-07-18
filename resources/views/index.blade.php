@@ -77,7 +77,7 @@
 
     </div>
 
-    <div class="contact-us" style="background-image: linear-gradient(#000000d8, #000000c7), url('/storage/images/1620209338.jpg')">
+    <div class="contact-us lazy" data-bg-multi="linear-gradient(#000000d8, #000000c7), url('/storage/images/1620209338.jpg')">
 
         <div class="container">
             <div class="contact-us-wrapper">
@@ -120,7 +120,7 @@
                 <div class="col-8 text-center">
                     <h1>Szállítás</h1>
                     <i class="fas fa-dolly"></i>
-                    {!!$shipping !!}
+                    {!! $shipping !!}
                 </div>
             </div>
 
