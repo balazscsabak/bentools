@@ -242,7 +242,7 @@ const ShoppingCart = function () {
                                     </div>
                                 </td>
                                 <td class="text-end">
-                                    <div class="price fw-bold">
+                                    <div class="price fw-bold" style="white-space: nowrap;">
                                         ${item.quantity * item.price} .-
                                     </div>
                                 </td>

@@ -21,7 +21,8 @@ const cardButtons = document.querySelectorAll('.card-button');
 
 cardButtons.forEach((cardButton) => {
 	cardButton.addEventListener('click', async (e) => {
-
+		$(e.target).prop('disabled', true);
+		
 		/**
 		 * TODO validation, prevent double click
 		 */
@@ -119,28 +120,53 @@ cardButtons.forEach((cardButton) => {
 
 		if(!fomrValidationCheck) {
 			e.preventDefault();
+			$(e.target).prop('disabled', false);
 			return false;
 		}
 
 		let gdprCheck = true;
-		$('.gdpr-purchase-check').each((i, element) => {
-			let isChecked = $(element).is(":checked");
 
-			if(!isChecked) {
-				gdprCheck = false;
-
-				if($(element).closest('.form-check').find('.validation-error').length < 1 ) {
-					$(element).closest('.form-check').find('.form-check-label').after(`
-						<div class="text-danger validation-error"><small>Mező elfogadása kötelező!</small></div>
-					`);
+		// TODO rename id
+		if(paymentMethodRadio === '2'){
+			$('#bank-transfver-placeholder .gdpr-purchase-check').each((i, element) => {
+				let isChecked = $(element).is(":checked");
+	
+				if(!isChecked) {
+					gdprCheck = false;
+	
+					if($(element).closest('.form-check').find('.validation-error').length < 1 ) {
+						$(element).closest('.form-check').find('.form-check-label').after(`
+							<div class="text-danger validation-error"><small>Mező elfogadása kötelező!</small></div>
+						`);
+					}
+				} else {
+					$(element).closest('.form-check').find('.validation-error').remove();
 				}
-			} else {
-				$(element).closest('.form-check').find('.validation-error').remove();
-			}
-		})
+			})
+		} else if(paymentMethodRadio === '1') {
+			$('#cash-on-delivery-placeholder .gdpr-purchase-check').each((i, element) => {
+				let isChecked = $(element).is(":checked");
+	
+				if(!isChecked) {
+					gdprCheck = false;
+	
+					if($(element).closest('.form-check').find('.validation-error').length < 1 ) {
+						$(element).closest('.form-check').find('.form-check-label').after(`
+							<div class="text-danger validation-error"><small>Mező elfogadása kötelező!</small></div>
+						`);
+					}
+				} else {
+					$(element).closest('.form-check').find('.validation-error').remove();
+				}
+			})
+		}
+
+		
 
 		if(!gdprCheck) {
 			e.preventDefault();
+			$(e.target).prop('disabled', false);
+
 			return false;
 		}
 

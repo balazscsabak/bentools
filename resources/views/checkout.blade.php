@@ -183,21 +183,21 @@
 				<div id="cash-on-delivery-placeholder" style="display: none">
 					<div class="my-3">
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="">
+							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
 							<label class="form-check-label">
 								Elolvastam és elfogadom a <a href="">szerződési feltételeket</a>!
 							</label>
 						</div>
 						
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="">
+							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
 							<label class="form-check-label">
 								Elolvastam és elfogadom az <a href="">adatvédelmi szabályzatot</a>!
 							</label>
 						</div>
 
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="">
+							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
 							<label class="form-check-label">
 								Elfogadom, hogy a rendeles leadása fizetési kötelezettséggel jár!
 							</label>

@@ -880,9 +880,11 @@ cardButtons.forEach(function (cardButton) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              $(e.target).prop('disabled', true);
               /**
                * TODO validation, prevent double click
                */
+
               paymentMethodRadio = $("#payment-menthod input[type='radio']:checked").val();
               confirmCartSumm = _.toNumber($('#confirm_cart_summ').val());
               userEmail = $('#email').val();
@@ -985,47 +987,66 @@ cardButtons.forEach(function (cardButton) {
               }
 
               if (fomrValidationCheck) {
-                _context.next = 25;
+                _context.next = 27;
                 break;
               }
 
               e.preventDefault();
+              $(e.target).prop('disabled', false);
               return _context.abrupt("return", false);
 
-            case 25:
-              gdprCheck = true;
-              $('.gdpr-purchase-check').each(function (i, element) {
-                var isChecked = $(element).is(":checked");
+            case 27:
+              gdprCheck = true; // TODO rename id
 
-                if (!isChecked) {
-                  gdprCheck = false;
+              if (paymentMethodRadio === '2') {
+                $('#bank-transfver-placeholder .gdpr-purchase-check').each(function (i, element) {
+                  var isChecked = $(element).is(":checked");
 
-                  if ($(element).closest('.form-check').find('.validation-error').length < 1) {
-                    $(element).closest('.form-check').find('.form-check-label').after("\n\t\t\t\t\t\t<div class=\"text-danger validation-error\"><small>Mez\u0151 elfogad\xE1sa k\xF6telez\u0151!</small></div>\n\t\t\t\t\t");
+                  if (!isChecked) {
+                    gdprCheck = false;
+
+                    if ($(element).closest('.form-check').find('.validation-error').length < 1) {
+                      $(element).closest('.form-check').find('.form-check-label').after("\n\t\t\t\t\t\t\t<div class=\"text-danger validation-error\"><small>Mez\u0151 elfogad\xE1sa k\xF6telez\u0151!</small></div>\n\t\t\t\t\t\t");
+                    }
+                  } else {
+                    $(element).closest('.form-check').find('.validation-error').remove();
                   }
-                } else {
-                  $(element).closest('.form-check').find('.validation-error').remove();
-                }
-              });
+                });
+              } else if (paymentMethodRadio === '1') {
+                $('#cash-on-delivery-placeholder .gdpr-purchase-check').each(function (i, element) {
+                  var isChecked = $(element).is(":checked");
+
+                  if (!isChecked) {
+                    gdprCheck = false;
+
+                    if ($(element).closest('.form-check').find('.validation-error').length < 1) {
+                      $(element).closest('.form-check').find('.form-check-label').after("\n\t\t\t\t\t\t\t<div class=\"text-danger validation-error\"><small>Mez\u0151 elfogad\xE1sa k\xF6telez\u0151!</small></div>\n\t\t\t\t\t\t");
+                    }
+                  } else {
+                    $(element).closest('.form-check').find('.validation-error').remove();
+                  }
+                });
+              }
 
               if (gdprCheck) {
-                _context.next = 30;
+                _context.next = 33;
                 break;
               }
 
               e.preventDefault();
+              $(e.target).prop('disabled', false);
               return _context.abrupt("return", false);
 
-            case 30:
+            case 33:
               if (!(paymentMethodRadio === '3')) {
-                _context.next = 44;
+                _context.next = 47;
                 break;
               }
 
               cardHolderName = $('#card-holder-name').val();
 
               if (!_.isEmpty(cardHolderName)) {
-                _context.next = 36;
+                _context.next = 39;
                 break;
               }
 
@@ -1033,8 +1054,8 @@ cardButtons.forEach(function (cardButton) {
               e.preventDefault();
               return _context.abrupt("return", false);
 
-            case 36:
-              _context.next = 38;
+            case 39:
+              _context.next = 41;
               return stripe.createPaymentMethod('card', cardElement, {
                 billing_details: {
                   name: cardHolderName,
@@ -1050,7 +1071,7 @@ cardButtons.forEach(function (cardButton) {
                 }
               });
 
-            case 38:
+            case 41:
               _yield$stripe$createP = _context.sent;
               paymentMethod = _yield$stripe$createP.paymentMethod;
               error = _yield$stripe$createP.error;
@@ -1075,10 +1096,10 @@ cardButtons.forEach(function (cardButton) {
                 });
               }
 
-              _context.next = 45;
+              _context.next = 48;
               break;
 
-            case 44:
+            case 47:
               if (paymentMethodRadio === '2' || paymentMethodRadio === '1') {
                 // transfer & delivery
                 $.post('/purchase', {
@@ -1100,7 +1121,7 @@ cardButtons.forEach(function (cardButton) {
                 });
               }
 
-            case 45:
+            case 48:
             case "end":
               return _context.stop();
           }
