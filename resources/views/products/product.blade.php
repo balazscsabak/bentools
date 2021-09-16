@@ -27,7 +27,7 @@
 
                         <div class="content">
                             
-                            <div class="variant my-5 table-responsive">
+                            <div class="variant my-5">
 
                                 <table class="table my-4">
                                     <thead>
