@@ -3187,145 +3187,214 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var siiimple_toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! siiimple-toast */ "./node_modules/siiimple-toast/dist/main.js");
 /* harmony import */ var siiimple_toast__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(siiimple_toast__WEBPACK_IMPORTED_MODULE_0__);
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+ // const Cart = function() {
+//     this.items = [];
+//     this.itemsList = [];
+//     this.init = () => {
+//         let items = JSON.parse(localStorage.getItem('cart'));
+//         if(!_.isEmpty(items)) {
+//             let initItems = items.map(item => {
+//                 return item.name;
+//             })
+//             this.items = initItems;
+//             this.itemsList = items;
+//             this.renderCart();
+//         }
+//     }
+//     this.addToCart = (name, quantity, id) => {
+//         if(!this.items.includes(name)) {
+//             this.items.push(name);
+//             this.itemsList = [...this.itemsList, { name, quantity, id }]
+//         } else {
+//             this.itemsList = this.itemsList.map((item) => {
+//                 if(item.name === name) {
+//                     return {
+//                         name,
+//                         quantity: item.quantity + quantity,
+//                         id
+//                     }
+//                 } else {
+//                     return item;
+//                 }
+//             })
+//         }
+//         this.updateStorageData();
+//         this.renderCart();
+//         toast.success('Termék hozzáadva az ajánlatkéréshez!', {
+//             container: 'body',
+//             class: 'siiimpleToast',
+//             position: 'top|center',
+//             margin: 70,
+//             delay: 0,
+//             duration: 2000,
+//         });
+//     };
+//     this.removeFromCart = (name) => {
+//         let checkIfContains = _.includes(this.items, name);
+//         if(checkIfContains) {
+//             let newItems = this.items.filter(item => {
+//                 return item != name;
+//             })
+//             let newItemsList = this.itemsList.filter(item => {
+//                 return item.name != name;
+//             })
+//             this.items = newItems;
+//             this.itemsList = newItemsList;
+//             this.updateStorageData();
+//             this.renderCart();
+//         }
+//     }
+//     this.addEventListeners = () => {
+//         $(document).on('click', '.add-to-cart-btn', (e) => {
+//             let quantity = $(e.target).closest('.cart-action-add').find('input').val();
+//             let name = $(e.target).data('name');
+//             let id = $(e.target).data('id');
+//             this.addToCart(name, parseInt(quantity), id);
+//         })
+//         $(document).on('click', '.remove-from-cart-btn', (e) => {
+//             this.removeFromCart($(e.currentTarget).data('prod-name'));
+//         })
+//     };
+//     this.updateStorageData = () => {
+//         localStorage.setItem('cart', JSON.stringify(this.itemsList));
+//     }
+//     this.renderCart = () => {
+//         if($('#cart').length) {
+//             $('#cart .items').empty();
+//             for (const item of this.itemsList) {
+//                 $('#cart .items').append(`
+//                     <div class="item row">
+//                         <div class="col-6 name" data-id="${item.id}">${item.name}</div>
+//                         <div class="col-5 quantity">${item.quantity}</div>
+//                         <div class="col-1 remove remove-from-cart-btn" data-prod-name="${item.name}"><i class="fas fa-times"></i></div>
+//                     </div>
+//                 `)
+//             }
+//         }
+//     }
+// }
+// $(() => {
+//     const cart = new Cart();
+//     cart.init();
+//     cart.addEventListeners();
+// })
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
-    filter = _require.filter;
-
-
-
-var Cart = function Cart() {
+var ShoppingCart = function ShoppingCart() {
   var _this = this;
 
-  this.items = [];
-  this.itemsList = [];
+  this.name = "asdsa";
 
   this.init = function () {
-    var items = JSON.parse(localStorage.getItem('cart'));
-
-    if (!_.isEmpty(items)) {
-      var initItems = items.map(function (item) {
-        return item.name;
-      });
-      _this.items = initItems;
-      _this.itemsList = items;
-
-      _this.renderCart();
-    }
-  };
-
-  this.addToCart = function (name, quantity, id) {
-    if (!_this.items.includes(name)) {
-      _this.items.push(name);
-
-      _this.itemsList = [].concat(_toConsumableArray(_this.itemsList), [{
-        name: name,
-        quantity: quantity,
-        id: id
-      }]);
-    } else {
-      _this.itemsList = _this.itemsList.map(function (item) {
-        if (item.name === name) {
-          return {
-            name: name,
-            quantity: item.quantity + quantity,
-            id: id
-          };
-        } else {
-          return item;
-        }
-      });
-    }
-
-    _this.updateStorageData();
+    _this.setEventListeners();
 
     _this.renderCart();
+  };
 
-    siiimple_toast__WEBPACK_IMPORTED_MODULE_0___default().success('Termék hozzáadva az ajánlatkéréshez!', {
-      container: 'body',
-      "class": 'siiimpleToast',
-      position: 'top|center',
-      margin: 70,
-      delay: 0,
-      duration: 2000
+  this.setEventListeners = function () {
+    $(document).on("click", ".cart-toggler-menu, .cart-toggler", function (e) {
+      $("#shopping-cart").toggleClass("show");
     });
-  };
-
-  this.removeFromCart = function (name) {
-    var checkIfContains = _.includes(_this.items, name);
-
-    if (checkIfContains) {
-      var newItems = _this.items.filter(function (item) {
-        return item != name;
-      });
-
-      var newItemsList = _this.itemsList.filter(function (item) {
-        return item.name != name;
-      });
-
-      _this.items = newItems;
-      _this.itemsList = newItemsList;
-
-      _this.updateStorageData();
-
-      _this.renderCart();
-    }
-  };
-
-  this.addEventListeners = function () {
-    $(document).on('click', '.add-to-cart-btn', function (e) {
+    $(document).on("click", ".add-to-cart-btn", function (e) {
+      e.preventDefault();
       var quantity = $(e.target).closest('.cart-action-add').find('input').val();
-      var name = $(e.target).data('name');
       var id = $(e.target).data('id');
+      $.post("/cart/add", {
+        quantity: quantity,
+        id: id
+      }, function (res) {
+        _this.renderCart();
 
-      _this.addToCart(name, parseInt(quantity), id);
+        siiimple_toast__WEBPACK_IMPORTED_MODULE_0___default().success('Termék hozzáadva az kosárhoz!', {
+          container: 'body',
+          "class": 'siiimpleToast',
+          position: 'top|center',
+          margin: 70,
+          delay: 0,
+          duration: 2000
+        });
+      }).fail(function (err) {
+        console.log(err);
+      });
     });
-    $(document).on('click', '.remove-from-cart-btn', function (e) {
-      _this.removeFromCart($(e.currentTarget).data('prod-name'));
-    });
-  };
+    $(document).on("click", ".delete-item-from-cart", function (e) {
+      e.preventDefault();
+      var id = $(e.target).data('id');
+      $.post("/cart/remove", {
+        id: id
+      }, function (res) {
+        if (res.status) {
+          _this.renderCart();
+        }
 
-  this.updateStorageData = function () {
-    localStorage.setItem('cart', JSON.stringify(_this.itemsList));
+        console.log(res);
+      }).fail(function (err) {
+        console.log(err);
+      });
+    });
+    $(document).on("click", "#test3", function (e) {
+      e.preventDefault();
+      $.post("/cart/decrement", {
+        func: "getNameAndTime"
+      }, function (res) {
+        console.log(res);
+      }).fail(function (err) {
+        console.log(err);
+      });
+    });
+    $(document).on('change', '#billing-shipping-check', function (e) {
+      if (this.checked) {
+        $('#billing-address').fadeOut('fast');
+      } else {
+        $('#billing-address').fadeIn('fast');
+      }
+    });
+    $(document).on('change', '.payment-method-radio', function (e) {
+      var selectedValue = this.value;
+
+      if (selectedValue === "3") {
+        $('#card-info-placeholder').fadeIn('fast');
+        $('#bank-transfver-placeholder').hide();
+        $('#cash-on-delivery-placeholder').hide();
+      } else if (selectedValue === "2") {
+        $('#bank-transfver-placeholder').fadeIn('fast');
+        $('#card-info-placeholder').hide();
+        $('#cash-on-delivery-placeholder').hide();
+      } else if (selectedValue === "1") {
+        $('#cash-on-delivery-placeholder').fadeIn('fast');
+        $('#card-info-placeholder').hide();
+        $('#bank-transfver-placeholder').hide();
+      }
+    });
   };
 
   this.renderCart = function () {
-    if ($('#cart').length) {
-      $('#cart .items').empty();
+    $.get("/cart/session", function (res) {
+      if (res.status) {
+        $('.cart-items').find('table tbody').empty();
 
-      var _iterator = _createForOfIteratorHelper(_this.itemsList),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var item = _step.value;
-          $('#cart .items').append("\n                    <div class=\"item row\">\n                        <div class=\"col-6 name\" data-id=\"".concat(item.id, "\">").concat(item.name, "</div>\n                        <div class=\"col-5 quantity\">").concat(item.quantity, "</div>\n                        <div class=\"col-1 remove remove-from-cart-btn\" data-prod-name=\"").concat(item.name, "\"><i class=\"fas fa-times\"></i></div>\n                    </div>\n                "));
+        if (Object.keys(res.cart.items).length > 0) {
+          Object.keys(res.cart.items).forEach(function (key) {
+            var item = res.cart.items[key];
+            console.log(item);
+            $('');
+            $('.cart-items').find('table tbody').append("\n                            <tr>\n                                <th class=\"cart-td-image\" scope=\"row\">\n                                    <div class=\"image\" style=\"background-image: url(".concat(item.image_href, ")\"></div>\n                                </th>\n                                <td>\n                                    <div class=\"item-info\">\n                                        <div class=\"name\">\n                                            ").concat(item.name, "\n                                        </div>\n                                        <div class=\"quantity\">\n                                            <span class=\"multiply\">x</span>").concat(item.quantity, " <span data-id=\"").concat(item.variant_id, "\" class=\"delete delete-item-from-cart\">T\xF6rl\xE9s</span>\n                                        </div>\n                                    </div>\n                                </td>\n                                <td class=\"text-end\">\n                                    <div class=\"price fw-bold\">\n                                        ").concat(item.quantity * item.price, " .-\n                                    </div>\n                                </td>\n                            </tr>\n                        "));
+          });
+        } else {
+          /**
+           * TODO
+           * empty kosar
+           */
         }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
       }
-    }
+    }).fail(function (err) {
+      console.log(err);
+    });
   };
 };
 
 $(function () {
-  var cart = new Cart();
-  cart.init();
-  cart.addEventListeners();
+  var shoppingCart = new ShoppingCart();
+  shoppingCart.init();
 });
 
 /***/ }),
@@ -3622,7 +3691,8 @@ function filterUpdateProducts() {
         if (res.products.length > 0) {
           $(".products-wrapper").empty();
           res.products.forEach(function (prod) {
-            var prodHtml = "\n                            <div class=\"col-10 mb-4 mb-md-0 col-md-3 related-item\">\n                                <a href=\"/product/".concat(prod.slug, "\">\n                                    <div class=\"image-wrapper\">\n                                        <div class=\"square image\" style=\"background-image: url('/storage/").concat(prod.featured_image.path, "')\"></div>\n                                        <div class=\"blue-bg\"></div>\n                                    </div>\n                            \n                                    <div class=\"name\">\n                                        <h1>\n                                            ").concat(prod.name, "\n                                        </h1>\n                                    </div>\n                                    <div class=\"read-more\">\n                                        <span>R\xE9szletek <i class=\"fas fa-angle-double-right\"></i></span>\n                                    </div>\n                                </a>\n                            </div>\n                        ");
+            console.log(prod);
+            var prodHtml = "\n                            <div class=\"col-10 mb-4 mb-md-0 col-md-3 related-item\">\n                                <a href=\"/product/".concat(prod.slug, "\">\n                                    <div class=\"image-wrapper\">\n                                        <div class=\"square image\" style=\"background-image: url('/storage/").concat(prod.featured_image ? prod.featured_image.path : 'images/default-product.png', "')\"></div>\n                                        <div class=\"blue-bg\"></div>\n                                    </div>\n                            \n                                    <div class=\"name\">\n                                        <h1>\n                                            ").concat(prod.name, "\n                                        </h1>\n                                    </div>\n                                    <div class=\"read-more\">\n                                        <span>R\xE9szletek <i class=\"fas fa-angle-double-right\"></i></span>\n                                    </div>\n                                </a>\n                            </div>\n                        ");
             $(".products-wrapper").append(prodHtml);
           });
         } else {
@@ -3677,20 +3747,19 @@ $(function () {
 $(function () {
   $(document).on('submit', '#offer-form', function (e) {
     e.preventDefault();
-    var items = $('#cart .items .item');
+    var items = $('#cart .cart-items tbody tr');
 
     if (items.length) {
-      var itemsHtml = [];
       items.each(function (i, item) {
         var itemName = $(item).find('.name').text();
-        var itemId = $(item).find('.name').data('id');
-        var itemQuantity = $(item).find('.quantity').text();
+        var itemId = $(item).find('.delete-item-from-cart').data('id');
+        var itemQuantity = $(item).find('.quantity').text().trim();
+        itemQuantity = itemQuantity.substring(1, itemQuantity.length);
+        itemQuantity = itemQuantity.substring(0, itemQuantity.length - 7);
         var hiddenHtml = "\n\t\t\t\t\t<input type=\"hidden\" name=\"items[".concat(i, "][name]\" value=\"").concat(itemName, "\"/>\n\t\t\t\t\t<input type=\"hidden\" name=\"items[").concat(i, "][quantity]\" value=\"").concat(itemQuantity, "\"/>\n\t\t\t\t\t<input type=\"hidden\" name=\"items[").concat(i, "][id]\" value=\"").concat(itemId, "\"/>\n\t\t\t\t");
-        console.log(hiddenHtml);
-        items.push(hiddenHtml);
         $(e.target).append(hiddenHtml);
-        e.target.submit();
       });
+      e.target.submit();
     }
   });
 });

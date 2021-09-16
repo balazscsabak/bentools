@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attributes;
 use App\Models\Categories;
 use App\Models\Products;
-use App\Models\ProductVariants;
-use Illuminate\Http\Request;
+use App\Models\Variants;
 use Cocur\Slugify\Slugify;
 use Exception;
+use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
@@ -19,7 +18,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
+        $products = Products::where('deleted', false)->get();
 
         return view('admin.products.products')
             ->with('products', $products);
@@ -55,32 +54,42 @@ class ProductsController extends Controller
 
         try {
 
-            $newProduct = new Products();
+            $variants = json_decode($request->input('variants'), true);
+
+            foreach ($variants as $variant) {
+                $checkVariantCode = Variants::where('sku', $variant['code'])->get();
+
+                if (!$checkVariantCode->isEmpty()) {
+                    return back()->withInput()
+                        ->with('error', 'A termékkód már foglalt!');
+                }
+            }
+
             $slugify = new Slugify();
+            $newProduct = new Products();
 
             $newProduct->name = $request->input('name');
+            $newProduct->category_id = $request->input('category');
+            $newProduct->category_image_id = $request->input('category_image');
+            $newProduct->slug = $slugify->slugify($request->input('name'));
             $newProduct->description = $request->input('description');
             $newProduct->featured_image = $request->input('featured_image');
-            $newProduct->category_image_id = $request->input('category_image');
-            $newProduct->images = $request->input('images');
-            $newProduct->category_id = $request->input('category');
-            $newProduct->slug = $slugify->slugify($request->input('name'));
-
+            $newProduct->has_variant = true;
             $newProduct->save();
 
-            $attributes = $request->input('attr');
+            foreach ($variants as $variant) {
 
-            if ($attributes) {
-                foreach ($attributes as $attribute) {
-                    $newAttribute = new Attributes();
+                $newVariant = new Variants();
 
-                    $newAttribute->key = $attribute['key'];
-                    $newAttribute->value = $attribute['value'];
-                    $newAttribute->product_id = $newProduct->id;
+                $newVariant->product_id = $newProduct->id;
+                $newVariant->sku = $variant['code'];
+                $newVariant->price = $variant['price'];
+                $newVariant->attr = json_encode($variant['attr']);
+                $newVariant->attr_values = json_encode($variant['attr_values']);
+                $newVariant->image_href = isset($variant['image_href']) && $variant['image_href'] !== '' ? $variant['image_href'] : '/storage/images/default-product.png';
 
-                    $newAttribute->save();
-                }
-            };
+                $newVariant->save();
+            }
 
             return redirect()->route('products.index')
                 ->with('success', 'Termék sikeresen létrehozva!');
@@ -98,21 +107,51 @@ class ProductsController extends Controller
      */
     public function show(Request $request, $id)
     {
+        if (!is_numeric($id)) {
+            return redirect()->route('products.index');
+        }
+
         $product = Products::find($id);
+
+        if (!$product || !!$product->deleted) {
+            return redirect()->route('products.index');
+        }
+
         $categories = Categories::all();
 
-        if($product->has_variant) {
-            $variants = ProductVariants::where('product_id', $product->id)->get();
+        $productVariants = Variants::where([
+            ['product_id', $product->id],
+            ['deleted', false],
+        ])->get();
 
-            return view('admin.products.showVariant')
-                ->with('product', $product)
-                ->with('variants', json_decode($variants))
-                ->with('categories', $categories); 
-        } else {
-            return view('admin.products.show')
-                ->with('product', $product)
-                ->with('categories', $categories); 
+        $variants = [];
+        $variants['attributes'] = [];
+        $variants['items'] = [];
+
+        if (!$productVariants->isEmpty()) {
+            $attributes = json_decode($productVariants[0]->attr);
+
+            foreach ($attributes as $attr) {
+                $variants['attributes'][] = $attr;
+            }
         }
+
+        foreach ($productVariants as $variant) {
+            $data = [
+                'id' => $variant->id,
+                'image_href' => $variant->image_href,
+                'attr_values' => json_decode($variant->attr_values),
+                'price' => $variant->price,
+                'sku' => $variant->sku,
+            ];
+
+            $variants['items'][] = $data;
+        }
+
+        return view('admin.products.show')
+            ->with('product', $product)
+            ->with('variants', $variants)
+            ->with('categories', $categories);
 
     }
 
@@ -135,6 +174,9 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // TODO delete me
+        // dd($request->input(), json_decode($request->input('variants'), true));
+
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
@@ -145,70 +187,82 @@ class ProductsController extends Controller
         try {
 
             $product = Products::find($id);
+
+            if (!$product) {
+                abort(404);
+            }
+
             $slugify = new Slugify();
 
             $product->name = $request->input('name');
             $product->description = $request->input('description');
             $product->featured_image = $request->input('featured_image');
             $product->category_image_id = $request->input('category_image');
-            $product->images = $request->input('images');
             $product->category_id = $request->input('category');
             $product->slug = $slugify->slugify($request->input('name'));
 
             $product->save();
 
-            $oldAttributes = Attributes::where('product_id', $id)->get();
-            $attributes = $request->input('attr');
+            $oldVariantIds = [];
 
-            $oldAttributesIds = [];
-
-            foreach ($oldAttributes as $oAttr) {
-                $oldAttributesIds[] = $oAttr['id'];
+            foreach ($product->variants as $variant) {
+                $oldVariantIds[] = $variant['id'];
             }
 
-            if ($attributes) {
-                foreach ($oldAttributesIds as $index => $oId) {
-                    $contains = false;
+            $variants = json_decode($request->input('variants'), true);
 
-                    foreach ($attributes as $attr) {
-                        if (isset($attr['id']) && $attr['id'] == $oId) {
-                            $contains = true;
-                        }
+            foreach ($variants as $variant) {
+                if (isset($variant['variant_id']) && $variant['variant_id'] !== '') {
+                    $oldVariant = Variants::find($variant['variant_id']);
+
+                    /**
+                     * TODO
+                     *  - validation data
+                     *  - unique sku
+                     */
+                    $oldVariant->price = $variant['price'];
+                    $oldVariant->image_href = isset($variant['image_href']) && $variant['image_href'] !== '' ? $variant['image_href'] : '/storage/images/default-product.png';
+                    $oldVariant->sku = $variant['code'];
+                    $oldVariant->attr = json_encode($variant['attr']);
+                    $oldVariant->attr_values = json_encode($variant['attr_values']);
+
+                    $oldVariant->save();
+
+                    if (($key = array_search($oldVariant->id, $oldVariantIds)) !== false) {
+                        unset($oldVariantIds[$key]);
                     }
 
-                    if (!$contains) {
-                        Attributes::destroy($oId);
-                    }
-                }
-                foreach ($attributes as $attribute) {
+                } else {
+                    $newVariant = new Variants();
 
-                    if (isset($attribute['id'])) {
-                        $updateAttribute = Attributes::find($attribute['id']);
+                    /**
+                     * TODO
+                     *  - validation data
+                     *  - unique sku
+                     */
+                    $newVariant->product_id = $product->id;
+                    $newVariant->price = $variant['price'];
+                    $newVariant->image_href = isset($variant['image_href']) && $variant['image_href'] !== '' ? $variant['image_href'] : '/storage/images/default-product.png';
+                    $newVariant->sku = $variant['code'];
+                    $newVariant->attr = json_encode($variant['attr']);
+                    $newVariant->attr_values = json_encode($variant['attr_values']);
 
-                        $updateAttribute->key = $attribute['key'];
-                        $updateAttribute->value = $attribute['value'];
+                    $newVariant->save();
+                };
+            }
 
-                        $updateAttribute->save();
-                        continue;
-                    }
+            foreach ($oldVariantIds as $oldVariant) {
+                $deletedVariant = Variants::find($oldVariant);
 
-                    $newAttribute = new Attributes();
+                $deletedVariant->deleted = true;
+                $deletedVariant->save();
+            }
 
-                    $newAttribute->key = $attribute['key'];
-                    $newAttribute->value = $attribute['value'];
-                    $newAttribute->product_id = $product->id;
+            return back()->with('success', 'Termék sikeresen módosítva!');
 
-                    $newAttribute->save();
-                }
-
-                return back()->with('success', 'Termék sikeresen módosítva!');
-            } else {
-
-                Attributes::destroy($oldAttributesIds);
-                return redirect()->route('products.index')
-                    ->with('success', 'Termék sikeresen módosítva!');
-            };
         } catch (Exception $e) {
+            // TODO comment me out
+            dd($e->getMessage());
             return back()->with('error', 'Hiba a termék módosítása során!');
         }
     }
@@ -223,13 +277,16 @@ class ProductsController extends Controller
     {
         try {
 
-            $attributes = Attributes::where('product_id', $id)->get();
+            $product = Products::find($id);
+            $variants = Variants::where('product_id', $id)->get();
 
-            foreach ($attributes as $attribute) {
-                $attribute->delete();
+            foreach ($variants as $variant) {
+                $variant->deleted = true;
+                $variant->save();
             }
 
-            Products::destroy($id);
+            $product->deleted = true;
+            $product->save();
 
             return redirect()->route('products.index')->with('success', 'Termék sikeresen törölve!');
         } catch (Exception $e) {
@@ -241,25 +298,37 @@ class ProductsController extends Controller
     {
         $product = Products::where('slug', $slug)->first();
 
-        if(!$product) {
+        if (!$product) {
             abort(404);
-        } 
-
-        if($product->has_variant) {
-            $variants = ProductVariants::where('product_id', $product->id)->get();
-            
-            return view('products.productVariant')
-                ->with('variants', $variants)    
-                ->with('product', $product);
-        } else {
-            return view('products.product')->with('product', $product);
         }
+
+        $variants = Variants::where([
+            ['product_id', $product->id],
+            ['deleted', false],
+        ])->get();
+
+        if (count($variants) < 1) {
+            abort(404);
+        }
+
+        $attributes = [];
+
+        foreach (json_decode($variants[0]->attr) as $attr) {
+            $attributes[] = $attr;
+        }
+
+        return view('products.product')
+            ->with('variants', $variants)
+            ->with('attributes', $attributes)
+            ->with('product', $product);
+
     }
 
     public function products()
     {
-        $products = Products::all();
+        $products = Products::where('deleted', false)->get();
         $categories = Categories::orderBy('name', 'asc')->get();
+
         $mainCats = [];
         $subCats = [];
         $mainCatsWithChild = [];
@@ -293,12 +362,18 @@ class ProductsController extends Controller
     {
         $filterName = $request->input('filterName');
         $filterCategory = $request->input('filterCategory');
-        
-        if((int)$filterCategory > 1) {
-            $products = Products::with('featuredImage')->with('variants')->where('name', 'LIKE', '%'.$filterName.'%')
-                ->where('category_id', $filterCategory)->get();
+
+        if ((int) $filterCategory > 1) {
+            $products = Products::where([        
+                ['name', 'LIKE', '%' . $filterName . '%'],
+                ['deleted', false],
+                ['category_id', $filterCategory],
+            ])->get();
         } else {
-            $products = Products::with('featuredImage')->with('variants')->where('name', 'LIKE', '%'.$filterName.'%')->get();
+            $products = Products::with('featuredImage')->where([
+                ['name', 'LIKE', '%' . $filterName . '%'],
+                ['deleted', false]
+            ])->get();
         }
 
         return response()->json([
@@ -307,120 +382,18 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function createVariant()
+    public function productsByCategory(Request $request, $slug) 
     {
-        $categories = Categories::all();
+        $category = Categories::where('slug', $slug)->first();
 
-        return view('admin.products.createVariant')
-            ->with('categories', $categories);
-    }
-
-    public function storeVariant(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'featured_image' => ['integer'],
-            'category' => ['integer'],
-        ]);
-
-        try {
-
-            $newProduct = new Products();
-            $slugify = new Slugify();
-
-            $newProduct->name = $request->input('name');
-            $newProduct->featured_image = $request->input('featured_image');
-            $newProduct->category_image_id = $request->input('category_image');
-            $newProduct->description = '';
-            $newProduct->category_id = $request->input('category');
-            $newProduct->slug = $slugify->slugify($request->input('name'));
-            $newProduct->has_variant = true;
-
-            $newProduct->save();
-
-            $variants = json_decode($request->input('variants'));
-
-            foreach ($variants as $variant) {
-                $newVariant = new ProductVariants();
-                
-                $newVariant->product_id = $newProduct->id;
-                $newVariant->variants = json_encode($variant);
-                
-                $newVariant->save();
-            }
-
-            return redirect()->route('products.index')
-                ->with('success', 'Termék sikeresen létrehozva!');
-        } catch (Exception $e) {
-            return redirect()->route('products.index')
-                ->with('error', 'Hiba a termék létrehozása során!');
+        if(!$category) {
+            abort(404);
         }
-    }
 
-    public function updateVariant(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'featured_image' => ['integer'],
-            'category' => ['integer'],
-        ]);
+        $products = Products::where([['category_id', $category->id], ['deleted', false]])->get();
 
-        try {
-
-            $product = Products::find($id);
-            $variantsIds = ProductVariants::where('product_id', $product->id)->pluck('id')->toArray();
-
-            ProductVariants::destroy($variantsIds);
-            $product->delete(); 
-
-            $newProduct = new Products();
-            $slugify = new Slugify();
-
-            $newProduct->name = $request->input('name');
-            $newProduct->featured_image = $request->input('featured_image');
-            $newProduct->category_image_id = $request->input('category_image');
-            $newProduct->description = '';
-            $newProduct->category_id = $request->input('category');
-            $newProduct->slug = $slugify->slugify($request->input('name'));
-            $newProduct->has_variant = true;
-
-            $newProduct->save();
-
-            $variants = json_decode($request->input('variants'));
-
-            foreach ($variants as $variant) {
-                $newVariant = new ProductVariants();
-                
-                $newVariant->product_id = $newProduct->id;
-                $newVariant->variants = json_encode($variant);
-                
-                $newVariant->save();
-            }
-
-            return redirect()->route('products.index')
-                ->with('success', 'Termék sikeresen módosítva!');
-        } catch (Exception $e) {
-            return redirect()->route('products.index')
-                ->with('error', 'Hiba a termék módosítása során!');
-        }
-    }
-
-    public function destroyVariant(Request $request, $id)
-    {
-        try {
-
-            $product = Products::find($id);
-            $variantsIds = ProductVariants::where('product_id', $product->id)->pluck('id')->toArray();
-            
-            ProductVariants::destroy($variantsIds);
-            $product->delete(); 
-
-            return redirect()->route('products.index')
-                ->with('success', 'Termék sikeresen törölve!');
-
-        } catch (Exception $e) {
-            return redirect()->route('products.index')
-                ->with('error', 'Hiba a termék törölése során!');
-        }
+        return view('products.products-by-bategory')
+            ->with('products', $products)
+            ->with('slug', $category->name);
     }
 }

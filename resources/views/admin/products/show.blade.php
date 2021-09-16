@@ -34,7 +34,7 @@
             </form>
         </div>
         
-        <form action="{{ route('products.update', $product->id) }}" method="post" id="p-form">
+        <form action="{{ route('products.update', $product->id) }}" method="post" id="p-variant-form">
             
             @csrf
             @method('PUT')
@@ -58,20 +58,14 @@
                 </div>
             </div>
 
-            <div class="mb-3">
-                <label style="font-size: 1.2rem;" for="exampleFormControlInput1" class="form-label">Termék leírása</label>
-                <textarea style="min-height: 100px;" type="text" class="form-control validate-not-null" name="description">{{ $product->description }}</textarea>
-            </div>
-
             <div>
-                <input type="hidden" name="featured_image" id="featured_image" value={{ $product->featured_image }}>
-                <input type="hidden" name="images" id="product_images" value={{ $product->images }}>
                 <input type="hidden" name="category_image" id="category_image" value={{ $product->category_image_id }}>
+                <input type="hidden" name="featured_image" id="featured_image" value={{ $product->featured_image }}>
 
                 <div class="row mb-4">
 
                     <div class="col-3">    
-                        <label style="font-size: 1.2rem;">Termék képe</label>
+                        <label style="font-size: 1.2rem;" class="form-label">Termék képe</label>
                         
                         <div class="border with-shadow" id="product-main-image-picker" data-bs-toggle="modal" data-bs-target="#product-main-img-modal" >
                             @if (isset($product->featuredImage))
@@ -103,7 +97,7 @@
                     </div>
 
                     <div class="col-3">    
-                        <label style="font-size: 1.2rem;">Termék kategória képe</label>
+                        <label style="font-size: 1.2rem;" class="form-label">Termék kategória képe</label>
                         
                         <div class="border with-shadow" id="product-category-image-picker" data-bs-toggle="modal" data-bs-target="#product-category-img-modal" style="min-height: 50px">
                             <img src='/storage/{{ isset($product->categoryImage) ? $product->categoryImage->path : "" }} ' alt="{{ isset($product->categoryImage) ? $product->categoryImage->name : ''}}">                   
@@ -128,79 +122,126 @@
                         </div>
                     </div>
 
-                    <div class="col-12 mt-3">    
-                        <label style="font-size: 1.2rem;">További képek</label>
-
-                        <div id="product-images-picker" class="row with-shadow" data-bs-toggle="modal" data-bs-target="#product-images-modal" >
-                            @if ($product->images)
-                                @foreach ($product->images_models as $image)
-                                    <div class="col-3"><img src="/storage/{{ $image->path }}"></div>
-                                @endforeach
-                            @else
-                                <div class="no-image">
-                                    Valassz képet!
-                                </div>                    
-                            @endif
-                        </div>
-
-                        <div class="modal fade" id="product-images-modal" tabindex="-1" aria-labelledby="product-images-picker" aria-hidden="true">
-                            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Válassz képet/képeket</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body row">
-                                        loading ..
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="set-product-images">Mentés</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
-            <div>
-                <label style="font-size: 1.2rem;">Attribútumok</label>
-                <div class="row">
-                    <div class="col-5">Attribútum neve</div>
-                    <div class="col-5">Attribútum értéke</div>
-                    <div class="col-2">Törlés</div>
-                </div>
-                <div id="product-attributes-wrapper">
+            <div class="mb-3">
+                <label style="font-size: 1.2rem;" for="exampleFormControlInput1" class="form-label">Termék leírása</label>
+                <textarea style="min-height: 100px;" type="text" class="form-control validate-not-null product-variant-content" name="description">{{ $product->description }}</textarea>
+            </div>
 
-                    @foreach ($product->attributes as $attribute)
+            <div class="product-variants-wrapper">
+				<h5 class="mb-2">Termék variánsai</h5>
 
-                        <div class="attribute">
-                            <input type="hidden" name="attr[{{ $loop->index }}][id]" value="{{ $attribute->id }}" class="attr-id">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="input-group input-group-sm mb-3">
-                                        <input type="text" name="attr[{{ $loop->index }}][key]" value="{{ $attribute->key }}" class="form-control attr-key validate-not-null">
-                                    </div>
-                                </div>
-                                <div class="col-5">
-                                    <div class="input-group input-group-sm mb-3">
-                                        <input type="text" name="attr[{{ $loop->index }}][value]" value="{{ $attribute->value }}" class="form-control attr-value validate-not-null">
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <button class=" btn btn-danger btn-sm product-del-attribute">X</button>
-                                </div>
-                            </div>
+				<div id="product-variants" class="mb-4 row justify-content-center">
+					
+					<div class="product-variant col-12 mb-2">
+
+						<div class="variant-attributes my-4">
+							<div class="d-flex justify-content-end mb-3">
+								<i class="fas fa-plus-circle p-variant-add-col"></i>
+							</div>
+
+							<table class="table table-sm table-borderless">
+								<thead>
+									<tr>
+										<th>
+											<div class="input-group-sm">
+												<input type="text" class="form-control" value="Kép" readonly>
+											</div>
+										</th>
+										<th>
+											<div class="input-group-sm">
+												<input type="text" class="form-control" value="Ár" readonly>
+											</div>
+										</th>
+										<th>
+											<div class="input-group-sm">
+												<input type="text" class="form-control" value="Kód" readonly>
+											</div>
+										</th>
+
+                                        @foreach ($variants['attributes'] as $attr)
+
+                                            <th>
+                                                <div class="input-group-sm">
+                                                    <input type="text" class="form-control" value="{{ $attr }}" >
+                                                    <div class="p-variant-rm-col">
+                                                        <i class="fas fa-minus-circle"></i>
+                                                    </div>
+                                                </div>
+                                            </th>
+
+                                        @endforeach
+									</tr>
+								</thead>
+								<tbody>
+                                    @foreach ($variants['items'] as $variant)
+                                        <tr>
+                                            <input type="hidden" class="hidden-variant-id" value="{{ $variant['id'] }}">
+                                            <td>
+                                                <div class="input-group-sm pv-img-wrapper">
+                                                    <button class="pv-image-modal-btn" data-bs-toggle="modal" data-bs-target="#pv-image-modal">Variáns képe</button>
+                                                    <input type="hidden" class="form-control validate-not-null validate-for-button" value="{{ $variant['image_href'] }}">
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <div class="input-group-sm">
+                                                    <input value="{{ $variant['price'] }}" type="text" class="form-control validate-not-null" >
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <div class="input-group-sm">
+                                                    <input value="{{ $variant['sku'] }}" type="text" class="form-control validate-not-null" >
+                                                </div>
+                                            </td>
+
+                                            @foreach ($variant['attr_values'] as $attr)
+                                                <td>
+                                                    <div class="input-group-sm">
+                                                        <input value="{{ $attr }}" type="text" class="form-control validate-not-null" >
+                                                    </div>
+                                                </td>
+                                            @endforeach
+
+                                            <td>
+                                                <div class="p-variant-rm-row">
+                                                    <i class="fas fa-minus"></i>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+								</tbody>
+
+							</table>
+
+							<div>
+								<i class="fas fa-plus-circle p-variant-add-row"></i>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+            <div class="modal fade" id="pv-image-modal" tabindex="-1" aria-labelledby="pv-image-modalr" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Válassz képet</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        
-                    @endforeach
-
-                    
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-sm btn-secondary" id="product-add-new-attribute">új attribútum</button>
+                        <div class="modal-body row">
+                            loading ..
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="pv-save-image-btn">Mentés</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

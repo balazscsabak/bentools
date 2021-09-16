@@ -1,55 +1,90 @@
 <x-app-layout>
-    <x-auth-card>
 
-
+    <div class="container">
+        
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+        <div class="row justify-content-center my-4">
+            <div class="col-12 col-lg-7">
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block">
+                        {{ $message }}
+                    </div>
+                @endif
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+                <form method="POST" action="{{ route('register.store') }}">
+                    @csrf
+        
+                    <!-- Name -->
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+        
+                            <div>
+                                <label class="form-label">Vezetéknév</label>
+                                <input type="text" class="form-control" required name="lastname">
+                            </div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                            @error('lastname')
+                                <div class="ms-3 mt-1 mb-2 p-0 text-danger">Hiányzó adat</div>
+                            @enderror
+        
+                        </div>
+        
+                        <div class="col-12 col-md-6">
+        
+                            <div>
+                                <label class="form-label">Keresztnév</label>
+                                <input type="text" class="form-control" name="firstname" required value="">
+                            </div>
+        
+                            @error('firstname')
+                                <div class="ms-3 mt-1 mb-2 p-0 text-danger">Hiányzó adat</div>
+                            @enderror
+                        </div>
+        
+                    </div>
+        
+                    <!-- Email Address -->
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="form-label">{{ __('Email')}}</label>
+                            <input class="form-control" type="email" name="email" value="{{ old('email') }}" required />
+                        </div>
+
+                        @error('email')
+                            <div class="mt-1 mb-2 ms-3 p-0 text-danger">Ezzel az email címmel már regisztráltak nálunk!</div>
+                        @enderror
+
+                        <div class="col-12">
+                            <label class="form-label">{{ __('Jelszó')}}</label>
+                            <input class="form-control" type="password" name="password" required />
+                        </div>
+                        @error('password')
+                            <div class="ms-3 mt-1 mb-2 p-0 text-danger">A két jelszó nem egyezik</div>
+                        @enderror
+                        <div class="col-12">
+                            <label class="form-label">{{ __('Jelszó megerősítése')}}</label>
+                            <input class="form-control" type="password" name="password_confirmation" required />
+                        </div>
+                    </div>
+        
+                    <div class="d-flex justify-content-center my-4">
+                        <button type="submit" class="btn btn-primary">{{ __('Regisztráció') }}</button>
+                    </div>
+        
+                   
+        
+                    <div class="flex items-center justify-end mt-4">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                            {{ __('Már regisztrált?') }}
+                        </a>
+        
+                    </div>
+                </form>
             </div>
+        </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+    </div>
 </x-app-layout>

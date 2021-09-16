@@ -19,7 +19,6 @@
 
         <div class="mb-3">
             <a class="btn-primary btn btn-sm me-2" href="{{ route('products.create') }}">Új termék</a>
-            <a class="btn-primary btn btn-sm" href="{{ route('admin.products.create-variant') }}">Új termék (variáns)</a>
         </div>
 
         <table class="table">

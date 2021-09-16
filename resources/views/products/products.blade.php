@@ -28,7 +28,7 @@
                                             @isset($data['sub'])
                                                 
                                                 @foreach ($data['sub'] as $sub)
-                                                    <option value="{{ $sub['id'] }}">{{ $sub['name'] }}</option> 
+                                                    <option class="ms-1" value="{{ $sub['id'] }}">&nbsp; - {{ $sub['name'] }}</option> 
                                                 @endforeach
 
                                             @endisset

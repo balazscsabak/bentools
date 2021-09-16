@@ -202,11 +202,13 @@ function filterUpdateProducts() {
                     $(".products-wrapper").empty();
 
                     res.products.forEach((prod) => {
+
+                        console.log(prod);
                         let prodHtml = `
                             <div class="col-10 mb-4 mb-md-0 col-md-3 related-item">
                                 <a href="/product/${prod.slug}">
                                     <div class="image-wrapper">
-                                        <div class="square image" style="background-image: url('/storage/${prod.featured_image.path}')"></div>
+                                        <div class="square image" style="background-image: url('/storage/${prod.featured_image ? prod.featured_image.path : 'images/default-product.png'}')"></div>
                                         <div class="blue-bg"></div>
                                     </div>
                             

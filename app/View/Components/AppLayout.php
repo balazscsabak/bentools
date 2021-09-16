@@ -9,10 +9,11 @@ use Illuminate\View\Component;
 class AppLayout extends Component
 {
     public $products;
+    public $categories;
 
     public function __construct()
     {
-        $this->categories = Categories::all()->toArray();
+        $this->categories = Categories::where('id', '!=', 1)->get()->toArray();
         $products = Products::all();
 
         $categories = [];
@@ -42,6 +43,6 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.app')->with('test', 'test');
+        return view('layouts.app');
     }
 }

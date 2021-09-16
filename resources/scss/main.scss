@@ -2,8 +2,11 @@
 // Jquery-UI
 @import "~jquery-ui/themes/base/all.css";
 
+$primary: #1e58a5;
+
 // Bootstrap 5
 @import "~bootstrap/scss/bootstrap";
+
 
 // Font Awesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
@@ -20,6 +23,7 @@
 // custom imports
 @import "./imports/variables";
 @import "./imports/spinner";
+@import "./imports/shopping-cart";
 
 html,
 body {
@@ -66,11 +70,6 @@ a {
 .navbar {
     background-color: #fff;
     height: 66px;
-    
-    #navbarNavDropdown {
-        max-height: calc(100vh - 66px);
-        overflow-y: scroll;
-    }
 
     .navbar-nav {
         .nav-link {

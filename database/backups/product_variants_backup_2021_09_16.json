@@ -1,0 +1,193 @@
+{
+	"product_variants": [
+		{
+			"id" : 131,
+			"product_id" : 133,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1623004718.jpg\",\"CDS4E-0104050 \",\"1\",\"3\",\"4\",\"50\",\"2280 Ft\"],[\"\\\/storage\\\/images\\\/1623004780.jpg\",\"CDS4E-1504050\",\"1,5\",\"4\",\"4\",\"50\",\"2280 Ft\"],[\"\\\/storage\\\/images\\\/1623004906.jpg\",\"CDS4E-0204050\",\"2\",\"6\",\"4\",\"50\",\"2280 Ft\"],[\"\\\/storage\\\/images\\\/1623004925.jpg\",\"CDS4E-0304050\",\"3\",\"8\",\"4\",\"50\",\"2550 Ft\"],[\"\\\/storage\\\/images\\\/1623004942.jpg\",\"CDS4E-0404050\",\"4\",\"11\",\"4\",\"50\",\"2790 Ft\"],[\"\\\/storage\\\/images\\\/1623004957.jpg\",\"CDS4E-0505050\",\"5\",\"13\",\"5\",\"50\",\"3610 Ft\"],[\"\\\/storage\\\/images\\\/1623004973.jpg\",\"CDS4E-0606050\",\"6\",\"15\",\"6\",\"50\",\"3610 Ft\"],[\"\\\/storage\\\/images\\\/1623004990.jpg\",\"CDS4E-0808060\",\"8\",\"20\",\"8\",\"60\",\"5200 Ft\"],[\"\\\/storage\\\/images\\\/1623005008.jpg\",\"CDS4E-1010075\",\"10\",\"25\",\"10\",\"75\",\"7120 Ft\"],[\"\\\/storage\\\/images\\\/1623005024.jpg\",\"CDS4E-1212075\",\"12\",\"30\",\"12\",\"75\",\"9050 Ft\"],[\"\\\/storage\\\/images\\\/1623005040.jpg\",\"CDS4E-1616100\",\"16\",\"40\",\"16\",\"100\",\"17400 Ft\"],[\"\\\/storage\\\/images\\\/1623005054.jpg\",\"CDS4E-2020100\",\"20\",\"45\",\"20\",\"100\",\"23900 Ft\"]],\"codes\":[\"3jvs5bjgs\",\"s91clpztp\",\"lvgi4moq1\",\"4bu6m0ewp\",\"ixhok368g\",\"emeighrqa\",\"c5wznpflj\",\"ybgc92z73\",\"zvs0av24j\",\"rkb9gbzqi\",\"nz17u1ls8\",\"h954k2tqx\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"Megmunk. \\u00e1tm\\u00e9r\\u0151\",\"\\u00c9lhossz\",\"Befog. \\u00e1tm\\u00e9r\\u0151\",\"Teljes hossz\",\"\\u00c1r\"],\"content\":\"<h2><i><strong>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/strong><\\\/i><\\\/h2><p><i>Kiv\\u00e1l\\u00f3, nagy teljes\\u00edtm\\u00e9ny\\u0171 mar\\u00f3k&nbsp;<\\\/i><\\\/p><p><i>&nbsp;4&nbsp; megmunk\\u00e1l\\u00f3\\u00e9l lehet\\u0151v\\u00e9 teszi a min\\u0151s\\u00e9gibb&nbsp; munkav\\u00e9gz\\u00e9st<\\\/i><\\\/p><h2><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h2><p><i>M\\u00e1rka: KIMA HRC55&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0.6 um, Wc: 89%, Co:11%&nbsp;<\\\/i><\\\/p><p><i>Helix: 35\\u00b0&nbsp;<\\\/i><\\\/p><p><i>Bevonat: Si3N4&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Rozsdamentes Ac\\u00e9l, Alum\\u00ednium, \\u00d6ntv\\u00e9nyek \\u00e9s m\\u00e1s anyagok HRC55 kem\\u00e9nys\\u00e9g alatti megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1621788815.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-15 14:22:19",
+			"updated_at" : "2021-07-15 14:22:19"
+		},
+		{
+			"id" : 132,
+			"product_id" : 134,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1623005114.jpg\",\"CDAl3E-0104050\",\"1\",\"3\",\"4\",\"50\",\"2300 Ft\"],[\"\\\/storage\\\/images\\\/1623005136.jpg\",\"CDAl3E-1504050\",\"1,5\",\"4\",\"4\",\"50\",\"2300 Ft\"],[\"\\\/storage\\\/images\\\/1623005151.jpg\",\"CDAl3E-0204050\",\"2\",\"6\",\"4\",\"50\",\"2300 Ft\"],[\"\\\/storage\\\/images\\\/1623005165.jpg\",\"CDAl3E-2504050\",\"2,5\",\"8\",\"4\",\"50\",\"2300 Ft\"],[\"\\\/storage\\\/images\\\/1623005179.jpg\",\"CDAl3E-0304050\",\"3\",\"8\",\"4\",\"50\",\"2300 Ft\"],[\"\\\/storage\\\/images\\\/1623005193.jpg\",\"CDAl3E-0404050\",\"4\",\"11\",\"4\",\"50\",\"2700 Ft\"],[\"\\\/storage\\\/images\\\/1623005208.jpg\",\"CDAl3E-0506050\",\"5\",\"13\",\"6\",\"50\",\"3440 Ft\"],[\"\\\/storage\\\/images\\\/1623005231.jpg\",\"CDAl3E-0606050\",\"6\",\"15\",\"6\",\"50\",\"3600 Ft\"],[\"\\\/storage\\\/images\\\/1623005248.jpg\",\"CDAl3E-0808060\",\"8\",\"20\",\"8\",\"60\",\"5650 Ft\"],[\"\\\/storage\\\/images\\\/1623005260.jpg\",\"CDAl3E-1010075\",\"10\",\"25\",\"12\",\"75\",\"8300 Ft\"],[\"\\\/storage\\\/images\\\/1623005274.jpg\",\"CDAl3E-1212075\",\"12\",\"30\",\"12\",\"75\",\"10500 Ft\"],[\"\\\/storage\\\/images\\\/1623005287.jpg\",\"CDAl3E-1616100\",\"16\",\"40\",\"16\",\"100\",\"20900 Ft\"],[\"\\\/storage\\\/images\\\/1623005304.jpg\",\"CDAl3E-2020100\",\"20\",\"45\",\"20\",\"100\",\"27000 Ft\"]],\"codes\":[\"8slbv6hb6\",\"z476a3odv\",\"l1sqp0cki\",\"cb38b6vqa\",\"ehzvqveva\",\"fewy7hpay\",\"c3ulytbw6\",\"7656jko24\",\"l2lhuneyv\",\"k3lvjthxc\",\"mamqj7vrq\",\"s1v445igg\",\"eszsqbibh\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"Megmunk. \\u00e1tm\\u00e9r\\u0151\",\"\\u00c9lhossz\",\"Befog. \\u00e1tm\\u00e9r\\u0151\",\"Teljes hossz\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p><i>Pol\\u00edrozott v\\u00e9gmar\\u00f3k Alum\\u00edniumhoz<\\\/i><\\\/p><p><i>3 megmunk\\u00e1l\\u00f3 \\u00e9l<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Alu<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0.5 um, Wc: 89%, Co:11%<\\\/i><\\\/p><p><i>Helix: 45\\u00b0<\\\/i><\\\/p><p><i>Alkalmas: Alum\\u00ednium \\u00e9s R\\u00e9z megmunk\\u00e1l\\u00e1s\\u00e1hoz egyar\\u00e1nt alkalmas<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1622391157.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-15 14:22:25",
+			"updated_at" : "2021-07-15 14:22:25"
+		},
+		{
+			"id" : 164,
+			"product_id" : 166,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1622395608.jpg\",\"WNMG080404-HA\",\"0.4 mm\",\"12.7 mm\",\"80\\u00b0\",\"5.1 mm\",\"4.7 mm\",\"1160 Ft\"]],\"codes\":[\"cuqaik3ij\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"IC\",\"EPSR\",\"D1\",\"S\",\"\\u00c1r\"],\"content\":\"<p>&nbsp;<\\\/p><h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p><i>H t\\u00edpus\\u00fa lapk\\u00e1nkat az er\\u0151s v\\u00e1g\\u00f3\\u00e9l jellemzi.&nbsp;<\\\/i><\\\/p><p><i>&nbsp;Forg\\u00e1cst\\u00f6r\\u0151 horony: Van<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok illetve Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"https:\\\/\\\/bentools.hu\\\/storage\\\/images\\\/1621792100.jpg\\\" alt=\\\"1621792100.jpg\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 12:02:04",
+			"updated_at" : "2021-07-16 12:02:04"
+		},
+		{
+			"id" : 167,
+			"product_id" : 169,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1622395756.jpg\",\"WNMG080404-MA\",\"0.4 mm\",\"12.7 mm\",\"80\\u00b0\",\"5.1 mm\",\"4.7 mm\",\"1160 Ft\"]],\"codes\":[\"rdu4fut7x\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"IC\",\"EPSR\",\"D1\",\"S\",\"\\u00c1r\"],\"content\":\"<p>&nbsp;<\\\/p><h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p><i>M t\\u00edpus\\u00fa lapk\\u00e1nkat a kiv\\u00e1l\\u00f3 v\\u00e1g\\u00e1si teljes\\u00edtm\\u00e9ny jellemzi.&nbsp;<\\\/i><\\\/p><p><i>&nbsp;Forg\\u00e1cst\\u00f6r\\u0151 horony: Van<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6 um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok illetve Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"https:\\\/\\\/bentools.hu\\\/storage\\\/images\\\/1621792100.jpg\\\" alt=\\\"1621792100.jpg\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 12:02:43",
+			"updated_at" : "2021-07-16 12:02:43"
+		},
+		{
+			"id" : 168,
+			"product_id" : 170,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1622396205.jpg\",\"DNMG110404-HA\",\"0.4 mm\",\"11.6 mm\",\"9.5 mm\",\"4.7 mm\",\"1360 Ft\"]],\"codes\":[\"is46rattn\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"IC\",\"S\",\"\\u00c1r\"],\"content\":\"<p>&nbsp;<\\\/p><h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p>K\\u00e9toldalas 55\\u00b0 rombikus lapka<\\\/p><p>Pozit\\u00edv radi\\u00e1lis \\u00e9l<\\\/p><p><i>Forg\\u00e1cst\\u00f6r\\u0151 horony: Van<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6 um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok , Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"https:\\\/\\\/bentools.hu\\\/storage\\\/images\\\/1621705929.gif\\\" alt=\\\"1621705929.gif\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 12:02:56",
+			"updated_at" : "2021-07-16 12:02:56"
+		},
+		{
+			"id" : 176,
+			"product_id" : 178,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626442392.jpg\",\"APMT1135PDER-H2\",\"0.5 mm\",\"11 mm\",\"6 mm\",\"4 mm\",\"1 mm\",\"790 Ft\"]],\"codes\":[\"s2tpll0lo\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"W1\",\"S\",\"BS\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p><i>H t\\u00edpus\\u00fa l\\u00e1pk\\u00e1nkat az er\\u0151s v\\u00e1g\\u00f3\\u00e9l jellemzi.&nbsp;<\\\/i><\\\/p><p><i>Forg\\u00e1cst\\u00f6r\\u0151 horony: Van<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: HRC55 kem\\u00e9nys\\u00e9gig Ac\\u00e9lok ,Rozsdamentes ac\\u00e9lok illetve \\u00f6nt\\u00f6ttvas megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"https:\\\/\\\/bentools.hu\\\/storage\\\/images\\\/1621788627.png\\\" alt=\\\"1621788627.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 13:34:00",
+			"updated_at" : "2021-07-16 13:34:00"
+		},
+		{
+			"id" : 177,
+			"product_id" : 179,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626442474.jpg\",\"WNMG080408-MS\",\"0.8 mm\",\"12.7 mm\",\"80\\u00b0\",\"5.1 mm\",\"4.7 mm\",\"1250 Ft\"]],\"codes\":[\"s9mf2zfxt\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"IC\",\"EPSR\",\"D1\",\"S\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p><i>M t\\u00edpus\\u00fa lapk\\u00e1nkat a kiv\\u00e1l\\u00f3 v\\u00e1g\\u00e1si teljes\\u00edtm\\u00e9ny jellemzi.&nbsp;<\\\/i><\\\/p><p><i>&nbsp;Forg\\u00e1cst\\u00f6r\\u0151 horony: Van<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6 um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok illetve Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"https:\\\/\\\/bentools.hu\\\/storage\\\/images\\\/1621792100.jpg\\\" alt=\\\"1621792100.jpg\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 13:35:08",
+			"updated_at" : "2021-07-16 13:35:08"
+		},
+		{
+			"id" : 178,
+			"product_id" : 180,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626442537.jpg\",\"DCMT11T304-JW\",\"0.4 mm\",\"11.6 mm\",\"9.5 mm\",\"4.7 mm\",\"940 Ft\"]],\"codes\":[\"5vlgmbl3u\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"IC\",\"S\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p>K\\u00e9toldalas 55\\u00b0 rombikus lapka<\\\/p><p>Pozit\\u00edv radi\\u00e1lis \\u00e9l<\\\/p><p><i>Forg\\u00e1cst\\u00f6r\\u0151 horony: Van<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6 um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok , Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1626436814.jpg\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 13:36:00",
+			"updated_at" : "2021-07-16 13:36:00"
+		},
+		{
+			"id" : 190,
+			"product_id" : 192,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626444177.jpg\",\"16ER AG60\",\"0.06 mm\",\"16.49 mm\",\"9.52 mm\",\"3.47 mm\",\"1.70 mm\",\"1.20 mm\",\"1-3 mm\",\"2000 Ft\"]],\"codes\":[\"6cyn6gebv\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"IC\",\"S\",\"PDX\",\"PDY\",\"p\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p>R\\u00e9szprofilos k\\u00fcls\\u0151 menetlapka<\\\/p><p>Metrikus 60\\u00b0&nbsp;<\\\/p><p>Menetemelked\\u00e9s (p): 1 - 3 mm<\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6 um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok illetve Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1626433271.jpg\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 17:59:19",
+			"updated_at" : "2021-07-16 17:59:19"
+		},
+		{
+			"id" : 191,
+			"product_id" : 193,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626444055.jpg\",\"16IR AG60\",\"0.06 mm\",\"16.49 mm\",\"9.52 mm\",\"3.47 mm\",\"1.70 mm\",\"1.20 mm\",\"1-3 mm\",\"2000 Ft\"]],\"codes\":[\"lsqov1i15\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"IC\",\"S\",\"PDX\",\"PDY\",\"p\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p>R\\u00e9szprofilos bels\\u0151 menetlapka<\\\/p><p>Metrikus 60\\u00b0<\\\/p><p>Menetemleked\\u00e9s (p): 1 - 3 mm<\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6 um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok illetve Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1626433323.jpg\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 18:00:23",
+			"updated_at" : "2021-07-16 18:00:23"
+		},
+		{
+			"id" : 194,
+			"product_id" : 196,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1622394430.jpg\",\"APMT1135-M2\",\"0.5 mm\",\"11 mm\",\"6 mm\",\"4 mm\",\"1 mm\",\"790 Ft\"]],\"codes\":[\"3sn9ogu49\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"W1\",\"S\",\"BS\",\"\\u00c1r\"],\"content\":\"<p>&nbsp;<\\\/p><h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p><i>H t\\u00edpus\\u00fa l\\u00e1pk\\u00e1nkat az er\\u0151s v\\u00e1g\\u00f3\\u00e9l jellemzi.&nbsp;<\\\/i><\\\/p><p><i>Forg\\u00e1cst\\u00f6r\\u0151 horony: Van<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9l \\u00e9s rozsdamentes ac\\u00e9l megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"https:\\\/\\\/bentools.hu\\\/storage\\\/images\\\/1621788627.png\\\" alt=\\\"1621788627.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 18:04:04",
+			"updated_at" : "2021-07-16 18:04:04"
+		},
+		{
+			"id" : 195,
+			"product_id" : 197,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1622395375.jpg\",\"APMT1135-M2\",\"0.5 mm\",\"11 mm\",\"6 mm\",\"4 mm\",\"1 mm\",\"790 Ft\"]],\"codes\":[\"p1ext4uig\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"W1\",\"S\",\"BS\",\"\\u00c1r\"],\"content\":\"<p>&nbsp;<\\\/p><h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p><i>M t\\u00edpus\\u00fa lapk\\u00e1nkat a kiv\\u00e1l\\u00f3 v\\u00e1g\\u00e1si teljes\\u00edtm\\u00e9ny jellemzi.&nbsp;<\\\/i><\\\/p><p><i>&nbsp;Forg\\u00e1cst\\u00f6r\\u0151 horony: Van<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9l \\u00e9s rozsdamentes ac\\u00e9l megmnuk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"https:\\\/\\\/bentools.hu\\\/storage\\\/images\\\/1621790231.png\\\" alt=\\\"1621790231.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-16 18:04:18",
+			"updated_at" : "2021-07-16 18:04:18"
+		},
+		{
+			"id" : 196,
+			"product_id" : 198,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626444685.jpg\",\"16ER AG55\",\"0.07 mm\",\"16.50 mm\",\"9.52 mm\",\"3.47 mm\",\"1.70 mm\",\"1.20 mm\",\"1-3 mm\",\"2000 Ft\"]],\"codes\":[\"sngig85ac\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"IC\",\"S\",\"PDX\",\"PDY\",\"p\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p>R\\u00e9szprofilos k\\u00fcls\\u0151 menetlapka<\\\/p><p>55\\u00b0<\\\/p><p>Menetemelked\\u00e9s (p): 1 - 3 mm<\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6 um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok illetve Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1626433232.jpg\\\"><\\\/figure><p>&nbsp;<\\\/p>\"}",
+			"created_at" : "2021-07-19 09:21:05",
+			"updated_at" : "2021-07-19 09:21:05"
+		},
+		{
+			"id" : 197,
+			"product_id" : 199,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626444128.jpg\",\"16IR AG55\",\"0.07 mm\",\"16.50 mm\",\"9.52 mm\",\"3.47 mm\",\"1.70 mm\",\"1.20 mm\",\"1-3 mm\",\"2000 Ft\"]],\"codes\":[\"fw5p08h9n\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"RE\",\"L\",\"IC\",\"S\",\"PDX\",\"PDY\",\"p\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:<\\\/i><\\\/h2><p>R\\u00e9szprofilos bels\\u0151 menetlapka<\\\/p><p>55\\u00b0<\\\/p><p>Menetemelked\\u00e9s (p): 1 - 3 mm<\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6 um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok illetve Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1626433304.jpg\\\"><\\\/figure>\"}",
+			"created_at" : "2021-07-19 09:21:13",
+			"updated_at" : "2021-07-19 09:21:13"
+		},
+		{
+			"id" : 198,
+			"product_id" : 200,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626441918.jpg\",\"M3*0.5 6H HSS-E TiN DIN371\",\"1950 Ft\"],[\"\\\/storage\\\/images\\\/1626441941.jpg\",\"M4*0.7 6H HSS-E TiN DIN371\",\"2050 Ft\"],[\"\\\/storage\\\/images\\\/1626441963.jpg\",\"M5*0.8 6H HSS-E TiN DIN371\",\" 2150 Ft\"],[\"\\\/storage\\\/images\\\/1626441993.jpg\",\"M6*1 6H HSS-E TiN DIN371\",\"2550 Ft\"],[\"\\\/storage\\\/images\\\/1626442011.jpg\",\"M8*1.25 6H HSS-E TiN DIN371\",\"3000 Ft\"],[\"\\\/storage\\\/images\\\/1626442030.jpg\",\"M10*1.5 6H HSS-E TiN DIN371\",\"3750 Ft\"]],\"codes\":[\"w4ccp7735\",\"nbruvpyg1\",\"t6v9lflnx\",\"xd1ybjrws\",\"ywcqma0im\",\"077x63yvy\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:&nbsp;<\\\/i><\\\/h2><p><i>Kiv\\u00e1l\\u00f3, nagy teljes\\u00edtm\\u00e9ny\\u0171 menetf\\u00far\\u00f3<\\\/i><\\\/p><p><i>A HSS-E menetf\\u00far\\u00f3kink gyorsac\\u00e9lb\\u00f3l k\\u00e9sz\\u00fclnek, HSS-E szersz\\u00e1munkban a van\\u00e1dium tartalma nagyobb ez\\u00e1ltal jobb kop\\u00e1s\\u00e1ll\\u00f3s\\u00e1ggal \\u00e9s sz\\u00edv\\u00f3ss\\u00e1ggal rendelkezik, mint a hagyom\\u00e1nyos HSS menetf\\u00far\\u00f3k<\\\/i><\\\/p><p><i>A tit\\u00e1n-nitrid (TiN) bevonat\\u00fa menetf\\u00far\\u00f3k nagyobb sebess\\u00e9ggel haszn\\u00e1lhat\\u00f3ak mint a bevonat n\\u00e9lk\\u00fcliek. TiN bevonat a menetf\\u00far\\u00f3k \\u00e9lettartam\\u00e1t \\u00f6tsz\\u00f6r\\u00f6s\\u00e9re n\\u00f6velheti.<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Menetf\\u00far\\u00f3<\\\/i><\\\/p><p><i>Bevonat: TiN<\\\/i><\\\/p><p><i>Metrikus menet illetve egyenes \\u00e9l<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok , nem vas f\\u00e9mek illetve sz\\u00ednesf\\u00e9mek megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p>\"}",
+			"created_at" : "2021-08-11 10:54:52",
+			"updated_at" : "2021-08-11 10:54:52"
+		},
+		{
+			"id" : 217,
+			"product_id" : 219,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1626442585.jpg\",\"MGMN200-M\",\"1.6 mm\",\"2 mm\",\"16 mm\",\"0.2 mm\",\"3.5 mm\",\"7\\u00b0\",\"1250 Ft\"]],\"codes\":[\"1iym47d5y\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"d\",\"b\",\"l\",\"r\",\"t\",\"H\\u00e9zagsz\\u00f6g\",\"\\u00c1r\"],\"content\":\"<h2><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h2><p><i>M\\u00e1rka: KIMA Inserts&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 92&nbsp;<\\\/i><\\\/p><p><i>Bevonat: PVD&nbsp;<\\\/i><\\\/p><p><i>Szemcsem\\u00e9ret: 0,5 \\u2013 0,6um&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok illetve Rozsdamentes ac\\u00e9lok megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1626435925.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 09:06:19",
+			"updated_at" : "2021-09-06 09:06:19"
+		},
+		{
+			"id" : 218,
+			"product_id" : 220,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1623005469.jpg\",\"5601R904FM-0600\",\"6\",\"55\",\"0,2\",\"4 db\",\"90\\u00b0\",\"4050 Ft\"],[\"\\\/storage\\\/images\\\/1623005484.jpg\",\"5601R904FM-0800\",\"8\",\"58\",\"0,5\",\"4 db\",\"90\\u00b0\",\"6050 Ft\"],[\"\\\/storage\\\/images\\\/1623005497.jpg\",\"5601R904FM-1000\",\"10\",\"65\",\"0,5\",\"4 db\",\"90\\u00b0\",\"8300 Ft\"],[\"\\\/storage\\\/images\\\/1623005510.jpg\",\"5601R904FM-1200\",\"12\",\"75\",\"0,5\",\"4 db\",\"90\\u00b0\",\"11000 Ft\"]],\"codes\":[\"qotauyhol\",\"dbe8wxscv\",\"smqh34y54\",\"i62uwh66x\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"d\",\"L\",\"D\",\"\\u00c9lek sz\\u00e1ma\",\"X\",\"\\u00c1r\"],\"content\":\"<h2><i>R\\u00f6vid le\\u00edr\\u00e1s:&nbsp;<\\\/i><\\\/h2><p><i>4 megmunk\\u00e1l\\u00f3 \\u00e9llel rendelkezik&nbsp;<\\\/i><\\\/p><h3><i>Term\\u00e9k param\\u00e9terei:&nbsp;<\\\/i><\\\/h3><p><i>M\\u00e1rka: KIMA Deburring&nbsp;<\\\/i><\\\/p><p><i>Kem\\u00e9nys\\u00e9g: HRC 55&nbsp;<\\\/i><\\\/p><p><i>Bevonat: TiAlNi&nbsp;<\\\/i><\\\/p><p><i>Alkalmas: Ac\\u00e9lok, Rozsdamentes Ac\\u00e9lok , \\u00d6nt\\u00f6tt vasak valamint sz\\u00ednesf\\u00e9mek megmunk\\u00e1l\\u00e1s\\u00e1ra<\\\/i><\\\/p><figure class=\\\"image\\\"><img src=\\\"https:\\\/\\\/bentools.hu\\\/storage\\\/images\\\/1621788240.png\\\"><\\\/figure><figure class=\\\"table\\\"><table><tbody><tr><td colspan=\\\"3\\\"><h3><i>Aj\\u00e1nlott v\\u00e1g\\u00e1si param\\u00e9terek<\\\/i><\\\/h3><\\\/td><td colspan=\\\"5\\\"><p>&nbsp;<\\\/p><figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1621789008.png\\\"><\\\/figure><p>&nbsp; &nbsp;<\\\/p><\\\/td><\\\/tr><tr><td><h4><strong>Ac\\u00e9l<\\\/strong><\\\/h4><\\\/td><td><h4><i>&nbsp;<\\\/i><\\\/h4><\\\/td><td><h4><i>Vc (m\\\/min)&nbsp;<\\\/i><\\\/h4><\\\/td><td>&nbsp;<\\\/td><td><h4><strong>\\u00d6nt\\u00f6tt vas<\\\/strong><\\\/h4><\\\/td><td><h4><i>&nbsp;<\\\/i><\\\/h4><\\\/td><td><h4><i>Vc (m\\\/min)&nbsp;<\\\/i><\\\/h4><\\\/td><td><h4><i>Fz (mm\\\/Z)&nbsp;<\\\/i><\\\/h4><\\\/td><\\\/tr><tr><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>6&nbsp;<\\\/i><\\\/td><td><i>70 - 120&nbsp;<\\\/i><\\\/td><td rowspan=\\\"4\\\">&nbsp;<\\\/td><td><strong>&nbsp;\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>6&nbsp;<\\\/i><\\\/td><td><i>90&nbsp;<\\\/i><\\\/td><td><i>0.03&nbsp;<\\\/i><\\\/td><\\\/tr><tr><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>8&nbsp;<\\\/i><\\\/td><td><i>70 - 120&nbsp;<\\\/i><\\\/td><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>8&nbsp;<\\\/i><\\\/td><td><i>90&nbsp;<\\\/i><\\\/td><td><i>0.04&nbsp;<\\\/i><\\\/td><\\\/tr><tr><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>10&nbsp;<\\\/i><\\\/td><td><i>70 - 120&nbsp;<\\\/i><\\\/td><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>10&nbsp;<\\\/i><\\\/td><td><i>90&nbsp;<\\\/i><\\\/td><td><i>0.05&nbsp;<\\\/i><\\\/td><\\\/tr><tr><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>12&nbsp;<\\\/i><\\\/td><td><i>70 - 120&nbsp;<\\\/i><\\\/td><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>12&nbsp;<\\\/i><\\\/td><td><i>90&nbsp;<\\\/i><\\\/td><td><i>0.06&nbsp;<\\\/i><\\\/td><\\\/tr><tr><td colspan=\\\"3\\\"><h4><strong>Rozsdamentes Ac\\u00e9l<\\\/strong><\\\/h4><\\\/td><td>&nbsp;<\\\/td><td colspan=\\\"4\\\"><h4><strong>Sz\\u00ednesf\\u00e9mek<\\\/strong><\\\/h4><\\\/td><\\\/tr><tr><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>6&nbsp;<\\\/i><\\\/td><td><i>60 - 90&nbsp;<\\\/i><\\\/td><td rowspan=\\\"4\\\">&nbsp;<\\\/td><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>6&nbsp;<\\\/i><\\\/td><td><i>200 - 280&nbsp;<\\\/i><\\\/td><td><i>0.03&nbsp;<\\\/i><\\\/td><\\\/tr><tr><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>8&nbsp;<\\\/i><\\\/td><td><i>60 - 90&nbsp;<\\\/i><\\\/td><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>8&nbsp;<\\\/i><\\\/td><td><i>200 - 280&nbsp;<\\\/i><\\\/td><td><i>0.04&nbsp;<\\\/i><\\\/td><\\\/tr><tr><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>10&nbsp;<\\\/i><\\\/td><td><i>60 - 90&nbsp;<\\\/i><\\\/td><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>10&nbsp;<\\\/i><\\\/td><td><i>200 - 280&nbsp;<\\\/i><\\\/td><td><i>0.05&nbsp;<\\\/i><\\\/td><\\\/tr><tr><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>12&nbsp;<\\\/i><\\\/td><td><i>60 - 90&nbsp;<\\\/i><\\\/td><td><strong>\\u00c1tm\\u00e9r\\u0151 (mm)<\\\/strong><\\\/td><td><i>12&nbsp;<\\\/i><\\\/td><td><i>200 - 280&nbsp;<\\\/i><\\\/td><td><i>0.06&nbsp;<\\\/i><\\\/td><\\\/tr><\\\/tbody><\\\/table><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:47:38",
+			"updated_at" : "2021-09-06 11:47:38"
+		},
+		{
+			"id" : 219,
+			"product_id" : 221,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629980227.jpg\",\"SER-2525M16\",\"25 mm\",\"27 mm\",\"150 mm\",\"32 mm\",\"25 mm\",\"19500 Ft\"]],\"codes\":[\"ydnmt1lp4\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"HxB\",\"LH\",\"LF\",\"WF\",\"HF\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629980250.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:48:53",
+			"updated_at" : "2021-09-06 11:48:53"
+		},
+		{
+			"id" : 220,
+			"product_id" : 222,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629980055.jpg\",\"SEL-2525M16\",\"25 mm\",\"27 mm\",\"150 mm\",\"32 mm\",\"25 mm\",\"19500 Ft\"]],\"codes\":[\"l7ejovelq\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"HxB\",\"LH\",\"LF\",\"WF\",\"HF\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629980114.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:49:02",
+			"updated_at" : "2021-09-06 11:49:02"
+		},
+		{
+			"id" : 221,
+			"product_id" : 223,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629980965.jpg\",\"EAPMC11-D40B06\",\"40 mm\",\"16 mm\",\"9 mm\",\"40 mm\",\"32 mm\",\"8.4 mm\",\"5.6 mm\",\"18 mm\",\"9.8 mm\",\"8.8 mm\",\"6 mm\",\"43000 Ft\"]],\"codes\":[\"hxu8lo9az\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"DC\",\"DCON\",\"APMX\",\"LF\",\"DCSFMS\",\"KWW\",\"KDP\",\"CBDP\",\"D1\",\"D2\",\"CICT\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629981011.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:49:19",
+			"updated_at" : "2021-09-06 11:49:19"
+		},
+		{
+			"id" : 222,
+			"product_id" : 224,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629981163.jpg\",\"EX90AP16-D50B\",\"50 mm\",\"22 mm\",\"15 mm\",\"40 mm\",\"41 mm\",\"10.4 mm\",\"6.3 mm\",\"20 mm\",\"19 mm\",\"11 mm\",\"5 mm\",\"37000 Ft\"]],\"codes\":[\"riutczgjy\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"DC\",\"DCON\",\"APMX\",\"LF\",\"DCSFMS\",\"KWW\",\"KDP\",\"CBDP\",\"D1\",\"D2\",\"CICT\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629981211.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:49:40",
+			"updated_at" : "2021-09-06 11:49:40"
+		},
+		{
+			"id" : 223,
+			"product_id" : 225,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629979923.jpg\",\"ESEL-1616K16\",\"16 mm\",\"25 mm\",\"125 mm\",\"20 mm\",\"16 mm\",\"16000 Ft\"]],\"codes\":[\"bo66j1zm2\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"HxB\",\"LH\",\"LF\",\"WF\",\"HF\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629979955.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:49:50",
+			"updated_at" : "2021-09-06 11:49:50"
+		},
+		{
+			"id" : 224,
+			"product_id" : 226,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629979686.jpg\",\"ESER-1616K16\",\"16 mm\",\"25 mm\",\"125 mm\",\"20 mm\",\"16 mm\",\"16000 Ft\"]],\"codes\":[\"ws5v630dz\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"HxB\",\"LH\",\"LF\",\"WF\",\"HF\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629979736.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:49:59",
+			"updated_at" : "2021-09-06 11:49:59"
+		},
+		{
+			"id" : 225,
+			"product_id" : 227,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629980364.jpg\",\"EGEHL-25B-2D-14\",\"25 mm\",\"25 mm\",\"14 mm\",\"150 mm\",\"25 mm\",\"25 mm\",\"2 mm\",\"22500 Ft\"]],\"codes\":[\"gj2x9by8i\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"H\",\"B\",\"CDX\",\"LF\",\"WF\",\"HF\",\"CW\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629980416.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:50:12",
+			"updated_at" : "2021-09-06 11:50:12"
+		},
+		{
+			"id" : 226,
+			"product_id" : 228,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629980554.jpg\",\"EGEHR-25B-2D-14\",\"25 mm\",\"25 mm\",\"14 mm\",\"150 mm\",\"25 mm\",\"25 mm\",\"2 mm\",\"22500 Ft\"]],\"codes\":[\"kd1pzr8y2\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"H\",\"B\",\"CDX\",\"LF\",\"WF\",\"HF\",\"CW\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629980586.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:50:22",
+			"updated_at" : "2021-09-06 11:50:22"
+		},
+		{
+			"id" : 227,
+			"product_id" : 229,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629980695.jpg\",\"EDJNL-2525M11\",\"25 mm\",\"36 mm\",\"150 mm\",\"32 mm\",\"25 mm\",\"14500 Ft\"]],\"codes\":[\"bkftv8egc\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"HxB\",\"LH\",\"LF\",\"WF\",\"HF\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629980729.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:50:34",
+			"updated_at" : "2021-09-06 11:50:34"
+		},
+		{
+			"id" : 228,
+			"product_id" : 230,
+			"variants" : "{\"types\":[[\"\\\/storage\\\/images\\\/1629980827.jpg\",\"EDJNR-2525M11\",\"25 mm\",\"36 mm\",\"150 mm\",\"32 mm\",\"25 mm\",\"14500 Ft\"]],\"codes\":[\"kbomdbv75\"],\"keys\":[\"K\\u00e9p\",\"K\\u00f3d\",\"HxB\",\"LH\",\"LF\",\"WF\",\"HF\",\"\\u00c1r\"],\"content\":\"<figure class=\\\"image\\\"><img src=\\\"\\\/storage\\\/images\\\/1629980855.png\\\"><\\\/figure>\"}",
+			"created_at" : "2021-09-06 11:50:43",
+			"updated_at" : "2021-09-06 11:50:43"
+		}
+	]}
+	

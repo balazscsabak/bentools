@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\Products;
+use Cocur\Slugify\Slugify;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -63,8 +64,10 @@ class CategoriesController extends Controller
         try{
 
             $newCategory = new Categories();
-            
+            $slugify = new Slugify();
+ 
             $newCategory->name = $request->input('name');
+            $newCategory->slug = $slugify->slugify($request->input('name'));
             $newCategory->parent = $request->input('parent');
             
             $newCategory->save();
@@ -127,7 +130,11 @@ class CategoriesController extends Controller
             }       
         } 
         
+        $slugify = new Slugify();
+
         $category->parent = $request->input('parent');
+        $category->slug = $slugify->slugify($request->input('name'));
+
         $category->name = $request->input('name');
 
         $category->save();

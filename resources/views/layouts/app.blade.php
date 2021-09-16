@@ -7,6 +7,15 @@
 
         <title>Bentools</title>
 
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_ID') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '{{ env('GA_ID') }}');
+        </script>
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -54,9 +63,54 @@
             </div>
         </footer>
 
+        <div id="shopping-cart">
+            <div class="cart-toggler close-cart-abs">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <div class="cart-header">
+                <h1>Kosár</h1>
+            </div>
+
+            <div class="cart-items">
+
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Termék</th>
+                            <th class="text-end pe-3" scope="col">Ár</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                
+            </div>
+
+            <div class="text-center mb-4">
+                <div><small>Minimum rendelés 6000 Ft.</small></div>
+                <div><small><a href="{{ route('offer') }}" class="text-light">Kérjen árajánlatot</a></small></div>
+            </div>
+
+            <div id="cart-buttons" class="text-center">
+                <a href="{{ route('cart') }}" class="shadow-sm border-dark border-1 btn btn-warning px-5 border">Kosár megtekintése</a>
+            </div>
+
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.4.0/dist/lazyload.min.js"></script>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
+
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
 
         <script>
             $(() => {

@@ -5,7 +5,7 @@
             @if (isset($product->featuredImage))
                 <div class="square image lazy" data-bg-multi="url('/storage/{{ $product->featuredImage->path }}')"></div>
             @else    
-                <div class="square image"></div>
+                <div class="square image lazy" data-bg-multi="url('/storage/images/default-product.png')"></div>
             @endif
 
             <div class="blue-bg"></div>

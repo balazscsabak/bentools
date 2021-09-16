@@ -3,7 +3,7 @@ const validationNotNull = (e) => {
 	
 	$('.validate-not-null').each((index, el) => {
 
-		if(!$(el).val()) {
+		if(_.isEmpty($(el).val().trim())) {
 			$(el).css('border-color', 'red');
 
 			if($(el).hasClass('validate-for-button')) {

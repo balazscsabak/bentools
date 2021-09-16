@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <div class="hero">     
         <!-- Slider main container -->
         <div class="swiper-container hero-swiper">

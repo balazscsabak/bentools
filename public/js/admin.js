@@ -488,71 +488,159 @@ $(function () {
         }
       });
     });
-  });
-  $(document).on('click', '.p-add-new-variant', function (e) {
-    e.preventDefault();
-    var variantsCount = $('.product-variant').length;
-    var variantContent = "\n\t\t\t<div class=\"product-variant col-12 col-lg-8 with-shadow p-4 mb-5\">\n\t\t\t\t<div class=\"p-variant-delete\">\n\t\t\t\t\t<i class=\"fas fa-times\"></i>\n\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t<div class=\"variant-content\">\n\t\t\t\t\t<label class=\"form-label\">Le\xEDr\xE1s</label>\n\t\t\t\t\t<textarea class=\"form-control product-variant-content\"></textarea>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"variant-attributes my-4\">\n\t\t\t\t\t<div class=\"d-flex justify-content-between mb-3\">\n\t\t\t\t\t\t<label class=\"form-label\">Term\xE9k attrib\xFAtumok</label>\n\t\t\t\t\t\t<i class=\"fas fa-plus-circle p-variant-add-col\"></i>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<table class=\"table table-sm table-borderless\">\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\t\t<div class=\"input-group-sm\">\n\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" value=\"K\xE9p\" readonly>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\t\t<div class=\"input-group-sm\">\n\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" value=\"K\xF3d\" readonly>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</thead>\n\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t</tbody>\n\t\t\t\t\t</table>\n\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<i class=\"fas fa-plus-circle p-variant-add-row\"></i>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t";
-    $('#product-variants').append(variantContent);
-    var selectedTextarea = $('.product-variant-content').eq(variantsCount);
-    _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(selectedTextarea.get(0), {
-      ckfinder: {
-        uploadUrl: "/admin/media/upload-editor?_token=" + $("[name='_token']").val(),
-        openerMethod: "popup",
-        withCredentials: true
-      }
-    });
-  });
-  $(document).on('click', '.p-variant-delete', function (e) {
-    $(e.target).closest('.product-variant').remove();
-  });
-  $(document).on('submit', '#p-form', function (e) {
-    if (!(0,_validation__WEBPACK_IMPORTED_MODULE_2__.validationNotNull)()) {
-      alert('Hiányzó adat!');
-      return false;
-    }
-  });
+  }); // $(document).on('click', '.p-add-new-variant', (e) => {
+  // 	e.preventDefault();
+  // 	let variantsCount = $('.product-variant').length;
+  // 	let variantContent = `
+  // 		<div class="product-variant col-12 col-lg-8 with-shadow p-4 mb-5">
+  // 			<div class="p-variant-delete">
+  // 				<i class="fas fa-times"></i>
+  // 			</div>
+  // 			<div class="variant-content">
+  // 				<label class="form-label">Leírás</label>
+  // 				<textarea class="form-control product-variant-content"></textarea>
+  // 			</div>
+  // 			<div class="variant-attributes my-4">
+  // 				<div class="d-flex justify-content-between mb-3">
+  // 					<label class="form-label">Termék attribútumok</label>
+  // 					<i class="fas fa-plus-circle p-variant-add-col"></i>
+  // 				</div>
+  // 				<table class="table table-sm table-borderless">
+  // 					<thead>
+  // 						<tr>
+  // 							<th>
+  // 								<div class="input-group-sm">
+  // 									<input type="text" class="form-control" value="Kép" readonly>
+  // 								</div>
+  // 							</th>
+  // 							<th>
+  // 								<div class="input-group-sm">
+  // 									<input type="text" class="form-control" value="Kód" readonly>
+  // 								</div>
+  // 							</th>
+  // 						</tr>
+  // 					</thead>
+  // 					<tbody>
+  // 					</tbody>
+  // 				</table>
+  // 				<div>
+  // 					<i class="fas fa-plus-circle p-variant-add-row"></i>
+  // 				</div>
+  // 			</div>
+  // 		</div>
+  // 	`;
+  // 	$('#product-variants').append(variantContent);
+  // 	let selectedTextarea = $('.product-variant-content').eq(variantsCount);
+  // 	ClassicEditor.create(selectedTextarea.get(0), {
+  //         ckfinder: {
+  //             uploadUrl:
+  //                 "/admin/media/upload-editor?_token=" +
+  //                 $("[name='_token']").val(),
+  //             openerMethod: "popup",
+  //             withCredentials: true,
+  //         },
+  //     });
+  // })
+  // $(document).on('click', '.p-variant-delete', function(e) {
+  // 	$(e.target).closest('.product-variant').remove();
+  // })
+  // $(document).on('submit', '#p-form', function(e) {
+  // 	if(!validationNotNull()) {
+  // 		alert('Hiányzó adat!');
+  // 		return false;
+  // 	}
+  // });
+  // $(document).on('submit', '#p-variant-form', function(e) {
+  // 	if(!validationNotNull()) {
+  // 		alert('Hiányzó adat!');
+  // 		return false;
+  // 	}
+  // 	let variantsWrappers = $('#product-variants .product-variant');
+  // 	let variants = [];
+  // 	variantsWrappers.each((i, wrapper) => {
+  // 		let variantData = {};
+  // 		let content = $(wrapper).find('.variant-content .product-variant-content').val();
+  // 		let attributesTable = $(wrapper).find('.variant-attributes');
+  // 		let attributesThs = attributesTable.find('table th');
+  // 		let attributesCount = attributesTable.find('table th').length;
+  // 		let attributesRows = attributesTable.find('table tbody tr');
+  // 		variantData.types = [];
+  // 		variantData.codes = [];
+  // 		let keys = [];
+  // 		attributesThs.each((i, el) => {
+  // 			let inputValue = $(el).find('input').val();
+  // 			keys.push(inputValue);
+  // 		})
+  // 		variantData.keys = keys;
+  // 		let attributeCodes = [];
+  // 		attributesRows.each((i, row) => {
+  // 			let tds = $(row).find('td');
+  // 			let attributeValues = [];
+  // 			tds.each((index, td) => {
+  // 				if(attributesCount > index){
+  // 					let value = $(td).find('input').val();
+  // 					attributeValues.push(value);
+  // 				}
+  // 			})
+  // 			attributeCodes.push( Math.random().toString(36).substr(2, 9) );
+  // 			variantData.types.push(attributeValues);
+  // 		})
+  // 		variantData.codes = attributeCodes;
+  // 		variantData.content = content;
+  // 		variants.push(variantData);
+  // 	})
+  // 	let input = $("<input>")
+  //            .attr("type", "hidden")
+  //            .attr("name", "variants").val(JSON.stringify(variants));
+  // 	$('#p-variant-form').append(input);
+  // })
+
   $(document).on('submit', '#p-variant-form', function (e) {
     if (!(0,_validation__WEBPACK_IMPORTED_MODULE_2__.validationNotNull)()) {
       alert('Hiányzó adat!');
       return false;
     }
 
-    var variantsWrappers = $('#product-variants .product-variant');
+    var variantsWrapper = $('#product-variants .product-variant').first();
+    var attributesTable = $(variantsWrapper).find('.variant-attributes');
+    var attributesThs = attributesTable.find('table th');
+    var attributesCount = attributesTable.find('table th').length;
+    var attributesRows = attributesTable.find('table tbody tr');
     var variants = [];
-    variantsWrappers.each(function (i, wrapper) {
-      var variantData = {};
-      var content = $(wrapper).find('.variant-content .product-variant-content').val();
-      var attributesTable = $(wrapper).find('.variant-attributes');
-      var attributesThs = attributesTable.find('table th');
-      var attributesCount = attributesTable.find('table th').length;
-      var attributesRows = attributesTable.find('table tbody tr');
-      variantData.types = [];
-      variantData.codes = [];
-      var keys = [];
-      attributesThs.each(function (i, el) {
-        var inputValue = $(el).find('input').val();
-        keys.push(inputValue);
-      });
-      variantData.keys = keys;
-      var attributeCodes = [];
-      attributesRows.each(function (i, row) {
-        var tds = $(row).find('td');
-        var attributeValues = [];
-        tds.each(function (index, td) {
-          if (attributesCount > index) {
-            var value = $(td).find('input').val();
-            attributeValues.push(value);
+    attributesRows.each(function (i, row) {
+      var variant = {};
+      var variantId = $(row).find('.hidden-variant-id').val();
+      variant['attr'] = [];
+      variant['attr_values'] = [];
+
+      if (variantId) {
+        variant['variant_id'] = variantId;
+      }
+
+      $(row).find('td').each(function (j, td) {
+        if (j < attributesCount) {
+          if (j === 0) {
+            variant['image_href'] = $(td).find('input').val().trim();
           }
-        });
-        attributeCodes.push(Math.random().toString(36).substr(2, 9));
-        variantData.types.push(attributeValues);
+
+          if (j === 1) {
+            variant['price'] = $(td).find('input').val().trim();
+          }
+
+          if (j === 2) {
+            variant['code'] = $(td).find('input').val().trim();
+          }
+
+          if (j >= 3) {
+            variant['attr'].push($(attributesThs[j]).find('input').val().trim());
+            variant['attr_values'].push($(td).find('input').val().trim());
+          }
+        }
       });
-      variantData.codes = attributeCodes;
-      variantData.content = content;
-      variants.push(variantData);
+      variants.push(variant);
     });
     var input = $("<input>").attr("type", "hidden").attr("name", "variants").val(JSON.stringify(variants));
+    console.log(variants);
     $('#p-variant-form').append(input);
   });
   $(document).on('click', '.pv-image-modal-btn', function (e) {
@@ -562,7 +650,6 @@ $(function () {
   $('#pv-image-modal').on('show.bs.modal', function (e) {
     var eventButton = e.relatedTarget;
     var selectedImgSrc = $(eventButton).siblings('input').val();
-    console.log(selectedImgSrc);
     $(e.target).find('#pv-save-image-btn').data('target', eventButton);
     $.ajax({
       method: 'GET',
@@ -689,7 +776,7 @@ __webpack_require__.r(__webpack_exports__);
 var validationNotNull = function validationNotNull(e) {
   var validation = true;
   $('.validate-not-null').each(function (index, el) {
-    if (!$(el).val()) {
+    if (_.isEmpty($(el).val().trim())) {
       $(el).css('border-color', 'red');
 
       if ($(el).hasClass('validate-for-button')) {

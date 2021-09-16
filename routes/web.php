@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\MediaController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\OffersController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,7 @@ use App\Http\Controllers\OffersController;
 
 Route::get('/', [FrontpageController::class, 'index']);
 Route::get('/product/{slug}', [ProductsController::class, 'product'])->name('product');
+Route::get('/category/{slug}', [ProductsController::class, 'productsByCategory'])->name('products.bycategory');
 Route::get('/products/all', [ProductsController::class, 'products'])->name('products.all');
 Route::get('/post/{slug}', [PostsController::class, 'post'])->name('post');
 Route::get('/message', [MessagesController::class, 'message'])->name('message.index');
@@ -39,8 +43,20 @@ Route::get('/terms', [FrontpageController::class, 'terms'])->name('terms');
 Route::get('/cookie', [FrontpageController::class, 'cookie'])->name('cookie');
 Route::get('/policy', [FrontpageController::class, 'policy'])->name('policy');
 
-Route::group(['middleware' => 'auth'], function () {
-    
+Route::prefix('cart')->group(function () {
+    Route::get('/', [CartController::class, 'cart'])->name('cart');
+    Route::get('session', [CartController::class, 'session']);
+    Route::post('add', [CartController::class, 'addItem']);
+    Route::post('remove', [CartController::class, 'removeItem']);
+    Route::post('decrement', [CartController::class, 'decrementItem']);
+    Route::post('checkout', [CartController::class, 'checkout'])->name('checkout');
+});
+
+/**
+ * AUTH - only as admin
+ */
+Route::group(['middleware' => ['auth', 'admin']], function () {
+
     Route::prefix('admin')->group(function () {
         
         // Route::get('/', [AdminPageController::class, 'index'])->name('admin');
@@ -52,7 +68,6 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::post('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
     
         Route::get('messages', [MessagesController::class, 'index'])->name('messages');
         Route::get('messages/{id}', [MessagesController::class, 'show'])->name('messages.show');
@@ -69,10 +84,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('categories', CategoriesController::class);
      
         Route::resource('products', ProductsController::class);
-        Route::get('products/create/variant', [ProductsController::class, 'createVariant'])->name('admin.products.create-variant');
-        Route::post('products/variant', [ProductsController::class, 'storeVariant'])->name('admin.products.store-variant');
-        Route::put('products/variant/{id}', [ProductsController::class, 'updateVariant'])->name('admin.products.update-variant');
-        Route::delete('products/variant/{id}', [ProductsController::class, 'destroyVariant'])->name('admin.products.destroy-variant');
 
         Route::resource('posts', PostsController::class);
 
@@ -95,9 +106,38 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::get('cookie', [AdminPageController::class, 'cookie'])->name('admin.cookie');
         Route::put('cookie', [SettingsController::class, 'updateCookieContent'])->name('admin.cookie.update');
+        
+        Route::get('orders', [OrdersController::class, 'orders'])->name('admin.orders');
+        Route::get('orders/{id}', [OrdersController::class, 'order'])->name('admin.order');
     });
     
+});
+
+/**
+ * AUTH - normal users
+ */
+Route::group(['middleware' => ['auth']], function () {
+
+    Route::prefix('user')->group(function () {
+        Route::get('profile', [ProfileController::class, 'showUserProfile'])->name('user.profile');
+        Route::post('profile', [ProfileController::class, 'updateUserProfile'])->name('user.profile.update');
+        Route::post('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+        
+        Route::get('addresses', [ProfileController::class, 'showUserAddresses'])->name('user.profile.addresses');
+        Route::post('addresses', [ProfileController::class, 'storeNewAddress'])->name('user.profile.addresses.store');
+        Route::put('addresses', [ProfileController::class, 'updateAddress'])->name('user.profile.addresses.update');
+        
+        Route::get('orders', [ProfileController::class, 'showUserOrders'])->name('user.profile.orders');
+        Route::get('orders/{id}', [ProfileController::class, 'showUserOrder'])->name('user.profile.order');
+
+    });
+    
+    Route::post('checkout', [PurchaseController::class, 'checkout'])->name('checkout');
+    Route::post('purchase', [PurchaseController::class, 'purchase'])->name('purchase');
+    Route::get('orders/{hash}', [PurchaseController::class, 'showOrder'])->name('purchase.order');
 
 });
+
+
 
 require __DIR__.'/auth.php';

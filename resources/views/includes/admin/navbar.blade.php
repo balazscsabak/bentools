@@ -6,9 +6,9 @@
         </button>
         <div class="collapse navbar-collapse p-3 p-lg-0 " id="navbarNavDropdownAdmin">
             <ul class="navbar-nav me-auto">
-                {{-- <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">Home</a>
-                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.orders') }}">Rendelések</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.offers') }}">Ajánlatkérések</a>
                 </li>
