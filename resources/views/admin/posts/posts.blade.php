@@ -35,7 +35,7 @@
                     <th>No</th>
                     <th>Cím</th>
                     <th>Létrejött</th>
-                    <th>Action</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>

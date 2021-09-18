@@ -81,6 +81,7 @@ class PurchaseController extends Controller
 
         $firmName = $request->firmName;
         $taxNumber = $request->taxNumber;
+        $phonenumber = $request->phonenumber;
 
         $addressInfo = (object) [
             'shippingPostcode' => $shippingPostcode,
@@ -181,7 +182,7 @@ class PurchaseController extends Controller
         $this->saveOrderItems($order->id);
 
         // save order data
-        $this->orderInfo($order->id, $addressInfo, $firmName, $taxNumber);
+        $this->orderInfo($order->id, $addressInfo, $firmName, $taxNumber, $phonenumber);
 
         $hashString = $order->id . $user->id . strtotime('now');
 
@@ -269,7 +270,7 @@ class PurchaseController extends Controller
         }
     }
 
-    public function orderInfo($orderId, $addressInfo, $firmName, $taxNumber)
+    public function orderInfo($orderId, $addressInfo, $firmName, $taxNumber, $phonenumber)
     {
         $orderInfo = new OrderInfo();
 
@@ -286,6 +287,7 @@ class PurchaseController extends Controller
 
         $orderInfo->firm_name = $firmName;
         $orderInfo->tax_number = $taxNumber;
+        $orderInfo->phone_number = $phonenumber;
 
         $orderInfo->save();
     }

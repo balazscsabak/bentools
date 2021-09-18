@@ -31,6 +31,30 @@
 			<div class="row">
 				<div class="col-12 col-lg-10">
 
+					<h6 class="mb-3">Cégnév: <span class="fw-bold">{{ $order->info->firm_name }}</span></h6>
+					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 col-lg-10">
+
+					<h6 class="mb-3">Telefonszám: <span class="fw-bold">{{ $order->info->phone_number }}</span></h6>
+					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 col-lg-10">
+
+					<h6 class="mb-3">Adószám: <span class="fw-bold">{{ $order->info->tax_number }}</span></h6>
+					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 col-lg-10">
+
 					<h6 class="mb-3">Fizetés módja: <span class="fw-bold">{{ $order->methodName }}</span></h6>
 					
 				</div>

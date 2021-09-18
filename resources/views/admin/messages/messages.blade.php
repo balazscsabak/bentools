@@ -11,13 +11,13 @@
         <table class="table table-responsive table-hover yajra-datatable">
             <thead >
                 <tr class="table-dark">
-                    <th>No</th>
-                    <th>Name</th>
+                    <th>No.</th>
+                    <th>Név</th>
                     <th>Email</th>
-                    <th>Username</th>
-                    <th>Phone</th>
+                    <th>Cégnév</th>
+                    <th>Telefonszám</th>
                     <th>Létrejött</th>
-                    <th>Action</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>

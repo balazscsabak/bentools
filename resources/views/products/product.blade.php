@@ -34,8 +34,8 @@
                                         <tr>
                                             <th class="text-center">Kód</th>
                                             <th class="text-center">Ár</th>
-
-                                            @isset($attributes)
+                                            <th></th>
+                                            {{-- @isset($attributes)
                         
                                                 @foreach ($attributes as $attr)
 
@@ -45,7 +45,7 @@
 
                                                 @endforeach
                                             
-                                            @endisset
+                                            @endisset --}}
                                             
                                             <th class="text-end">Mennyiség</th>
                                         
@@ -71,9 +71,13 @@
                                                     $values = json_decode($variant->attr_values, true);
                                                 @endphp
                                                 
-                                                @foreach ($values as $v)
-                                                    <td style="padding: 12px 0;">{{ $v }}</td>
-                                                @endforeach
+                                                <td style="padding: 12px 0;">
+                                                    @foreach ($values as $ind => $v)
+                                                        <div class="ps-2" style="white-space: nowrap;">
+                                                            {{ $attributes[$ind] }} - {{ $v }}
+                                                        </div>
+                                                    @endforeach
+                                                </td>
 
                                                 <td class="text-end">
                                                     <div class="cart-action-add">

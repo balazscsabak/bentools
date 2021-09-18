@@ -23,8 +23,14 @@
             </div>
         @endif
         
-        <h2 class="mb-4">Módosítás</h2>
+        <h2 class="mb-3">Módosításs</h2>
         
+        <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+            @method('DELETE')
+            @csrf
+            <input type="submit" class="btn mb-3 btn-danger btn-sm" value="Törlés"></a>
+        </form>
+
         <form method="POST" action="{{ route('posts.update', $post->id) }}" class="row">
             @csrf
             @method('PUT')

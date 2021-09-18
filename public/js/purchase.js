@@ -874,7 +874,7 @@ var cardButtons = document.querySelectorAll('.card-button');
 cardButtons.forEach(function (cardButton) {
   cardButton.addEventListener('click', /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
-      var paymentMethodRadio, confirmCartSumm, userEmail, shippingPostcode, shippingCity, shippingStreet, billingPostcode, billingCity, billingStreet, firmName, taxNumber, billingShippingCheck, fomrValidationCheck, gdprCheck, cardHolderName, _yield$stripe$createP, paymentMethod, error;
+      var paymentMethodRadio, confirmCartSumm, userEmail, shippingPostcode, shippingCity, shippingStreet, billingPostcode, billingCity, billingStreet, firmName, taxNumber, phonenumber, billingShippingCheck, fomrValidationCheck, gdprCheck, cardHolderName, _yield$stripe$createP, paymentMethod, error;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -896,6 +896,7 @@ cardButtons.forEach(function (cardButton) {
               billingStreet = $('#billing-street').val();
               firmName = $('#firm-name').val();
               taxNumber = $('#tax-number').val();
+              phonenumber = $('#phone-number').val();
               billingShippingCheck = $('#billing-shipping-check');
 
               if (billingShippingCheck.is(':checked')) {
@@ -905,6 +906,16 @@ cardButtons.forEach(function (cardButton) {
               }
 
               fomrValidationCheck = true;
+
+              if (_.isEmpty(phonenumber)) {
+                if ($('#phone-number').closest('div').find('.val-error').length < 1) {
+                  $('#phone-number').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                }
+
+                fomrValidationCheck = false;
+              } else {
+                $('#phone-number').closest('div').find('.val-error').remove();
+              }
 
               if (_.isEmpty(firmName)) {
                 if ($('#firm-name').closest('div').find('.val-error').length < 1) {
@@ -987,7 +998,7 @@ cardButtons.forEach(function (cardButton) {
               }
 
               if (fomrValidationCheck) {
-                _context.next = 27;
+                _context.next = 29;
                 break;
               }
 
@@ -995,7 +1006,7 @@ cardButtons.forEach(function (cardButton) {
               $(e.target).prop('disabled', false);
               return _context.abrupt("return", false);
 
-            case 27:
+            case 29:
               gdprCheck = true; // TODO rename id
 
               if (paymentMethodRadio === '2') {
@@ -1029,7 +1040,7 @@ cardButtons.forEach(function (cardButton) {
               }
 
               if (gdprCheck) {
-                _context.next = 33;
+                _context.next = 35;
                 break;
               }
 
@@ -1037,16 +1048,16 @@ cardButtons.forEach(function (cardButton) {
               $(e.target).prop('disabled', false);
               return _context.abrupt("return", false);
 
-            case 33:
+            case 35:
               if (!(paymentMethodRadio === '3')) {
-                _context.next = 47;
+                _context.next = 49;
                 break;
               }
 
               cardHolderName = $('#card-holder-name').val();
 
               if (!_.isEmpty(cardHolderName)) {
-                _context.next = 39;
+                _context.next = 41;
                 break;
               }
 
@@ -1054,8 +1065,8 @@ cardButtons.forEach(function (cardButton) {
               e.preventDefault();
               return _context.abrupt("return", false);
 
-            case 39:
-              _context.next = 41;
+            case 41:
+              _context.next = 43;
               return stripe.createPaymentMethod('card', cardElement, {
                 billing_details: {
                   name: cardHolderName,
@@ -1071,7 +1082,7 @@ cardButtons.forEach(function (cardButton) {
                 }
               });
 
-            case 41:
+            case 43:
               _yield$stripe$createP = _context.sent;
               paymentMethod = _yield$stripe$createP.paymentMethod;
               error = _yield$stripe$createP.error;
@@ -1088,7 +1099,10 @@ cardButtons.forEach(function (cardButton) {
                   cardHolderName: cardHolderName,
                   userEmail: userEmail,
                   confirmCartSumm: confirmCartSumm,
-                  method: paymentMethodRadio
+                  method: paymentMethodRadio,
+                  firmName: firmName,
+                  taxNumber: taxNumber,
+                  phonenumber: phonenumber
                 }, function (res) {
                   if (res.status) {
                     window.location = "/orders/".concat(res.hash);
@@ -1096,10 +1110,10 @@ cardButtons.forEach(function (cardButton) {
                 });
               }
 
-              _context.next = 48;
+              _context.next = 50;
               break;
 
-            case 47:
+            case 49:
               if (paymentMethodRadio === '2' || paymentMethodRadio === '1') {
                 // transfer & delivery
                 $.post('/purchase', {
@@ -1113,7 +1127,8 @@ cardButtons.forEach(function (cardButton) {
                   confirmCartSumm: confirmCartSumm,
                   method: paymentMethodRadio,
                   firmName: firmName,
-                  taxNumber: taxNumber
+                  taxNumber: taxNumber,
+                  phonenumber: phonenumber
                 }, function (res) {
                   if (res.status) {
                     window.location = "/orders/".concat(res.hash);
@@ -1121,7 +1136,7 @@ cardButtons.forEach(function (cardButton) {
                 });
               }
 
-            case 48:
+            case 50:
             case "end":
               return _context.stop();
           }

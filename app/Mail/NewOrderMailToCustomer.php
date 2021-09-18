@@ -15,7 +15,7 @@ class NewOrderMailToCustomer extends Mailable
 
     public $user;
     public $order;
-
+    
     /**
      * Create a new message instance.
      *
@@ -34,6 +34,6 @@ class NewOrderMailToCustomer extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.order.newOrderToCustomer');
+        return $this->subject('Sikeres rendelés')->view('emails.order.newOrderToCustomer');
     }
 }

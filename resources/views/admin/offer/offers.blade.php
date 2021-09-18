@@ -30,7 +30,7 @@
 				  <tr>
 					<th scope="col">Név</th>
 					<th scope="col">Cégnév</th>
-					<th scope="col">Phone</th>
+					<th scope="col">Telefonszám</th>
 					<th scope="col">Dátum</th>
 					<th scope="col"></th>
 				  </tr>

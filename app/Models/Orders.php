@@ -12,7 +12,7 @@ class Orders extends Model
 
     public function user()
     {
-        return $this->hasOne('users', 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
     public function items()

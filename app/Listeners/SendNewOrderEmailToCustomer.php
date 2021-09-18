@@ -27,6 +27,6 @@ class SendNewOrderEmailToCustomer
      */
     public function handle(NewOrderEvent $event)
     {
-        Mail::to('balazs.csabak@gmail.com')->send(new NewOrderMailToCustomer($event->user, $event->order));
+        Mail::to($event->user->email)->send(new NewOrderMailToCustomer($event->user, $event->order));
     }
 }

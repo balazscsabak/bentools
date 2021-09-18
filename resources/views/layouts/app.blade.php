@@ -51,12 +51,12 @@
                      
                     </div>
 
-                    <a href="#" class="my-2">
+                    <a href="/" class="my-2">
                         <img class="mx-auto my-2" src="{{ asset('images/KIMATools_RGB.png') }}" alt="">
                     </a>
 
                     <div class="text-center">
-                        © 2021 Kimatools – www.kimatools.hu
+                        © 2021 Bentools – www.bentools.hu
                     </div>
 
                 </div>
@@ -90,6 +90,7 @@
             </div>
 
             <div class="text-center mb-4">
+                <div><small>Áraink nettó árak.</small></div>
                 <div><small>Minimum rendelés 6000 Ft.</small></div>
                 <div><small><a href="{{ route('offer') }}" class="text-light">Kérjen árajánlatot</a></small></div>
             </div>

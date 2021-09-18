@@ -71,13 +71,17 @@
 				<h5>Cégadatok</h5>
 				
 				<div class="row mb-3">
-					<div class="col-12 col-lg-6">
+					<div class="col-12 col-lg-6 mb-2">
 						<label for="firm-name" class="form-label">Cégnév</label>
 						<input type="text" class="form-control" id="firm-name" >
 					</div>
-					<div class="col-12 col-lg-6">
+					<div class="col-12 col-lg-6 mb-2">
 						<label for="tax-number" class="form-label">Adószám</label>
 						<input type="text" class="form-control" id="tax-number" >
+					</div>
+					<div class="col-12 col-lg-6 mb-2">
+						<label for="phone-number" class="form-label">Telefonszám</label>
+						<input type="text" class="form-control" id="phone-number" >
 					</div>
 				</div>
 
@@ -179,20 +183,34 @@
 				
 				</div> --}}
 
-				{{-- TODO - rename --}}
+				{{-- TODO - rename (utalas) --}}
 				<div id="cash-on-delivery-placeholder" style="display: none">
+					<div class="fw-light">
+						<div class="fw-bold">
+							Utalási adatok
+						</div>
+						<div>
+							<div class="fw-normal">Kedvezményezett neve:</div> <i class="ms-2 fas fa-caret-right"></i> Mihalkó Bence Béla
+						</div>
+						<div>
+							<div class="fw-normal">Számlaszám:</div> <i class="ms-2 fas fa-caret-right"></i> 11741055-21444405
+						</div>
+						<div>
+							<div class="fw-normal">Közlemény:</div> <i class="ms-2 fas fa-caret-right"></i> rendelés azonosítója
+						</div>
+					</div>
 					<div class="my-3">
 						<div class="form-check">
 							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
 							<label class="form-check-label">
-								Elolvastam és elfogadom a <a href="">szerződési feltételeket</a>!
+								Elolvastam és elfogadom a <a href="/terms" target="_blank">szerződési feltételeket</a>!
 							</label>
 						</div>
 						
 						<div class="form-check">
 							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
 							<label class="form-check-label">
-								Elolvastam és elfogadom az <a href="">adatvédelmi szabályzatot</a>!
+								Elolvastam és elfogadom az <a href="/policy" target="_blank">adatvédelmi szabályzatot</a>!
 							</label>
 						</div>
 
@@ -213,24 +231,38 @@
 					</div>
 				</div>
 
-				{{-- TODO - rename --}}
+				{{-- TODO - rename (30napos) --}}
 				<div id="bank-transfver-placeholder" style="display: none">
-					<div class="fw-light fst-italic">
+					<div class="fw-light fst-italic mb-3">
 						Amennyiben 30 napos határidős fizetésünket szeretné kiválasztani, ezt előre egyeztetéssel teheti meg.<br>
 						A weboldalon a regisztáráció után, kérem jelezze nekünk üzenet vagy email esetleg telefonhívás formájában szándékát.
+					</div>
+					<div class="fw-light">
+						<div class="fw-bold">
+							Utalási adatok
+						</div>
+						<div>
+							<div class="fw-normal">Kedvezményezett neve:</div> <i class="ms-2 fas fa-caret-right"></i> Mihalkó Bence Béla
+						</div>
+						<div>
+							<div class="fw-normal">Számlaszám:</div> <i class="ms-2 fas fa-caret-right"></i> 11741055-21444405
+						</div>
+						<div>
+							<div class="fw-normal">Közlemény:</div> <i class="ms-2 fas fa-caret-right"></i> rendelés azonosítója
+						</div>
 					</div>
 					<div class="my-3">
 						<div class="form-check">
 							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
 							<label class="form-check-label">
-								Elolvastam és elfogadom a <a href="">szerződési feltételeket</a>!
+								Elolvastam és elfogadom a <a href="/terms" target="_blank">szerződési feltételeket</a>!
 							</label>
 						</div>
 						
 						<div class="form-check">
 							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
 							<label class="form-check-label">
-								Elolvastam és elfogadom az <a href="">adatvédelmi szabályzatot</a>!
+								Elolvastam és elfogadom az <a href="/policy" target="_blank">adatvédelmi szabályzatot</a>!
 							</label>
 						</div>
 

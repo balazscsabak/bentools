@@ -143,7 +143,13 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Posts::find($id);
+
+        if($post) {
+            $post->delete();
+        }
+
+        return redirect()->route('posts.index')->with('success', 'Poszt sikeresen törölve!');
     }
 
     public function post($slug)

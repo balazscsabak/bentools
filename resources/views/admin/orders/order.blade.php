@@ -52,6 +52,10 @@
 				
 					<h6 class="mb-3">Adószám: <span class="fw-bold">{{ $order->info->tax_number }}</span></h6>
 					
+					<h6 class="mb-3">Telefonszám: <span class="fw-bold">{{ $order->info->phone_number }}</span></h6>
+					
+					<h6 class="mb-3">Email: <span class="fw-bold">{{ $order->user->email }}</span></h6>
+					
 				</div>
 			</div>
 
