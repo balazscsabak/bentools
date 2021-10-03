@@ -19646,10 +19646,10 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(249, 249, 249, 0.84);
+  background-color: rgba(249, 249, 249, 0.92);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 12px 20px;
   width: 100%;
   height: 100%;
