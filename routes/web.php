@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\CapchaController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FrontpageController;
@@ -31,6 +32,7 @@ Route::get('/product/{slug}', [ProductsController::class, 'product'])->name('pro
 Route::get('/category/{slug}', [ProductsController::class, 'productsByCategory'])->name('products.bycategory');
 Route::get('/products/all', [ProductsController::class, 'products'])->name('products.all');
 Route::get('/post/{slug}', [PostsController::class, 'post'])->name('post');
+Route::get('/posts', [PostsController::class, 'posts'])->name('posts');
 Route::get('/message', [MessagesController::class, 'message'])->name('message.index');
 Route::post('/message', [MessagesController::class, 'store'])->name('message.store');
 Route::get('/contact', [FrontpageController::class, 'contact'])->name('contact');
@@ -43,13 +45,15 @@ Route::get('/terms', [FrontpageController::class, 'terms'])->name('terms');
 Route::get('/cookie', [FrontpageController::class, 'cookie'])->name('cookie');
 Route::get('/policy', [FrontpageController::class, 'policy'])->name('policy');
 
+Route::get('reload-captcha', [CapchaController::class, 'reloadCaptcha']);
+
 Route::prefix('cart')->group(function () {
     Route::get('/', [CartController::class, 'cart'])->name('cart');
     Route::get('session', [CartController::class, 'session']);
     Route::post('add', [CartController::class, 'addItem']);
     Route::post('remove', [CartController::class, 'removeItem']);
     Route::post('decrement', [CartController::class, 'decrementItem']);
-    Route::post('checkout', [CartController::class, 'checkout'])->name('checkout');
+    Route::post('checkout', [PurchaseController::class, 'checkout'])->name('cart.checkout');
 });
 
 /**
@@ -109,6 +113,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         
         Route::get('orders', [OrdersController::class, 'orders'])->name('admin.orders');
         Route::get('orders/{id}', [OrdersController::class, 'order'])->name('admin.order');
+        Route::post('orders/status/{id}', [OrdersController::class, 'updateStatus'])->name('admin.order.status');
+        
+        Route::get('brochure', [SettingsController::class, 'settingsBrochure'])->name('admin.brochure');
+        Route::post('brochure', [SettingsController::class, 'settingsSaveBrochure'])->name('admin.brochure.save');
     });
     
 });
@@ -129,6 +137,7 @@ Route::group(['middleware' => ['auth']], function () {
         
         Route::get('orders', [ProfileController::class, 'showUserOrders'])->name('user.profile.orders');
         Route::get('orders/{id}', [ProfileController::class, 'showUserOrder'])->name('user.profile.order');
+        Route::post('orders/cancel', [OrdersController::class, 'cancelOrder'])->name('user.profile.order.cancel');
 
     });
     

@@ -73,11 +73,48 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row mb-5">
 				<div class="col-12 col-lg-10">
 
-					<h6 class="mb-3">Státusz: <span class="fw-bold">{!! $order->StatusBadge !!}</span></h6>
-					
+					<h6 class="mb-2">
+						Státusz: 
+						<span class="fw-bold">
+							{!! $order->StatusBadge !!}
+						</span>
+					</h6>
+
+					@if ($order->status === 'PENDING')
+						<div>
+							<small>Amennyiben a rendelés státusza “Feldolgozás alatt”, visszavonhatja rendelését!</small>
+						</div>
+						<div>
+							<button data-bs-toggle="modal" data-bs-target="#cancelOrderModals" class="btn btn-danger btn-sm p-2text-uppercase py-0">Rendelés visszavonása</button>
+						</div>
+
+						<!-- Modal -->
+						<div class="modal fade" id="cancelOrderModals" tabindex="-1" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="cancelOrderModalsLabel">Rendelés visszamondása</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										Biztos, hogy vissza szeretnéd mondani a rendelésed?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+										
+										<form id="cancel-order-form"  action="{{ route('user.profile.order.cancel') }}" method="POST">
+											@csrf
+											<input type="hidden" name="id" value="{{ $order->id }}">
+											<button id="submit-cancel-order" type="submit" class="btn btn-danger">Rendelés visszavonása</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					@endif
 				</div>
 			</div>
 
@@ -197,3 +234,9 @@
 	</div>
 
 </x-profile-layout>
+
+<script>
+	$('#cancel-order-form').on('submit', function(e) {
+		$('#submit-cancel-order').attr('disabled', 'disabled');
+	})
+</script>

@@ -200,7 +200,8 @@ class ProductsController extends Controller
             $product->category_image_id = $request->input('category_image');
             $product->category_id = $request->input('category');
             $product->slug = $slugify->slugify($request->input('name'));
-
+            $product->available = $request->available ? true : false;
+            
             $product->save();
 
             $oldVariantIds = [];
@@ -326,7 +327,7 @@ class ProductsController extends Controller
 
     public function products()
     {
-        $products = Products::where('deleted', false)->get();
+        $products = Products::where([['deleted', false]])->get();
         $categories = Categories::orderBy('name', 'asc')->get();
 
         $mainCats = [];
@@ -364,7 +365,7 @@ class ProductsController extends Controller
         $filterCategory = $request->input('filterCategory');
 
         if ((int) $filterCategory > 1) {
-            $products = Products::where([        
+            $products = Products::with('featuredImage')->where([        
                 ['name', 'LIKE', '%' . $filterName . '%'],
                 ['deleted', false],
                 ['category_id', $filterCategory],
@@ -372,7 +373,7 @@ class ProductsController extends Controller
         } else {
             $products = Products::with('featuredImage')->where([
                 ['name', 'LIKE', '%' . $filterName . '%'],
-                ['deleted', false]
+                ['deleted', false],
             ])->get();
         }
 

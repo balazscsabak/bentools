@@ -3,7 +3,7 @@
     <div class="post-page mb-5">
         <div class="container">
 
-            <div class="d-flex justify-content-md-center">
+            <div class="d-flex justify-content-md-center position-relative">
                 <div class="col-12 col-md-7">
                     <div class="post">
 
@@ -74,7 +74,7 @@
                                                 <td style="padding: 12px 0;">
                                                     @foreach ($values as $ind => $v)
                                                         <div class="ps-2" style="white-space: nowrap;">
-                                                            {{ $attributes[$ind] }} - {{ $v }}
+                                                            {{ $attributes[$ind] }} : {{ $v }}
                                                         </div>
                                                     @endforeach
                                                 </td>
@@ -101,6 +101,13 @@
 
                     </div>
                 </div>
+                @if (!$product->available)
+                    <div class="product-not-available">
+                        <div class="text fs-3 fw-bold">
+                            Jelenleg nem elérhető!
+                        </div>
+                    </div>
+                @endif
             </div>
 
         

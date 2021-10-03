@@ -182,5 +182,33 @@ class SettingsController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function settingsBrochure()
+    {
+        // brochure_file
+        $brochure = Settings::where('key', 'brochure_file')->first();
+
+        $brochureLink = $brochure->value ? "/storage/" . $brochure->value : '#';
+
+        return view('admin.brochure')->with('brochure', $brochureLink);
+    }
+
+    public function settingsSaveBrochure(Request $request)
+    {
+        $validatedData = $request->validate([
+            'file' => 'required|mimes:pdf',
+        ]);
+
+        $pdfFileName = time() . '_' . $request->file('file')->getClientOriginalName();  
+                
+        $path = $request->file->storeAs('documents', $pdfFileName, 'public');
+
+        $brochureSettings = Settings::where('key', 'brochure_file')->first();
+        
+        $brochureSettings->value = $path;
+        $brochureSettings->save();
+
+        return back()->with('success', 'Sikeres feltöltés!');
+    }
     
 }

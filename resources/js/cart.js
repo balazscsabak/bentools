@@ -201,16 +201,16 @@ const ShoppingCart = function () {
 
             if(selectedValue === "3") {
                 $('#card-info-placeholder').fadeIn('fast');
-                $('#bank-transfver-placeholder').hide();
-                $('#cash-on-delivery-placeholder').hide();
+                $('#method-type-2').hide();
+                $('#method-type-1').hide();
             } else if(selectedValue === "2") {
-                $('#bank-transfver-placeholder').fadeIn('fast');
+                $('#method-type-2').fadeIn('fast');
                 $('#card-info-placeholder').hide();
-                $('#cash-on-delivery-placeholder').hide();
+                $('#method-type-1').hide();
             } else if(selectedValue === "1") {
-                $('#cash-on-delivery-placeholder').fadeIn('fast');
+                $('#method-type-1').fadeIn('fast');
                 $('#card-info-placeholder').hide();
-                $('#bank-transfver-placeholder').hide();
+                $('#method-type-2').hide();
             }
         })
     };

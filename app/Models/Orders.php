@@ -53,15 +53,27 @@ class Orders extends Model
                 return '<span class="badge bg-primary text-uppercase">Feldolgozás alatt</span>';
                 break;
 
+            case 'CANCELLED':
+                return '<span class="badge bg-danger text-uppercase">Visszavonva</span>';
+                break;
+
+            case 'IN_TRANSPORT':
+                return '<span class="badge bg-info text-uppercase">Szállítás alatt</span>';
+                break;
+
             case 'SUCCESS':
-                return '<span class="badge bg-success text-uppercase">Sikeres fizetés</span>';
+                return '<span class="badge bg-warning text-uppercase">Sikeres fizetés</span>';
+                break;
+
+            case 'COMPLETED':
+                return '<span class="badge bg-success text-uppercase">Teljesítve</span>';
                 break;
             
             default:
-                # code...
+                return 'UNKNOWN';
                 break;
         }
-        return 'asdasd';
+        
     }
 
 }

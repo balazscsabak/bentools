@@ -59,11 +59,29 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-12 col-lg-10">
+			<div class="row mb-3">
+				<div class="col-12 col-lg-10 d-flex align-items-center">
 
-					<h6 class="mb-3">Státusz: <span class="fw-bold">{!! $order->StatusBadge !!}</span></h6>
-					
+					<h6 class="mb-0 me-3">
+						Státusz:
+					</h6>
+					<form action="{{ route('admin.order.status', $order->id) }}" method="POST">
+						@csrf
+						<div class="row g-3 align-items-center">
+							<div class="col-auto" >
+								<select class="form-select form-select-sm" id="order_status" name="order_status">
+									<option {{ $order->status == "PENDING" ? 'selected' : null }} value="PENDING">Feldolgozás alatt</option>
+									<option {{ $order->status == "CANCELLED" ? 'selected' : null }} value="CANCELLED">Visszavonva</option>
+									<option {{ $order->status == "IN_TRANSPORT" ? 'selected' : null }} value="IN_TRANSPORT">Szállítás alatt</option>
+									<option {{ $order->status == "SUCCESS" ? 'selected' : null }} value="SUCCESS">Sikeres fizetés</option>
+									<option {{ $order->status == "COMPLETED" ? 'selected' : null }} value="COMPLETED">Teljesítve</option>
+								</select>
+							</div>
+							<div class="col-auto">
+								<input type="submit" value="Mentés" class="btn btn-warning btn-sm">
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 

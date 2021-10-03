@@ -3125,6 +3125,8 @@ __webpack_require__(/*! ./toasts */ "./resources/js/toasts.js");
 
 __webpack_require__(/*! ./cookie-consent */ "./resources/js/cookie-consent.js");
 
+__webpack_require__(/*! ./form-validation */ "./resources/js/form-validation.js");
+
 var lazyLoadInstance = new LazyLoad({// Your custom settings go here
 });
 
@@ -3353,16 +3355,16 @@ var ShoppingCart = function ShoppingCart() {
 
       if (selectedValue === "3") {
         $('#card-info-placeholder').fadeIn('fast');
-        $('#bank-transfver-placeholder').hide();
-        $('#cash-on-delivery-placeholder').hide();
+        $('#method-type-2').hide();
+        $('#method-type-1').hide();
       } else if (selectedValue === "2") {
-        $('#bank-transfver-placeholder').fadeIn('fast');
+        $('#method-type-2').fadeIn('fast');
         $('#card-info-placeholder').hide();
-        $('#cash-on-delivery-placeholder').hide();
+        $('#method-type-1').hide();
       } else if (selectedValue === "1") {
-        $('#cash-on-delivery-placeholder').fadeIn('fast');
+        $('#method-type-1').fadeIn('fast');
         $('#card-info-placeholder').hide();
-        $('#bank-transfver-placeholder').hide();
+        $('#method-type-2').hide();
       }
     });
   };
@@ -3692,7 +3694,7 @@ function filterUpdateProducts() {
           $(".products-wrapper").empty();
           res.products.forEach(function (prod) {
             console.log(prod);
-            var prodHtml = "\n                            <div class=\"col-10 mb-4 mb-md-0 col-md-3 related-item\">\n                                <a href=\"/product/".concat(prod.slug, "\">\n                                    <div class=\"image-wrapper\">\n                                        <div class=\"square image\" style=\"background-image: url('/storage/").concat(prod.featured_image ? prod.featured_image.path : 'images/default-product.png', "')\"></div>\n                                        <div class=\"blue-bg\"></div>\n                                    </div>\n                            \n                                    <div class=\"name\">\n                                        <h1>\n                                            ").concat(prod.name, "\n                                        </h1>\n                                    </div>\n                                    <div class=\"read-more\">\n                                        <span>R\xE9szletek <i class=\"fas fa-angle-double-right\"></i></span>\n                                    </div>\n                                </a>\n                            </div>\n                        ");
+            var prodHtml = "\n                            <div class=\"col-10 mb-4 mb-md-0 col-md-3 related-item position-relative\">\n                                <a href=\"/product/".concat(prod.slug, "\">\n                                    <div class=\"image-wrapper\">\n                                        <div class=\"square image\" style=\"background-image: url('/storage/").concat(prod.featured_image ? prod.featured_image.path : 'images/default-product.png', "')\"></div>\n                                        <div class=\"blue-bg\"></div>\n                                    </div>\n                            \n                                    <div class=\"name\">\n                                        <h1>\n                                            ").concat(prod.name, "\n                                        </h1>\n                                    </div>\n                                    <div class=\"read-more\">\n                                        <span>R\xE9szletek <i class=\"fas fa-angle-double-right\"></i></span>\n                                    </div>\n                                    ").concat(!prod.available ? "\n                                        <a href=\"/product/".concat(prod.slug, "\" class=\"product-not-available\">\n                                            <div class=\"text fs-5 fw-bold\">\n                                                Jelenleg nem el\xE9rhet\u0151!\n                                            </div>\n                                        </a>\n                                    ") : null, "\n                                        \n                                </a>\n                            </div>\n                        ");
             $(".products-wrapper").append(prodHtml);
           });
         } else {
@@ -3733,6 +3735,31 @@ $(function () {
     $('#products-filter-category-offer').val('1');
     $('#products-filter-category-offer').trigger('change');
     ;
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/form-validation.js":
+/*!*****************************************!*\
+  !*** ./resources/js/form-validation.js ***!
+  \*****************************************/
+/***/ (() => {
+
+$('#registration-form').on('submit', function (e) {
+  e.preventDefault();
+  var inputs = $(e.target).find('input');
+  inputs.each(function (index, input) {
+    var inputValue = $(input).val();
+    var inputName = $(input).attr('name');
+
+    if (_.isEmpty(inputValue.trim())) {
+      if ($(".".concat(inputName, "__input-error")).length < 1) {
+        $(input).after("<div class=\"".concat(inputName, "__input-error text-danger mt-1\">Hi\xE1nyz\xF3 adat</div>"));
+      }
+    } else {
+      $(".".concat(inputName, "__input-error")).remove();
+    }
   });
 });
 

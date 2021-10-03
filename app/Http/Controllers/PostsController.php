@@ -158,4 +158,11 @@ class PostsController extends Controller
 
         return view('posts.post')->with('post', $post);
     }
+
+    public function posts()
+    {
+        $posts = Posts::all();
+        
+        return view('posts.posts')->with('posts', $posts);
+    }
 }

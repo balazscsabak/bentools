@@ -22,10 +22,16 @@ const cardButtons = document.querySelectorAll('.card-button');
 cardButtons.forEach((cardButton) => {
 	cardButton.addEventListener('click', async (e) => {
 		$(e.target).prop('disabled', true);
-		
-		/**
-		 * TODO validation, prevent double click
-		 */
+
+		let spinner = `
+				<div class="spinner-wrapper spinner-filter spinner-wrapper--fixed" id="spinner-wrapper">
+						<div class="spinner-border text-primary" role="status">
+								<span class="visually-hidden">Loading...</span>
+						</div>
+				</div>
+		`;
+
+		$("body").append(spinner);
 
 		let paymentMethodRadio = $("#payment-menthod input[type='radio']:checked").val();
 	
@@ -35,10 +41,12 @@ cardButtons.forEach((cardButton) => {
 		let shippingPostcode = $('#shipping-postcode').val();
 		let shippingCity = $('#shipping-city').val();
 		let shippingStreet = $('#shipping-street').val();
+		let shippingCounty = $('#shipping-county').val();
 	
 		let billingPostcode = $('#billing-postcode').val();
 		let billingCity = $('#billing-city').val();
 		let billingStreet = $('#billing-street').val();
+		let billingCounty = $('#billing-county').val();
 
 		let firmName = $('#firm-name').val();
 		let taxNumber = $('#tax-number').val();
@@ -52,13 +60,13 @@ cardButtons.forEach((cardButton) => {
 			billingStreet = shippingStreet;
 		}
 
-		let fomrValidationCheck = true;
+		let formValidationCheck = true;
 
 		if(_.isEmpty(phonenumber)){
 			if($('#phone-number').closest('div').find('.val-error').length < 1) {
 				$('#phone-number').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-			fomrValidationCheck = false;
+			formValidationCheck = false;
 		} else {
 			$('#phone-number').closest('div').find('.val-error').remove();
 		}
@@ -67,7 +75,7 @@ cardButtons.forEach((cardButton) => {
 			if($('#firm-name').closest('div').find('.val-error').length < 1) {
 				$('#firm-name').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-			fomrValidationCheck = false;
+			formValidationCheck = false;
 		} else {
 			$('#firm-name').closest('div').find('.val-error').remove();
 		}
@@ -76,7 +84,7 @@ cardButtons.forEach((cardButton) => {
 			if($('#tax-number').closest('div').find('.val-error').length < 1) {
 				$('#tax-number').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-				fomrValidationCheck = false;
+				formValidationCheck = false;
 		} else {
 			$('#tax-number').closest('div').find('.val-error').remove();
 		}
@@ -85,16 +93,25 @@ cardButtons.forEach((cardButton) => {
 			if($('#shipping-postcode').closest('div').find('.val-error').length < 1) {
 				$('#shipping-postcode').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-				fomrValidationCheck = false;
+				formValidationCheck = false;
 		} else {
 			$('#shipping-postcode').closest('div').find('.val-error').remove();
+		}
+
+		if(_.isEmpty(shippingCounty)){
+			if($('#shipping-county').closest('div').find('.val-error').length < 1) {
+				$('#shipping-county').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
+			}
+				formValidationCheck = false;
+		} else {
+			$('#shipping-county').closest('div').find('.val-error').remove();
 		}
 
 		if(_.isEmpty(shippingCity)){
 			if($('#shipping-city').closest('div').find('.val-error').length < 1) {
 				$('#shipping-city').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-				fomrValidationCheck = false;
+				formValidationCheck = false;
 		} else {
 			$('#shipping-city').closest('div').find('.val-error').remove();
 		}
@@ -103,7 +120,7 @@ cardButtons.forEach((cardButton) => {
 			if($('#shipping-street').closest('div').find('.val-error').length < 1) {
 				$('#shipping-street').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-				fomrValidationCheck = false;
+				formValidationCheck = false;
 		} else {
 			$('#shipping-street').closest('div').find('.val-error').remove();
 		}
@@ -112,16 +129,25 @@ cardButtons.forEach((cardButton) => {
 			if($('#billing-postcode').closest('div').find('.val-error').length < 1) {
 				$('#billing-postcode').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-				fomrValidationCheck = false;
+				formValidationCheck = false;
 		} else {
 			$('#billing-postcode').closest('div').find('.val-error').remove();
+		}
+
+		if(_.isEmpty(billingCounty)){
+			if($('#billing-county').closest('div').find('.val-error').length < 1) {
+				$('#billing-county').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
+			}
+				formValidationCheck = false;
+		} else {
+			$('#billing-county').closest('div').find('.val-error').remove();
 		}
 
 		if(_.isEmpty(billingCity)){
 			if($('#billing-city').closest('div').find('.val-error').length < 1) {
 				$('#billing-city').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-				fomrValidationCheck = false;
+				formValidationCheck = false;
 		} else {
 			$('#billing-city').closest('div').find('.val-error').remove();
 		}
@@ -130,13 +156,14 @@ cardButtons.forEach((cardButton) => {
 			if($('#billing-street').closest('div').find('.val-error').length < 1) {
 				$('#billing-street').after(`<div class="val-error text-danger"><small>Mező kitöltése kötelező!</small></div>`)
 			}
-				fomrValidationCheck = false;
+				formValidationCheck = false;
 		} else {
 			$('#billing-street').closest('div').find('.val-error').remove();
 		}
 
-		if(!fomrValidationCheck) {
+		if(!formValidationCheck) {
 			e.preventDefault();
+			$('#spinner-wrapper').remove();
 			$(e.target).prop('disabled', false);
 			return false;
 		}
@@ -145,7 +172,8 @@ cardButtons.forEach((cardButton) => {
 
 		// TODO rename id
 		if(paymentMethodRadio === '2'){
-			$('#bank-transfver-placeholder .gdpr-purchase-check').each((i, element) => {
+			// 30 napos
+			$('#method-type-2 .gdpr-purchase-check').each((i, element) => {
 				let isChecked = $(element).is(":checked");
 	
 				if(!isChecked) {
@@ -161,7 +189,8 @@ cardButtons.forEach((cardButton) => {
 				}
 			})
 		} else if(paymentMethodRadio === '1') {
-			$('#cash-on-delivery-placeholder .gdpr-purchase-check').each((i, element) => {
+			// sima utalas
+			$('#method-type-1 .gdpr-purchase-check').each((i, element) => {
 				let isChecked = $(element).is(":checked");
 	
 				if(!isChecked) {
@@ -178,10 +207,9 @@ cardButtons.forEach((cardButton) => {
 			})
 		}
 
-		
-
 		if(!gdprCheck) {
 			e.preventDefault();
+			$('#spinner-wrapper').remove();
 			$(e.target).prop('disabled', false);
 
 			return false;
@@ -192,7 +220,7 @@ cardButtons.forEach((cardButton) => {
 			let cardHolderName = $('#card-holder-name').val();
 	
 			if(_.isEmpty(cardHolderName)) {
-				console.log('empty');
+				$('#spinner-wrapper').remove();
 				e.preventDefault();
 				return false;
 			}
@@ -232,7 +260,9 @@ cardButtons.forEach((cardButton) => {
 					method: paymentMethodRadio,
 					firmName,
 					taxNumber,
-					phonenumber
+					phonenumber,
+					shippingCounty,
+					billingCounty,
 				}, (res) => {
 					if(res.status) {
 						window.location = `/orders/${res.hash}`;
@@ -253,7 +283,9 @@ cardButtons.forEach((cardButton) => {
 				method: paymentMethodRadio,
 				firmName,
 				taxNumber,
-				phonenumber
+				phonenumber,
+				shippingCounty,
+				billingCounty,
 			}, (res) => {
 				if(res.status) {
 					window.location = `/orders/${res.hash}`;

@@ -39,6 +39,13 @@
             @csrf
             @method('PUT')
 
+            <div class="mb-3 mt-3">
+                <div class="form-check form-switch">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Termék elérhető?</label>
+                    <input value="available" name="available" id="available" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" {{ $product->available ? 'checked' : null}}>
+                  </div>
+            </div>
+            
             <div class="mb-3 row">
                 <div class="col-6">
                     <label style="font-size: 1.2rem;" for="name" class="form-label">Termék neve</label>

@@ -39,6 +39,9 @@
                     <a class="nav-link" href="{{ route('offer') }}">Ajánlatkérés</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('posts') }}">Hírek</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('shipping') }}">Szállítási információk</a>
                 </li>
                 <li class="nav-item">
@@ -46,6 +49,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact') }}">Kapcsolat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ $brochureLink }}" target="_blank">Prospektus</a>
                 </li>
                 
             </ul>

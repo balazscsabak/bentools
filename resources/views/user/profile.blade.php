@@ -26,17 +26,32 @@
 			@csrf
 			<h5>Felhasználói Adatok</h5>
 			
-			<div class="col-md-6">
+			<div class="col-md-6 mt-3">
 				<label for="lastname" class="form-label">Vezetéknév</label>
 				<input value="{{ $user->lastname }}" name="lastname" type="text" class="form-control" id="lastname">
 			</div>
 			
-			<div class="col-md-6">
+			<div class="col-md-6 mt-3">
 				<label for="firstname" class="form-label">Keresztnév</label>
 				<input value="{{ $user->firstname }}" name="firstname" type="text" class="form-control" id="firstname">
 			</div>
 
-			<div class="col-12">
+			<div class="col-md-6 mt-3">
+				<label for="firstname" class="form-label">Cégnév</label>
+				<input value="{{ $user->firm_name }}" name="firm_name" type="text" class="form-control" id="firm_name">
+			</div>
+
+			<div class="col-md-6 mt-3">
+				<label for="firstname" class="form-label">Telefonszám</label>
+				<input value="{{ $user->phone_number }}" name="phone_number" type="text" class="form-control" id="phone_number">
+			</div>
+			
+			<div class="col-md-6 mt-3">
+				<label for="firstname" class="form-label">Adószám</label>
+				<input value="{{ $user->tax_number }}" name="tax_number" type="text" class="form-control" id="tax_number">
+			</div>
+
+			<div class="col-12 mt-3">
 				<button type="submit" class="btn btn-primary float-end">Mentés</button>
 			</div>
 		</form>

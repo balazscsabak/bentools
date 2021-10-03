@@ -40,6 +40,7 @@
                         <li><a class="dropdown-item" href="{{ route('admin.policy') }}">Adatvédelmi nyilatkozat</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.terms') }}">ÁSZF</a></li>
                         <li><a class="dropdown-item" href="{{ route('settings.slideshow') }}">Slideshow</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.brochure') }}">Prospektus</a></li>
                     </ul>
                 </li>
             </ul>

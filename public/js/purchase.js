@@ -874,26 +874,26 @@ var cardButtons = document.querySelectorAll('.card-button');
 cardButtons.forEach(function (cardButton) {
   cardButton.addEventListener('click', /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
-      var paymentMethodRadio, confirmCartSumm, userEmail, shippingPostcode, shippingCity, shippingStreet, billingPostcode, billingCity, billingStreet, firmName, taxNumber, phonenumber, billingShippingCheck, fomrValidationCheck, gdprCheck, cardHolderName, _yield$stripe$createP, paymentMethod, error;
+      var spinner, paymentMethodRadio, confirmCartSumm, userEmail, shippingPostcode, shippingCity, shippingStreet, shippingCounty, billingPostcode, billingCity, billingStreet, billingCounty, firmName, taxNumber, phonenumber, billingShippingCheck, formValidationCheck, gdprCheck, cardHolderName, _yield$stripe$createP, paymentMethod, error;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               $(e.target).prop('disabled', true);
-              /**
-               * TODO validation, prevent double click
-               */
-
+              spinner = "\n\t\t\t\t<div class=\"spinner-wrapper spinner-filter spinner-wrapper--fixed\" id=\"spinner-wrapper\">\n\t\t\t\t\t\t<div class=\"spinner-border text-primary\" role=\"status\">\n\t\t\t\t\t\t\t\t<span class=\"visually-hidden\">Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t";
+              $("body").append(spinner);
               paymentMethodRadio = $("#payment-menthod input[type='radio']:checked").val();
               confirmCartSumm = _.toNumber($('#confirm_cart_summ').val());
               userEmail = $('#email').val();
               shippingPostcode = $('#shipping-postcode').val();
               shippingCity = $('#shipping-city').val();
               shippingStreet = $('#shipping-street').val();
+              shippingCounty = $('#shipping-county').val();
               billingPostcode = $('#billing-postcode').val();
               billingCity = $('#billing-city').val();
               billingStreet = $('#billing-street').val();
+              billingCounty = $('#billing-county').val();
               firmName = $('#firm-name').val();
               taxNumber = $('#tax-number').val();
               phonenumber = $('#phone-number').val();
@@ -905,14 +905,14 @@ cardButtons.forEach(function (cardButton) {
                 billingStreet = shippingStreet;
               }
 
-              fomrValidationCheck = true;
+              formValidationCheck = true;
 
               if (_.isEmpty(phonenumber)) {
                 if ($('#phone-number').closest('div').find('.val-error').length < 1) {
                   $('#phone-number').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#phone-number').closest('div').find('.val-error').remove();
               }
@@ -922,7 +922,7 @@ cardButtons.forEach(function (cardButton) {
                   $('#firm-name').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#firm-name').closest('div').find('.val-error').remove();
               }
@@ -932,7 +932,7 @@ cardButtons.forEach(function (cardButton) {
                   $('#tax-number').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#tax-number').closest('div').find('.val-error').remove();
               }
@@ -942,9 +942,19 @@ cardButtons.forEach(function (cardButton) {
                   $('#shipping-postcode').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#shipping-postcode').closest('div').find('.val-error').remove();
+              }
+
+              if (_.isEmpty(shippingCounty)) {
+                if ($('#shipping-county').closest('div').find('.val-error').length < 1) {
+                  $('#shipping-county').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                }
+
+                formValidationCheck = false;
+              } else {
+                $('#shipping-county').closest('div').find('.val-error').remove();
               }
 
               if (_.isEmpty(shippingCity)) {
@@ -952,7 +962,7 @@ cardButtons.forEach(function (cardButton) {
                   $('#shipping-city').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#shipping-city').closest('div').find('.val-error').remove();
               }
@@ -962,7 +972,7 @@ cardButtons.forEach(function (cardButton) {
                   $('#shipping-street').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#shipping-street').closest('div').find('.val-error').remove();
               }
@@ -972,9 +982,19 @@ cardButtons.forEach(function (cardButton) {
                   $('#billing-postcode').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#billing-postcode').closest('div').find('.val-error').remove();
+              }
+
+              if (_.isEmpty(billingCounty)) {
+                if ($('#billing-county').closest('div').find('.val-error').length < 1) {
+                  $('#billing-county').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                }
+
+                formValidationCheck = false;
+              } else {
+                $('#billing-county').closest('div').find('.val-error').remove();
               }
 
               if (_.isEmpty(billingCity)) {
@@ -982,7 +1002,7 @@ cardButtons.forEach(function (cardButton) {
                   $('#billing-city').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#billing-city').closest('div').find('.val-error').remove();
               }
@@ -992,25 +1012,27 @@ cardButtons.forEach(function (cardButton) {
                   $('#billing-street').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
-                fomrValidationCheck = false;
+                formValidationCheck = false;
               } else {
                 $('#billing-street').closest('div').find('.val-error').remove();
               }
 
-              if (fomrValidationCheck) {
-                _context.next = 29;
+              if (formValidationCheck) {
+                _context.next = 36;
                 break;
               }
 
               e.preventDefault();
+              $('#spinner-wrapper').remove();
               $(e.target).prop('disabled', false);
               return _context.abrupt("return", false);
 
-            case 29:
+            case 36:
               gdprCheck = true; // TODO rename id
 
               if (paymentMethodRadio === '2') {
-                $('#bank-transfver-placeholder .gdpr-purchase-check').each(function (i, element) {
+                // 30 napos
+                $('#method-type-2 .gdpr-purchase-check').each(function (i, element) {
                   var isChecked = $(element).is(":checked");
 
                   if (!isChecked) {
@@ -1024,7 +1046,8 @@ cardButtons.forEach(function (cardButton) {
                   }
                 });
               } else if (paymentMethodRadio === '1') {
-                $('#cash-on-delivery-placeholder .gdpr-purchase-check').each(function (i, element) {
+                // sima utalas
+                $('#method-type-1 .gdpr-purchase-check').each(function (i, element) {
                   var isChecked = $(element).is(":checked");
 
                   if (!isChecked) {
@@ -1040,33 +1063,34 @@ cardButtons.forEach(function (cardButton) {
               }
 
               if (gdprCheck) {
-                _context.next = 35;
+                _context.next = 43;
                 break;
               }
 
               e.preventDefault();
+              $('#spinner-wrapper').remove();
               $(e.target).prop('disabled', false);
               return _context.abrupt("return", false);
 
-            case 35:
+            case 43:
               if (!(paymentMethodRadio === '3')) {
-                _context.next = 49;
+                _context.next = 57;
                 break;
               }
 
               cardHolderName = $('#card-holder-name').val();
 
               if (!_.isEmpty(cardHolderName)) {
-                _context.next = 41;
+                _context.next = 49;
                 break;
               }
 
-              console.log('empty');
+              $('#spinner-wrapper').remove();
               e.preventDefault();
               return _context.abrupt("return", false);
 
-            case 41:
-              _context.next = 43;
+            case 49:
+              _context.next = 51;
               return stripe.createPaymentMethod('card', cardElement, {
                 billing_details: {
                   name: cardHolderName,
@@ -1082,7 +1106,7 @@ cardButtons.forEach(function (cardButton) {
                 }
               });
 
-            case 43:
+            case 51:
               _yield$stripe$createP = _context.sent;
               paymentMethod = _yield$stripe$createP.paymentMethod;
               error = _yield$stripe$createP.error;
@@ -1102,7 +1126,9 @@ cardButtons.forEach(function (cardButton) {
                   method: paymentMethodRadio,
                   firmName: firmName,
                   taxNumber: taxNumber,
-                  phonenumber: phonenumber
+                  phonenumber: phonenumber,
+                  shippingCounty: shippingCounty,
+                  billingCounty: billingCounty
                 }, function (res) {
                   if (res.status) {
                     window.location = "/orders/".concat(res.hash);
@@ -1110,10 +1136,10 @@ cardButtons.forEach(function (cardButton) {
                 });
               }
 
-              _context.next = 50;
+              _context.next = 58;
               break;
 
-            case 49:
+            case 57:
               if (paymentMethodRadio === '2' || paymentMethodRadio === '1') {
                 // transfer & delivery
                 $.post('/purchase', {
@@ -1128,7 +1154,9 @@ cardButtons.forEach(function (cardButton) {
                   method: paymentMethodRadio,
                   firmName: firmName,
                   taxNumber: taxNumber,
-                  phonenumber: phonenumber
+                  phonenumber: phonenumber,
+                  shippingCounty: shippingCounty,
+                  billingCounty: billingCounty
                 }, function (res) {
                   if (res.status) {
                     window.location = "/orders/".concat(res.hash);
@@ -1136,7 +1164,7 @@ cardButtons.forEach(function (cardButton) {
                 });
               }
 
-            case 50:
+            case 58:
             case "end":
               return _context.stop();
           }

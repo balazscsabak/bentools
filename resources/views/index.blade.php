@@ -42,6 +42,10 @@
 
                     @endforeach
                 @endisset
+
+                <div class="text-center mt-5">
+                    <a class="text-uppercase py-3 px-3 fs-5 bg-primary color-white btn btn-primary" href="{{ route('posts') }}">További híreink</a>
+                </div>
             </div>
         </div>
     

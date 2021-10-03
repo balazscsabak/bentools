@@ -45,6 +45,11 @@ a {
     color: $color-main-blue;
 }
 
+.captcha {
+    img {
+        max-width: 200px;
+    }
+}
 .navbar .has-megamenu{position:static!important;}
 .navbar .megamenu{left:0; right:0; width:100%; margin-top: -1px; }
 
@@ -439,6 +444,21 @@ main {
             }
         }
     }
+}
+
+.product-not-available {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(249 249 249 / 84%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    text-align: center;
 }
 
 .product-image-swiper {

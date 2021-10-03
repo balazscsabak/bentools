@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use DataTables;
 use Exception;
 use Illuminate\Support\Facades\Redirect;
-
 class MessagesController extends Controller
 {
     public function index(Request $request)
@@ -92,6 +91,16 @@ class MessagesController extends Controller
 
     public function store(Request $request)
     {
+        
+        $request->validate([
+            'email' => 'required|email',
+            'message' => 'required',
+            'firm_name' => 'required',
+            'full_name' => 'required',
+            'phone_number' => 'required',
+            'captcha' => 'required|captcha'
+        ]);
+
         try {
 
             $email = $request->input('email');

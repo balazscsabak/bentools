@@ -73,15 +73,15 @@
 				<div class="row mb-3">
 					<div class="col-12 col-lg-6 mb-2">
 						<label for="firm-name" class="form-label">Cégnév</label>
-						<input type="text" class="form-control" id="firm-name" >
+						<input type="text" class="form-control" id="firm-name" value="{{ $user->firm_name ? $user->firm_name : '' }}">
 					</div>
 					<div class="col-12 col-lg-6 mb-2">
 						<label for="tax-number" class="form-label">Adószám</label>
-						<input type="text" class="form-control" id="tax-number" >
+						<input type="text" class="form-control" id="tax-number" value="{{ $user->tax_number ? $user->tax_number : '' }}">
 					</div>
 					<div class="col-12 col-lg-6 mb-2">
 						<label for="phone-number" class="form-label">Telefonszám</label>
-						<input type="text" class="form-control" id="phone-number" >
+						<input type="text" class="form-control" id="phone-number" value="{{ $user->phone_number ? $user->phone_number : '' }}">
 					</div>
 				</div>
 
@@ -92,7 +92,11 @@
 						<label for="shipping-postcode" class="form-label">Irányítószám</label>
 						<input type="text" class="form-control" id="shipping-postcode" value="{{ $user->address->postcode ?? '' }}">
 					</div>
-					<div class="col-12 col-lg-8">
+					<div class="col-12 col-lg-4">
+						<label for="shipping-county" class="form-label">Megye</label>
+						<input type="text" class="form-control" id="shipping-county" value="{{ $user->address->county ?? '' }}">
+					</div>
+					<div class="col-12 col-lg-8 mt-2">
 						<label for="shipping-city" class="form-label">Város</label>
 						<input type="text" class="form-control" id="shipping-city" value="{{ $user->address->city ?? '' }}">
 					</div>
@@ -118,18 +122,22 @@
 					<div class="row mb-3">
 						<div class="col-4">
 							<label for="billing-postcode" class="form-label">Irányítószám</label>
-							<input type="text" class="form-control" id="billing-postcode">
+							<input type="text" class="form-control" id="billing-postcode" value="{{ $user->address->billing_postcode ?? '' }}"">
 						</div>
-						<div class="col-8">
+						<div class="col-12 col-lg-4">
+							<label for="billing-county" class="form-label">Megye</label>
+							<input type="text" class="form-control" id="billing-county" value="{{ $user->address->billing_county ?? '' }}">
+						</div>
+						<div class="col-8 mt-2">
 							<label for="billing-city" class="form-label">Város</label>
-							<input type="text" class="form-control" id="billing-city">
+							<input type="text" class="form-control" id="billing-city" value="{{ $user->address->billing_city ?? '' }}">
 						</div>
 					</div>
 	
 					<div class="row mb-3">
 						<div class="col-12">
 							<label for="billing-street" class="form-label">Utca/Házszám</label>
-							<input type="text" class="form-control" id="billing-street">
+							<input type="text" class="form-control" id="billing-street" value="{{ $user->address->billing_street ?? '' }}">
 						</div>
 					</div>
 				</div>
@@ -183,8 +191,8 @@
 				
 				</div> --}}
 
-				{{-- TODO - rename (utalas) --}}
-				<div id="cash-on-delivery-placeholder" style="display: none">
+				{{-- (sima utalas) --}}
+				<div id="method-type-1" style="display: none">
 					<div class="fw-light">
 						<div class="fw-bold">
 							Utalási adatok
@@ -231,8 +239,8 @@
 					</div>
 				</div>
 
-				{{-- TODO - rename (30napos) --}}
-				<div id="bank-transfver-placeholder" style="display: none">
+				{{-- (30napos) --}}
+				<div id="method-type-2" style="display: none">
 					<div class="fw-light fst-italic mb-3">
 						Amennyiben 30 napos határidős fizetésünket szeretné kiválasztani, ezt előre egyeztetéssel teheti meg.<br>
 						A weboldalon a regisztáráció után, kérem jelezze nekünk üzenet vagy email esetleg telefonhívás formájában szándékát.

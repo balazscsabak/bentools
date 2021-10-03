@@ -1,4 +1,4 @@
-<div class="col-10 mb-4 mb-md-0 col-md-3 related-item">
+<div class="col-10 mb-4 mb-md-0 col-md-3 related-item position-relative">
     <a href="/product/{{ $product->slug }}">
         <div class="image-wrapper">
             
@@ -20,4 +20,11 @@
             <span>Részletek <i class="fas fa-angle-double-right"></i></span>
         </div>
     </a>
+    @if (!$product->available)
+        <a href="/product/{{ $product->slug }}" class="product-not-available">
+            <div class="text fs-5 fw-bold">
+                Jelenleg nem elérhető!
+            </div>
+        </a>
+    @endif
 </div>

@@ -205,7 +205,7 @@ function filterUpdateProducts() {
 
                         console.log(prod);
                         let prodHtml = `
-                            <div class="col-10 mb-4 mb-md-0 col-md-3 related-item">
+                            <div class="col-10 mb-4 mb-md-0 col-md-3 related-item position-relative">
                                 <a href="/product/${prod.slug}">
                                     <div class="image-wrapper">
                                         <div class="square image" style="background-image: url('/storage/${prod.featured_image ? prod.featured_image.path : 'images/default-product.png'}')"></div>
@@ -220,6 +220,14 @@ function filterUpdateProducts() {
                                     <div class="read-more">
                                         <span>Részletek <i class="fas fa-angle-double-right"></i></span>
                                     </div>
+                                    ${!prod.available ? `
+                                        <a href="/product/${prod.slug}" class="product-not-available">
+                                            <div class="text fs-5 fw-bold">
+                                                Jelenleg nem elérhető!
+                                            </div>
+                                        </a>
+                                    ` : null }
+                                        
                                 </a>
                             </div>
                         `;

@@ -48,8 +48,8 @@
 
 					<form class="text-center" method="POST" action="{{ route('checkout') }}">
 						@csrf
-						<h5 class="mb-3">Tovább a vásárláshoz</h5>
-						<input type="submit" class="btn btn-primary" value='Vásárlás' />
+						<h5 class="mb-3">Tovább a megrendeléshez</h5>
+						<input type="submit" class="btn btn-primary" value='Tovább' />
 
 					</form>
 
@@ -63,12 +63,20 @@
 							A vásárlás folytatásához, kérlek jelentkezz be!
 						</h5>
 			
-						<form method="POST" action="{{ route('checkout') }}">
+						<form method="POST" action="{{ route('cart.checkout') }}">
 							@csrf
 					
 							<div class="row justify-content-center my-4">
 								
 								<div class="col-8">
+									
+									@if ($error = Session::get('error'))
+										<div class="alert alert-danger alert-block text-center mb-3">
+										
+											Rossz felhasználónév/jelszó
+											
+										</div>
+									@endif
 									
 									<!-- Email Address -->
 									<div class="mb-3">

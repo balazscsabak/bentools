@@ -1,62 +1,8 @@
-Mi valtozott:
--termekek
--user registration
--cart
--purchase
-
 
 Todo:
-GMAIL ACCOUNT
 STRIPE ACCOUNT
-
 Statusz rendelésnél mi legyen?
 Szamlaval mi legyen?
-
-
-//
-maganszemely/ceg 
-    -> cegnev
-    -> adoszam
-
-
-
-
-ASZF - pipa 
-Elfogadom h a rendeles leadasa FIZETESI KOTELEZETTSEG jar - pipa
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Kiemelt termekek beallitasa
@@ -99,3 +45,19 @@ TODO:
 Only category in menu
 6k limit
 Ajanalatkeres
+
+
+
+
+///
+///   TEST
+///////////// 
+emails: 
+    - cancelled order
+    - shipped order
+capcha
+user registration with new datas
+edit profile datas
+brochure
+news archive
+disable item

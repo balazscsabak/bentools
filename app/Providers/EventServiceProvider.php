@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\CancelledOrderByCustomerEvent;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use App\Events\NewOrderEvent;
+use App\Listeners\SendCancelledOrderNotificationToShopOwner;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         NewOrderEvent::class => [
             SendNewOrderEmailToCustomer::class,
             SendNewOrderEmailToShopOwner::class,
+        ],
+        CancelledOrderByCustomerEvent::class => [
+            SendCancelledOrderNotificationToShopOwner::class
         ]
     ];
 
@@ -46,6 +51,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function shouldDiscoverEvents()
     {
-        return true;
+        return false;
     }
 }

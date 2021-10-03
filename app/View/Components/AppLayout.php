@@ -4,17 +4,24 @@ namespace App\View\Components;
 
 use App\Models\Categories;
 use App\Models\Products;
+use App\Models\Settings;
 use Illuminate\View\Component;
 
 class AppLayout extends Component
 {
     public $products;
     public $categories;
+    public $brochureLink = '#';
 
     public function __construct()
     {
         $this->categories = Categories::where('id', '!=', 1)->get()->toArray();
         $products = Products::all();
+        $brochure = Settings::where('key', 'brochure_file')->first();
+        
+        if($brochure->value) {
+            $this->brochureLink = '/storage/' . $brochure->value; 
+        }
 
         $categories = [];
         $productsForNav = [];

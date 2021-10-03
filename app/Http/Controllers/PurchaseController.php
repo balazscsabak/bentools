@@ -38,11 +38,11 @@ class PurchaseController extends Controller
          */
         if (!Auth::check()) {
             $credentials = $request->only('email', 'password');
-
+            
             if (!Auth::attempt($credentials)) {
                 // Authentication passed...
                 // return redirect()->intended('dashboard');
-                return back();
+                return back()->with('error', 'Auth error');
             }
 
         }
@@ -73,11 +73,11 @@ class PurchaseController extends Controller
         $shippingPostcode = $request->shippingPostcode;
         $shippingCity =  $request->shippingCity;
         $shippingStreet = $request->shippingStreet;
-        $shippingCounty = 'Nógrád';
+        $shippingCounty = $request->shippingCounty;
         $billingPostcode = $request->billingPostcode;
         $billingCity = $request->billingCity;
         $billingStreet = $request->billingStreet;
-        $billingCounty = 'Nógrád';
+        $billingCounty = $request->billingCounty;
 
         $firmName = $request->firmName;
         $taxNumber = $request->taxNumber;

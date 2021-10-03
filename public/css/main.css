@@ -19070,10 +19070,16 @@ readers do not read off random characters that represent icons */
   align-items: center;
   min-height: 100px;
   height: 100%;
-  background-color: #f3f3f3c7;
+  background-color: #ffffffc7;
   position: absolute;
   top: 0;
   z-index: 1000;
+  left: 0;
+}
+.spinner-wrapper--fixed {
+  z-index: 10000;
+  position: fixed !important;
+  top: 0;
   left: 0;
 }
 
@@ -19299,6 +19305,10 @@ img {
 
 a {
   color: #1d58a5;
+}
+
+.captcha img {
+  max-width: 200px;
 }
 
 .navbar .has-megamenu {
@@ -19630,6 +19640,21 @@ main {
 .product-page .product-info .category-img img {
   max-width: 230px;
   margin: auto;
+}
+
+.product-not-available {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(249, 249, 249, 0.84);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  text-align: center;
 }
 
 .product-image-swiper .swiper-wrapper {

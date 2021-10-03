@@ -43,12 +43,18 @@ class ProfileController extends Controller
         $validatedData = $request->validate([
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
+            'tax_number' => ['required', 'string', 'max:255'],
+            'firm_name' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
         ]);
 
         $user = Auth::user();
 
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
+        $user->tax_number = $request->input('tax_number');
+        $user->phone_number = $request->input('phone_number');
+        $user->firm_name = $request->input('firm_name');
 
         $user->save();
 
@@ -170,8 +176,14 @@ class ProfileController extends Controller
             
             $updateAddress->user_id = $user->id;
             $updateAddress->postcode = $request->input('postcode');
+            $updateAddress->county = $request->input('county');
             $updateAddress->city = $request->input('city');
             $updateAddress->street = $request->input('street');
+
+            $updateAddress->billing_postcode = $request->input('billing_postcode');
+            $updateAddress->billing_county = $request->input('billing_county');
+            $updateAddress->billing_city = $request->input('billing_city');
+            $updateAddress->billing_street = $request->input('billing_street');
 
             $updateAddress->default = true;
  
