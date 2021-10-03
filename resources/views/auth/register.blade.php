@@ -26,7 +26,7 @@
         
                             <div>
                                 <label class="form-label">Vezetéknév</label>
-                                <input value="test" type="text" class="form-control" required name="lastname">
+                                <input type="text" class="form-control" required name="lastname">
                             </div>
 
                             @error('lastname')
@@ -39,7 +39,7 @@
         
                             <div>
                                 <label class="form-label">Keresztnév</label>
-                                <input value="test" type="text" class="form-control" name="firstname" required value="">
+                                <input type="text" class="form-control" name="firstname" required value="">
                             </div>
         
                             @error('firstname')
@@ -62,31 +62,31 @@
 
                         <div class="col-12 mt-3">
                             <label class="form-label">{{ __('Jelszó')}}</label>
-                            <input value="test" class="form-control" type="password" name="password" required />
+                            <input class="form-control" type="password" name="password" required />
                         </div>
                         @error('password')
                             <div class="ms-3 mt-1 mb-2 p-0 text-danger">A két jelszó nem egyezik</div>
                         @enderror
                         <div class="col-12 mt-3">
                             <label class="form-label">{{ __('Jelszó megerősítése')}}</label>
-                            <input value="test" class="form-control" type="password" name="password_confirmation" required />
+                            <input class="form-control" type="password" name="password_confirmation" required />
                         </div>
                     </div>
                     
                     <div class="row mt-3">
                         <div class="col-6">
                             <label class="form-label">Cégnév</label>
-                            <input value="test" class="form-control" type="text" name="firm_name" required />
+                            <input class="form-control" type="text" name="firm_name" required />
                         </div>
 
                         <div class="col-6 ">
                             <label class="form-label">Adószám</label>
-                            <input value="test" class="form-control" type="text" name="tax_number" required />
+                            <input class="form-control" type="text" name="tax_number" required />
                         </div>
 
                         <div class="col-6 mt-3">
                             <label class="form-label">Telefonszám</label>
-                            <input value="test" class="form-control" type="text" name="phone_number" required />
+                            <input class="form-control" type="text" name="phone_number" required />
                         </div>
                     </div>
                     
@@ -96,19 +96,19 @@
 
                             <div>
                                 <label class="form-label">Irányítószám</label>
-                                <input value="test" class="form-control" type="text" name="shipping_postcode" required />
+                                <input class="form-control" type="text" name="shipping_postcode" required />
                             </div>
                             <div>
                                 <label class="form-label mt-3">Megye</label>
-                                <input value="test" class="form-control" type="text" name="shipping_county" required />
+                                <input class="form-control" type="text" name="shipping_county" required />
                             </div>
                             <div>
                                 <label class="form-label mt-3">Város</label>
-                                <input value="test" class="form-control" type="text" name="shipping_city" required />
+                                <input class="form-control" type="text" name="shipping_city" required />
                             </div>
                             <div>
                                 <label class="form-label mt-3">Utca/házszám</label>
-                                <input value="test" class="form-control" type="text" name="shipping_street" required />
+                                <input class="form-control" type="text" name="shipping_street" required />
                             </div>
                         </div>
                         <div class="col-6">
@@ -117,19 +117,19 @@
                             <div>
                                 <div>
                                     <label class="form-label">Irányítószám</label>
-                                    <input value="test" class="form-control" type="text" name="billing_postcode" required />
+                                    <input class="form-control" type="text" name="billing_postcode" required />
                                 </div>
                                 <div>
                                     <label class="form-label mt-3">Megye</label>
-                                    <input value="test" class="form-control" type="text" name="billing_county" required />
+                                    <input class="form-control" type="text" name="billing_county" required />
                                 </div>
                                 <div>
                                     <label class="form-label mt-3">Város</label>
-                                    <input value="test" class="form-control" type="text" name="billing_city" required />
+                                    <input class="form-control" type="text" name="billing_city" required />
                                 </div>
                                 <div>
                                     <label class="form-label mt-3">Utca/házszám</label>
-                                    <input value="test" class="form-control" type="text" name="billing_street" required />
+                                    <input class="form-control" type="text" name="billing_street" required />
                                 </div>
                             </div>
                         </div>
