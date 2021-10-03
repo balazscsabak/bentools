@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Event;
 use App\Events\NewOrderEvent;
 use App\Listeners\SendCancelledOrderNotificationToShopOwner;
 use App\Listeners\SendNewOrderEmailToCustomer;
-use App\Listeners\SendUserRegistrationEmail;
+use App\Listeners\SendNewOrderEmailToShopOwner;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
