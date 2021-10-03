@@ -1,7 +1,7 @@
 $('#registration-form').on('submit', function(e){
 	const inputs = $(e.target).find('input');
 
-	const valFlag = true;
+	let valFlag = true;
 
 	inputs.each((index, input) => {
 		let inputValue = $(input).val();

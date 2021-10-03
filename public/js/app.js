@@ -3746,8 +3746,6 @@ $(function () {
   \*****************************************/
 /***/ (() => {
 
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 $('#registration-form').on('submit', function (e) {
   var inputs = $(e.target).find('input');
   var valFlag = true;
@@ -3760,7 +3758,7 @@ $('#registration-form').on('submit', function (e) {
         $(input).after("<div class=\"".concat(inputName, "__input-error text-danger mt-1\">Hi\xE1nyz\xF3 adat</div>"));
       }
 
-      valFlag = (_readOnlyError("valFlag"), false);
+      valFlag = false;
     } else {
       $(".".concat(inputName, "__input-error")).remove();
     }
