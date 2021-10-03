@@ -73,21 +73,21 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group mt-4 mb-4 d-flex">
+                            {{-- <div class="form-group mt-4 mb-4 d-flex">
                                 <div class="captcha d-flex">
                                     <span>{!! captcha_img() !!}</span>
                                     <button type="button" class="btn btn-primary" class="reload" id="reload">
                                         ↻
                                     </button>
                                 </div>
-                            </div>
+                            </div> --}}
     
-                            <div class="form-group mb-4">
+                            {{-- <div class="form-group mb-4">
                                 <input id="captcha" type="text" class="form-control" placeholder="Mit lát a képen?" name="captcha">
                                 @error('captcha')
                                     <div class="alert alert-danger mt-2 py-1">Hibás adatokat adtál meg!</div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div class="submit">
                                 <input type="submit" value="Küldés" class="btn btn-primary btn-sm">

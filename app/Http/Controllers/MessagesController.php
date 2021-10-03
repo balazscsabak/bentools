@@ -98,7 +98,7 @@ class MessagesController extends Controller
             'firm_name' => 'required',
             'full_name' => 'required',
             'phone_number' => 'required',
-            'captcha' => 'required|captcha'
+            // 'captcha' => 'required|captcha'
         ]);
 
         try {
