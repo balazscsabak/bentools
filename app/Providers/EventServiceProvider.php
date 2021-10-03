@@ -9,7 +9,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Events\NewOrderEvent;
 use App\Listeners\SendCancelledOrderNotificationToShopOwner;
-
+use App\Listeners\SendNewOrderEmailToCustomer;
+use App\Listeners\SendUserRegistrationEmail;
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -21,10 +22,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        UserRegistration::class => [
-            SendNewOrderEmailToCustomer::class,
-            SendUserRegistrationEmail::class,
-        ],
+        // UserRegistration::class => [
+        //     SendNewOrderEmailToCustomer::class,
+        //     SendUserRegistrationEmail::class,
+        // ],
         NewOrderEvent::class => [
             SendNewOrderEmailToCustomer::class,
             SendNewOrderEmailToShopOwner::class,

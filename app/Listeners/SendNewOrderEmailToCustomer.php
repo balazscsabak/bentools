@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Listeners;
 
 use App\Mail\NewOrderMailToCustomer;
 use App\Events\NewOrderEvent;

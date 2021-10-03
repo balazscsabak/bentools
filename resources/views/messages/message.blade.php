@@ -37,7 +37,7 @@
                                 <label for="full_name" class="form-label">Teljes név</label>
                                 <input value="{{ old('full_name') }}" name="full_name" type="text" class="form-control" id="full_name">
                                 @error('full_name')
-                                    <div class="alert alert-danger mt-2 py-1">Hibás adatokat adtál meg!</div>
+                                    <div class="alert alert-danger mt-2 py-1">Hibás adatot adtál meg!</div>
                                 @enderror
                             </div>
 
@@ -45,7 +45,7 @@
                                 <label for="firm_name" class="form-label">Cég név</label>
                                 <input value="{{ old('firm_name') }}" name="firm_name" type="text" class="form-control" id="firm_name">
                                 @error('firm_name')
-                                    <div class="alert alert-danger mt-2 py-1">Hibás adatokat adtál meg!</div>
+                                    <div class="alert alert-danger mt-2 py-1">Hibás adatot adtál meg!</div>
                                 @enderror
                             </div>
 
@@ -53,7 +53,7 @@
                                 <label for="email" class="form-label">Email</label>
                                 <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="email">
                                 @error('email')
-                                    <div class="alert alert-danger mt-2 py-1">Hibás adatokat adtál meg!</div>
+                                    <div class="alert alert-danger mt-2 py-1">Hibás adatot adtál meg!</div>
                                 @enderror
                             </div>
 
@@ -61,7 +61,7 @@
                                 <label for="phone_number" class="form-label">Telefonszám</label>
                                 <input value="{{ old('phone_number') }}" name="phone_number" type="text" class="form-control" id="phone_number">
                                 @error('phone_number')
-                                    <div class="alert alert-danger mt-2 py-1">Hibás adatokat adtál meg!</div>
+                                    <div class="alert alert-danger mt-2 py-1">Hibás adatot adtál meg!</div>
                                 @enderror
                             </div>
 
@@ -69,7 +69,7 @@
                                 <label for="message" class="form-label">Üzenet</label>
                                 <textarea name="message" class="form-control" id="message">{{ old('message') }}</textarea>
                                 @error('message')
-                                    <div class="alert alert-danger mt-2 py-1">Hibás adatokat adtál meg!</div>
+                                    <div class="alert alert-danger mt-2 py-1">Hibás adatot adtál meg!</div>
                                 @enderror
                             </div>
 
@@ -85,7 +85,7 @@
                             {{-- <div class="form-group mb-4">
                                 <input id="captcha" type="text" class="form-control" placeholder="Mit lát a képen?" name="captcha">
                                 @error('captcha')
-                                    <div class="alert alert-danger mt-2 py-1">Hibás adatokat adtál meg!</div>
+                                    <div class="alert alert-danger mt-2 py-1">Hibás adatot adtál meg!</div>
                                 @enderror
                             </div> --}}
 
