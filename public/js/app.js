@@ -3746,9 +3746,11 @@ $(function () {
   \*****************************************/
 /***/ (() => {
 
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
 $('#registration-form').on('submit', function (e) {
-  e.preventDefault();
   var inputs = $(e.target).find('input');
+  var valFlag = true;
   inputs.each(function (index, input) {
     var inputValue = $(input).val();
     var inputName = $(input).attr('name');
@@ -3757,10 +3759,16 @@ $('#registration-form').on('submit', function (e) {
       if ($(".".concat(inputName, "__input-error")).length < 1) {
         $(input).after("<div class=\"".concat(inputName, "__input-error text-danger mt-1\">Hi\xE1nyz\xF3 adat</div>"));
       }
+
+      valFlag = (_readOnlyError("valFlag"), false);
     } else {
       $(".".concat(inputName, "__input-error")).remove();
     }
   });
+
+  if (!valFlag) {
+    e.preventDefault();
+  }
 });
 
 /***/ }),

@@ -1,7 +1,7 @@
 $('#registration-form').on('submit', function(e){
-	e.preventDefault();
-
 	const inputs = $(e.target).find('input');
+
+	const valFlag = true;
 
 	inputs.each((index, input) => {
 		let inputValue = $(input).val();
@@ -11,8 +11,13 @@ $('#registration-form').on('submit', function(e){
 			if($(`.${inputName}__input-error`).length < 1){
 				$(input).after(`<div class="${inputName}__input-error text-danger mt-1">Hiányzó adat</div>`)
 			}
+			valFlag = false;
 		} else {
 			$(`.${inputName}__input-error`).remove();
 		}
 	})
+
+	if(!valFlag){
+		e.preventDefault();
+	}
 })
