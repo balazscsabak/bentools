@@ -316,7 +316,7 @@
 
 						<div class="row">
 							<div class="col">
-								<button class="card-button btn btn-primary" disabled>
+								<button class="card-button btn btn-primary">
 									Vásárlás
 								</button>
 							</div>
