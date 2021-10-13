@@ -104,7 +104,7 @@
                 @if (!$product->available)
                     <div class="product-not-available">
                         <div class="text fs-1 fw-bold">
-                            Jelenleg nem elérhető!
+                            Beszerzés alatt!
                         </div>
                     </div>
                 @endif

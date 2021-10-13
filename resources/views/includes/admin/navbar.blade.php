@@ -16,6 +16,9 @@
                     <a class="nav-link" href="{{ route('messages') }}">Üzenetek</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.users') }}">Felhasznalók</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('media') }}">Média</a>
                 </li>
                 <li class="nav-item">
@@ -41,6 +44,7 @@
                         <li><a class="dropdown-item" href="{{ route('admin.terms') }}">ÁSZF</a></li>
                         <li><a class="dropdown-item" href="{{ route('settings.slideshow') }}">Slideshow</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.brochure') }}">Prospektus</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.socials') }}">Socials</a></li>
                     </ul>
                 </li>
             </ul>

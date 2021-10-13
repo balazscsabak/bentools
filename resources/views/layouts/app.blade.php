@@ -51,6 +51,18 @@
                      
                     </div>
 
+                    <div class="col-12 justify-content-center text-center mt-3 ">
+                        @if (isset($socials['facebook_enabled']))
+                            <a target="_blank" class="text-white fs-4" href="{{ $socials['facebook_url'] }}"><i class="fab fa-facebook-f me-2"></i></a>
+                        @endif
+                        @if (isset($socials['instagram_enabled']))
+                            <a target="_blank" class="text-white fs-4" href="{{ $socials['instagram_url'] }}"><i class="fab fa-instagram mx-2"></i></a>
+                        @endif
+                        @if (isset($socials['youtube_enabled']))
+                            <a target="_blank" class="text-white fs-4" href="{{ $socials['youtube_url'] }}"><i class="fab fa-youtube ms-2"></i></a>
+                        @endif
+                    </div>
+
                     <a href="/" class="my-2">
                         <img class="mx-auto my-2" src="{{ asset('images/KIMATools_RGB.png') }}" alt="">
                     </a>

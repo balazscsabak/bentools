@@ -12,30 +12,33 @@ class AppLayout extends Component
     public $products;
     public $categories;
     public $brochureLink = '#';
+    public $socials = [];
 
     public function __construct()
     {
         $this->categories = Categories::where('id', '!=', 1)->get()->toArray();
         $products = Products::all();
         $brochure = Settings::where('key', 'brochure_file')->first();
-        
-        if($brochure->value) {
-            $this->brochureLink = '/storage/' . $brochure->value; 
+        $socials = Settings::where('key', 'socials')->first();
+        $this->socials = json_decode($socials->value, true);
+
+        if ($brochure->value) {
+            $this->brochureLink = '/storage/' . $brochure->value;
         }
 
         $categories = [];
         $productsForNav = [];
 
         foreach ($this->categories as $cat) {
-            
+
             $categories[$cat['id']] = $cat['name'];
         }
 
         foreach ($products as $product) {
             $prodId = $product->category_id;
-            
-            if($prodId === 1) {
-                $productsForNav['uncategorized'][] = $product;  
+
+            if ($prodId === 1) {
+                $productsForNav['uncategorized'][] = $product;
             } else {
                 $productsForNav[$categories[$product->category_id]][] = $product;
             }

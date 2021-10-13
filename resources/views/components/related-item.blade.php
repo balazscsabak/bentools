@@ -23,7 +23,7 @@
     @if (!$product->available)
         <a href="/product/{{ $product->slug }}" class="product-not-available">
             <div class="text fs-5 fw-bold">
-                Jelenleg nem elérhető!
+                Beszerzés alatt!
             </div>
         </a>
     @endif

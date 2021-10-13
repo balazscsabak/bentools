@@ -146,30 +146,30 @@
 
 				<div id="payment-menthod" class="mb-4">
 
-						<div class="form-check">
-							<input value="1" class="form-check-input payment-method-radio" type="radio" name="payment-method" id="method-1">
-							<label class="form-check-label" for="method-1">
-								Átutalásos fizetés
-							</label>
-						</div>
+					{{-- <div class="form-check">
+						<input value="1" class="form-check-input payment-method-radio" type="radio" name="payment-method" id="method-1">
+						<label class="form-check-label" for="method-1">
+							Átutalásos fizetés
+						</label>
+					</div> --}}
 
-						<div class="form-check">
-							<input value="2" class="form-check-input payment-method-radio" type="radio" name="payment-method" id="method-2">
-							<label class="form-check-label" for="method-2">
-								30 napos fizetési határidővel
-							</label>
-						</div>
+					<div class="form-check">
+						<input value="2" class="form-check-input payment-method-radio" type="radio" name="payment-method" id="method-2">
+						<label class="form-check-label" for="method-2">
+							Átutalásos fizetés - 30 napos fizetési határidővel
+						</label>
+					</div>
 
-						<div class="form-check">
-							<input disabled value="3" class="form-check-input payment-method-radio" type="radio" name="payment-method" id="method-3">
-							<label class="form-check-label" for="method-3">
-								Online bankkártyás fizetés (Jelenleg nem elérhető)
-							</label>
-						</div>
+					<div class="form-check">
+						<input value="3" class="form-check-input payment-method-radio" type="radio" name="payment-method" id="method-3">
+						<label class="form-check-label" for="method-3">
+							Online bankkártyás fizetés
+						</label>
+					</div>
 
 				</div>
 
-				{{-- <div id="card-info-placeholder" style="display: none">
+				<div id="card-info-placeholder" style="display: none;">
 
 					<div class="row">
 						<div class="col-12 mx-auto">
@@ -181,15 +181,40 @@
 							<label for="shipping-postcode" class="form-label mb-1">Kártyaszám - lejárati hónap/nap - CVC kód</label>
 							<div class="form-text mb-3">Biztonságos bankkártyás fizetés! A kártya adatait kizárólag a Stripe szolgáltató használja fel. Az adatokat semmilyen módon nem tároljuk! További információ itt: <a href="#">Adatvédelmi nyilatkozat</a></div>
 							<!-- Stripe Elements Placeholder -->
-							<div id="card-element" class="rounded border p-3 mb-3"></div>
+							<div class="card-element-wrapper bg-white">
+								<div id="card-element" class="rounded border p-3 "></div>
+							</div>
 							
+							<div class="my-3">
+								<div class="form-check">
+									<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
+									<label class="form-check-label">
+										Elolvastam és elfogadom a <a href="/terms" target="_blank">szerződési feltételeket</a>!
+									</label>
+								</div>
+								
+								<div class="form-check">
+									<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
+									<label class="form-check-label">
+										Elolvastam és elfogadom az <a href="/policy" target="_blank">adatvédelmi szabályzatot</a>!
+									</label>
+								</div>
+		
+								<div class="form-check">
+									<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
+									<label class="form-check-label">
+										Elfogadom, hogy a rendeles leadása fizetési kötelezettséggel jár!
+									</label>
+								</div>
+							</div>
+
 							<button class="card-button btn btn-primary">
 								Vásárlás
 							</button>
 						</div>
 					</div>
 				
-				</div> --}}
+				</div>
 
 				{{-- (sima utalas) --}}
 				<div id="method-type-1" style="display: none">
@@ -241,13 +266,19 @@
 
 				{{-- (30napos) --}}
 				<div id="method-type-2" style="display: none">
-					<div class="fw-light fst-italic mb-3">
-						Amennyiben 30 napos határidős fizetésünket szeretné kiválasztani, ezt előre egyeztetéssel teheti meg.<br>
-						A weboldalon a regisztáráció után, kérem jelezze nekünk üzenet vagy email esetleg telefonhívás formájában szándékát.
-					</div>
+					@if (!$user->able_to_30)
+						<div class="fw-light fst-italic mb-3">
+							Amennyiben 30 napos határidős fizetésünket szeretné kiválasztani, ezt előre egyeztetéssel teheti meg.<br>
+							A weboldalon a regisztáráció után, kérem jelezze nekünk üzenet vagy email esetleg telefonhívás formájában szándékát.
+						</div>
+					@endif
+
 					<div class="fw-light">
 						<div class="fw-bold">
 							Utalási adatok
+						</div>
+						<div>
+							<div class="fw-normal">Bank neve:</div> <i class="ms-2 fas fa-caret-right"></i> OTP Bank
 						</div>
 						<div>
 							<div class="fw-normal">Kedvezményezett neve:</div> <i class="ms-2 fas fa-caret-right"></i> Mihalkó Bence Béla
@@ -259,36 +290,38 @@
 							<div class="fw-normal">Közlemény:</div> <i class="ms-2 fas fa-caret-right"></i> rendelés azonosítója
 						</div>
 					</div>
-					<div class="my-3">
-						<div class="form-check">
-							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
-							<label class="form-check-label">
-								Elolvastam és elfogadom a <a href="/terms" target="_blank">szerződési feltételeket</a>!
-							</label>
-						</div>
-						
-						<div class="form-check">
-							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
-							<label class="form-check-label">
-								Elolvastam és elfogadom az <a href="/policy" target="_blank">adatvédelmi szabályzatot</a>!
-							</label>
+					@if ($user->able_to_30)
+						<div class="my-3">
+							<div class="form-check">
+								<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
+								<label class="form-check-label">
+									Elolvastam és elfogadom a <a href="/terms" target="_blank">szerződési feltételeket</a>!
+								</label>
+							</div>
+							
+							<div class="form-check">
+								<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
+								<label class="form-check-label">
+									Elolvastam és elfogadom az <a href="/policy" target="_blank">adatvédelmi szabályzatot</a>!
+								</label>
+							</div>
+
+							<div class="form-check">
+								<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
+								<label class="form-check-label">
+									Elfogadom, hogy a rendeles leadása fizetési kötelezettséggel jár!
+								</label>
+							</div>
 						</div>
 
-						<div class="form-check">
-							<input class="form-check-input gdpr-purchase-check" type="checkbox" value="" id="">
-							<label class="form-check-label">
-								Elfogadom, hogy a rendeles leadása fizetési kötelezettséggel jár!
-							</label>
+						<div class="row">
+							<div class="col">
+								<button class="card-button btn btn-primary" disabled>
+									Vásárlás
+								</button>
+							</div>
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="col">
-							<button class="card-button btn btn-primary" disabled>
-								Vásárlás
-							</button>
-						</div>
-					</div>
+					@endif
 				</div>
 
 				<script src="https://js.stripe.com/v3/"></script>

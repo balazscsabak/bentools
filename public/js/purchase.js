@@ -854,52 +854,53 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var stripe = Stripe('pk_test_51JOpB3FB0VHKdTU1X7yJGzXpVIeh2kVtjnrStxqjyIO9qKAPBo59nn89wXfA8VN4vfaNhWZXoDdSuz9B6vn5WKEX00c4ugPIv4', {
-  locale: 'hu'
+var stripe = Stripe("pk_test_51JOpB3FB0VHKdTU1X7yJGzXpVIeh2kVtjnrStxqjyIO9qKAPBo59nn89wXfA8VN4vfaNhWZXoDdSuz9B6vn5WKEX00c4ugPIv4", {
+  locale: "hu"
 });
 var elements = stripe.elements();
-var cardElement = elements.create('card', {
+var cardElement = elements.create("card", {
   hidePostalCode: true,
   style: {
     base: {
-      fontWeight: '500',
-      fontSize: '17px',
-      padding: 10
+      fontWeight: "500",
+      fontSize: "17px",
+      padding: 10,
+      backgroundColor: '#fff'
     }
   }
-}); // cardElement.mount('#card-element');
-// const cardHolderName = document.getElementById('card-holder-name');
-
-var cardButtons = document.querySelectorAll('.card-button');
+});
+cardElement.mount("#card-element");
+var cardHolderName = document.getElementById("card-holder-name");
+var cardButtons = document.querySelectorAll(".card-button");
 cardButtons.forEach(function (cardButton) {
-  cardButton.addEventListener('click', /*#__PURE__*/function () {
+  cardButton.addEventListener("click", /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
-      var spinner, paymentMethodRadio, confirmCartSumm, userEmail, shippingPostcode, shippingCity, shippingStreet, shippingCounty, billingPostcode, billingCity, billingStreet, billingCounty, firmName, taxNumber, phonenumber, billingShippingCheck, formValidationCheck, gdprCheck, cardHolderName, _yield$stripe$createP, paymentMethod, error;
+      var spinner, paymentMethodRadio, confirmCartSumm, userEmail, shippingPostcode, shippingCity, shippingStreet, shippingCounty, billingPostcode, billingCity, billingStreet, billingCounty, firmName, taxNumber, phonenumber, billingShippingCheck, formValidationCheck, gdprCheck, _cardHolderName, _yield$stripe$createP, paymentMethod, error;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              $(e.target).prop('disabled', true);
+              $(e.target).prop("disabled", true);
               spinner = "\n\t\t\t\t<div class=\"spinner-wrapper spinner-filter spinner-wrapper--fixed\" id=\"spinner-wrapper\">\n\t\t\t\t\t\t<div class=\"spinner-border text-primary\" role=\"status\">\n\t\t\t\t\t\t\t\t<span class=\"visually-hidden\">Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t";
               $("body").append(spinner);
               paymentMethodRadio = $("#payment-menthod input[type='radio']:checked").val();
-              confirmCartSumm = _.toNumber($('#confirm_cart_summ').val());
-              userEmail = $('#email').val();
-              shippingPostcode = $('#shipping-postcode').val();
-              shippingCity = $('#shipping-city').val();
-              shippingStreet = $('#shipping-street').val();
-              shippingCounty = $('#shipping-county').val();
-              billingPostcode = $('#billing-postcode').val();
-              billingCity = $('#billing-city').val();
-              billingStreet = $('#billing-street').val();
-              billingCounty = $('#billing-county').val();
-              firmName = $('#firm-name').val();
-              taxNumber = $('#tax-number').val();
-              phonenumber = $('#phone-number').val();
-              billingShippingCheck = $('#billing-shipping-check');
+              confirmCartSumm = _.toNumber($("#confirm_cart_summ").val());
+              userEmail = $("#email").val();
+              shippingPostcode = $("#shipping-postcode").val();
+              shippingCity = $("#shipping-city").val();
+              shippingStreet = $("#shipping-street").val();
+              shippingCounty = $("#shipping-county").val();
+              billingPostcode = $("#billing-postcode").val();
+              billingCity = $("#billing-city").val();
+              billingStreet = $("#billing-street").val();
+              billingCounty = $("#billing-county").val();
+              firmName = $("#firm-name").val();
+              taxNumber = $("#tax-number").val();
+              phonenumber = $("#phone-number").val();
+              billingShippingCheck = $("#billing-shipping-check");
 
-              if (billingShippingCheck.is(':checked')) {
+              if (billingShippingCheck.is(":checked")) {
                 billingPostcode = shippingPostcode;
                 billingCity = shippingCity;
                 billingStreet = shippingStreet;
@@ -908,113 +909,113 @@ cardButtons.forEach(function (cardButton) {
               formValidationCheck = true;
 
               if (_.isEmpty(phonenumber)) {
-                if ($('#phone-number').closest('div').find('.val-error').length < 1) {
-                  $('#phone-number').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#phone-number").closest("div").find(".val-error").length < 1) {
+                  $("#phone-number").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#phone-number').closest('div').find('.val-error').remove();
+                $("#phone-number").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(firmName)) {
-                if ($('#firm-name').closest('div').find('.val-error').length < 1) {
-                  $('#firm-name').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#firm-name").closest("div").find(".val-error").length < 1) {
+                  $("#firm-name").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#firm-name').closest('div').find('.val-error').remove();
+                $("#firm-name").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(taxNumber)) {
-                if ($('#tax-number').closest('div').find('.val-error').length < 1) {
-                  $('#tax-number').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#tax-number").closest("div").find(".val-error").length < 1) {
+                  $("#tax-number").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#tax-number').closest('div').find('.val-error').remove();
+                $("#tax-number").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(shippingPostcode)) {
-                if ($('#shipping-postcode').closest('div').find('.val-error').length < 1) {
-                  $('#shipping-postcode').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#shipping-postcode").closest("div").find(".val-error").length < 1) {
+                  $("#shipping-postcode").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#shipping-postcode').closest('div').find('.val-error').remove();
+                $("#shipping-postcode").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(shippingCounty)) {
-                if ($('#shipping-county').closest('div').find('.val-error').length < 1) {
-                  $('#shipping-county').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#shipping-county").closest("div").find(".val-error").length < 1) {
+                  $("#shipping-county").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#shipping-county').closest('div').find('.val-error').remove();
+                $("#shipping-county").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(shippingCity)) {
-                if ($('#shipping-city').closest('div').find('.val-error').length < 1) {
-                  $('#shipping-city').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#shipping-city").closest("div").find(".val-error").length < 1) {
+                  $("#shipping-city").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#shipping-city').closest('div').find('.val-error').remove();
+                $("#shipping-city").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(shippingStreet)) {
-                if ($('#shipping-street').closest('div').find('.val-error').length < 1) {
-                  $('#shipping-street').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#shipping-street").closest("div").find(".val-error").length < 1) {
+                  $("#shipping-street").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#shipping-street').closest('div').find('.val-error').remove();
+                $("#shipping-street").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(billingPostcode)) {
-                if ($('#billing-postcode').closest('div').find('.val-error').length < 1) {
-                  $('#billing-postcode').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#billing-postcode").closest("div").find(".val-error").length < 1) {
+                  $("#billing-postcode").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#billing-postcode').closest('div').find('.val-error').remove();
+                $("#billing-postcode").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(billingCounty)) {
-                if ($('#billing-county').closest('div').find('.val-error').length < 1) {
-                  $('#billing-county').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#billing-county").closest("div").find(".val-error").length < 1) {
+                  $("#billing-county").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#billing-county').closest('div').find('.val-error').remove();
+                $("#billing-county").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(billingCity)) {
-                if ($('#billing-city').closest('div').find('.val-error').length < 1) {
-                  $('#billing-city').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#billing-city").closest("div").find(".val-error").length < 1) {
+                  $("#billing-city").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#billing-city').closest('div').find('.val-error').remove();
+                $("#billing-city").closest("div").find(".val-error").remove();
               }
 
               if (_.isEmpty(billingStreet)) {
-                if ($('#billing-street').closest('div').find('.val-error').length < 1) {
-                  $('#billing-street').after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+                if ($("#billing-street").closest("div").find(".val-error").length < 1) {
+                  $("#billing-street").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
                 }
 
                 formValidationCheck = false;
               } else {
-                $('#billing-street').closest('div').find('.val-error').remove();
+                $("#billing-street").closest("div").find(".val-error").remove();
               }
 
               if (formValidationCheck) {
@@ -1023,41 +1024,55 @@ cardButtons.forEach(function (cardButton) {
               }
 
               e.preventDefault();
-              $('#spinner-wrapper').remove();
-              $(e.target).prop('disabled', false);
+              $("#spinner-wrapper").remove();
+              $(e.target).prop("disabled", false);
               return _context.abrupt("return", false);
 
             case 36:
               gdprCheck = true; // TODO rename id
 
-              if (paymentMethodRadio === '2') {
+              if (paymentMethodRadio === "2") {
                 // 30 napos
-                $('#method-type-2 .gdpr-purchase-check').each(function (i, element) {
+                $("#method-type-2 .gdpr-purchase-check").each(function (i, element) {
                   var isChecked = $(element).is(":checked");
 
                   if (!isChecked) {
                     gdprCheck = false;
 
-                    if ($(element).closest('.form-check').find('.validation-error').length < 1) {
-                      $(element).closest('.form-check').find('.form-check-label').after("\n\t\t\t\t\t\t\t<div class=\"text-danger validation-error\"><small>Mez\u0151 elfogad\xE1sa k\xF6telez\u0151!</small></div>\n\t\t\t\t\t\t");
+                    if ($(element).closest(".form-check").find(".validation-error").length < 1) {
+                      $(element).closest(".form-check").find(".form-check-label").after("\n\t\t\t\t\t\t\t<div class=\"text-danger validation-error\"><small>Mez\u0151 elfogad\xE1sa k\xF6telez\u0151!</small></div>\n\t\t\t\t\t\t");
                     }
                   } else {
-                    $(element).closest('.form-check').find('.validation-error').remove();
+                    $(element).closest(".form-check").find(".validation-error").remove();
                   }
                 });
-              } else if (paymentMethodRadio === '1') {
+              } else if (paymentMethodRadio === "1") {
                 // sima utalas
-                $('#method-type-1 .gdpr-purchase-check').each(function (i, element) {
+                $("#method-type-1 .gdpr-purchase-check").each(function (i, element) {
                   var isChecked = $(element).is(":checked");
 
                   if (!isChecked) {
                     gdprCheck = false;
 
-                    if ($(element).closest('.form-check').find('.validation-error').length < 1) {
-                      $(element).closest('.form-check').find('.form-check-label').after("\n\t\t\t\t\t\t\t<div class=\"text-danger validation-error\"><small>Mez\u0151 elfogad\xE1sa k\xF6telez\u0151!</small></div>\n\t\t\t\t\t\t");
+                    if ($(element).closest(".form-check").find(".validation-error").length < 1) {
+                      $(element).closest(".form-check").find(".form-check-label").after("\n\t\t\t\t\t\t\t<div class=\"text-danger validation-error\"><small>Mez\u0151 elfogad\xE1sa k\xF6telez\u0151!</small></div>\n\t\t\t\t\t\t");
                     }
                   } else {
-                    $(element).closest('.form-check').find('.validation-error').remove();
+                    $(element).closest(".form-check").find(".validation-error").remove();
+                  }
+                });
+              } else {
+                $("#card-info-placeholder .gdpr-purchase-check").each(function (i, element) {
+                  var isChecked = $(element).is(":checked");
+
+                  if (!isChecked) {
+                    gdprCheck = false;
+
+                    if ($(element).closest(".form-check").find(".validation-error").length < 1) {
+                      $(element).closest(".form-check").find(".form-check-label").after("\n\t\t\t\t\t\t<div class=\"text-danger validation-error\"><small>Mez\u0151 elfogad\xE1sa k\xF6telez\u0151!</small></div>\n\t\t\t\t\t");
+                    }
+                  } else {
+                    $(element).closest(".form-check").find(".validation-error").remove();
                   }
                 });
               }
@@ -1068,81 +1083,106 @@ cardButtons.forEach(function (cardButton) {
               }
 
               e.preventDefault();
-              $('#spinner-wrapper').remove();
-              $(e.target).prop('disabled', false);
+              $("#spinner-wrapper").remove();
+              $(e.target).prop("disabled", false);
               return _context.abrupt("return", false);
 
             case 43:
-              if (!(paymentMethodRadio === '3')) {
-                _context.next = 57;
+              if (!(paymentMethodRadio === "3")) {
+                _context.next = 71;
                 break;
               }
 
-              cardHolderName = $('#card-holder-name').val();
+              _cardHolderName = $("#card-holder-name").val();
 
-              if (!_.isEmpty(cardHolderName)) {
-                _context.next = 49;
+              if (!_.isEmpty(_cardHolderName)) {
+                _context.next = 53;
                 break;
               }
 
-              $('#spinner-wrapper').remove();
+              $("#spinner-wrapper").remove();
+
+              if ($("#card-holder-name").closest("div").find(".val-error").length < 1) {
+                $("#card-holder-name").after("<div class=\"val-error text-danger\"><small>Mez\u0151 kit\xF6lt\xE9se k\xF6telez\u0151!</small></div>");
+              }
+
+              $(e.target).prop("disabled", false);
               e.preventDefault();
               return _context.abrupt("return", false);
 
-            case 49:
-              _context.next = 51;
-              return stripe.createPaymentMethod('card', cardElement, {
+            case 53:
+              $("#card-holder-name").closest("div").find(".val-error").remove();
+
+            case 54:
+              _context.next = 56;
+              return stripe.createPaymentMethod("card", cardElement, {
                 billing_details: {
-                  name: cardHolderName,
+                  name: _cardHolderName,
                   email: userEmail,
-                  phone: '+36 30 947 7500',
+                  phone: "+36 30 947 7500",
                   address: {
                     city: billingCity,
-                    country: 'HU',
+                    country: "HU",
                     line1: billingStreet,
                     postal_code: billingPostcode,
-                    state: 'Nógrád'
+                    state: "Nógrád"
                   }
                 }
               });
 
-            case 51:
+            case 56:
               _yield$stripe$createP = _context.sent;
               paymentMethod = _yield$stripe$createP.paymentMethod;
               error = _yield$stripe$createP.error;
 
-              if (error) {} else {
-                $.post('/purchase', {
-                  paymentMethodId: paymentMethod.id,
-                  shippingPostcode: shippingPostcode,
-                  shippingCity: shippingCity,
-                  shippingStreet: shippingStreet,
-                  billingPostcode: billingPostcode,
-                  billingCity: billingCity,
-                  billingStreet: billingStreet,
-                  cardHolderName: cardHolderName,
-                  userEmail: userEmail,
-                  confirmCartSumm: confirmCartSumm,
-                  method: paymentMethodRadio,
-                  firmName: firmName,
-                  taxNumber: taxNumber,
-                  phonenumber: phonenumber,
-                  shippingCounty: shippingCounty,
-                  billingCounty: billingCounty
-                }, function (res) {
-                  if (res.status) {
-                    window.location = "/orders/".concat(res.hash);
-                  }
-                });
+              if (!error) {
+                _context.next = 68;
+                break;
               }
 
-              _context.next = 58;
+              //validation error
+              e.preventDefault();
+              $("#spinner-wrapper").remove();
+              $(e.target).prop("disabled", false);
+              $("#card-element").closest(".card-element-wrapper").find(".val-error").remove();
+              $("#card-element").after("<div class=\"val-error text-danger mb-1\"><small>".concat(error.message, "</small></div>"));
+              return _context.abrupt("return", false);
+
+            case 68:
+              $.post("/purchase", {
+                paymentMethodId: paymentMethod.id,
+                shippingPostcode: shippingPostcode,
+                shippingCity: shippingCity,
+                shippingStreet: shippingStreet,
+                billingPostcode: billingPostcode,
+                billingCity: billingCity,
+                billingStreet: billingStreet,
+                cardHolderName: _cardHolderName,
+                userEmail: userEmail,
+                confirmCartSumm: confirmCartSumm,
+                method: paymentMethodRadio,
+                firmName: firmName,
+                taxNumber: taxNumber,
+                phonenumber: phonenumber,
+                shippingCounty: shippingCounty,
+                billingCounty: billingCounty
+              }, function (res) {
+                if (res.status) {
+                  window.location = "/orders/".concat(res.hash);
+                } else {
+                  // purchase error
+                  window.location = "/orders/error/".concat(res.hash);
+                }
+              });
+
+            case 69:
+              _context.next = 72;
               break;
 
-            case 57:
-              if (paymentMethodRadio === '2' || paymentMethodRadio === '1') {
+            case 71:
+              if (paymentMethodRadio === "2" || paymentMethodRadio === "1") {
                 // transfer & delivery
-                $.post('/purchase', {
+                $.post("/purchase", {
                   shippingPostcode: shippingPostcode,
                   shippingCity: shippingCity,
                   shippingStreet: shippingStreet,
@@ -1164,7 +1204,7 @@ cardButtons.forEach(function (cardButton) {
                 });
               }
 
-            case 58:
+            case 72:
             case "end":
               return _context.stop();
           }

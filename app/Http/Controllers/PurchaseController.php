@@ -163,9 +163,18 @@ class PurchaseController extends Controller
 
             } catch(Exception $e) {
                 $order->status = "ERROR";
+                $hashString = $order->id . $user->id . strtotime('now');
+                $order->hash = hash('md5', $hashString);
+                
                 $order->save();
+
                 Errors::storeNewException('Error on Stripe charge', $e->getMessage(), 'purchase', 'purchase', $user->id, 'order_id', $order->id);
-                abort(404);
+
+                return response()->json([
+                    'status' => false,
+                    'err_code' => 'purchase_failed',
+                    'hash' => $order->hash
+                ]);
             }
 
         } else if($method === '2') {
@@ -291,4 +300,16 @@ class PurchaseController extends Controller
 
         $orderInfo->save();
     }
+
+    public function showOrderError(Request $request, $hash)
+    {
+        $order = Orders::where('hash', $hash)->first();
+
+        if(!$order) {
+            abort(404);
+        }
+        
+        return view('purchase-error')->with('order', $order);
+    }
+
 }

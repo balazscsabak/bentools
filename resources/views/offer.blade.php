@@ -90,7 +90,7 @@
                             <div class="items ps-3 pt-2">
                                 <div class="cart-items">
                             
-                                    <table class="table table-borderless">
+                                    <table class="table table-borderless cart-table-offer">
                                         <thead>
                                             <tr>
                                                 <th scope="col"></th>

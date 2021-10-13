@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Settings;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminPageController extends Controller
@@ -106,5 +107,46 @@ class AdminPageController extends Controller
         }
 
         return view('admin.cookie')->with('content', $cookieContent);
+    }
+
+    public function users()
+    {
+        $users = User::all();
+        return view('admin.users.showUsers')->with('users', $users);
+    }
+    public function showUser(Request $request, $id)
+    {
+        if($id < 1 || !is_numeric($id)) {
+            abort(404);
+        }
+
+        $user = User::find($id);
+
+        if(!$user) {
+            abort(404);
+        }
+
+        return view('admin.users.showUser')->with('user', $user);
+    }
+
+    public function updateAbleTo30(Request $request) 
+    {
+        $id = $request->id;
+        $ableTo30 = $request->able_to_30;
+        
+        if($id < 1) {
+            abort(404);
+        }
+
+        $user = User::find($id);
+
+        if(!$user) {
+            abort(404);
+        }
+        
+        $user->able_to_30 = $ableTo30 ? true : false;
+        $user->save();
+        
+        return back()->with('success', 'Sikeres módosítás!');
     }
 }

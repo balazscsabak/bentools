@@ -22,11 +22,11 @@ class SettingsController extends Controller
         try {
 
             Slideshow::truncate();
-    
-            if($request->input('slide')){
+
+            if ($request->input('slide')) {
                 foreach ($request->input('slide') as $slide) {
                     $newSlideShow = new Slideshow();
-    
+
                     $newSlideShow->title = $slide['title'];
                     $newSlideShow->content = $slide['content'];
                     $newSlideShow->link_text = $slide['link_text'];
@@ -36,10 +36,10 @@ class SettingsController extends Controller
                     $newSlideShow->save();
                 }
             }
-            
+
             return back()->with('success', 'Sikeres módosítás!');
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return back()->with('success', 'Hiba a módosítás során!');
 
         }
@@ -79,7 +79,7 @@ class SettingsController extends Controller
 
             return back()->with('success', 'Sikeres módosítás!');
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
@@ -96,13 +96,13 @@ class SettingsController extends Controller
 
             $shippingContent->value = $request->input('content');
             $shippingShortContent->value = $request->input('short_content');
-            
+
             $shippingContent->save();
             $shippingShortContent->save();
 
             return back()->with('success', 'Sikeres módosítás!');
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
@@ -121,7 +121,7 @@ class SettingsController extends Controller
 
             return back()->with('success', 'Sikeres módosítás!');
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
@@ -140,7 +140,7 @@ class SettingsController extends Controller
 
             return back()->with('success', 'Sikeres módosítás!');
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
@@ -159,7 +159,7 @@ class SettingsController extends Controller
 
             return back()->with('success', 'Sikeres módosítás!');
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
@@ -178,7 +178,7 @@ class SettingsController extends Controller
 
             return back()->with('success', 'Sikeres módosítás!');
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
@@ -195,20 +195,57 @@ class SettingsController extends Controller
 
     public function settingsSaveBrochure(Request $request)
     {
-        $validatedData = $request->validate([
-            'file' => 'required|mimes:pdf',
-        ]);
+        try {
 
-        $pdfFileName = time() . '_' . $request->file('file')->getClientOriginalName();  
-                
-        $path = $request->file->storeAs('documents', $pdfFileName, 'public');
+            $validatedData = $request->validate([
+                'file' => 'required|mimes:pdf',
+            ]);
 
-        $brochureSettings = Settings::where('key', 'brochure_file')->first();
-        
-        $brochureSettings->value = $path;
-        $brochureSettings->save();
+            $pdfFileName = time() . '_' . $request->file('file')->getClientOriginalName();
 
-        return back()->with('success', 'Sikeres feltöltés!');
+            $path = $request->file->storeAs('documents', $pdfFileName, 'public');
+
+            $brochureSettings = Settings::where('key', 'brochure_file')->first();
+
+            $brochureSettings->value = $path;
+            $brochureSettings->save();
+
+            return back()->with('success', 'Sikeres feltöltés!');
+        } catch (Exception $e) {
+            return back()->with('error', 'Sikertelen feltöltés!');
+        }
     }
-    
+
+    public function settingsSocials(Request $request)
+    {
+        $socialsData = Settings::where('key', 'socials')->first();
+        $socialsDecoded = json_decode($socialsData->value, true);
+
+        return view('admin.socials')->with('socials', $socialsDecoded);
+    }
+    public function settingsSaveSocials(Request $request)
+    {
+        $socialsData = Settings::where('key', 'socials')->first();
+        $socials = [];
+
+        if ($request->facebook_enabled) {
+            $socials['facebook_enabled'] = true;
+        }
+        $socials['facebook_url'] = $request->facebook_url;
+
+        if ($request->instagram_enabled) {
+            $socials['instagram_enabled'] = true;
+        }
+        $socials['instagram_url'] = $request->instagram_url;
+
+        if ($request->youtube_enabled) {
+            $socials['youtube_enabled'] = true;
+        }
+        $socials['youtube_url'] = $request->youtube_url;
+
+        $socialsData->value = json_encode($socials);
+        $socialsData->save();
+
+        return back()->with('success', 'Sikeres módosítás!');
+    }
 }
