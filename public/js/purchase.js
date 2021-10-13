@@ -854,7 +854,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var stripe = Stripe("pk_test_51JOpB3FB0VHKdTU1X7yJGzXpVIeh2kVtjnrStxqjyIO9qKAPBo59nn89wXfA8VN4vfaNhWZXoDdSuz9B6vn5WKEX00c4ugPIv4", {
+var stripe = Stripe("pk_test_51Jgy78Fg1lMs6fEe5rXdmE1SwMqCvnfKt8lkq3RvEB1yJE9w7WMDAo88BYPdFFKGWgM6WO0f0NXJxJ5PDtS5YfqE00wDql8r3r", {
   locale: "hu"
 });
 var elements = stripe.elements();
