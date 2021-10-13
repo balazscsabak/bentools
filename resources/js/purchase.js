@@ -1,5 +1,5 @@
 var stripe = Stripe(
-    "pk_test_51Jgy78Fg1lMs6fEe5rXdmE1SwMqCvnfKt8lkq3RvEB1yJE9w7WMDAo88BYPdFFKGWgM6WO0f0NXJxJ5PDtS5YfqE00wDql8r3r",
+    "pk_live_51Jgy78Fg1lMs6fEeEc7SMkMDhfmahn5KcKXMnxvCJgdEza8pPQdk1RqlIXtMGpQrdyogHlgcuaxLrm1oGddDG0EK00ijYV9SSG",
     {
         locale: "hu",
     }
