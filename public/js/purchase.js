@@ -904,6 +904,7 @@ cardButtons.forEach(function (cardButton) {
                 billingPostcode = shippingPostcode;
                 billingCity = shippingCity;
                 billingStreet = shippingStreet;
+                billingCounty = shippingCounty;
               }
 
               formValidationCheck = true;

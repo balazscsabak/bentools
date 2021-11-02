@@ -65,6 +65,7 @@ cardButtons.forEach((cardButton) => {
             billingPostcode = shippingPostcode;
             billingCity = shippingCity;
             billingStreet = shippingStreet;
+            billingCounty = shippingCounty;
         }
 
         let formValidationCheck = true;
