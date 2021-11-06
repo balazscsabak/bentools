@@ -145,6 +145,7 @@
 							<table class="table table-sm table-borderless">
 								<thead>
 									<tr>
+                                        <th></th>
 										<th>
 											<div class="input-group-sm">
 												<input type="text" class="form-control" value="Kép" readonly>

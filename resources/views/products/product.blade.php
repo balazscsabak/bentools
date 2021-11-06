@@ -35,27 +35,17 @@
                                             <th class="text-center">Kód</th>
                                             <th class="text-center">Ár</th>
                                             <th></th>
-                                            {{-- @isset($attributes)
-                        
-                                                @foreach ($attributes as $attr)
-
-                                                <th>
-                                                    {{ $attr }}
-                                                </th>
-
-                                                @endforeach
-                                            
-                                            @endisset --}}
-                                            
                                             <th class="text-end">Mennyiség</th>
-                                        
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($variants as $variant)
                                         
-                                            <tr>
+                                            <tr class="position-relative">
                                                 <td style="padding: 12px 0;">
+                                                    @if (!$variant->active)
+                                                        <div class="inactive-variant">Beszerzés alatt!</div>
+                                                    @endif
                                                     {{$variant->sku}}
                                                     <div class="pv-img-sample-box">
                                                         <img class="pv-image" src="{{ $variant->image_href }}" alt="" >

@@ -43,7 +43,7 @@
                 <div class="form-check form-switch">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Termék elérhető?</label>
                     <input value="available" name="available" id="available" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" {{ $product->available ? 'checked' : null}}>
-                  </div>
+                </div>
             </div>
             
             <div class="mb-3 row">
@@ -152,6 +152,7 @@
 							<table class="table table-sm table-borderless">
 								<thead>
 									<tr>
+                                        <th></th>
 										<th>
 											<div class="input-group-sm">
 												<input type="text" class="form-control" value="Kép" readonly>
@@ -186,6 +187,13 @@
                                     @foreach ($variants['items'] as $variant)
                                         <tr>
                                             <input type="hidden" class="hidden-variant-id" value="{{ $variant['id'] }}">
+                                            
+                                            <td>
+                                                <div class="form-check form-switch">
+                                                    <input value="1" class="form-check-input" type="checkbox" {{ $variant['active'] ? 'checked' : null}}>    
+                                                </div>
+                                            </td>
+
                                             <td>
                                                 <div class="input-group-sm pv-img-wrapper">
                                                     <button class="pv-image-modal-btn" data-bs-toggle="modal" data-bs-target="#pv-image-modal">Variáns képe</button>

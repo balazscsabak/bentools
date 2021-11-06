@@ -7,7 +7,7 @@
 
         <div class="row justify-content-center my-5">
             
-            <div class="col-5">
+            <div class="col-12 col-md-5">
                 
                 @if ($errors->any())
                     <div class="alert alert-danger alert-block text-center mb-3">
@@ -43,6 +43,10 @@
 
                 <div class="d-flex justify-content-center">
                     <a href="{{ route('register') }}" class="btn btn-link">Nincs még felhasználója? Regisztrárció</a>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <a href="{{ route('password.request') }}" class="btn btn-link">Elfelejtett jelszó</a>
                 </div>
 
                 

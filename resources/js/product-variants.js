@@ -16,6 +16,14 @@ $(() => {
 
 		tr.append(`
 			<td>
+				<div class="form-check form-switch">
+						<input value="1" class="form-check-input" type="checkbox" checked>    
+				</div>
+			</td>
+		`)
+
+		tr.append(`
+			<td>
 				<div class="input-group-sm pv-img-wrapper">
 					<button class="pv-image-modal-btn" data-bs-toggle="modal" data-bs-target="#pv-image-modal">Variáns képe</button>
 					<input type="hidden" class="form-control validate-not-null validate-for-button" value="">
@@ -23,7 +31,7 @@ $(() => {
 			</td>
 		`)
 
-		for (let index = 0; index < cellCount - 1; index++) {
+		for (let index = 0; index < cellCount - 2; index++) {
 			tr.append(`
 				<td>
 					<div class="input-group-sm">
@@ -98,144 +106,6 @@ $(() => {
 		})
 	})
 
-	// $(document).on('click', '.p-add-new-variant', (e) => {
-	// 	e.preventDefault();
-
-	// 	let variantsCount = $('.product-variant').length;
-		
-	// 	let variantContent = `
-	// 		<div class="product-variant col-12 col-lg-8 with-shadow p-4 mb-5">
-	// 			<div class="p-variant-delete">
-	// 				<i class="fas fa-times"></i>
-	// 			</div>
-				
-	// 			<div class="variant-content">
-	// 				<label class="form-label">Leírás</label>
-	// 				<textarea class="form-control product-variant-content"></textarea>
-	// 			</div>
-
-	// 			<div class="variant-attributes my-4">
-	// 				<div class="d-flex justify-content-between mb-3">
-	// 					<label class="form-label">Termék attribútumok</label>
-	// 					<i class="fas fa-plus-circle p-variant-add-col"></i>
-	// 				</div>
-
-	// 				<table class="table table-sm table-borderless">
-	// 					<thead>
-	// 						<tr>
-	// 							<th>
-	// 								<div class="input-group-sm">
-	// 									<input type="text" class="form-control" value="Kép" readonly>
-	// 								</div>
-	// 							</th>
-	// 							<th>
-	// 								<div class="input-group-sm">
-	// 									<input type="text" class="form-control" value="Kód" readonly>
-	// 								</div>
-	// 							</th>
-	// 						</tr>
-	// 					</thead>
-	// 					<tbody>
-	// 					</tbody>
-	// 				</table>
-
-	// 				<div>
-	// 					<i class="fas fa-plus-circle p-variant-add-row"></i>
-	// 				</div>
-	// 			</div>
-	// 		</div>
-	// 	`;
-
-	// 	$('#product-variants').append(variantContent);
-
-	// 	let selectedTextarea = $('.product-variant-content').eq(variantsCount);
-		
-	// 	ClassicEditor.create(selectedTextarea.get(0), {
-    //         ckfinder: {
-    //             uploadUrl:
-    //                 "/admin/media/upload-editor?_token=" +
-    //                 $("[name='_token']").val(),
-    //             openerMethod: "popup",
-    //             withCredentials: true,
-    //         },
-    //     });
-		
-	// })
-
-	// $(document).on('click', '.p-variant-delete', function(e) {
-	// 	$(e.target).closest('.product-variant').remove();
-	// })
-
-	// $(document).on('submit', '#p-form', function(e) {
-		
-	// 	if(!validationNotNull()) {
-	// 		alert('Hiányzó adat!');
-	// 		return false;
-	// 	}
-	// });
-
-	// $(document).on('submit', '#p-variant-form', function(e) {
-
-	// 	if(!validationNotNull()) {
-	// 		alert('Hiányzó adat!');
-	// 		return false;
-	// 	}
-
-	// 	let variantsWrappers = $('#product-variants .product-variant');
-	// 	let variants = [];
-		
-	// 	variantsWrappers.each((i, wrapper) => {
-	// 		let variantData = {};
-	// 		let content = $(wrapper).find('.variant-content .product-variant-content').val();
-	// 		let attributesTable = $(wrapper).find('.variant-attributes');
-	// 		let attributesThs = attributesTable.find('table th');
-	// 		let attributesCount = attributesTable.find('table th').length;
-	// 		let attributesRows = attributesTable.find('table tbody tr');
-
-	// 		variantData.types = [];
-	// 		variantData.codes = [];
-	// 		let keys = [];
-
-	// 		attributesThs.each((i, el) => {
-	// 			let inputValue = $(el).find('input').val();
-	// 			keys.push(inputValue);
-	// 		})
-
-	// 		variantData.keys = keys;
-
-	// 		let attributeCodes = [];
-
-	// 		attributesRows.each((i, row) => {
-	// 			let tds = $(row).find('td');
-
-	// 			let attributeValues = [];
-
-	// 			tds.each((index, td) => {
-	// 				if(attributesCount > index){
-	// 					let value = $(td).find('input').val();
-	// 					attributeValues.push(value);
-	// 				}
-	// 			})
-	// 			attributeCodes.push( Math.random().toString(36).substr(2, 9) );
-
-	// 			variantData.types.push(attributeValues);
-	// 		})
-
-	// 		variantData.codes = attributeCodes;
-
-	// 		variantData.content = content;
-
-	// 		variants.push(variantData);
-	// 	})
-
-	// 	let input = $("<input>")
-    //            .attr("type", "hidden")
-    //            .attr("name", "variants").val(JSON.stringify(variants));
-
-	// 	$('#p-variant-form').append(input);
-		
-	// })
-
 	$(document).on('submit', '#p-variant-form', function(e) {
 
 		if(!validationNotNull()) {
@@ -266,18 +136,22 @@ $(() => {
 			$(row).find('td').each((j, td) => {
 				if(j < attributesCount) {
 					if(j === 0) {
+						variant['active'] = $(td).find('input').prop('checked');
+					}
+					
+					if(j === 1) {
 						variant['image_href'] = $(td).find('input').val().trim();
 					}
 
-					if(j === 1) {
+					if(j === 2) {
 						variant['price'] = $(td).find('input').val().trim();
 					}
 
-					if(j === 2) {
+					if(j === 3) {
 						variant['code'] = $(td).find('input').val().trim();
 					}
 
-					if(j >= 3) {
+					if(j >= 4) {
 						variant['attr'].push($(attributesThs[j]).find('input').val().trim());
 						variant['attr_values'].push($(td).find('input').val().trim());
 					}
@@ -290,7 +164,6 @@ $(() => {
 			.attr("type", "hidden")
 			.attr("name", "variants").val(JSON.stringify(variants));
 
-		console.log(variants);
 		$('#p-variant-form').append(input);
 	})
 

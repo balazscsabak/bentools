@@ -143,6 +143,7 @@ class ProductsController extends Controller
                 'attr_values' => json_decode($variant->attr_values),
                 'price' => $variant->price,
                 'sku' => $variant->sku,
+                'active' => $variant->active
             ];
 
             $variants['items'][] = $data;
@@ -226,6 +227,7 @@ class ProductsController extends Controller
                     $oldVariant->sku = $variant['code'];
                     $oldVariant->attr = json_encode($variant['attr']);
                     $oldVariant->attr_values = json_encode($variant['attr_values']);
+                    $oldVariant->active = $variant['active'] ? true : false;
 
                     $oldVariant->save();
 
@@ -263,7 +265,6 @@ class ProductsController extends Controller
 
         } catch (Exception $e) {
             // TODO comment me out
-            dd($e->getMessage());
             return back()->with('error', 'Hiba a termék módosítása során!');
         }
     }

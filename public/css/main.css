@@ -19925,6 +19925,20 @@ main {
   margin-left: 0;
 }
 
+.inactive-variant {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fbfbfbcc;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 21px;
+  font-weight: bold;
+}
+
 button.validation-error {
   border: 1px solid red !important;
 }
@@ -19974,7 +19988,7 @@ button.validation-error {
   line-height: 1.3;
 }
 .cookie-consent-modal .modal-content-wrap .modal-content .modal-body a {
-  color: #3579F6;
+  color: #3579f6;
 }
 .cookie-consent-modal .modal-content-wrap .modal-content .modal-body a:hover {
   color: #0b5bed;
