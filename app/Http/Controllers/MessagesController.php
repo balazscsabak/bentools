@@ -91,14 +91,13 @@ class MessagesController extends Controller
 
     public function store(Request $request)
     {
-        
         $request->validate([
             'email' => 'required|email',
             'message' => 'required',
             'firm_name' => 'required',
             'full_name' => 'required',
             'phone_number' => 'required',
-            // 'captcha' => 'required|captcha'
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         try {

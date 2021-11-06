@@ -137,6 +137,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'g-recaptcha-response' => [
+            'required' => 'Ön nem bizonyította megfelelően, hogy nem robot!',
+            'captcha' => 'Captcha hiba! Próbálkozzon újra később, vagy lépjen kapcsolatba a webhely adminisztrátorával.',
+        ],
     ],
 
     /*

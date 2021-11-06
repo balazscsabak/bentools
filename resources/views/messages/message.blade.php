@@ -89,6 +89,15 @@
                                 @enderror
                             </div> --}}
 
+                            <div class="d-flex justify-content-center mb-3">
+                                {!! NoCaptcha::display() !!}
+                            </div>
+                            @if ($errors->has('g-recaptcha-response'))
+                                <div class=" text-danger mb-3 text-center">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </div>
+                            @endif
+
                             <div class="submit">
                                 <input type="submit" value="Küldés" class="btn btn-primary btn-sm">
                             </div>
@@ -101,18 +110,5 @@
         </div>
     </div>
 
-
+    {!! NoCaptcha::renderJs('hu') !!}
 </x-app-layout>
-
-<script type="text/javascript">
-    $('#reload').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: 'reload-captcha',
-            success: function (data) {
-                $(".captcha span").html(data.captcha);
-            }
-        });
-    });
-
-</script>
