@@ -213,6 +213,27 @@ const ShoppingCart = function () {
                 $('#method-type-2').hide();
             }
         })
+
+        $(document).on('change', '.unit-counter', function() {
+            console.log('asd');
+            const max = parseInt($(this).attr('max'));
+            const min = parseInt($(this).attr('min'));
+            const step = parseInt($(this).attr('step'));
+            const val = $(this).val();
+
+            if (val > max)
+            {
+                $(this).val(max);
+            }
+            else if (val < min)
+            {
+                $(this).val(min);
+            } else if((val % step) !== 0) {
+                const remainder = val % step;
+                const roundedNumber = val - remainder;
+                $(this).val(roundedNumber)
+            } 
+        })
     };
 
     this.renderCart = () => {

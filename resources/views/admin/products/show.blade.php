@@ -65,6 +65,18 @@
                 </div>
             </div>
 
+            <div class="mb-3 row">
+                <label style="font-size: 1.2rem;" for="unit" class="form-label">Egység</label>
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <input class="form-control validate-not-null" name="unit" type="number" min="1" max="100" value="{{ $product->unit }}" step="1" >
+                    </div>
+                    <div class="col-auto">
+                        / egység
+                    </div>
+                </div>
+            </div>
+            
             <div>
                 <input type="hidden" name="category_image" id="category_image" value={{ $product->category_image_id }}>
                 <input type="hidden" name="featured_image" id="featured_image" value={{ $product->featured_image }}>

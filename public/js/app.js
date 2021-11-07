@@ -3367,6 +3367,22 @@ var ShoppingCart = function ShoppingCart() {
         $('#method-type-2').hide();
       }
     });
+    $(document).on('change', '.unit-counter', function () {
+      var max = parseInt($(this).attr('max'));
+      var min = parseInt($(this).attr('min'));
+      var step = parseInt($(this).attr('step'));
+      var val = parseInt($(this).val());
+
+      if (val > max) {
+        $(this).val(max);
+      } else if (val < min) {
+        $(this).val(min);
+      } else if (val % step !== 0) {
+        var remainder = val % step;
+        var roundedNumber = val - remainder;
+        $(this).val(roundedNumber);
+      }
+    });
   };
 
   this.renderCart = function () {

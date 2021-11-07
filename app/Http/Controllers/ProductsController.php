@@ -50,6 +50,7 @@ class ProductsController extends Controller
             'description' => ['required', 'string'],
             'featured_image' => ['integer'],
             'category' => ['integer'],
+            'unit' => ['integer'],
         ]);
 
         try {
@@ -75,6 +76,7 @@ class ProductsController extends Controller
             $newProduct->description = $request->input('description');
             $newProduct->featured_image = $request->input('featured_image');
             $newProduct->has_variant = true;
+            $newProduct->unit = $request->unit;
             $newProduct->save();
 
             foreach ($variants as $variant) {
@@ -183,6 +185,7 @@ class ProductsController extends Controller
             'description' => ['required', 'string'],
             'featured_image' => ['integer'],
             'category' => ['integer'],
+            'unit' => ['integer'],
         ]);
 
         try {
@@ -202,6 +205,7 @@ class ProductsController extends Controller
             $product->category_id = $request->input('category');
             $product->slug = $slugify->slugify($request->input('name'));
             $product->available = $request->available ? true : false;
+            $product->unit = intval($request->unit);
             
             $product->save();
 

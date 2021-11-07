@@ -71,7 +71,7 @@
 
                                                 <td class="text-end">
                                                     <div class="cart-action-add">
-                                                        <input type="number" min="1" max="2000" value="1" > db
+                                                        <input type="number" class="unit-counter" min="{{ $product->unit }}" max="5000" value="{{ $product->unit }}" step="{{ $product->unit }}"> db
                                                     
                                                         <div class="btn btn-primary btn-sm add-to-cart-btn ms-2"  
                                                             data-id="{{ $variant->id }}"
