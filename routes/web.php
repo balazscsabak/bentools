@@ -53,6 +53,7 @@ Route::prefix('cart')->group(function () {
     Route::post('add', [CartController::class, 'addItem']);
     Route::post('remove', [CartController::class, 'removeItem']);
     Route::post('decrement', [CartController::class, 'decrementItem']);
+    Route::post('increment', [CartController::class, 'incrementItem']);
     Route::post('checkout', [PurchaseController::class, 'checkout'])->name('cart.checkout');
 });
 

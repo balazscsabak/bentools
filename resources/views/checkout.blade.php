@@ -1,5 +1,10 @@
 <x-app-layout>
-
+	
+	<script>
+		const cart = document.querySelector('.cart-toggler');
+		cart.remove();
+	</script>	
+	
 	<input type="hidden" name="confirm_cart_summ" id="confirm_cart_summ" value="{{ $summ }}">
 	<input type="hidden" name="email" id="email" value="{{ $user->email }}">
 	<div class="container my-4">

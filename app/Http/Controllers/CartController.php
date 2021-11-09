@@ -88,10 +88,43 @@ class CartController extends Controller
 
     public function decrementItem(Request $request)
     {
-        /**
-         * TODO, valid req
-         */
-        $this->decrementItemQuantityInSession(122, 4);
+        $id = $request->id;
+
+        $item = Variants::find($id);
+
+        if(!$item) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'No item found'
+            ]);
+        }
+        
+        $unit = $item->product->unit;
+
+        $this->decrementItemQuantityInSession($item->id, $unit);
+
+        return response()->json([
+            'status' => true,
+            'cart' => session('cart')
+        ]);
+    }
+
+    public function incrementItem(Request $request)
+    {
+        $id = $request->id;
+
+        $item = Variants::find($id);
+
+        if(!$item) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'No item found'
+            ]);
+        }
+        
+        $unit = $item->product->unit;
+
+        $this->incrementItemQuantityInSession($item->id, $unit);
 
         return response()->json([
             'status' => true,
@@ -145,10 +178,31 @@ class CartController extends Controller
             $decrementItem = $cartItems[$variantId];
             $oldQuantity = $decrementItem->quantity;
 
-            if($oldQuantity - $quantity <= 0) {
-                unset($cartItems[$variantId]);
+            if($oldQuantity - $quantity < $quantity) {
+                // unset($cartItems[$variantId]);
+                $decrementItem->quantity = $quantity;
             } else {
                 $decrementItem->quantity = $oldQuantity - $quantity;
+            }
+        }
+
+        session(['cart.items' => $cartItems]);
+    }
+
+    public function incrementItemQuantityInSession($variantId, $quantity)
+    {
+        $cart = session('cart');
+        $cartItems = $cart['items'];
+
+        if(isset($cartItems[$variantId])) {
+            $decrementItem = $cartItems[$variantId];
+            $oldQuantity = $decrementItem->quantity;
+
+            if($oldQuantity + $quantity < 5000) {
+                // unset($cartItems[$variantId]);
+                $decrementItem->quantity = $oldQuantity + $quantity;
+            } else {
+                $decrementItem->quantity = 5000;
             }
         }
 

@@ -29,7 +29,7 @@
 						<div class="col-6 h4">
 							Összesen:
 						</div>
-						<div class="col-6 h4 fw-bold text-end">
+						<div class="col-6 h4 fw-bold text-end " id="cart-page-sum">
 							{{ $summ }} Ft
 						</div>
 					</div>

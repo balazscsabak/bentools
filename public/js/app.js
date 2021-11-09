@@ -3189,102 +3189,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var siiimple_toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! siiimple-toast */ "./node_modules/siiimple-toast/dist/main.js");
 /* harmony import */ var siiimple_toast__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(siiimple_toast__WEBPACK_IMPORTED_MODULE_0__);
- // const Cart = function() {
-//     this.items = [];
-//     this.itemsList = [];
-//     this.init = () => {
-//         let items = JSON.parse(localStorage.getItem('cart'));
-//         if(!_.isEmpty(items)) {
-//             let initItems = items.map(item => {
-//                 return item.name;
-//             })
-//             this.items = initItems;
-//             this.itemsList = items;
-//             this.renderCart();
-//         }
-//     }
-//     this.addToCart = (name, quantity, id) => {
-//         if(!this.items.includes(name)) {
-//             this.items.push(name);
-//             this.itemsList = [...this.itemsList, { name, quantity, id }]
-//         } else {
-//             this.itemsList = this.itemsList.map((item) => {
-//                 if(item.name === name) {
-//                     return {
-//                         name,
-//                         quantity: item.quantity + quantity,
-//                         id
-//                     }
-//                 } else {
-//                     return item;
-//                 }
-//             })
-//         }
-//         this.updateStorageData();
-//         this.renderCart();
-//         toast.success('Termék hozzáadva az ajánlatkéréshez!', {
-//             container: 'body',
-//             class: 'siiimpleToast',
-//             position: 'top|center',
-//             margin: 70,
-//             delay: 0,
-//             duration: 2000,
-//         });
-//     };
-//     this.removeFromCart = (name) => {
-//         let checkIfContains = _.includes(this.items, name);
-//         if(checkIfContains) {
-//             let newItems = this.items.filter(item => {
-//                 return item != name;
-//             })
-//             let newItemsList = this.itemsList.filter(item => {
-//                 return item.name != name;
-//             })
-//             this.items = newItems;
-//             this.itemsList = newItemsList;
-//             this.updateStorageData();
-//             this.renderCart();
-//         }
-//     }
-//     this.addEventListeners = () => {
-//         $(document).on('click', '.add-to-cart-btn', (e) => {
-//             let quantity = $(e.target).closest('.cart-action-add').find('input').val();
-//             let name = $(e.target).data('name');
-//             let id = $(e.target).data('id');
-//             this.addToCart(name, parseInt(quantity), id);
-//         })
-//         $(document).on('click', '.remove-from-cart-btn', (e) => {
-//             this.removeFromCart($(e.currentTarget).data('prod-name'));
-//         })
-//     };
-//     this.updateStorageData = () => {
-//         localStorage.setItem('cart', JSON.stringify(this.itemsList));
-//     }
-//     this.renderCart = () => {
-//         if($('#cart').length) {
-//             $('#cart .items').empty();
-//             for (const item of this.itemsList) {
-//                 $('#cart .items').append(`
-//                     <div class="item row">
-//                         <div class="col-6 name" data-id="${item.id}">${item.name}</div>
-//                         <div class="col-5 quantity">${item.quantity}</div>
-//                         <div class="col-1 remove remove-from-cart-btn" data-prod-name="${item.name}"><i class="fas fa-times"></i></div>
-//                     </div>
-//                 `)
-//             }
-//         }
-//     }
-// }
-// $(() => {
-//     const cart = new Cart();
-//     cart.init();
-//     cart.addEventListeners();
-// })
+
 
 var ShoppingCart = function ShoppingCart() {
   var _this = this;
-
-  this.name = "asdsa";
 
   this.init = function () {
     _this.setEventListeners();
@@ -3333,16 +3241,6 @@ var ShoppingCart = function ShoppingCart() {
         console.log(err);
       });
     });
-    $(document).on("click", "#test3", function (e) {
-      e.preventDefault();
-      $.post("/cart/decrement", {
-        func: "getNameAndTime"
-      }, function (res) {
-        console.log(res);
-      }).fail(function (err) {
-        console.log(err);
-      });
-    });
     $(document).on('change', '#billing-shipping-check', function (e) {
       if (this.checked) {
         $('#billing-address').fadeOut('fast');
@@ -3368,10 +3266,11 @@ var ShoppingCart = function ShoppingCart() {
       }
     });
     $(document).on('change', '.unit-counter', function () {
+      console.log('asd');
       var max = parseInt($(this).attr('max'));
       var min = parseInt($(this).attr('min'));
       var step = parseInt($(this).attr('step'));
-      var val = parseInt($(this).val());
+      var val = $(this).val();
 
       if (val > max) {
         $(this).val(max);
@@ -3383,6 +3282,44 @@ var ShoppingCart = function ShoppingCart() {
         $(this).val(roundedNumber);
       }
     });
+    $(document).on('click', '.increment-item', function (e) {
+      e.preventDefault();
+      var id = $(e.target).data('id');
+      $.ajax({
+        method: 'POST',
+        url: '/cart/increment',
+        data: {
+          id: id
+        },
+        success: function success(res) {
+          if (res.status) {
+            _this.renderCart();
+          }
+        },
+        error: function error(err) {
+          console.log(err);
+        }
+      });
+    });
+    $(document).on('click', '.decrement-item', function (e) {
+      e.preventDefault();
+      var id = $(e.target).data('id');
+      $.ajax({
+        method: 'POST',
+        url: '/cart/decrement',
+        data: {
+          id: id
+        },
+        success: function success(res) {
+          if (res.status) {
+            _this.renderCart();
+          }
+        },
+        error: function error(err) {
+          console.log(err);
+        }
+      });
+    });
   };
 
   this.renderCart = function () {
@@ -3391,11 +3328,16 @@ var ShoppingCart = function ShoppingCart() {
         $('.cart-items').find('table tbody').empty();
 
         if (Object.keys(res.cart.items).length > 0) {
+          var sum = 0;
           Object.keys(res.cart.items).forEach(function (key) {
             var item = res.cart.items[key];
+            sum += item.quantity * item.price;
             console.log(item);
-            $('');
-            $('.cart-items').find('table tbody').append("\n                            <tr>\n                                <th class=\"cart-td-image\" scope=\"row\">\n                                    <div class=\"image\" style=\"background-image: url(".concat(item.image_href, ")\"></div>\n                                </th>\n                                <td>\n                                    <div class=\"item-info\">\n                                        <div class=\"name\">\n                                            ").concat(item.name, "\n                                        </div>\n                                        <div class=\"quantity\">\n                                            <span class=\"multiply\">x</span>").concat(item.quantity, " <span data-id=\"").concat(item.variant_id, "\" class=\"delete delete-item-from-cart\">T\xF6rl\xE9s</span>\n                                        </div>\n                                    </div>\n                                </td>\n                                <td class=\"text-end\">\n                                    <div class=\"price fw-bold\" style=\"white-space: nowrap;\">\n                                        ").concat(item.quantity * item.price, " .-\n                                    </div>\n                                </td>\n                            </tr>\n                        "));
+            $('.cart-items').find('table tbody').append("\n                            <tr>\n                                <th class=\"cart-td-image\" scope=\"row\">\n                                    <div class=\"image\" style=\"background-image: url(".concat(item.image_href, ")\"></div>\n                                </th>\n                                <td>\n                                    <div class=\"item-info\">\n                                        <div class=\"name\">\n                                            ").concat(item.name, "\n                                        </div>\n                                        <div class=\"quantity mt-2 d-flex align-items-center\">\n                                            <span class=\"multiply\">x</span>").concat(item.quantity, " \n                                            <div class=\"mx-3 d-flex flex-column align-items-center\" style=\"font-size: 11px;\">\n                                                \n                                                    <i class=\"fas fa-plus mb-1 increment-item\" data-id=\"").concat(item.variant_id, "\"></i>\n                                                \n                                                    <i class=\"fas fa-minus mt-1 decrement-item\" data-id=\"").concat(item.variant_id, "\"></i>\n                                                \n                                            </div>\n                                            <span data-id=\"").concat(item.variant_id, "\" class=\"delete delete-item-from-cart\">T\xF6rl\xE9s</span>\n                                        </div>\n                                    </div>\n                                </td>\n                                <td class=\"text-end\">\n                                    <div class=\"price fw-bold\" style=\"white-space: nowrap;\">\n                                        ").concat(item.quantity * item.price, " .-\n                                    </div>\n                                </td>\n                            </tr>\n                        "));
+            console.log(item.quantity);
+            console.log(item.price);
+            console.log(sum);
+            $("#cart-page-sum").html("".concat(sum, " Ft"));
           });
         } else {
           /**

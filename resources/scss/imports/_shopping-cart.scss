@@ -123,7 +123,6 @@
 		background: #e56464;
 		border-radius: 4px;
 		color: white;
-		margin-left: 10px;
 		cursor: pointer;
 	}
 }
@@ -211,6 +210,11 @@
 		padding: 0.25rem 0.75rem;
 		color: $color-main-blue;
 	}
+}
+
+.increment-item,
+.decrement-item {
+	cursor: pointer;
 }
 
 @include media-breakpoint-down(lg) {
