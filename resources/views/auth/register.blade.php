@@ -26,7 +26,7 @@
         
                             <div>
                                 <label class="form-label">Vezetéknév</label>
-                                <input type="text" class="form-control" required name="lastname">
+                                <input type="text" class="form-control" value="{{ old('lastname') }}" required name="lastname">
                             </div>
 
                             @error('lastname')
@@ -39,7 +39,7 @@
         
                             <div>
                                 <label class="form-label">Keresztnév</label>
-                                <input type="text" class="form-control" name="firstname" required value="">
+                                <input type="text" class="form-control" value="{{ old('firstname') }}"  name="firstname" required value="">
                             </div>
         
                             @error('firstname')
@@ -76,17 +76,17 @@
                     <div class="row mt-3">
                         <div class="col-6">
                             <label class="form-label">Cégnév</label>
-                            <input class="form-control" type="text" name="firm_name" required />
+                            <input class="form-control" type="text" value="{{ old('firm_name') }}" name="firm_name" required />
                         </div>
 
                         <div class="col-6 ">
                             <label class="form-label">Adószám</label>
-                            <input class="form-control" type="text" name="tax_number" required />
+                            <input class="form-control" type="text" value="{{ old('tax_number') }}" name="tax_number" required />
                         </div>
 
                         <div class="col-6 mt-3">
                             <label class="form-label">Telefonszám</label>
-                            <input class="form-control" type="text" name="phone_number" required />
+                            <input class="form-control" type="text" value="{{ old('phone_number') }}" name="phone_number" required />
                         </div>
                     </div>
                     
@@ -96,19 +96,19 @@
 
                             <div>
                                 <label class="form-label">Irányítószám</label>
-                                <input class="form-control" type="text" name="shipping_postcode" required />
+                                <input class="form-control" type="text" value="{{ old('shipping_postcode') }}" name="shipping_postcode" required />
                             </div>
                             <div>
                                 <label class="form-label mt-3">Megye</label>
-                                <input class="form-control" type="text" name="shipping_county" required />
+                                <input class="form-control" type="text" value="{{ old('shipping_county') }}" name="shipping_county" required />
                             </div>
                             <div>
                                 <label class="form-label mt-3">Város</label>
-                                <input class="form-control" type="text" name="shipping_city" required />
+                                <input class="form-control" type="text" value="{{ old('shipping_city') }}" name="shipping_city" required />
                             </div>
                             <div>
                                 <label class="form-label mt-3">Utca/házszám</label>
-                                <input class="form-control" type="text" name="shipping_street" required />
+                                <input class="form-control" type="text" value="{{ old('shipping_street') }}" name="shipping_street" required />
                             </div>
                         </div>
                         <div class="col-6">
@@ -117,19 +117,19 @@
                             <div>
                                 <div>
                                     <label class="form-label">Irányítószám</label>
-                                    <input class="form-control" type="text" name="billing_postcode" required />
+                                    <input class="form-control" type="text" value="{{ old('billing_postcode') }}" name="billing_postcode" required />
                                 </div>
                                 <div>
                                     <label class="form-label mt-3">Megye</label>
-                                    <input class="form-control" type="text" name="billing_county" required />
+                                    <input class="form-control" type="text" value="{{ old('billing_county') }}" name="billing_county" required />
                                 </div>
                                 <div>
                                     <label class="form-label mt-3">Város</label>
-                                    <input class="form-control" type="text" name="billing_city" required />
+                                    <input class="form-control" type="text" value="{{ old('billing_city') }}" name="billing_city" required />
                                 </div>
                                 <div>
                                     <label class="form-label mt-3">Utca/házszám</label>
-                                    <input class="form-control" type="text" name="billing_street" required />
+                                    <input class="form-control" type="text" value="{{ old('billing_street') }}" name="billing_street" required />
                                 </div>
                             </div>
                         </div>
