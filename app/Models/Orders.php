@@ -56,6 +56,10 @@ class Orders extends Model
             case 'CANCELLED':
                 return '<span class="badge bg-danger text-uppercase">Visszavonva</span>';
                 break;
+            
+            case 'PURCHASE_ERROR':
+                return '<span class="badge bg-danger text-uppercase">Hibás</span>';
+                break;
 
             case 'IN_TRANSPORT':
                 return '<span class="badge bg-info text-uppercase">Szállítás alatt</span>';

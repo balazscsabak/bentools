@@ -15,7 +15,9 @@ class OrdersController extends Controller
 {
     public function orders(Request $request)
     {
-        $orders = Orders::where('status', '!=', 'ERROR')->get();
+        $orders = Orders::where([['status', '!=', 'ERROR'], ['status', '!=', 'PURCHASE_ERROR']])
+            // ->orWhere('status', '!=', 'PURCHASE_ERROR')
+            ->get();
         
         return view('admin.orders.orders')
             ->with('orders', $orders);

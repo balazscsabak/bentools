@@ -27,7 +27,7 @@
 		<div class="orders">
 
 			@foreach ($user->orders as $order)
-				@if ($order->status !== "ERROR")	
+				@if ($order->status !== "ERROR" && $order->status !== "PURCHASE_ERROR")	
 					<a href="{{ route('user.profile.order', $order->unique_id) }}" class="list-group-item">
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="m-0">
