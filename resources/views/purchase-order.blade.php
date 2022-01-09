@@ -132,13 +132,13 @@
 				<div>
 					Összesen: 	
 				</div>
-				<div class="fw-bold">{{ $order->price }} Ft</div>
+				<div class="fw-bold">{{ $order->net_price }} Ft</div>
 			</div>
 		</div>
 		<div class="row mb-4 justify-content-center">
 			<div class="col-12 col-lg-6 text-end fs-5">
 				<div class="fw-light text-end">
-					<small>Nettó: {{ $order->net_price }} Ft</small>
+					<small>Bruttó: {{ $order->price }} Ft</small>
 				</div>
 			</div>
 		</div>

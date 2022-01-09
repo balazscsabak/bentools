@@ -115,7 +115,7 @@
             </div>
 
             <div class="text-center mb-4">
-                <div><small>Minimum rendelés 6000 Ft.</small></div>
+                <div><small>Minimum rendelés nettó 6000 Ft.</small></div>
                 <div><small><a href="{{ route('offer') }}" class="text-light">Kérjen árajánlatot</a></small></div>
             </div>
 

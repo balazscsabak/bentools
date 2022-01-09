@@ -67,10 +67,10 @@
 						</div>
 						<div class="col-6 h4 fw-bold text-end text-nowrap">
 							<div class="text-nowrap">
-								{{ $summ }} Ft
+								{{ $summNet }} Ft
 							</div>
 							<div class="text-nowrap fs-6 fw-light mt-2">
-								Nettó: {{ $summNet }} Ft
+								Bruttó: {{ $summ }} Ft
 							</div>
 						</div>
 					</div>
