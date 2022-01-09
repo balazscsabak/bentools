@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Errors;
 use App\Models\Posts;
 use App\Models\Products;
 use App\Models\Settings;
@@ -15,20 +16,6 @@ class FrontpageController extends Controller
 {
     public function index()
     {
-        // $user = Auth::user();
-
-        // $user = Cashier::findBillable($user->stripe_id);
-        // $stripeCustomer = $user->createAsStripeCustomer();
-        // $stripeCustomer = $user->asStripeCustomer();
-
-        // $number = 1000 * 100;
-        // dd(number_format($number, 2, '.', ' '));
-        // $blanceMinus = $user->applyBalance($number, 'Premium customer top-up.');
-        // $user->applyBalance(3000000, 'Bad usage penalty.');
-        // $balance = $user->balance();
-        
-        // dd($balance);
-
         $slideshow = Slideshow::all();
         $latestPosts = Posts::latest()->limit(3)->get();
         $relatedProducts = Products::where([['deleted', false], ['available', true]])->latest()->limit(4)->get();

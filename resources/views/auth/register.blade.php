@@ -65,7 +65,7 @@
                             <input class="form-control" type="password" name="password" required />
                         </div>
                         @error('password')
-                            <div class="ms-3 mt-1 mb-2 p-0 text-danger">A két jelszó nem egyezik</div>
+                            <div class="ms-3 mt-1 mb-2 p-0 text-danger">{{ $message }}</div>
                         @enderror
                         <div class="col-12 mt-3">
                             <label class="form-label">{{ __('Jelszó megerősítése')}}</label>

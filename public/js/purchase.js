@@ -768,6 +768,36 @@ try {
 }
 
 
+/***/ }),
+
+/***/ "./node_modules/siiimple-toast/dist/main.js":
+/*!**************************************************!*\
+  !*** ./node_modules/siiimple-toast/dist/main.js ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u=undefined;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if( true&&"string"==typeof t)return __webpack_require__("./node_modules/siiimple-toast/dist sync recursive")(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]); true?module.exports=l:0}if(parcelRequire=f,i)throw i;return f}({"epB2":[function(require,module,exports) {
+"use strict";var t;function e(t,e){var n=Object.keys(t);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(t);e&&(r=r.filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable})),n.push.apply(n,r)}return n}function n(t){for(var n=1;n<arguments.length;n++){var o=null!=arguments[n]?arguments[n]:{};n%2?e(Object(o),!0).forEach(function(e){r(t,e,o[e])}):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(o)):e(Object(o)).forEach(function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(o,e))})}return t}function r(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var o=function(t,e){Object.keys(e).forEach(function(n){t.style[n]=e[n]})},i=function(t,e){Object.keys(e).forEach(function(n){t.setAttribute(n,e[n])})},c=function(t,e){return t.getAttribute(e)},a={defaultOptions:Symbol("defaultOptions"),render:Symbol("render"),show:Symbol("show"),hide:Symbol("hide"),removeDOM:Symbol("removeDOM")},s=(r(t={},a.defaultOptions,{container:"body",class:"siiimpleToast",position:"top|center",margin:15,delay:0,duration:3e3,style:{}}),r(t,"setOptions",function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return n({},s,r({},a.defaultOptions,n({},this[a.defaultOptions],{},t)))}),r(t,a.render,function(t,e){var r=this,c=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},s=n({},this[a.defaultOptions],{},c),u=s.class,f=s.position,l=s.delay,d=s.duration,p=s.style,h=document.createElement("div");h.className=u,h.innerHTML=e,i(h,{"data-position":f,"data-state":t}),o(h,p);var O=0;return setTimeout(function(){r[a.show](h,s)},O+=l),setTimeout(function(){r[a.hide](h,s)},O+=d),this}),r(t,a.show,function(t,e){var n,i=e.container,a=e.class,s=e.margin,u=function(t,e){return c(t,"data-position").indexOf(e)>-1},f=document.querySelector(i);f.insertBefore(t,f.firstChild),o(t,(r(n={position:"body"===i?"fixed":"absolute"},u(t,"top")?"top":"bottom","-100px"),r(n,u(t,"left")&&"left","15px"),r(n,u(t,"center")&&"left","".concat(f.clientWidth/2-t.clientWidth/2,"px")),r(n,u(t,"right")&&"right","15px"),n)),o(t,{transform:"scale(1)",opacity:1});var l=s;Array.from(document.querySelectorAll(".".concat(a,'[data-position="').concat(c(t,"data-position"),'"]'))).filter(function(e){return e.parentElement===t.parentElement}).forEach(function(t){o(t,r({},u(t,"top")?"top":"bottom","".concat(l,"px"))),l+=t.offsetHeight+s})}),r(t,a.hide,function(t){var e,n=this,i=function(t,e){return c(t,"data-position").indexOf(e)>-1},s=t.getBoundingClientRect(),u=s.left,f=s.width;o(t,(r(e={},i(t,"left")&&"left","".concat(f,"px")),r(e,i(t,"center")&&"left","".concat(u+f,"px")),r(e,i(t,"right")&&"right","-".concat(f,"px")),r(e,"opacity",0),e));t.addEventListener("transitionend",function e(){n[a.removeDOM](t),t.removeEventListener("transitionend",e)})}),r(t,a.removeDOM,function(t){t.parentElement.removeChild(t)}),r(t,"message",function(t,e){return this[a.render]("default",t,e)}),r(t,"success",function(t,e){return this[a.render]("success",t,e)}),r(t,"alert",function(t,e){return this[a.render]("alert",t,e)}),t),u=s;exports.default=u;
+},{}]},{},["epB2"], null)
+
+/***/ }),
+
+/***/ "./node_modules/siiimple-toast/dist sync recursive":
+/*!************************************************!*\
+  !*** ./node_modules/siiimple-toast/dist/ sync ***!
+  \************************************************/
+/***/ ((module) => {
+
+function webpackEmptyContext(req) {
+	var e = new Error("Cannot find module '" + req + "'");
+	e.code = 'MODULE_NOT_FOUND';
+	throw e;
+}
+webpackEmptyContext.keys = () => ([]);
+webpackEmptyContext.resolve = webpackEmptyContext;
+webpackEmptyContext.id = "./node_modules/siiimple-toast/dist sync recursive";
+module.exports = webpackEmptyContext;
+
 /***/ })
 
 /******/ 	});
@@ -848,13 +878,16 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var siiimple_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! siiimple-toast */ "./node_modules/siiimple-toast/dist/main.js");
+/* harmony import */ var siiimple_toast__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(siiimple_toast__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var stripe = Stripe("pk_live_51Jgy78Fg1lMs6fEeEc7SMkMDhfmahn5KcKXMnxvCJgdEza8pPQdk1RqlIXtMGpQrdyogHlgcuaxLrm1oGddDG0EK00ijYV9SSG", {
+
+var stripe = Stripe(window.siteGlobals.STRIPE_KEY, {
   locale: "hu"
 });
 var elements = stripe.elements();
@@ -865,7 +898,7 @@ var cardElement = elements.create("card", {
       fontWeight: "500",
       fontSize: "17px",
       padding: 10,
-      backgroundColor: '#fff'
+      backgroundColor: "#fff"
     }
   }
 });
@@ -1120,13 +1153,12 @@ cardButtons.forEach(function (cardButton) {
                 billing_details: {
                   name: _cardHolderName,
                   email: userEmail,
-                  phone: "+36 30 947 7500",
                   address: {
                     city: billingCity,
                     country: "HU",
                     line1: billingStreet,
                     postal_code: billingPostcode,
-                    state: "Nógrád"
+                    state: billingCounty
                   }
                 }
               });
@@ -1174,6 +1206,18 @@ cardButtons.forEach(function (cardButton) {
                   // purchase error
                   window.location = "/orders/error/".concat(res.hash);
                 }
+              }).fail(function (err) {
+                console.log(err);
+                $(e.target).prop("disabled", false);
+                $("#spinner-wrapper").remove();
+                siiimple_toast__WEBPACK_IMPORTED_MODULE_1___default().alert("Belső kiszolgálóhiba! Kérjük, próbáld újra később!", {
+                  container: "body",
+                  "class": "siiimpleToast",
+                  position: "top|center",
+                  margin: 70,
+                  delay: 0,
+                  duration: 2000
+                });
               });
 
             case 69:

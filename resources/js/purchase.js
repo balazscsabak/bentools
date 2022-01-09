@@ -1,9 +1,8 @@
-var stripe = Stripe(
-    "pk_live_51Jgy78Fg1lMs6fEeEc7SMkMDhfmahn5KcKXMnxvCJgdEza8pPQdk1RqlIXtMGpQrdyogHlgcuaxLrm1oGddDG0EK00ijYV9SSG",
-    {
-        locale: "hu",
-    }
-);
+import toast from "siiimple-toast";
+
+var stripe = Stripe(window.siteGlobals.STRIPE_KEY, {
+    locale: "hu",
+});
 
 const elements = stripe.elements();
 const cardElement = elements.create("card", {
@@ -13,7 +12,7 @@ const cardElement = elements.create("card", {
             fontWeight: "500",
             fontSize: "17px",
             padding: 10,
-						backgroundColor: '#fff'
+            backgroundColor: "#fff",
         },
     },
 });
@@ -347,13 +346,12 @@ cardButtons.forEach((cardButton) => {
                     billing_details: {
                         name: cardHolderName,
                         email: userEmail,
-                        phone: "+36 30 947 7500",
                         address: {
                             city: billingCity,
                             country: "HU",
                             line1: billingStreet,
                             postal_code: billingPostcode,
-                            state: "Nógrád",
+                            state: billingCounty,
                         },
                     },
                 }
@@ -400,11 +398,28 @@ cardButtons.forEach((cardButton) => {
                         if (res.status) {
                             window.location = `/orders/${res.hash}`;
                         } else {
-													// purchase error
-													window.location = `/orders/error/${res.hash}`;
-												}
+                            // purchase error
+                            window.location = `/orders/error/${res.hash}`;
+                        }
                     }
-                );
+                ).fail((err) => {
+                    console.log(err);
+                    $(e.target).prop("disabled", false);
+
+                    $("#spinner-wrapper").remove();
+
+                    toast.alert(
+                        "Belső kiszolgálóhiba! Kérjük, próbáld újra később!",
+                        {
+                            container: "body",
+                            class: "siiimpleToast",
+                            position: "top|center",
+                            margin: 70,
+                            delay: 0,
+                            duration: 2000,
+                        }
+                    );
+                });
             }
         } else if (paymentMethodRadio === "2" || paymentMethodRadio === "1") {
             // transfer & delivery

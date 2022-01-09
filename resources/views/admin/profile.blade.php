@@ -38,7 +38,7 @@
         <label for="email" class="form-label mt-3">Email cím</label>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">@</span>
-            <input value="{{ $user->email }}" name="email" type="text" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1">
+            <input readonly value="{{ $user->email }}" name="email" type="text" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1">
         </div>
 
         <div class="col-12">

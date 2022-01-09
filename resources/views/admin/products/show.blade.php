@@ -172,7 +172,12 @@
 										</th>
 										<th>
 											<div class="input-group-sm">
-												<input type="text" class="form-control" value="Ár" readonly>
+												<input type="text" class="form-control" value="Nettó Ár" readonly>
+											</div>
+										</th>
+										<th>
+											<div class="input-group-sm">
+												<input type="text" class="form-control" value="Bruttó Ár" readonly>
 											</div>
 										</th>
 										<th>
@@ -210,6 +215,12 @@
                                                 <div class="input-group-sm pv-img-wrapper">
                                                     <button class="pv-image-modal-btn" data-bs-toggle="modal" data-bs-target="#pv-image-modal">Variáns képe</button>
                                                     <input type="hidden" class="form-control validate-not-null validate-for-button" value="{{ $variant['image_href'] }}">
+                                                </div>
+                                            </td>
+                                            
+                                            <td>
+                                                <div class="input-group-sm">
+                                                    <input value="{{ $variant['net_price'] }}" type="text" class="form-control validate-not-null" >
                                                 </div>
                                             </td>
 

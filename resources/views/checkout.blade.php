@@ -2,7 +2,9 @@
 	
 	<script>
 		const cart = document.querySelector('.cart-toggler');
+		const cartMenu = document.querySelector('.cart-toggler-menu');
 		cart.remove();
+		cartMenu.remove();
 	</script>	
 	
 	<input type="hidden" name="confirm_cart_summ" id="confirm_cart_summ" value="{{ $summ }}">
@@ -46,8 +48,8 @@
 											</div>
 										</td>
 										<td class="text-end">
-											<div class="price fw-bold">
-												{{ $item->price }} .-
+											<div class="price fw-bold text-nowrap">
+												{{ $item->quantity * $item->price }} .-
 											</div>
 										</td>
 									</tr>
@@ -63,8 +65,13 @@
 						<div class="col-6 h4">
 							Összesen:
 						</div>
-						<div class="col-6 h4 fw-bold text-end">
-							{{ $summ }} Ft
+						<div class="col-6 h4 fw-bold text-end text-nowrap">
+							<div class="text-nowrap">
+								{{ $summ }} Ft
+							</div>
+							<div class="text-nowrap fs-6 fw-light mt-2">
+								Nettó: {{ $summNet }} Ft
+							</div>
 						</div>
 					</div>
 					

@@ -55,7 +55,11 @@
                                                     </div>
                                                 </td>
 
-                                                <td class="fw-bold" style="padding: 12px 0 12px 5px; white-space: nowrap;">{{ $variant->price }} .-</td>
+                                                <td class="fw-bold" style="padding: 12px 0 12px 5px; white-space: nowrap;">
+                                                    
+                                                    <div><small style="font-size: 12px; color: #818181; font-weight:400;">Nettó: {{ $variant->net_price }} .-</small></div>
+                                                    <div>{{ $variant->price }} .-</div>
+                                                </td>
 
                                                 @php
                                                     $values = json_decode($variant->attr_values, true);

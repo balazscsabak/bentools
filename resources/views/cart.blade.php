@@ -29,8 +29,13 @@
 						<div class="col-6 h4">
 							Összesen:
 						</div>
-						<div class="col-6 h4 fw-bold text-end " id="cart-page-sum">
-							{{ $summ }} Ft
+						<div class="col-6 h4 fw-bold text-end cart-page-sum">
+							<div class="text-nowrap">
+								{{ $summ }} Ft
+							</div>
+							<div class="text-nowrap fs-6 fw-light">
+								{{ $summNet }} Ft
+							</div>
 						</div>
 					</div>
 					

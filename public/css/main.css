@@ -19894,6 +19894,7 @@ main {
   top: 0;
   right: -300px;
   display: none;
+  z-index: 1;
 }
 .pv-img-sample-box .sample-big .pv-image-big {
   width: 300px;

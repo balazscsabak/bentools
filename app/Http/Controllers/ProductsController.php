@@ -86,6 +86,7 @@ class ProductsController extends Controller
                 $newVariant->product_id = $newProduct->id;
                 $newVariant->sku = $variant['code'];
                 $newVariant->price = $variant['price'];
+                $newVariant->net_price = $variant['net_price'];
                 $newVariant->attr = json_encode($variant['attr']);
                 $newVariant->attr_values = json_encode($variant['attr_values']);
                 $newVariant->image_href = isset($variant['image_href']) && $variant['image_href'] !== '' ? $variant['image_href'] : '/storage/images/default-product.png';
@@ -144,6 +145,7 @@ class ProductsController extends Controller
                 'image_href' => $variant->image_href,
                 'attr_values' => json_decode($variant->attr_values),
                 'price' => $variant->price,
+                'net_price' => $variant->net_price,
                 'sku' => $variant->sku,
                 'active' => $variant->active
             ];
@@ -179,7 +181,6 @@ class ProductsController extends Controller
     {
         // TODO delete me
         // dd($request->input(), json_decode($request->input('variants'), true));
-
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
@@ -227,6 +228,7 @@ class ProductsController extends Controller
                      *  - unique sku
                      */
                     $oldVariant->price = $variant['price'];
+                    $oldVariant->net_price = $variant['net_price'];
                     $oldVariant->image_href = isset($variant['image_href']) && $variant['image_href'] !== '' ? $variant['image_href'] : '/storage/images/default-product.png';
                     $oldVariant->sku = $variant['code'];
                     $oldVariant->attr = json_encode($variant['attr']);
@@ -249,6 +251,7 @@ class ProductsController extends Controller
                      */
                     $newVariant->product_id = $product->id;
                     $newVariant->price = $variant['price'];
+                    $newVariant->net_price = $variant['net_price'];
                     $newVariant->image_href = isset($variant['image_href']) && $variant['image_href'] !== '' ? $variant['image_href'] : '/storage/images/default-product.png';
                     $newVariant->sku = $variant['code'];
                     $newVariant->attr = json_encode($variant['attr']);

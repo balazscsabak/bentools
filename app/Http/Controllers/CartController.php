@@ -35,14 +35,18 @@ class CartController extends Controller
     {
         $cart = session('cart');
         $summ = 0;
+        $summNet = 0;
         
         foreach ($cart['items'] as $item) {
             $sumPerItem = $item->price * $item->quantity;
+            $summPerItemNet = $item->net_price * $item->quantity;
             $summ += $sumPerItem;
+            $summNet += $summPerItemNet;
         }
         
         return view('cart')
             ->with('summ', $summ)
+            ->with('summNet', $summNet)
             ->with('cart', $cart);
     }
 
@@ -63,7 +67,7 @@ class CartController extends Controller
             ]);
         }
 
-        $this->addItemToSession($item->product_id, $item->id, $item->sku, $item->price, $item->product->name . ' - ' . $item->sku , intval($quantity), $item->image_href);
+        $this->addItemToSession($item->product_id, $item->id, $item->sku, $item->net_price, $item->price, $item->product->name . ' - ' . $item->sku , intval($quantity), $item->image_href);
         
         return response()->json([
             'status' => true,
@@ -132,7 +136,7 @@ class CartController extends Controller
         ]);
     }
 
-    private function addItemToSession($productId, $variantId, $sku, $price, $name, $quantity, $imageHref)
+    private function addItemToSession($productId, $variantId, $sku, $netPrice, $price, $name, $quantity, $imageHref)
     {
         $cart = session('cart');
         $cartItems = $cart['items'];
@@ -146,6 +150,7 @@ class CartController extends Controller
             $newItem->product_id = $productId;
             $newItem->variant_id = $variantId;
             $newItem->sku = $sku;
+            $newItem->net_price = $netPrice;
             $newItem->price = $price;
             $newItem->name = $name;
             $newItem->quantity = $quantity;
@@ -179,7 +184,6 @@ class CartController extends Controller
             $oldQuantity = $decrementItem->quantity;
 
             if($oldQuantity - $quantity < $quantity) {
-                // unset($cartItems[$variantId]);
                 $decrementItem->quantity = $quantity;
             } else {
                 $decrementItem->quantity = $oldQuantity - $quantity;
@@ -199,7 +203,6 @@ class CartController extends Controller
             $oldQuantity = $decrementItem->quantity;
 
             if($oldQuantity + $quantity < 5000) {
-                // unset($cartItems[$variantId]);
                 $decrementItem->quantity = $oldQuantity + $quantity;
             } else {
                 $decrementItem->quantity = 5000;

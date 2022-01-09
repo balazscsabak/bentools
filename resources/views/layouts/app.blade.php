@@ -21,7 +21,11 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
+        <script>
+            window.siteGlobals = {
+                STRIPE_KEY: '{{ env('STRIPE_KEY') }}'
+            }
+        </script>
     </head>
     <body class="font-sans antialiased d-flex flex-column h-100">
         
@@ -101,8 +105,16 @@
                 
             </div>
 
+            <div class="cart-sum row mt-4">
+                <div class="col-6 h4">
+                    Összesen:
+                </div>
+                <div class="col-6 h4 fw-bold text-end cart-page-sum">
+                    
+                </div>
+            </div>
+
             <div class="text-center mb-4">
-                <div><small>Áraink nettó árak.</small></div>
                 <div><small>Minimum rendelés 6000 Ft.</small></div>
                 <div><small><a href="{{ route('offer') }}" class="text-light">Kérjen árajánlatot</a></small></div>
             </div>

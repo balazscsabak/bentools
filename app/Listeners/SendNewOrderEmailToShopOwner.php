@@ -28,6 +28,6 @@ class SendNewOrderEmailToShopOwner
      */
     public function handle(NewOrderEvent $event)
     {
-        Mail::to('balazs.csabak@gmail.com')->send(new NewOrderMailToShopOwner($event->user, $event->order));
+        Mail::to(env('SHOW_OWNER_EMAIL'))->send(new NewOrderMailToShopOwner($event->user, $event->order));
     }
 }

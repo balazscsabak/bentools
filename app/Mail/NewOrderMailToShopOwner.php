@@ -34,6 +34,6 @@ class NewOrderMailToShopOwner extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.order.newOrderToShopOwner');
+        return $this->subject('Értesítő: új rendelés érkezett')->view('emails.order.newOrderToShopOwner');
     }
 }

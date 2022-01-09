@@ -762,6 +762,7 @@ main {
         top: 0;
         right: -300px;
         display: none;
+        z-index: 1;
 
         .pv-image-big {
             width: 300px;

@@ -155,10 +155,13 @@ const ShoppingCart = function () {
 
                 if(Object.keys(res.cart.items).length > 0) {
                     let sum = 0;
+                    let sumNet = 0;
+
                     Object.keys(res.cart.items).forEach(key => {
                         const item = res.cart.items[key]; 
 
                         sum += item.quantity * item.price;
+                        sumNet += item.quantity * item.net_price;
 
                         console.log(item);
                         $('.cart-items').find('table tbody').append(`
@@ -192,19 +195,17 @@ const ShoppingCart = function () {
                             </tr>
                         `);
 
-                        console.log(item.quantity);
-                        console.log(item.price);
-                        console.log(sum);
-
-                        $("#cart-page-sum").html(`${sum} Ft`);
                     });
 
-
+                    $(".cart-page-sum").html(`<div>${sum} Ft</div><div class="fs-6 fw-light">Nettó: ${sumNet} Ft</div>`);
+                    
+                    
                 } else {
                     /**
                      * TODO
                      * empty kosar
                      */
+                    $(".cart-page-sum").html(`<div>0 Ft</div><div class="fs-6 fw-light">Nettó: 0 Ft</div>`);
                 }
             }
         }).fail((err) => {

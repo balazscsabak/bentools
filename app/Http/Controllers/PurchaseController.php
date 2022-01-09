@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewOrderEvent;
 use App\Models\Errors;
 use App\Models\OrderInfo;
 use App\Models\OrderItems;
 use App\Models\Orders;
 use App\Models\Purchases;
 use App\Models\Variants;
-use App\Events\NewOrderEvent;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +20,11 @@ class PurchaseController extends Controller
         $user = Auth::user();
         $order = Orders::where('hash', $hash)->first();
 
-        if( !$order ||
+        if (!$order ||
             $order->user_id !== $user->id ||
             $order->hash !== $hash) {
-                abort(404);
-        } 
+            abort(404);
+        }
 
         return view('purchase-order')
             ->with('order', $order)
@@ -38,7 +38,7 @@ class PurchaseController extends Controller
          */
         if (!Auth::check()) {
             $credentials = $request->only('email', 'password');
-            
+
             if (!Auth::attempt($credentials)) {
                 // Authentication passed...
                 // return redirect()->intended('dashboard');
@@ -51,27 +51,29 @@ class PurchaseController extends Controller
 
         $cart = session('cart');
         $summ = 0;
+        $summNet = 0;
 
         foreach ($cart['items'] as $item) {
             $sumPerItem = $item->price * $item->quantity;
+            $sumPerItemNet = $item->net_price * $item->quantity;
+
+            $summNet += $sumPerItemNet;
             $summ += $sumPerItem;
         }
 
         return view('checkout')
             ->with('user', $user)
             ->with('summ', $summ)
+            ->with('summNet', $summNet)
             ->with('cart', $cart);
     }
 
     public function purchase(Request $request)
     {
-        /**
-         * TODO - add county
-         */
         $method = $request->method;
 
         $shippingPostcode = $request->shippingPostcode;
-        $shippingCity =  $request->shippingCity;
+        $shippingCity = $request->shippingCity;
         $shippingStreet = $request->shippingStreet;
         $shippingCounty = $request->shippingCounty;
         $billingPostcode = $request->billingPostcode;
@@ -99,21 +101,28 @@ class PurchaseController extends Controller
         $user = Auth::user();
         $cart = session('cart');
         $summ = 0;
+        $summNet = 0;
 
         foreach ($cart['items'] as $item) {
             $sumPerItem = $item->price * $item->quantity;
+            $sumPerItemNet = $item->net_price * $item->quantity;
+
             $summ += $sumPerItem;
+            $summNet += $sumPerItemNet;
         }
 
-        if($confirmCartSumm !== $summ) {
+        if ($confirmCartSumm !== $summ) {
+            abort(404);
+        }
+
+        if ($summ < 6000) {
             abort(404);
         }
 
         // create order
-        $order = $this->createOrder($method, $summ, 'HUF');
-        
+        $order = $this->createOrder($method, $summ, $summNet, 'HUF');
 
-        if($method === '3') {
+        if ($method === '3') {
             /**
              * CARD
              */
@@ -121,20 +130,19 @@ class PurchaseController extends Controller
             $cardHolderName = $request->cardHolderName;
 
             try {
-
                 $stripeCustomer = $user->createOrGetStripeCustomer();
 
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 $order->status = "PURCHASE_ERROR";
                 $order->save();
                 Errors::storeNewException('Error on create or get customer', $e->getMessage(), 'purchase', 'purchase', $user->id);
                 abort(404);
             }
-            
+
             try {
 
                 $stripeCharge = $request->user()->charge(
-                    $summ * 100,
+                    intval($summ * 100),
                     $request->paymentMethodId,
                     [
                         'customer' => $stripeCustomer->id,
@@ -158,14 +166,14 @@ class PurchaseController extends Controller
                 $purchase->paid = true;
                 $purchase->refunded = false;
                 $purchase->stripe_response = json_encode($stripeCharge);
-                
+
                 $purchase->save();
 
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 $order->status = "ERROR";
                 $hashString = $order->id . $user->id . strtotime('now');
                 $order->hash = hash('md5', $hashString);
-                
+
                 $order->save();
 
                 Errors::storeNewException('Error on Stripe charge', $e->getMessage(), 'purchase', 'purchase', $user->id, 'order_id', $order->id);
@@ -173,15 +181,15 @@ class PurchaseController extends Controller
                 return response()->json([
                     'status' => false,
                     'err_code' => 'purchase_failed',
-                    'hash' => $order->hash
+                    'hash' => $order->hash,
                 ]);
             }
 
-        } else if($method === '2') {
+        } else if ($method === '2') {
             /**
              * TRANSFER
              */
-        } else if($method === '1') {
+        } else if ($method === '1') {
             /**
              * CASH ON DELIVERY
              */
@@ -195,28 +203,28 @@ class PurchaseController extends Controller
 
         $hashString = $order->id . $user->id . strtotime('now');
 
-        if($method === '3') {
+        if ($method === '3') {
             /**
              * CARD
              */
             $order->status = 'SUCCESS';
 
-        } else if($method === '2') {
+        } else if ($method === '2') {
             /**
              * 30 DAYS TRANSFER
              */
             $order->status = 'PENDING';
 
-        } else if($method === '1') {
+        } else if ($method === '1') {
             /**
              * TRANSFER
              */
             $order->status = 'PENDING';
 
         }
-        
+
         $order->hash = hash('md5', $hashString);
-        
+
         $order->save();
 
         // UserRegistration::dispatch($user);
@@ -224,11 +232,11 @@ class PurchaseController extends Controller
 
         return response()->json([
             'status' => true,
-            'hash' => $order->hash
+            'hash' => $order->hash,
         ]);
     }
 
-    public function createOrder($method, $price, $currency = 'HUF')
+    public function createOrder($method, $price, $summNet, $currency = 'HUF')
     {
         $user = Auth::user();
         $order = new Orders();
@@ -236,10 +244,11 @@ class PurchaseController extends Controller
         $order->method = $method;
         $order->status = 'PENDING';
         $order->price = $price;
+        $order->net_price = $summNet;
         $order->currency = $currency;
-        
+
         $order->save();
-        
+
         $order->unique_id = 'or' . $order->id . 'u' . $user->id;
         $order->save();
 
@@ -268,14 +277,14 @@ class PurchaseController extends Controller
                 $orderItem->sku = $item->sku;
                 $orderItem->attr = $variant->attr;
                 $orderItem->attr_values = $variant->attr_values;
-    
+
                 $orderItem->save();
 
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 Errors::storeNewException('Error on saving order item', $e->getMessage(), 'purchase', 'saveOrderItems', $user->id, 'order_id', $orderId);
                 abort(404);
             }
-            
+
         }
     }
 
@@ -305,10 +314,10 @@ class PurchaseController extends Controller
     {
         $order = Orders::where('hash', $hash)->first();
 
-        if(!$order) {
+        if (!$order) {
             abort(404);
         }
-        
+
         return view('purchase-error')->with('order', $order);
     }
 

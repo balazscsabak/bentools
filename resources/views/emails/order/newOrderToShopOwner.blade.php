@@ -112,7 +112,7 @@ a[x-apple-data-detectors] {
                   <td valign="top" align="center" style="padding:0;Margin:0;width:530px"> 
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="center" style="padding:0;Margin:0;padding-bottom:10px"><h2 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#333333">Köszönjük a rendelésed!</h2></td> 
+                      <td align="center" style="padding:0;Margin:0;padding-bottom:10px"><h2 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#333333">Értesítő: Új Rendelés</h2></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -226,8 +226,18 @@ a[x-apple-data-detectors] {
                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation"> 
                          <tr style="border-collapse:collapse"> 
                           <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">ÖSSZESEN:</h4></td> 
-                          <td width="20%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">{{ $order->price }} Ft</h4></td> 
+                          <td width="20%" style="padding:0;Margin:0">
+                            <h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">
+                              {{ $order->price }} Ft
+                            </h4>
+                          </td> 
                          </tr> 
+                         <tr>
+                            <td></td>
+                            <td>
+                              <h5>Nettó: {{ $order->net_price }} Ft</h5>
+                            </td>
+                          </tr>
                        </table></td> 
                      </tr> 
                    </table></td> 

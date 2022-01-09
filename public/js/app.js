@@ -3329,21 +3329,21 @@ var ShoppingCart = function ShoppingCart() {
 
         if (Object.keys(res.cart.items).length > 0) {
           var sum = 0;
+          var sumNet = 0;
           Object.keys(res.cart.items).forEach(function (key) {
             var item = res.cart.items[key];
             sum += item.quantity * item.price;
+            sumNet += item.quantity * item.net_price;
             console.log(item);
             $('.cart-items').find('table tbody').append("\n                            <tr>\n                                <th class=\"cart-td-image\" scope=\"row\">\n                                    <div class=\"image\" style=\"background-image: url(".concat(item.image_href, ")\"></div>\n                                </th>\n                                <td>\n                                    <div class=\"item-info\">\n                                        <div class=\"name\">\n                                            ").concat(item.name, "\n                                        </div>\n                                        <div class=\"quantity mt-2 d-flex align-items-center\">\n                                            <span class=\"multiply\">x</span>").concat(item.quantity, " \n                                            <div class=\"mx-3 d-flex flex-column align-items-center\" style=\"font-size: 11px;\">\n                                                \n                                                    <i class=\"fas fa-plus mb-1 increment-item\" data-id=\"").concat(item.variant_id, "\"></i>\n                                                \n                                                    <i class=\"fas fa-minus mt-1 decrement-item\" data-id=\"").concat(item.variant_id, "\"></i>\n                                                \n                                            </div>\n                                            <span data-id=\"").concat(item.variant_id, "\" class=\"delete delete-item-from-cart\">T\xF6rl\xE9s</span>\n                                        </div>\n                                    </div>\n                                </td>\n                                <td class=\"text-end\">\n                                    <div class=\"price fw-bold\" style=\"white-space: nowrap;\">\n                                        ").concat(item.quantity * item.price, " .-\n                                    </div>\n                                </td>\n                            </tr>\n                        "));
-            console.log(item.quantity);
-            console.log(item.price);
-            console.log(sum);
-            $("#cart-page-sum").html("".concat(sum, " Ft"));
           });
+          $(".cart-page-sum").html("<div>".concat(sum, " Ft</div><div class=\"fs-6 fw-light\">Nett\xF3: ").concat(sumNet, " Ft</div>"));
         } else {
           /**
            * TODO
            * empty kosar
            */
+          $(".cart-page-sum").html("<div>0 Ft</div><div class=\"fs-6 fw-light\">Nett\xF3: 0 Ft</div>");
         }
       }
     }).fail(function (err) {

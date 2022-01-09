@@ -165,7 +165,12 @@
 										</th>
 										<th>
 											<div class="input-group-sm">
-												<input type="text" class="form-control" value="Ár" readonly>
+												<input type="text" class="form-control" value="Nettó Ár" readonly>
+											</div>
+										</th>
+										<th>
+											<div class="input-group-sm">
+												<input type="text" class="form-control" value="Bruttó Ár" readonly>
 											</div>
 										</th>
 										<th>

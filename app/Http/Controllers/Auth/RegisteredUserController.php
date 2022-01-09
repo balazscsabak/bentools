@@ -40,7 +40,10 @@ class RegisteredUserController extends Controller
             'lastname' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed',
+            'password' => 'required|string|confirmed|min:8',
+        ], [
+            'password.min' => 'A jelszónak minimum 8 karakternek kell lennie.',
+            'password.confirmed' => 'A két jelszó nem egyezik.',
         ]);
 
         // dd('stop');

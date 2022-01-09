@@ -195,6 +195,9 @@
 			<div class="row mb-4">
 				<div class="col-12 col-lg-10 text-end fs-5">
 					Összesen: <span class="fw-bold">{{ $order->price }} Ft</span>
+					<div class="fw-light">
+						<small>Nettó: {{ $order->net_price }} Ft</small>
+					</div>
 				</div>
 			</div>
 		</div>

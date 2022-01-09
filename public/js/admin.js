@@ -523,14 +523,18 @@ $(function () {
           }
 
           if (j === 2) {
-            variant['price'] = $(td).find('input').val().trim();
+            variant['net_price'] = $(td).find('input').val().trim();
           }
 
           if (j === 3) {
+            variant['price'] = $(td).find('input').val().trim();
+          }
+
+          if (j === 4) {
             variant['code'] = $(td).find('input').val().trim();
           }
 
-          if (j >= 4) {
+          if (j >= 5) {
             variant['attr'].push($(attributesThs[j]).find('input').val().trim());
             variant['attr_values'].push($(td).find('input').val().trim());
           }
