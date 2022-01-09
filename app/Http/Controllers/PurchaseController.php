@@ -116,7 +116,7 @@ class PurchaseController extends Controller
         }
 
         if ($summNet < 6000) {
-            // abort(404);
+            abort(404);
         }
 
         // create order

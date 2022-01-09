@@ -44,8 +44,8 @@
 			</div>
 
 			<div class="col-12 col-lg-6 d-flex align-items-center justify-content-center">
-				{{-- @if ($summNet < 6000) --}}
-				@if (false)
+				{{-- @if (false) --}}
+				@if ($summNet < 6000)
 
 				<h5 class="text-center">Minimum rendelés nettó 6000 Ft. A rendeléshez tegyél még hozzá valamit a kosaradhoz!</h5>
 				
