@@ -197,7 +197,7 @@ const ShoppingCart = function () {
 
                     });
 
-                    $(".cart-page-sum").html(`<div>${sum} Ft</div><div class="fs-6 fw-light">Nettó: ${sumNet} Ft</div>`);
+                    $(".cart-page-sum").html(`<div>${sumNet} Ft</div><div class="fs-6 fw-light">Bruttó: ${sum} Ft</div>`);
                     
                     
                 } else {
