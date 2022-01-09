@@ -188,8 +188,11 @@ const ShoppingCart = function () {
                                     </div>
                                 </td>
                                 <td class="text-end">
+                                    <div class="price" style="white-space: nowrap; font-size: 13px;">
+                                        Bruttó: ${item.quantity * item.price} .-
+                                    </div>
                                     <div class="price fw-bold" style="white-space: nowrap;">
-                                        ${item.quantity * item.price} .-
+                                        ${item.quantity * item.net_price} .-
                                     </div>
                                 </td>
                             </tr>
