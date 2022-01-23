@@ -72,7 +72,7 @@
                     </a>
 
                     <div class="text-center">
-                        © 2021 Bentools – www.bentools.hu
+                        © {{ date("Y") }} Bentools – www.bentools.hu
                     </div>
 
                 </div>

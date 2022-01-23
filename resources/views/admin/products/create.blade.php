@@ -29,7 +29,7 @@
             <a class="btn btn-secondary btn-sm me-2" href="{{ route('products.index') }}">Vissza</a>
         </div>
 
-        <form action="{{ route('products.store') }}" method="post" id="p-variant-form">
+        <form action="{{ route('products.store') }}" method="post" id="p-variant-form" enctype="multipart/form-data">
             
             @csrf
 
@@ -57,14 +57,20 @@
             </div>
 
             <div class="mb-3 row">
-                <label style="font-size: 1.2rem;" for="unit" class="form-label">Egység</label>
-                <div class="row align-items-center">
-                    <div class="col-auto">
-                        <input class="form-control validate-not-null" name="unit" type="number" min="1" max="100" value="1" step="1" >
+                <div class="col-4">
+                    <label style="font-size: 1.2rem;" for="unit" class="form-label">Egység</label>
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <input class="form-control validate-not-null" name="unit" type="number" min="1" max="100" value="1" step="1" >
+                        </div>
+                        <div class="col-auto">
+                            / egység
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        / egység
-                    </div>
+                </div>
+                <div class="col-4">
+                    <label style="font-size: 1.2rem;" for="pdf_file" class="form-label">PDF</label>
+                    <input class="form-control form-control-sm" id="pdf_file" type="file" name="pdf_file" accept="application/pdf">
                 </div>
             </div>
 
@@ -136,7 +142,7 @@
             <div class="row">
                 <div class="col-12">    
                     <label style="font-size: 1.2rem;" class="form-label">Termék leírása</label>
-                    <textarea name="description" class="form-control product-variant-content"></textarea>
+                    <textarea name="description" class="form-control product-variant-content validate-not-null"></textarea>
                 </div>
             </div>
 

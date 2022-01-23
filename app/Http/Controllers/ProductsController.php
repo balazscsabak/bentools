@@ -8,6 +8,7 @@ use App\Models\Variants;
 use Cocur\Slugify\Slugify;
 use Exception;
 use Illuminate\Http\Request;
+use League\Flysystem\Util;
 
 class ProductsController extends Controller
 {
@@ -77,6 +78,14 @@ class ProductsController extends Controller
             $newProduct->featured_image = $request->input('featured_image');
             $newProduct->has_variant = true;
             $newProduct->unit = $request->unit;
+
+            if($request->pdf_file) {
+                $pdfFileName = time() . '_' . Util::normalizePath($request->file('pdf_file')->getClientOriginalName());
+                $path = $request->pdf_file->storeAs('pdf', $pdfFileName, 'public');
+                
+                $newProduct->pdf_link = $path;
+            }
+
             $newProduct->save();
 
             foreach ($variants as $variant) {
@@ -208,6 +217,13 @@ class ProductsController extends Controller
             $product->available = $request->available ? true : false;
             $product->unit = intval($request->unit);
             
+            if($request->pdf_file) {
+                $pdfFileName = time() . '_' . Util::normalizePath($request->file('pdf_file')->getClientOriginalName());
+                $path = $request->pdf_file->storeAs('pdf', $pdfFileName, 'public');
+                
+                $product->pdf_link = $path;
+            }
+
             $product->save();
 
             $oldVariantIds = [];

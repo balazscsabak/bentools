@@ -35,6 +35,7 @@
                                             <th class="text-center">Kód</th>
                                             <th class="text-center">Ár</th>
                                             <th></th>
+                                            <th></th>
                                             <th class="text-end">Mennyiség</th>
                                         </tr>
                                     </thead>
@@ -71,6 +72,12 @@
                                                             {{ $attributes[$ind] }} : {{ $v }}
                                                         </div>
                                                     @endforeach
+                                                </td>
+
+                                                <td>
+                                                    @if ($product->pdf_link)
+                                                        <a href="/storage/{{ $product->pdf_link }}" target="_blank" class=""><i class="mt-2 fas fa-file-download"></i></a>
+                                                    @endif
                                                 </td>
 
                                                 <td class="text-end">

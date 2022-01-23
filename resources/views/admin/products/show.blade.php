@@ -34,7 +34,7 @@
             </form>
         </div>
         
-        <form action="{{ route('products.update', $product->id) }}" method="post" id="p-variant-form">
+        <form action="{{ route('products.update', $product->id) }}" method="post" id="p-variant-form" enctype="multipart/form-data">
             
             @csrf
             @method('PUT')
@@ -66,14 +66,26 @@
             </div>
 
             <div class="mb-3 row">
-                <label style="font-size: 1.2rem;" for="unit" class="form-label">Egység</label>
-                <div class="row align-items-center">
-                    <div class="col-auto">
-                        <input class="form-control validate-not-null" name="unit" type="number" min="1" max="100" value="{{ $product->unit }}" step="1" >
+                <div class="col-4">
+                    <label style="font-size: 1.2rem;" for="unit" class="form-label">Egység</label>
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <input class="form-control validate-not-null" name="unit" type="number" min="1" max="100" value="{{ $product->unit }}" step="1" >
+                        </div>
+                        <div class="col-auto">
+                            / egység
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        / egység
-                    </div>
+                </div>
+                <div class="col-4">
+                    <label style="font-size: 1.2rem;" for="pdf_file" class="form-label">PDF</label>
+                    <input class="form-control form-control-sm" id="pdf_file" type="file" name="pdf_file" accept="application/pdf">
+
+                    @if ($product->pdf_link)    
+                        <div class="mt-2">
+                            <a href="/storage/{{ $product->pdf_link }}" target="_blank">Jelenleg használt</a>
+                        </div>
+                    @endif
                 </div>
             </div>
             
