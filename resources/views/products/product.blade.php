@@ -35,7 +35,7 @@
                                             <th class="text-center">Kód</th>
                                             <th class="text-center">Ár</th>
                                             <th></th>
-                                            <th></th>
+                                            <th>Megmunkálási paraméterek</th>
                                             <th class="text-end">Mennyiség</th>
                                         </tr>
                                     </thead>
@@ -44,9 +44,6 @@
                                         
                                             <tr class="position-relative">
                                                 <td style="padding: 12px 0;">
-                                                    @if (!$variant->active)
-                                                        <div class="inactive-variant">Beszerzés alatt!</div>
-                                                    @endif
                                                     {{$variant->sku}}
                                                     <div class="pv-img-sample-box">
                                                         <img class="pv-image" src="{{ $variant->image_href }}" alt="" >
@@ -81,15 +78,19 @@
                                                 </td>
 
                                                 <td class="text-end">
-                                                    <div class="cart-action-add">
-                                                        <input type="number" class="unit-counter" min="{{ $product->unit }}" max="5000" value="{{ $product->unit }}" step="{{ $product->unit }}"> db
-                                                    
-                                                        <div class="btn btn-primary btn-sm add-to-cart-btn ms-2"  
-                                                            data-id="{{ $variant->id }}"
-                                                        >
-                                                            Kosárba
+                                                    @if (!$variant->active)
+                                                        <div class="">Beszerzés alatt!</div>
+                                                    @else
+                                                        <div class="cart-action-add ">
+                                                            <input type="number" class="unit-counter" min="{{ $product->unit }}" max="5000" value="{{ $product->unit }}" step="{{ $product->unit }}"> db
+                                                        
+                                                            <div class="btn btn-primary btn-sm add-to-cart-btn ms-2"  
+                                                                data-id="{{ $variant->id }}"
+                                                            >
+                                                                Kosárba
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
