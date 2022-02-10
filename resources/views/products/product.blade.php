@@ -42,7 +42,11 @@
                                     <tbody>
                                         @foreach ($variants as $variant)
                                         
-                                            <tr class="position-relative">
+                                            <tr class="position-relative"
+                                                @if (!$variant->active)
+                                                style="opacity: 0.5;"
+                                                @endif
+                                            >
                                                 <td style="padding: 12px 0;">
                                                     {{$variant->sku}}
                                                     <div class="pv-img-sample-box">
@@ -73,7 +77,11 @@
 
                                                 <td>
                                                     @if ($product->pdf_link)
-                                                        <a href="/storage/{{ $product->pdf_link }}" target="_blank" class=""><i class="mt-2 fas fa-file-download"></i></a>
+                                                        <a href="/storage/{{ $product->pdf_link }}" target="_blank" class="text-decoration-none">
+                                                            <small>Letöltés</small>
+                                                            <br>
+                                                            <i class="mt-1 fas fa-file-download"></i>
+                                                        </a>
                                                     @endif
                                                 </td>
 
