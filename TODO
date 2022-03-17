@@ -1,63 +1,8 @@
+/**
+* DIGITALOCEAN HOST
 
-Todo:
-STRIPE ACCOUNT
-Statusz rendelésnél mi legyen?
-Szamlaval mi legyen?
-
-
-Kiemelt termekek beallitasa
-    - 4db admin feluleten
-WYSIWYG text align
-VALIDATE products attributes (price : int)
-Product Single
-Product Archive
-Product Filter
-Product Featured image/Main img required?!?!?!
-Navigation deleted products
-Ft/huf - currency format
-REMOVE CART icon on purchase page
-checkout - number only on postcode
-validate address create
-DESIGN - register page
-handle empty CART
-kosarba sum
-minimum 8k order
-clear session cart after purchase
-close button a cartra
-ajanlatkeres
-
-
-//host 
+IP
 159.89.103.212
 
-//
-$2y$10$IPwZQK98ePvT4pjnGbYv/O7spFAIXMvaI/gn52umf0XKS4a7Ks7BK
-
-
-
-
-
-
-
-
-
 TODO:
-Only category in menu
-6k limit
-Ajanalatkeres
 
-
-
-
-///
-///   TEST
-///////////// 
-emails: 
-    - cancelled order
-    - shipped order
-capcha
-user registration with new datas
-edit profile datas
-brochure
-news archive
-disable item

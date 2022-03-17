@@ -19886,9 +19886,6 @@ main {
   position: relative;
   margin: 10px 0;
 }
-.pv-img-sample-box:hover .sample-big {
-  display: block;
-}
 .pv-img-sample-box .sample-big {
   position: absolute;
   top: 0;
@@ -19900,7 +19897,7 @@ main {
   width: 300px;
 }
 .pv-img-sample-box .pv-image {
-  max-width: 70px;
+  width: 150px;
   margin: auto;
 }
 

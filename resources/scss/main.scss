@@ -752,11 +752,7 @@ main {
 .pv-img-sample-box {
     position: relative;
     margin: 10px 0;
-    &:hover {
-        .sample-big {
-            display: block;
-        }
-    }
+
     .sample-big {
         position: absolute;
         top: 0;
@@ -770,7 +766,7 @@ main {
     }
 
     .pv-image {
-        max-width: 70px;
+        width: 150px;
         margin: auto;
     }
 }

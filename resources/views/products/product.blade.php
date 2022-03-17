@@ -27,7 +27,7 @@
 
                         <div class="content">
                             
-                            <div class="variant my-5">
+                            <div class="variant my-5 table-responsive">
 
                                 <table class="table my-4">
                                     <thead>
@@ -39,7 +39,7 @@
                                             <th class="text-end">Mennyiség</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="align-middle">
                                         @foreach ($variants as $variant)
                                         
                                             <tr class="position-relative"
@@ -50,14 +50,16 @@
                                                 <td style="padding: 12px 0;">
                                                     {{$variant->sku}}
                                                     <div class="pv-img-sample-box">
-                                                        <img class="pv-image" src="{{ $variant->image_href }}" alt="" >
-                                                        <div class="sample-big">
+                                                        <a href="{{ $variant->image_href }}" target="_blank">
+                                                            <img class="pv-image" src="{{ $variant->image_href }}" alt="" >
+                                                        </a>
+                                                        {{-- <div class="sample-big">
                                                             <img class="pv-image-big" src="{{ $variant->image_href }}" alt="" >
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </td>
 
-                                                <td class="fw-bold" style="padding: 12px 0 12px 5px; white-space: nowrap;">
+                                                <td class="fw-bold" style="padding: 12px 20px 12px 20px; white-space: nowrap;">
                                                     
                                                     <div><small style="font-size: 12px; color: #818181; font-weight:400;">Bruttó: {{ $variant->price }} .-</small></div>
                                                     <div>{{ $variant->net_price }} .-</div>
@@ -89,7 +91,7 @@
                                                     @if (!$variant->active)
                                                         <div class="">Beszerzés alatt!</div>
                                                     @else
-                                                        <div class="cart-action-add ">
+                                                        <div class="cart-action-add text-nowrap">
                                                             <input type="number" class="unit-counter" min="{{ $product->unit }}" max="5000" value="{{ $product->unit }}" step="{{ $product->unit }}"> db
                                                         
                                                             <div class="btn btn-primary btn-sm add-to-cart-btn ms-2"  
