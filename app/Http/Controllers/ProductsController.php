@@ -241,7 +241,8 @@ class ProductsController extends Controller
             /**
              * YouTube links
              */
-            $inputLinks = $request->input('youtube_link');
+            $inputLinks = $request->input('youtube_link') ?? [];
+            
             $oldYoutubeLinks = $product->youtubeLinks;
             $oldLinks = [];
 
@@ -249,17 +250,19 @@ class ProductsController extends Controller
                 $oldLinks[] = $oldLink->link;
                 if(!in_array($oldLink->link, $inputLinks)) {
                     $oldLink->delete();
-                }
+                } 
             }
 
-            foreach ($inputLinks as $iLink) {
-                if(!in_array($iLink, $oldLinks)) {
-                    $newLink = new YoutubeLinks();
-
-                    $newLink->link = $iLink;
-                    $newLink->product_id = $product->id;
-
-                    $newLink->save();
+            if($inputLinks) {
+                foreach ($inputLinks as $iLink) {
+                    if(!in_array($iLink, $oldLinks)) {
+                        $newLink = new YoutubeLinks();
+    
+                        $newLink->link = $iLink;
+                        $newLink->product_id = $product->id;
+    
+                        $newLink->save();
+                    }
                 }
             }
 
