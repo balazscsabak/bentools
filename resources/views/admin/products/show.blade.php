@@ -161,14 +161,37 @@
                 <textarea style="min-height: 100px;" type="text" class="form-control validate-not-null product-variant-content" name="description">{{ $product->description }}</textarea>
             </div>
 
+            <div class="row mb-3">
+				
+                <div class="d-flex">
+                    <h5 class="mb-3">YouTube linkek</h5>
+
+                    <div class="ms-3 p-add-youtube-link">
+                        <i class="fas fa-plus-circle fs-5"></i>
+                    </div>
+                </div>
+
+                <div class="p-youtube-links">
+                    @foreach ($product->youtubeLinks as $link)
+                        <div class="youtube-link d-flex align-items-center mb-3">
+                            <input value="{{$link->link}}" readonly type="text" class="form-control validate-not-null youtube-link__input" name="youtube_link[]">
+                            <div class="ms-3 p-remove-youtube-link">
+                                    <i class="fas fa-minus"></i>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+
             <div class="product-variants-wrapper">
-				<h5 class="mb-2">Termék variánsai</h5>
+				<h5>Termék variánsai</h5>
 
 				<div id="product-variants" class="mb-4 row justify-content-center">
 					
 					<div class="product-variant col-12 mb-2">
 
-						<div class="variant-attributes my-4">
+						<div class="variant-attributes mt-2 mb-4">
 							<div class="d-flex justify-content-end mb-3">
 								<i class="fas fa-plus-circle p-variant-add-col"></i>
 							</div>

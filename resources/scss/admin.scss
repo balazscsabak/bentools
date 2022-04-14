@@ -187,3 +187,17 @@
 #users-list {
     cursor: pointer;
 }
+
+.p-add-youtube-link {
+    cursor: pointer;
+}
+.p-remove-youtube-link {
+    cursor: pointer;
+}
+.p-youtube-links {
+    .youtube-link {
+        &__input {
+            width: 300px;
+        }
+    }
+}

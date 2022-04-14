@@ -139,23 +139,36 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12">    
                     <label style="font-size: 1.2rem;" class="form-label">Termék leírása</label>
                     <textarea name="description" class="form-control product-variant-content validate-not-null"></textarea>
                 </div>
             </div>
 
-			<hr>
+            <div class="row mb-3">
+				
+                <div class="d-flex">
+                    <h5 class="mb-3">YouTube linkek</h5>
+
+                    <div class="ms-3 p-add-youtube-link">
+                        <i class="fas fa-plus-circle fs-5"></i>
+                    </div>
+                </div>
+
+                <div class="p-youtube-links">
+                </div>
+
+            </div>
 
 			<div class="product-variants-wrapper">
-				<h5 class="mb-2">Termék variánsai</h5>
+				<h5>Termék variánsai</h5>
 
 				<div id="product-variants" class="mb-4 row justify-content-center">
 					
 					<div class="product-variant col-12 mb-2">
 
-						<div class="variant-attributes my-4">
+						<div class="variant-attributes mt-2 mb-4">
 							<div class="d-flex justify-content-end mb-3">
 								<i class="fas fa-plus-circle p-variant-add-col"></i>
 							</div>

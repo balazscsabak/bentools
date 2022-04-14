@@ -180,3 +180,15 @@
 #users-list {
   cursor: pointer;
 }
+
+.p-add-youtube-link {
+  cursor: pointer;
+}
+
+.p-remove-youtube-link {
+  cursor: pointer;
+}
+
+.p-youtube-links .youtube-link__input {
+  width: 300px;
+}

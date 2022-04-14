@@ -229,4 +229,24 @@ $(() => {
 
         }) 
 	})
+
+	$(document).on('click', '.p-add-youtube-link', function(e) {
+		e.preventDefault();
+		const content = `
+			<div class="youtube-link d-flex align-items-center mb-3">
+					<input type="text" class="form-control validate-not-null youtube-link__input" name="youtube_link[]">
+					<div class="ms-3 p-remove-youtube-link">
+							<i class="fas fa-minus"></i>
+					</div>
+			</div>
+		`;
+
+		$('.p-youtube-links').append(content);
+	})
+
+	$(document).on('click', '.p-remove-youtube-link', function(e) {
+		e.preventDefault();
+		
+		$(e.currentTarget).closest('.youtube-link').remove();
+	})
 })

@@ -25,6 +25,14 @@
                             {!! $product->description !!}
                         </div>
 
+                        <div class="my-5 show-youtube-links">
+                            @foreach ($product->youtubeLinks as $link)
+                                <div class="youtube-link mb-5">
+                                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{$link->link}}"></iframe>
+                                </div>
+                            @endforeach
+                        </div>
+
                         <div class="content">
                             
                             <div class="variant my-5 table-responsive">

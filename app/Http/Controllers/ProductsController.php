@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Products;
 use App\Models\Variants;
+use App\Models\YoutubeLinks;
 use Cocur\Slugify\Slugify;
 use Exception;
 use Illuminate\Http\Request;
@@ -87,6 +88,17 @@ class ProductsController extends Controller
             }
 
             $newProduct->save();
+
+            if($request->youtube_link) {
+                foreach ($request->youtube_link as $_link) {
+                    $youtubeLink = new YoutubeLinks();
+                    
+                    $youtubeLink->product_id = $newProduct->id;
+                    $youtubeLink->link = $_link;
+    
+                    $youtubeLink->save();
+                }
+            }
 
             foreach ($variants as $variant) {
 
@@ -225,6 +237,31 @@ class ProductsController extends Controller
             }
 
             $product->save();
+
+            /**
+             * YouTube links
+             */
+            $inputLinks = $request->input('youtube_link');
+            $oldYoutubeLinks = $product->youtubeLinks;
+            $oldLinks = [];
+
+            foreach ($oldYoutubeLinks as $oldLink) {
+                $oldLinks[] = $oldLink->link;
+                if(!in_array($oldLink->link, $inputLinks)) {
+                    $oldLink->delete();
+                }
+            }
+
+            foreach ($inputLinks as $iLink) {
+                if(!in_array($iLink, $oldLinks)) {
+                    $newLink = new YoutubeLinks();
+
+                    $newLink->link = $iLink;
+                    $newLink->product_id = $product->id;
+
+                    $newLink->save();
+                }
+            }
 
             $oldVariantIds = [];
 

@@ -959,3 +959,21 @@ $secondaryCookie: #89a; // "accept necessary" button color
         }
     }
 }
+
+.show-youtube-links {
+    .youtube-link {
+        width: 100%;
+        height: 250px;
+        
+        @media screen and (min-width: 620px) {
+            
+            height: 350px;
+            
+        }
+        @media screen and (min-width: 992px) {
+            
+            height: 450px;
+            
+        }
+    }
+}

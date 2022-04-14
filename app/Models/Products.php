@@ -40,4 +40,9 @@ class Products extends Model
     {
         return $this->hasMany(Variants::class, 'product_id');
     }
+
+    public function youtubeLinks() 
+    {
+        return $this->hasMany(YoutubeLinks::class, 'product_id');
+    }
 }

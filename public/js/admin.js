@@ -584,6 +584,15 @@ $(function () {
       }
     });
   });
+  $(document).on('click', '.p-add-youtube-link', function (e) {
+    e.preventDefault();
+    var content = "\n\t\t\t<div class=\"youtube-link d-flex align-items-center mb-3\">\n\t\t\t\t\t<input type=\"text\" class=\"form-control validate-not-null youtube-link__input\" name=\"youtube_link[]\">\n\t\t\t\t\t<div class=\"ms-3 p-remove-youtube-link\">\n\t\t\t\t\t\t\t<i class=\"fas fa-minus\"></i>\n\t\t\t\t\t</div>\n\t\t\t</div>\n\t\t";
+    $('.p-youtube-links').append(content);
+  });
+  $(document).on('click', '.p-remove-youtube-link', function (e) {
+    e.preventDefault();
+    $(e.currentTarget).closest('.youtube-link').remove();
+  });
 });
 
 /***/ }),
