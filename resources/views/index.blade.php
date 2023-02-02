@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="hero">     
+    <div class="hero container mt-4 pb-5">     
         <!-- Slider main container -->
         <div class="swiper-container hero-swiper">
             <!-- Additional required wrapper -->
@@ -21,11 +21,11 @@
         </div>
     </div>
 
-    <div class="section-news">
+    <div class="section-news mt-5">
 
         <div class="container">
 
-            <div class="section-title">
+            <div class="section-title d-none">
                 <h1>
                     Hírek
                 </h1>
@@ -55,15 +55,28 @@
         
         <div class="container">
             
-            <div class="section-title">
+            <div class="d-inline-block position-relative mb-5">
                 <h1>
                     Kiemelt Termékek
                 </h1>
-                <div class="icon">
+                <div class="icon position-absolute" style="top: 100%; right: 0;">
                     <i class="fas fa-angle-down"></i>
                 </div>
             </div>
 
+            <!-- <div class="d-flex justify-content-center">
+                <div class="col-12 col-lg-9">
+                    <div class="related-items row justify-content-center gx-4">
+                        @isset($relatedProducts)
+                            @foreach ($relatedProducts as $product)
+            
+                                <x-related-item :product="$product"/>
+            
+                            @endforeach
+                        @endisset
+                    </div>
+                </div>
+            </div> -->
             <div class="d-flex justify-content-center">
                 <div class="col-12 col-lg-9">
                     <div class="related-items row justify-content-center gx-4">
@@ -82,7 +95,7 @@
 
     </div>
 
-    <div class="contact-us lazy" data-bg-multi="linear-gradient(#000000d8, #000000c7), url('/storage/images/1620209338.jpg')">
+    <!-- <div class="contact-us lazy" data-bg-multi="linear-gradient(#000000d8, #000000c7), url('/storage/images/1620209338.jpg')">
 
         <div class="container">
             <div class="contact-us-wrapper">
@@ -115,6 +128,44 @@
             </div>
         </div>
     
+    </div> -->
+    <div class="mt-5">
+        <div style="background-color: #d3d3d3;">
+            <div class="container">
+                <div class="row pb-5" >
+                    <div class="col-7 p-4 px-5 offset-1" style="background-color: #e5e5e5; margin-top: -35px;">
+                        <h2 class="mb-3">
+                            Küldjön üzenetet
+                        </h2>
+                        <h5 class="mb-4">
+                            {{ $offerMessage }}
+                        </h5>
+                        <div><a href="{{ route('message.index') }}" class="btn btn-primary d-block d-md-inline-block">Üzenet küldése</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-5">
+        <div style="background-color: #e5e5e5;">
+            <div class="container">
+                <div class="row pt-5 justify-content-end" >
+                    <div class="col-7 p-4 px-5 offset-1" style="background-color: #d3d3d3; margin-bottom: -35px;">
+                    
+                        <h2 class="mb-3">
+                            Kérjen árajánlatot
+                        </h2>
+                        <h5 class="mb-4">
+                            {{ $offerOffer }}    
+                        </h5>
+                        
+                        <div><a href="{{ route('offer') }}" class="btn btn-primary d-block d-md-inline-block">ÁRAJÁNLATOT KÉREK</a></div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="shipping-section">

@@ -1,4 +1,4 @@
-<div class="post-wrapper col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+<div class="post-wrapper col-12 col-md-4 col-lg-4 mb-5 mb-md-0">
     <a class="post" href="{{ route('post', $post->slug) }}">
         <div class="post__content lazy" 
             {{-- data-bg-multi="linear-gradient(#ffffff03, #363636bd), url('/storage/{{ $post->image->path }}')"> --}}

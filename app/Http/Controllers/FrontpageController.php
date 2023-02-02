@@ -18,7 +18,7 @@ class FrontpageController extends Controller
     {
         $slideshow = Slideshow::all();
         $latestPosts = Posts::latest()->limit(3)->get();
-        $relatedProducts = Products::where([['deleted', false], ['available', true]])->latest()->limit(4)->get();
+        $relatedProducts = Products::where([['deleted', false], ['available', true]])->latest()->limit(9)->get();
 
         $contactEmail = Settings::where('key', 'contact_email')->first();
         $contactPhone = Settings::where('key', 'contact_phone')->first();

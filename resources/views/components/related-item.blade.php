@@ -1,4 +1,4 @@
-<div class="col-10 mb-4 mb-md-0 col-md-3 related-item position-relative">
+<div class="col-10 mb-4 mb-md-5 col-md-4 related-item position-relative">
     <a href="/product/{{ $product->slug }}">
         <div class="image-wrapper">
             
