@@ -112,7 +112,7 @@
             
             <div class="d-inline-block position-relative mb-5">
                 <h1>
-                    Kiemelt Termékek
+                    További Termékek
                 </h1>
                 <div class="icon position-absolute" style="top: 100%; right: 0;">
                     <i class="fas fa-angle-down"></i>
