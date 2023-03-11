@@ -1,5 +1,5 @@
 <div class="swiper-slide hero-slide">
-    <div class="bg-blur lazy" 
+    <div class="bg-blur lazy hero-bg" 
         data-bg-multi="linear-gradient(rgb(33 29 29 / 41%), rgb(11 12 12 / 38%)),  url('/storage/{{ $slide->imageData->path }}')"
     ></div>
     <div class="swiper-content">

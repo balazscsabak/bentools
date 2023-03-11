@@ -192,3 +192,10 @@
 .p-youtube-links .youtube-link__input {
   width: 300px;
 }
+
+.featured-cat-item {
+  background-color: #ffffff;
+  padding: 18px;
+  border-radius: 7px;
+  border: 1px solid #c9c9c9;
+}

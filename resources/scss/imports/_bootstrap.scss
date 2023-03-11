@@ -1,0 +1,14 @@
+.list-group-item {
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid #e7e6e6;
+  font-size: 18px;
+}
+
+.list-group-item.active {
+  background: inherit;
+  color: black;
+  border-bottom: 2px solid #1e58a5 !important;
+  border-radius: 0px;
+  font-weight: bold;
+}

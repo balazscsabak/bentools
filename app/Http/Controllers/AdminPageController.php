@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Settings;
+use App\Models\Categories;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -147,6 +148,23 @@ class AdminPageController extends Controller
         $user->able_to_30 = $ableTo30 ? true : false;
         $user->save();
         
+        return back()->with('success', 'Sikeres módosítás!');
+    }
+
+    public function featuredCategories(Request $request)
+    {
+        $categories = Categories::all();
+        $featured = Settings::where('key', 'frontpage_feat_categories')->first();
+
+        return view('admin.categories.featured')->with('categories', $categories)->with('featured', json_decode($featured->value));
+    }
+
+    public function updateFeaturedCategories(Request $request)
+    {
+        Settings::where('key', 'frontpage_feat_categories')->update([
+            'value' => $request->input('featuredCategories')
+        ]);
+     
         return back()->with('success', 'Sikeres módosítás!');
     }
 }

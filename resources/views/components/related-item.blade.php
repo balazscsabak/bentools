@@ -1,4 +1,4 @@
-<div class="col-10 mb-4 mb-md-5 col-md-4 related-item position-relative">
+<div class="col-10 mb-4 mb-md-5 col-md-3 related-item position-relative">
     <a href="/product/{{ $product->slug }}">
         <div class="image-wrapper">
             
@@ -8,7 +8,7 @@
                 <div class="square image lazy" data-bg-multi="url('/storage/images/default-product.png')"></div>
             @endif
 
-            <div class="blue-bg"></div>
+            <!-- <div class="blue-bg"></div> -->
         </div>
 
         <div class="name">
@@ -16,9 +16,9 @@
                 {{ $product->name }}
             </h1>
         </div>
-        <div class="read-more">
+        <!-- <div class="read-more">
             <span>Részletek <i class="fas fa-angle-double-right"></i></span>
-        </div>
+        </div> -->
     </a>
     @if (!$product->available)
         <a href="/product/{{ $product->slug }}" class="product-not-available">

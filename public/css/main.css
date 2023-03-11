@@ -19298,6 +19298,21 @@ readers do not read off random characters that represent icons */
     max-width: 500px;
   }
 }
+.list-group-item {
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid #e7e6e6;
+  font-size: 18px;
+}
+
+.list-group-item.active {
+  background: inherit;
+  color: black;
+  border-bottom: 2px solid #1e58a5 !important;
+  border-radius: 0px;
+  font-weight: bold;
+}
+
 html,
 body {
   font-family: "Lato", sans-serif;
@@ -19406,36 +19421,52 @@ main {
   padding: 16px;
   position: relative;
   color: #fff;
+  max-width: 80%;
+  margin-left: 8%;
+  top: 45%;
+  transform: translateY(-50%);
+}
+@media screen and (min-width: 620px) {
+  .hero-slide .swiper-content {
+    height: 350px;
+    max-width: 46%;
+  }
+}
+.hero-slide .swiper-content h1, .hero-slide .swiper-content .h1 {
+  font-size: 36px !important;
 }
 .hero-slide .swiper-content h1, .hero-slide .swiper-content .h1,
 .hero-slide .swiper-content p {
-  color: #eaeaea;
   font-weight: bold;
+  text-decoration: underline;
+  color: white;
 }
-.hero-slide .swiper-content a {
-  background-color: #226ac7 !important;
-  border-radius: 2px;
-  border-color: #367eda;
-}
-
 :root {
   --swiper-navigation-size: 25px;
 }
 
 .swiper-button-prev {
   font-size: 10px;
-  left: 25px;
 }
 
 .swiper-button-next {
-  right: 25px;
+  right: 50px;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
   font-weight: 900;
-  top: 94%;
   color: #226ac7;
+}
+
+.hero .hero-bg {
+  max-width: 100%;
+}
+@media screen and (min-width: 800px) {
+  .hero .hero-bg {
+    -webkit-clip-path: polygon(0 0, 100% 0%, 95% 100%, 0% 100%);
+            clip-path: polygon(0 0, 100% 0%, 95% 100%, 0% 100%);
+  }
 }
 
 .section-news {
@@ -19484,9 +19515,17 @@ main {
   /* initial ratio of 1:1*/
 }
 
+.related-items .related-item:nth-child(odd) {
+  padding: 20px;
+}
+.related-items .related-item:nth-child(odd) a {
+  flex-direction: column-reverse;
+}
 .related-items .related-item a {
   color: #000;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
 }
 .related-items .related-item a .image-wrapper {
   position: relative;
@@ -19512,6 +19551,11 @@ main {
   text-align: left;
   font-size: 1.2rem;
   font-weight: bold;
+  background-color: #1e58a5;
+  color: white;
+  text-align: center;
+  color: white;
+  padding: 10px;
 }
 .related-items .related-item a .read-more span {
   color: #1d58a5;
@@ -20082,4 +20126,73 @@ button.validation-error {
   .show-youtube-links .youtube-link {
     height: 450px;
   }
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 20px;
+}
+@media screen and (min-width: 1050px) {
+  .hero-right {
+    flex-direction: column;
+  }
+}
+
+.fc-tab {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-flow: dense;
+  grid-gap: 20px;
+}
+@media screen and (min-width: 700px) {
+  .fc-tab {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fc-tab-item {
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+  text-decoration: none;
+  padding: 14px;
+  display: flex;
+  align-items: end;
+}
+.fc-tab-item h4, .fc-tab-item .h4 {
+  font-weight: 600;
+}
+.fc-tab-item.last {
+  grid-column: 1/-1;
+}
+
+.lp-wrapper {
+  padding: 10px;
+}
+.lp-wrapper .lp-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #1e58a5;
+  display: inline-block;
+  border-radius: 99999px;
+  margin-right: 10px;
+}
+.lp-wrapper .lp-title {
+  font-size: 19px;
+  display: inline;
+  text-decoration: none;
+  font-weight: 800;
+  color: black;
+}
+@media screen and (min-width: 1200px) {
+  .lp-wrapper .lp-title {
+    font-size: 24px;
+  }
+}
+.lp-wrapper .lp-exc {
+  color: black;
+  /* padding-left: 3px; */
+  margin-top: 5px;
 }

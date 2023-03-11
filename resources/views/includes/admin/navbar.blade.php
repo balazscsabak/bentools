@@ -45,6 +45,7 @@
                         <li><a class="dropdown-item" href="{{ route('settings.slideshow') }}">Slideshow</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.brochure') }}">Prospektus</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.socials') }}">Socials</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.categories.featured') }}">Kiemelt kategóriák</a></li>
                     </ul>
                 </li>
             </ul>

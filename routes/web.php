@@ -125,6 +125,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::get('users', [AdminPageController::class, 'users'])->name('admin.users');
         Route::get('users/{id}', [AdminPageController::class, 'showUser'])->name('admin.user');
         Route::post('users/update-able-to-30', [AdminPageController::class, 'updateAbleTo30'])->name('admin.user.updateAbleTo30');
+        
+        Route::get('featured-categories', [AdminPageController::class, 'featuredCategories'])->name('admin.categories.featured');
+        Route::post('featured-categories', [AdminPageController::class, 'updateFeaturedCategories'])->name('admin.categories.featured.update');
     });
 
 });

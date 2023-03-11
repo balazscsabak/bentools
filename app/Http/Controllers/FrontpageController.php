@@ -17,14 +17,27 @@ class FrontpageController extends Controller
     public function index()
     {
         $slideshow = Slideshow::all();
-        $latestPosts = Posts::latest()->limit(3)->get();
-        $relatedProducts = Products::where([['deleted', false], ['available', true]])->latest()->limit(9)->get();
+        $latestPosts = Posts::latest()->limit(4)->get();
+        $relatedProducts = Products::where([['deleted', false], ['available', true]])->latest()->limit(4)->get();
 
         $contactEmail = Settings::where('key', 'contact_email')->first();
         $contactPhone = Settings::where('key', 'contact_phone')->first();
         $shippingContent = Settings::where('key', 'shipping_short_content')->first();
         $offerMessageContent = Settings::where('key', 'offer_message')->first();
         $offerOfferContent = Settings::where('key', 'offer_offer')->first();
+        $featuredCategories = Settings::where('key', 'frontpage_feat_categories')->first();
+
+        $featCats = [];
+
+        foreach (json_decode($featuredCategories->value) as $cat) {
+            if(count($cat->categories) > 0) {
+                $featCats[] = [
+                    "text" => $cat->text,
+                    "img" => $cat->img,
+                    "categories" => Categories::whereIn('id', $cat->categories)->get(),
+                ];
+            };
+        }
 
         $email = '';
         $phone = '';
@@ -48,6 +61,7 @@ class FrontpageController extends Controller
             ->with('phone', $phone)
             ->with('offerMessage', $offerMessage)
             ->with('offerOffer', $offerOffer)
+            ->with('featuredCategories', $featCats)
             ->with('shipping', $shipping);
     }
 

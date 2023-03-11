@@ -23,6 +23,7 @@ $primary: #1e58a5;
 @import "./imports/variables";
 @import "./imports/spinner";
 @import "./imports/shopping-cart";
+@import "./imports/bootstrap";
 
 html,
 body {
@@ -135,6 +136,7 @@ main {
     height: 80vh;
     display: block;
     position: relative;
+    // background: $primary;
 
     .bg-blur {
         background-size: cover;
@@ -151,17 +153,33 @@ main {
         padding: 16px;
         position: relative;
         color: #fff;
+        max-width: 80%;
+       
+        margin-left: 8%;
+        top: 45%;
+        transform: translateY(-50%);
 
+        @media screen and (min-width: 620px) {
+
+            height: 350px;
+            max-width: 46%;
+        }
+
+        h1 {
+            font-size: 36px !important;   
+        }
         h1,
         p {
-            color: #eaeaea;
+            // color: #1d1d1b;
             font-weight: bold;
+            text-decoration: underline;
+            color: white;
         }
 
         a {
-            background-color: $color-second-blue !important;
-            border-radius: 2px;
-            border-color: #367eda;
+            // background-color: $color-second-blue !important;
+            // border-radius: 2px;
+            // border-color: #367eda;
         }
     }
 }
@@ -172,23 +190,38 @@ main {
 
 .swiper-button-prev {
     font-size: 10px;
-    left: 25px;
+    // left: 25px;
 
 }
 
 .swiper-button-next {
-    right: 25px;
+    right: 50px;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
     font-weight: 900;
-    top: 94%;
+    // top: 94%;
     color: $color-second-blue;
+}
+
+.hero-cont {
+    
 }
 
 .hero {
     // margin-bottom: 60px;
+    // clip-path: polygon(0 0, 100% 1%, 95% 100%, 0% 100%);
+
+    .hero-bg {
+        // clip-path: polygon(0 0, 100% 0%, 95% 100%, 0% 100%);
+        max-width: 100%;
+
+        @media screen and (min-width: 800px) {
+            clip-path: polygon(0 0, 100% 0%, 95% 100%, 0% 100%);
+
+        }
+    }
 }
 
 .section-news {
@@ -244,10 +277,21 @@ main {
 }
 
 .related-items {
+    
     .related-item {
+        &:nth-child(odd) {
+            padding:20px;
+            
+            a {
+                flex-direction: column-reverse;
+            }
+        }
+
         a {
             color: #000;
             text-decoration: none;
+            display: flex;
+            flex-direction: column;
 
             .image-wrapper {
                 position: relative;
@@ -276,6 +320,11 @@ main {
                     text-align: left;
                     font-size: 1.2rem;
                     font-weight: bold;
+                    background-color: $primary;
+                    color:white;
+                    text-align: center;
+                    color: white;
+                    padding: 10px;
                 }
             }
 
@@ -1018,5 +1067,84 @@ $secondaryCookie: #89a; // "accept necessary" button color
             height: 450px;
 
         }
+    }
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 20px;
+
+    @media screen and (min-width: 1050px) {
+
+        flex-direction: column;
+
+    }
+}
+
+.fc-tab {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    // grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    grid-auto-flow: dense;
+    grid-gap: 20px;
+
+    @media screen and (min-width: 700px) {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+.fc-tab-item {
+    height: 300px;
+    background-size: cover;
+    background-position: center center;
+    text-decoration: none;
+    padding: 14px;
+    display: flex;
+    align-items: end;
+
+    h4 {
+        font-weight: 600;
+    }
+
+    &.last {
+        grid-column: 1 / -1;
+    }
+}
+
+.lp-wrapper {
+    padding: 10px;
+
+
+    .lp-dot {
+        width: 10px;
+        height: 10px;
+        background-color: $primary;
+        display: inline-block;
+        border-radius: 99999px;
+        margin-right: 10px;
+    }
+    
+    .lp-title {
+        font-size: 19px;
+        display: inline;
+        text-decoration: none;
+        font-weight: 800;
+        color: black;
+
+        @media screen and (min-width: 1200px) {
+            font-size: 24px;
+
+        }
+    }
+
+    .lp-exc {
+        color: black;
+    /* padding-left: 3px; */
+    margin-top: 5px;
     }
 }
